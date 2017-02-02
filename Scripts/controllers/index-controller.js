@@ -323,7 +323,8 @@ $(document).ready(function () {
             /* #endregion Setting up ScrollMagicScenes */
         }
     }
-    /* #endregion Inserts SVG's to HTML */    
+    /* #endregion Inserts SVG's to HTML */
+
     function genericCountrySvg_animate(event) {
         var eventCountryIndex = event.currentTarget.countryIndex;
         for (var i = 0; i < randomCountriesArray.length; i++) {
