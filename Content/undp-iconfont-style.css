@@ -1,0 +1,162 @@
+@font-face {
+  font-family: 'undp-iconfont';
+  src:  url('../fonts/undp-iconfont.eot?obx4s8');
+  src:  url('../fonts/undp-iconfont.eot?obx4s8#iefix') format('embedded-opentype'),
+    url('../fonts/undp-iconfont.ttf?obx4s8') format('truetype'),
+    url('../fonts/undp-iconfont.woff?obx4s8') format('woff'),
+    url('../fonts/undp-iconfont.svg?obx4s8#undp-iconfont') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.xn {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'undp-iconfont' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.xn-peace-dove:before {
+  content: "\e900";
+}
+.xn-four-puzzle:before {
+  content: "\e901";
+}
+.xn-community-connection:before {
+  content: "\e902";
+}
+.xn-constructive-dialogue:before {
+  content: "\e903";
+}
+.xn-computer-network:before {
+  content: "\e904";
+}
+.xn-joint-programme:before {
+  content: "\e905";
+}
+.xn-people-dialogue:before {
+  content: "\e906";
+}
+.xn-people-group:before {
+  content: "\e907";
+}
+.xn-document-magnify:before {
+  content: "\e908";
+}
+.xn-piggy-bank:before {
+  content: "\e909";
+}
+.xn-desktop-monitor:before {
+  content: "\e90a";
+}
+.xn-government:before {
+  content: "\e90b";
+}
+.xn-anti-corruption-shield:before {
+  content: "\e90c";
+}
+.xn-handshake:before {
+  content: "\e90d";
+}
+.xn-staff-training:before {
+  content: "\e90e";
+}
+.xn-disability-person:before {
+  content: "\e90f";
+}
+.xn-innovation-bubble:before {
+  content: "\e910";
+}
+.xn-family:before {
+  content: "\e911";
+}
+.xn-action-plan:before {
+  content: "\e912";
+}
+.xn-public-speaker:before {
+  content: "\e913";
+}
+.xn-multi-document-magnify:before {
+  content: "\e914";
+}
+.xn-voting-box:before {
+  content: "\e915";
+}
+.xn-voters-men-women:before {
+  content: "\e916";
+}
+.xn-government-speaker:before {
+  content: "\e917";
+}
+.xn-voters-two-women:before {
+  content: "\e918";
+}
+.xn-person-protesting:before {
+  content: "\e919";
+}
+.xn-women-elected:before {
+  content: "\e91a";
+}
+.xn-women-candidate:before {
+  content: "\e91b";
+}
+.xn-women-speaker:before {
+  content: "\e91c";
+}
+.xn-strategic-plan:before {
+  content: "\e91d";
+}
+.xn-declaration-document:before {
+  content: "\e91e";
+}
+.xn-document-checked:before {
+  content: "\e91f";
+}
+.xn-human-rights-strategy:before {
+  content: "\e920";
+}
+.xn-sos-phone:before {
+  content: "\e921";
+}
+.xn-legal-hammer:before {
+  content: "\e922";
+}
+.xn-legal-scale:before {
+  content: "\e923";
+}
+.xn-legal-aid:before {
+  content: "\e924";
+}
+.xn-two-bullets:before {
+  content: "\e925";
+}
+.xn-no-bullets:before {
+  content: "\e926";
+}
+.xn-men-women:before {
+  content: "\e927";
+}
+.xn-passport:before {
+  content: "\e928";
+}
+.xn-mountains:before {
+  content: "\e929";
+}
+.xn-fiscal-system:before {
+  content: "\e92a";
+}
+.xn-gender-equality:before {
+  content: "\e92b";
+}
+.xn-peace-justice:before {
+  content: "\e92c";
+}
+
