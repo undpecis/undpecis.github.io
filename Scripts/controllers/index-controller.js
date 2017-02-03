@@ -4,6 +4,7 @@
 //- TweenMax (GreenSock GSAP) (for animation)
 //
 //
+$('.swipebox').swipebox();
 $(document).ready(function () {
     var listOfActiveCountries = [
       { "id": "AL", "title": "Albania" },
@@ -186,7 +187,9 @@ $(document).ready(function () {
                     fullName: 'Azerbaijan',
                     functionName: 'svgAnimate_azerbaijan'
                 }
-            ]
+            ],
+            backgroundColor: '#F6F6F6',
+            titleColor: '#818285'
         },
         {
             countries: [
@@ -205,7 +208,9 @@ $(document).ready(function () {
                     fullName: 'Georgia',
                     functionName: 'svgAnimate_georgia'
                 }
-            ]
+            ],
+            backgroundColor: '#eceded',
+            titleColor: '#1073a8'
         },
         {
             countries: [
@@ -224,7 +229,9 @@ $(document).ready(function () {
                     fullName: 'Kyrgyz',
                     functionName: 'svgAnimate_kyrgyz'
                 }
-            ]
+            ],
+            backgroundColor: '#fef1e1',
+            titleColor: '#f48466'
         },
         {
             countries: [
@@ -243,7 +250,9 @@ $(document).ready(function () {
                     fullName: 'Serbia',
                     functionName: 'svgAnimate_serbia'
                 }
-            ]
+            ],
+            backgroundColor: '#fabea7',
+            titleColor: '#ef4331'
         },
         {
             countries: [
@@ -262,7 +271,9 @@ $(document).ready(function () {
                     fullName: 'Turkey',
                     functionName: 'svgAnimate_turkey'
                 }
-            ]
+            ],
+            backgroundColor: '#B7C7DF',
+            titleColor: '#1073a8'
         },
         {
             countries: [
@@ -281,7 +292,9 @@ $(document).ready(function () {
                     fullName: 'Uzbekistan',
                     functionName: 'svgAnimate_uzbekistan'
                 }
-            ]
+            ],
+            backgroundColor: '#383839',
+            titleColor: '#a7a9ac'
         }
     ];
     var randomCountriesArray = [];
@@ -289,7 +302,7 @@ $(document).ready(function () {
     function setupRandomSvgGraphics() {
         /* #region Get random numbers */
         //var firstRandomIndex = Math.floor(Math.random() * (infographicsGroups.length - 0)) + 0;
-        var firstRandomIndex = 5;
+        var firstRandomIndex = 0;
         //setup interval that will keep firing until we get second index different from first index
         var randomInterval_secondGroup = setInterval(getRandomIndex_secondGroup, 10);
         function getRandomIndex_secondGroup() {
@@ -298,6 +311,18 @@ $(document).ready(function () {
             if (secondRandomIndex != firstRandomIndex) {
                 //clears interval
                 clearInterval(randomInterval_secondGroup);
+                //set html container background to match svg graph color
+                //set background color of div containing svg graphics
+                for (var i = 0; i < infographicsGroups.length; i++) {
+                    if (firstRandomIndex == i) {
+                        $("#svg-graph-master-wrap-first").css("background-color", infographicsGroups[i].backgroundColor);
+                        $("#svg-graph-master-wrap-first .c-section-title").css("color", infographicsGroups[i].titleColor);
+                    }
+                    if (secondRandomIndex == i) {
+                        $("#svg-graph-master-wrap-second").css("background-color", infographicsGroups[i].backgroundColor);
+                        $("#svg-graph-master-wrap-second .c-section-title").css("color", infographicsGroups[i].titleColor);
+                    }
+                }
                 //fill list of random countries with first group
                 for (var i = 0; i < infographicsGroups[firstRandomIndex].countries.length; i++) {
                     randomCountriesArray.push(infographicsGroups[firstRandomIndex].countries[i]);
@@ -397,60 +422,74 @@ $(document).ready(function () {
     function svgAnimate_albania() {
         if (animationInProgress_albania==false) {
             animationInProgress_albania = true;
-            var htmlElement_albania = document.getElementById("cid-infographic-trigger-albania");
-            var graphicObject_albania = document.getElementById("cid-infographic-albania-object");
-            var svgDocument_albania = graphicObject_albania.contentDocument;
-            /* #region Defining Elements - Grayed Lines */
-            var objects_allGrayedLines = [];
-            objects_allGrayedLines = svgDocument_albania.getElementById("group-grayed").querySelectorAll("path");
-            for (var i = 0; i < objects_allGrayedLines.length; i++) {
-                TweenMax.to(objects_allGrayedLines[i], 0.1, { opacity: 0, scaleX: 0.01, scaleY: 0.01, transformOrigin: "50% 50%", onComplete: countdown_initial });
-            }
-            /* #endregion Defining Elements - Grayed Lines */
-            /* #region Defining Elements - Colored Lines */
-            var objects_allColoredLines = [];
-            objects_allColoredLines = svgDocument_albania.getElementById("group-colored").querySelectorAll("path");
-            for (var i = 0; i < objects_allColoredLines.length; i++) {
-                TweenMax.to(objects_allColoredLines[i], 0.1, { opacity: 0, scaleX: 0.01, scaleY: 0.01, transformOrigin: "50% 50%", });
-            }
-            /* #endregion Defining Elements - Colored Lines */
-            /* #region INITAL function caller */
-            var counter_initial = 0;
-            function countdown_initial() {
-                counter_initial++;
-                if (counter_initial == objects_allGrayedLines.length) {
-                    TweenMax.to(htmlElement_albania, 0.2, { opacity: 1, ease: Back.easeInOut.config(1.7), onComplete: animate_allGrayedLines });
-                }
-            }
-            /* #endregion INITAL function caller */
-            /* #region MAIN ANIMATIONS */
-            var delayNumber = 0.02;
-            function animate_allGrayedLines() {
-                for (var i = 0; i < objects_allGrayedLines.length; i++) {
-                    var animDelay = delayNumber * i;
-                    TweenMax.to(objects_allGrayedLines[i], 0.5, { opacity: 1, scaleX: 1, scaleY: 1, transformOrigin: "50% 50%", ease: Back.easeOut.config(1.7), delay: animDelay, onComplete: countdown_forColored });
-                }
-            }
-            var counter_forColored = 0;
-            function countdown_forColored() {
-                counter_forColored++;
-                if (counter_forColored == objects_allGrayedLines.length) {
+            var checkRenderedStatusInterval = setInterval(checkRenderedFunction, 200);
+            var genericIntervalCounter = 0;
+            function checkRenderedFunction() {
+                genericIntervalCounter++;
+                var genericObjectTag = document.getElementById("cid-infographic-albania-object");
+                if (genericObjectTag != null) {
+                    clearInterval(checkRenderedStatusInterval);
+                    var htmlElement_albania = document.getElementById("cid-infographic-trigger-albania");
+                    var graphicObject_albania = document.getElementById("cid-infographic-albania-object");
+                    var svgDocument_albania = graphicObject_albania.contentDocument;
+                    /* #region Defining Elements - Grayed Lines */
+                    var objects_allGrayedLines = [];
+                    objects_allGrayedLines = svgDocument_albania.getElementById("group-grayed").querySelectorAll("path");
+                    for (var i = 0; i < objects_allGrayedLines.length; i++) {
+                        TweenMax.to(objects_allGrayedLines[i], 0.1, { opacity: 0, scaleX: 0.01, scaleY: 0.01, transformOrigin: "50% 50%", onComplete: countdown_initial });
+                    }
+                    /* #endregion Defining Elements - Grayed Lines */
+                    /* #region Defining Elements - Colored Lines */
+                    var objects_allColoredLines = [];
+                    objects_allColoredLines = svgDocument_albania.getElementById("group-colored").querySelectorAll("path");
                     for (var i = 0; i < objects_allColoredLines.length; i++) {
-                        var animDelay = delayNumber * i;
-                        TweenMax.to(objects_allColoredLines[i], 0.5, { opacity: 1, scaleX: 1, scaleY: 1, transformOrigin: "50% 50%", ease: Back.easeOut.config(1.7), delay: animDelay, onComplete: countdown_forFinished });
+                        TweenMax.to(objects_allColoredLines[i], 0.1, { opacity: 0, scaleX: 0.01, scaleY: 0.01, transformOrigin: "50% 50%", });
+                    }
+                    /* #endregion Defining Elements - Colored Lines */
+                    /* #region INITAL function caller */
+                    var counter_initial = 0;
+                    function countdown_initial() {
+                        counter_initial++;
+                        if (counter_initial == objects_allGrayedLines.length) {
+                            TweenMax.to(htmlElement_albania, 0.2, { opacity: 1, ease: Back.easeInOut.config(1.7), onComplete: animate_allGrayedLines });
+                        }
+                    }
+                    /* #endregion INITAL function caller */
+                    /* #region MAIN ANIMATIONS */
+                    var delayNumber = 0.02;
+                    function animate_allGrayedLines() {
+                        for (var i = 0; i < objects_allGrayedLines.length; i++) {
+                            var animDelay = delayNumber * i;
+                            TweenMax.to(objects_allGrayedLines[i], 0.5, { opacity: 1, scaleX: 1, scaleY: 1, transformOrigin: "50% 50%", ease: Back.easeOut.config(1.7), delay: animDelay, onComplete: countdown_forColored });
+                        }
+                    }
+                    var counter_forColored = 0;
+                    function countdown_forColored() {
+                        counter_forColored++;
+                        if (counter_forColored == objects_allGrayedLines.length) {
+                            for (var i = 0; i < objects_allColoredLines.length; i++) {
+                                var animDelay = delayNumber * i;
+                                TweenMax.to(objects_allColoredLines[i], 0.5, { opacity: 1, scaleX: 1, scaleY: 1, transformOrigin: "50% 50%", ease: Back.easeOut.config(1.7), delay: animDelay, onComplete: countdown_forFinished });
+                            }
+                        }
+                    }
+                    /* #endregion MAIN ANIMATIONS */
+                    /* #region ALL ANIMATIONS FINISHED */
+                    var counter_finished = 0;
+                    function countdown_forFinished() {
+                        counter_finished++;
+                        if (counter_finished == objects_allColoredLines.length) {
+                            animationInProgress_albania = false;
+                        }
+                    }
+                    /* #endregion ALL ANIMATIONS FINISHED */
+                } else {
+                    if (genericIntervalCounter > 99) {
+                        clearInterval(checkRenderedStatusInterval);
+                        console.log('Interval fired too many times! SVG animation canceled!');
                     }
                 }
             }
-            /* #endregion MAIN ANIMATIONS */
-            /* #region ALL ANIMATIONS FINISHED */
-            var counter_finished = 0;
-            function countdown_forFinished() {
-                counter_finished++;
-                if (counter_finished == objects_allColoredLines.length) {
-                    animationInProgress_albania = false;
-                }
-            }
-            /* #endregion ALL ANIMATIONS FINISHED */
         }
     }
     /* #endregion Country SVG graph animation - Albania  */
@@ -459,47 +498,62 @@ $(document).ready(function () {
     function svgAnimate_armenia() {
         if (animationInProgress_armenia == false) {
             animationInProgress_armenia = true;
-            /* #region Defining Elements */
-            var htmlElement_armenia = document.getElementById("cid-infographic-trigger-armenia");
-            var graphicObject_armenia = document.getElementById("cid-infographic-armenia-object");
-            var svgDocument_armenia = graphicObject_armenia.contentDocument;
+            var checkRenderedStatusInterval = setInterval(checkRenderedFunction, 200);
+            var genericIntervalCounter = 0;
+            function checkRenderedFunction() {
+                genericIntervalCounter++;
+                var genericObjectTag = document.getElementById("cid-infographic-armenia-object");
+                if (genericObjectTag != null) {
+                    clearInterval(checkRenderedStatusInterval);
+                    /* #region Defining Elements */
+                    var htmlElement_armenia = document.getElementById("cid-infographic-trigger-armenia");
+                    var graphicObject_armenia = document.getElementById("cid-infographic-armenia-object");
+                    var svgDocument_armenia = graphicObject_armenia.contentDocument;
 
-            var objects_all = [];
-            objects_all.push(svgDocument_armenia.getElementById("building"));
-            objects_all.push(svgDocument_armenia.getElementById("person"));
-            objects_all.push(svgDocument_armenia.getElementById("left-number-group"));
-            objects_all.push(svgDocument_armenia.getElementById("right-number-group"));
-            for (var i = 0; i < objects_all.length; i++) {
-                TweenMax.to(objects_all[i], 0.1, { opacity: 0, scaleX: 0.1, scaleY: 0.1, transformOrigin: "50% 50%", onComplete: countdown_initial });
-            }
-            /* #endregion Defining Elements */
-            /* #region INITAL function caller */
-            var counter_initial = 0;
-            function countdown_initial() {
-                counter_initial++;
-                if (counter_initial == objects_all.length) {
-                    TweenMax.to(htmlElement_armenia, 0.2, { opacity: 1, ease: Back.easeInOut.config(1.7), onComplete: animate_initial });
+                    var objects_all = [];
+                    objects_all.push(svgDocument_armenia.getElementById("building"));
+                    objects_all.push(svgDocument_armenia.getElementById("person"));
+                    objects_all.push(svgDocument_armenia.getElementById("left-number-group"));
+                    objects_all.push(svgDocument_armenia.getElementById("right-number-group"));
+                    for (var i = 0; i < objects_all.length; i++) {
+                        TweenMax.to(objects_all[i], 0.1, { opacity: 0, scaleX: 0.1, scaleY: 0.1, transformOrigin: "50% 50%", onComplete: countdown_initial });
+                    }
+                    /* #endregion Defining Elements */
+                    /* #region INITAL function caller */
+                    var counter_initial = 0;
+                    function countdown_initial() {
+                        counter_initial++;
+                        if (counter_initial == objects_all.length) {
+                            TweenMax.to(htmlElement_armenia, 0.2, { opacity: 1, ease: Back.easeInOut.config(1.7), onComplete: animate_initial });
+                        }
+                    }
+                    /* #endregion INITAL function caller */
+                    /* #region MAIN ANIMATIONS */
+                    var delayNumber = 0.02;
+                    function animate_initial() {
+                        for (var i = 0; i < objects_all.length; i++) {
+                            var animDelay = delayNumber * i;
+                            TweenMax.to(objects_all[i], 0.5, { opacity: 1, scaleX: 1, scaleY: 1, transformOrigin: "50% 50%", ease: Back.easeOut.config(1.7), delay: animDelay, onComplete: countdown_forFinished });
+                        }
+                    }
+                    /* #endregion MAIN ANIMATIONS */
+                    /* #region ALL ANIMATIONS FINISHED */
+                    var counter_finished = 0;
+                    function countdown_forFinished() {
+                        counter_finished++;
+                        if (counter_finished == objects_all.length) {
+                            animationInProgress_armenia = false;
+                        }
+                    }
+                    /* #endregion ALL ANIMATIONS FINISHED */
+                } else {
+                    if (genericIntervalCounter > 99) {
+                        clearInterval(checkRenderedStatusInterval);
+                        console.log('Interval fired too many times! SVG animation canceled!');
+                    }
                 }
             }
-            /* #endregion INITAL function caller */
-            /* #region MAIN ANIMATIONS */
-            var delayNumber = 0.02;
-            function animate_initial() {
-                for (var i = 0; i < objects_all.length; i++) {
-                    var animDelay = delayNumber * i;
-                    TweenMax.to(objects_all[i], 0.5, { opacity: 1, scaleX: 1, scaleY: 1, transformOrigin: "50% 50%", ease: Back.easeOut.config(1.7), delay: animDelay, onComplete: countdown_forFinished });
-                }
-            }
-            /* #endregion MAIN ANIMATIONS */
-            /* #region ALL ANIMATIONS FINISHED */
-            var counter_finished = 0;
-            function countdown_forFinished() {
-                counter_finished++;
-                if (counter_finished == objects_all.length) {
-                    animationInProgress_armenia = false;
-                }
-            }
-            /* #endregion ALL ANIMATIONS FINISHED */
+
         }
     }
     /* #endregion Country SVG graph animation - Armenia  */
@@ -508,45 +562,59 @@ $(document).ready(function () {
     function svgAnimate_azerbaijan() {
         if (animationInProgress_azerbaijan==false) {
             animationInProgress_azerbaijan = true;
-            var htmlElement_azerbaijan = document.getElementById("cid-infographic-trigger-azerbaijan");
-            var graphicObject_azerbaijan = document.getElementById("cid-infographic-azerbaijan-object");
-            var svgDocument_azerbaijan = graphicObject_azerbaijan.contentDocument;
-            /* #region Defining Elements */
-            var objects_all = [];
-            objects_all.push(svgDocument_azerbaijan.getElementById("document-back"));
-            objects_all.push(svgDocument_azerbaijan.getElementById("document-front"));
-            objects_all.push(svgDocument_azerbaijan.getElementById("monkey"));
-            for (var i = 0; i < objects_all.length; i++) {
-                TweenMax.to(objects_all[i], 0.1, { opacity: 0, scaleX: 0.1, scaleY: 0.1, transformOrigin: "50% 50%", onComplete: countdown_initial });
-            }
-            /* #endregion Defining Elements */
-            /* #region INITAL function caller */
-            var counter_initial = 0;
-            function countdown_initial() {
-                counter_initial++;
-                if (counter_initial == objects_all.length) {
-                    TweenMax.to(htmlElement_azerbaijan, 0.2, { opacity: 1, ease: Back.easeInOut.config(1.7), onComplete: animate_initial });
+            var checkRenderedStatusInterval = setInterval(checkRenderedFunction, 200);
+            var genericIntervalCounter = 0;
+            function checkRenderedFunction() {
+                genericIntervalCounter++;
+                var genericObjectTag = document.getElementById("cid-infographic-azerbaijan-object");
+                if (genericObjectTag != null) {
+                    clearInterval(checkRenderedStatusInterval);
+                    var htmlElement_azerbaijan = document.getElementById("cid-infographic-trigger-azerbaijan");
+                    var graphicObject_azerbaijan = document.getElementById("cid-infographic-azerbaijan-object");
+                    var svgDocument_azerbaijan = graphicObject_azerbaijan.contentDocument;
+                    /* #region Defining Elements */
+                    var objects_all = [];
+                    objects_all.push(svgDocument_azerbaijan.getElementById("document-back"));
+                    objects_all.push(svgDocument_azerbaijan.getElementById("document-front"));
+                    objects_all.push(svgDocument_azerbaijan.getElementById("monkey"));
+                    for (var i = 0; i < objects_all.length; i++) {
+                        TweenMax.to(objects_all[i], 0.1, { opacity: 0, scaleX: 0.1, scaleY: 0.1, transformOrigin: "50% 50%", onComplete: countdown_initial });
+                    }
+                    /* #endregion Defining Elements */
+                    /* #region INITAL function caller */
+                    var counter_initial = 0;
+                    function countdown_initial() {
+                        counter_initial++;
+                        if (counter_initial == objects_all.length) {
+                            TweenMax.to(htmlElement_azerbaijan, 0.2, { opacity: 1, ease: Back.easeInOut.config(1.7), onComplete: animate_initial });
+                        }
+                    }
+                    /* #endregion INITAL function caller */
+                    /* #region MAIN ANIMATIONS */
+                    var delayNumber = 0.02;
+                    function animate_initial() {
+                        for (var i = 0; i < objects_all.length; i++) {
+                            var animDelay = delayNumber * i;
+                            TweenMax.to(objects_all[i], 0.5, { opacity: 1, scaleX: 1, scaleY: 1, transformOrigin: "50% 50%", ease: Back.easeOut.config(1.7), delay: animDelay, onComplete: countdown_forFinished });
+                        }
+                    }
+                    /* #endregion MAIN ANIMATIONS */
+                    /* #region ALL ANIMATIONS FINISHED */
+                    var counter_finished = 0;
+                    function countdown_forFinished() {
+                        counter_finished++;
+                        if (counter_finished == objects_all.length) {
+                            animationInProgress_azerbaijan = false;
+                        }
+                    }
+                    /* #endregion ALL ANIMATIONS FINISHED */
+                } else {
+                    if (genericIntervalCounter > 99) {
+                        clearInterval(checkRenderedStatusInterval);
+                        console.log('Interval fired too many times! SVG animation canceled!');
+                    }
                 }
             }
-            /* #endregion INITAL function caller */
-            /* #region MAIN ANIMATIONS */
-            var delayNumber = 0.02;
-            function animate_initial() {
-                for (var i = 0; i < objects_all.length; i++) {
-                    var animDelay = delayNumber * i;
-                    TweenMax.to(objects_all[i], 0.5, { opacity: 1, scaleX: 1, scaleY: 1, transformOrigin: "50% 50%", ease: Back.easeOut.config(1.7), delay: animDelay, onComplete: countdown_forFinished });
-                }
-            }
-            /* #endregion MAIN ANIMATIONS */
-            /* #region ALL ANIMATIONS FINISHED */
-            var counter_finished = 0;
-            function countdown_forFinished() {
-                counter_finished++;
-                if (counter_finished == objects_all.length) {
-                    animationInProgress_azerbaijan = false;
-                }
-            }
-            /* #endregion ALL ANIMATIONS FINISHED */
         }
     }
     /* #endregion Country SVG graph animation - Azerbaijan  */
@@ -555,46 +623,60 @@ $(document).ready(function () {
     function svgAnimate_belarus() {
         if (animationInProgress_belarus == false) {
             animationInProgress_belarus = true;
-            /* #region Defining Elements */
-            var htmlElement_belarus = document.getElementById("cid-infographic-trigger-belarus");
-            var graphicObject_belarus = document.getElementById("cid-infographic-belarus-object");
-            var svgDocument_belarus = graphicObject_belarus.contentDocument;
+            var checkRenderedStatusInterval = setInterval(checkRenderedFunction, 200);
+            var genericIntervalCounter = 0;
+            function checkRenderedFunction() {
+                genericIntervalCounter++;
+                var genericObjectTag = document.getElementById("cid-infographic-belarus-object");
+                if (genericObjectTag != null) {
+                    clearInterval(checkRenderedStatusInterval);
+                    /* #region Defining Elements */
+                    var htmlElement_belarus = document.getElementById("cid-infographic-trigger-belarus");
+                    var graphicObject_belarus = document.getElementById("cid-infographic-belarus-object");
+                    var svgDocument_belarus = graphicObject_belarus.contentDocument;
 
-            var objects_all = [];
-            objects_all.push(svgDocument_belarus.getElementById("left-group"));
-            objects_all.push(svgDocument_belarus.getElementById("right-group"));
-            objects_all.push(svgDocument_belarus.getElementById("calendar"));
-            for (var i = 0; i < objects_all.length; i++) {
-                TweenMax.to(objects_all[i], 0.1, { opacity: 0, scaleX: 0.1, scaleY: 0.1, transformOrigin: "50% 50%", onComplete: countdown_initial });
-            }
-            /* #endregion Defining Elements */
-            /* #region INITAL function caller */
-            var counter_initial = 0;
-            function countdown_initial() {
-                counter_initial++;
-                if (counter_initial == objects_all.length) {
-                    TweenMax.to(htmlElement_belarus, 0.2, { opacity: 1, ease: Back.easeInOut.config(1.7), onComplete: animate_initial });
+                    var objects_all = [];
+                    objects_all.push(svgDocument_belarus.getElementById("left-group"));
+                    objects_all.push(svgDocument_belarus.getElementById("right-group"));
+                    objects_all.push(svgDocument_belarus.getElementById("calendar"));
+                    for (var i = 0; i < objects_all.length; i++) {
+                        TweenMax.to(objects_all[i], 0.1, { opacity: 0, scaleX: 0.1, scaleY: 0.1, transformOrigin: "50% 50%", onComplete: countdown_initial });
+                    }
+                    /* #endregion Defining Elements */
+                    /* #region INITAL function caller */
+                    var counter_initial = 0;
+                    function countdown_initial() {
+                        counter_initial++;
+                        if (counter_initial == objects_all.length) {
+                            TweenMax.to(htmlElement_belarus, 0.2, { opacity: 1, ease: Back.easeInOut.config(1.7), onComplete: animate_initial });
+                        }
+                    }
+                    /* #endregion INITAL function caller */
+                    /* #region MAIN ANIMATIONS */
+                    var delayNumber = 0.02;
+                    function animate_initial() {
+                        for (var i = 0; i < objects_all.length; i++) {
+                            var animDelay = delayNumber * i;
+                            TweenMax.to(objects_all[i], 0.5, { opacity: 1, scaleX: 1, scaleY: 1, transformOrigin: "50% 50%", ease: Back.easeOut.config(1.7), delay: animDelay, onComplete: countdown_forFinished });
+                        }
+                    }
+                    /* #endregion MAIN ANIMATIONS */
+                    /* #region ALL ANIMATIONS FINISHED */
+                    var counter_finished = 0;
+                    function countdown_forFinished() {
+                        counter_finished++;
+                        if (counter_finished == objects_all.length) {
+                            animationInProgress_belarus = false;
+                        }
+                    }
+                    /* #endregion ALL ANIMATIONS FINISHED */
+                } else {
+                    if (genericIntervalCounter > 99) {
+                        clearInterval(checkRenderedStatusInterval);
+                        console.log('Interval fired too many times! SVG animation canceled!');
+                    }
                 }
             }
-            /* #endregion INITAL function caller */
-            /* #region MAIN ANIMATIONS */
-            var delayNumber = 0.02;
-            function animate_initial() {
-                for (var i = 0; i < objects_all.length; i++) {
-                    var animDelay = delayNumber * i;
-                    TweenMax.to(objects_all[i], 0.5, { opacity: 1, scaleX: 1, scaleY: 1, transformOrigin: "50% 50%", ease: Back.easeOut.config(1.7), delay: animDelay, onComplete: countdown_forFinished });
-                }
-            }
-            /* #endregion MAIN ANIMATIONS */
-            /* #region ALL ANIMATIONS FINISHED */
-            var counter_finished = 0;
-            function countdown_forFinished() {
-                counter_finished++;
-                if (counter_finished == objects_all.length) {
-                    animationInProgress_belarus = false;
-                }
-            }
-            /* #endregion ALL ANIMATIONS FINISHED */
         }
     }
     /* #endregion Country SVG graph animation - Belarus  */
@@ -603,46 +685,60 @@ $(document).ready(function () {
     function svgAnimate_bosnia() {
         if (animationInProgress_bosnia == false) {
             animationInProgress_bosnia = true;
-            /* #region Defining Elements */
-            var htmlElement_bosnia = document.getElementById("cid-infographic-trigger-bosnia");
-            var graphicObject_bosnia = document.getElementById("cid-infographic-bosnia-object");
-            var svgDocument_bosnia = graphicObject_bosnia.contentDocument;
+            var checkRenderedStatusInterval = setInterval(checkRenderedFunction, 200);
+            var genericIntervalCounter = 0;
+            function checkRenderedFunction() {
+                genericIntervalCounter++;
+                var genericObjectTag = document.getElementById("cid-infographic-bosnia-object");
+                if (genericObjectTag != null) {
+                    clearInterval(checkRenderedStatusInterval);
+                    /* #region Defining Elements */
+                    var htmlElement_bosnia = document.getElementById("cid-infographic-trigger-bosnia");
+                    var graphicObject_bosnia = document.getElementById("cid-infographic-bosnia-object");
+                    var svgDocument_bosnia = graphicObject_bosnia.contentDocument;
 
-            var objects_all = [];
-            for (var i = 0; i < 9; i++) {
-                objects_all.push(svgDocument_bosnia.getElementById("person-" + (i + 1)));
-            }
-            for (var i = 0; i < objects_all.length; i++) {
-                TweenMax.to(objects_all[i], 0.1, { opacity: 0, scaleX: 0.1, scaleY: 0.1, transformOrigin: "50% 50%", onComplete: countdown_initial });
-            }
-            /* #endregion Defining Elements */
-            /* #region INITAL function caller */
-            var counter_initial = 0;
-            function countdown_initial() {
-                counter_initial++;
-                if (counter_initial == objects_all.length) {
-                    TweenMax.to(htmlElement_bosnia, 0.2, { opacity: 1, ease: Back.easeInOut.config(1.7), onComplete: animate_initial });
+                    var objects_all = [];
+                    for (var i = 0; i < 9; i++) {
+                        objects_all.push(svgDocument_bosnia.getElementById("person-" + (i + 1)));
+                    }
+                    for (var i = 0; i < objects_all.length; i++) {
+                        TweenMax.to(objects_all[i], 0.1, { opacity: 0, scaleX: 0.1, scaleY: 0.1, transformOrigin: "50% 50%", onComplete: countdown_initial });
+                    }
+                    /* #endregion Defining Elements */
+                    /* #region INITAL function caller */
+                    var counter_initial = 0;
+                    function countdown_initial() {
+                        counter_initial++;
+                        if (counter_initial == objects_all.length) {
+                            TweenMax.to(htmlElement_bosnia, 0.2, { opacity: 1, ease: Back.easeInOut.config(1.7), onComplete: animate_initial });
+                        }
+                    }
+                    /* #endregion INITAL function caller */
+                    /* #region MAIN ANIMATIONS */
+                    var delayNumber = 0.02;
+                    function animate_initial() {
+                        for (var i = 0; i < objects_all.length; i++) {
+                            var animDelay = delayNumber * i;
+                            TweenMax.to(objects_all[i], 0.5, { opacity: 1, scaleX: 1, scaleY: 1, transformOrigin: "50% 50%", ease: Back.easeOut.config(1.7), delay: animDelay, onComplete: countdown_forFinished });
+                        }
+                    }
+                    /* #endregion MAIN ANIMATIONS */
+                    /* #region ALL ANIMATIONS FINISHED */
+                    var counter_finished = 0;
+                    function countdown_forFinished() {
+                        counter_finished++;
+                        if (counter_finished == objects_all.length) {
+                            animationInProgress_bosnia = false;
+                        }
+                    }
+                    /* #endregion ALL ANIMATIONS FINISHED */
+                } else {
+                    if (genericIntervalCounter > 99) {
+                        clearInterval(checkRenderedStatusInterval);
+                        console.log('Interval fired too many times! SVG animation canceled!');
+                    }
                 }
             }
-            /* #endregion INITAL function caller */
-            /* #region MAIN ANIMATIONS */
-            var delayNumber = 0.02;
-            function animate_initial() {
-                for (var i = 0; i < objects_all.length; i++) {
-                    var animDelay = delayNumber * i;
-                    TweenMax.to(objects_all[i], 0.5, { opacity: 1, scaleX: 1, scaleY: 1, transformOrigin: "50% 50%", ease: Back.easeOut.config(1.7), delay: animDelay, onComplete: countdown_forFinished });
-                }
-            }
-            /* #endregion MAIN ANIMATIONS */
-            /* #region ALL ANIMATIONS FINISHED */
-            var counter_finished = 0;
-            function countdown_forFinished() {
-                counter_finished++;
-                if (counter_finished == objects_all.length) {
-                    animationInProgress_bosnia = false;
-                }
-            }
-            /* #endregion ALL ANIMATIONS FINISHED */
         }
     }
     /* #endregion Country SVG graph animation - Bosnia  */
@@ -651,45 +747,59 @@ $(document).ready(function () {
     function svgAnimate_georgia() {
         if (animationInProgress_georgia == false) {
             animationInProgress_georgia = true;
-            /* #region Defining Elements */
-            var htmlElement_georgia = document.getElementById("cid-infographic-trigger-georgia");
-            var graphicObject_georgia = document.getElementById("cid-infographic-georgia-object");
-            var svgDocument_georgia = graphicObject_georgia.contentDocument;
+            var checkRenderedStatusInterval = setInterval(checkRenderedFunction, 200);
+            var genericIntervalCounter = 0;
+            function checkRenderedFunction() {
+                genericIntervalCounter++;
+                var genericObjectTag = document.getElementById("cid-infographic-georgia-object");
+                if (genericObjectTag != null) {
+                    clearInterval(checkRenderedStatusInterval);
+                    /* #region Defining Elements */
+                    var htmlElement_georgia = document.getElementById("cid-infographic-trigger-georgia");
+                    var graphicObject_georgia = document.getElementById("cid-infographic-georgia-object");
+                    var svgDocument_georgia = graphicObject_georgia.contentDocument;
 
-            var objects_all = [];
-            objects_all.push(svgDocument_georgia.getElementById("hammer"));
-            objects_all.push(svgDocument_georgia.getElementById("base"));
-            for (var i = 0; i < objects_all.length; i++) {
-                TweenMax.to(objects_all[i], 0.1, { opacity: 0, scaleX: 0.1, scaleY: 0.1, transformOrigin: "50% 50%", onComplete: countdown_initial });
-            }
-            /* #endregion Defining Elements */
-            /* #region INITAL function caller */
-            var counter_initial = 0;
-            function countdown_initial() {
-                counter_initial++;
-                if (counter_initial == objects_all.length) {
-                    TweenMax.to(htmlElement_georgia, 0.2, { opacity: 1, ease: Back.easeInOut.config(1.7), onComplete: animate_initial });
+                    var objects_all = [];
+                    objects_all.push(svgDocument_georgia.getElementById("hammer"));
+                    objects_all.push(svgDocument_georgia.getElementById("base"));
+                    for (var i = 0; i < objects_all.length; i++) {
+                        TweenMax.to(objects_all[i], 0.1, { opacity: 0, scaleX: 0.1, scaleY: 0.1, transformOrigin: "50% 50%", onComplete: countdown_initial });
+                    }
+                    /* #endregion Defining Elements */
+                    /* #region INITAL function caller */
+                    var counter_initial = 0;
+                    function countdown_initial() {
+                        counter_initial++;
+                        if (counter_initial == objects_all.length) {
+                            TweenMax.to(htmlElement_georgia, 0.2, { opacity: 1, ease: Back.easeInOut.config(1.7), onComplete: animate_initial });
+                        }
+                    }
+                    /* #endregion INITAL function caller */
+                    /* #region MAIN ANIMATIONS */
+                    var delayNumber = 0.02;
+                    function animate_initial() {
+                        for (var i = 0; i < objects_all.length; i++) {
+                            var animDelay = delayNumber * i;
+                            TweenMax.to(objects_all[i], 0.5, { opacity: 1, scaleX: 1, scaleY: 1, transformOrigin: "50% 50%", ease: Back.easeOut.config(1.7), delay: animDelay, onComplete: countdown_forFinished });
+                        }
+                    }
+                    /* #endregion MAIN ANIMATIONS */
+                    /* #region ALL ANIMATIONS FINISHED */
+                    var counter_finished = 0;
+                    function countdown_forFinished() {
+                        counter_finished++;
+                        if (counter_finished == objects_all.length) {
+                            animationInProgress_georgia = false;
+                        }
+                    }
+                    /* #endregion ALL ANIMATIONS FINISHED */
+                } else {
+                    if (genericIntervalCounter > 99) {
+                        clearInterval(checkRenderedStatusInterval);
+                        console.log('Interval fired too many times! SVG animation canceled!');
+                    }
                 }
             }
-            /* #endregion INITAL function caller */
-            /* #region MAIN ANIMATIONS */
-            var delayNumber = 0.02;
-            function animate_initial() {
-                for (var i = 0; i < objects_all.length; i++) {
-                    var animDelay = delayNumber * i;
-                    TweenMax.to(objects_all[i], 0.5, { opacity: 1, scaleX: 1, scaleY: 1, transformOrigin: "50% 50%", ease: Back.easeOut.config(1.7), delay: animDelay, onComplete: countdown_forFinished });
-                }
-            }
-            /* #endregion MAIN ANIMATIONS */
-            /* #region ALL ANIMATIONS FINISHED */
-            var counter_finished = 0;
-            function countdown_forFinished() {
-                counter_finished++;
-                if (counter_finished == objects_all.length) {
-                    animationInProgress_georgia = false;
-                }
-            }
-            /* #endregion ALL ANIMATIONS FINISHED */
         }
     }
     /* #endregion Country SVG graph animation - Georgia  */
@@ -698,46 +808,60 @@ $(document).ready(function () {
     function svgAnimate_kazakhstan() {
         if (animationInProgress_kazakhstan == false) {
             animationInProgress_kazakhstan = true;
-            /* #region Defining Elements */
-            var htmlElement_kazakhstan = document.getElementById("cid-infographic-trigger-kazakhstan");
-            var graphicObject_kazakhstan = document.getElementById("cid-infographic-kazakhstan-object");
-            var svgDocument_kazakhstan = graphicObject_kazakhstan.contentDocument;
+            var checkRenderedStatusInterval = setInterval(checkRenderedFunction, 200);
+            var genericIntervalCounter = 0;
+            function checkRenderedFunction() {
+                genericIntervalCounter++;
+                var genericObjectTag = document.getElementById("cid-infographic-kazakhstan-object");
+                if (genericObjectTag != null) {
+                    clearInterval(checkRenderedStatusInterval);
+                    /* #region Defining Elements */
+                    var htmlElement_kazakhstan = document.getElementById("cid-infographic-trigger-kazakhstan");
+                    var graphicObject_kazakhstan = document.getElementById("cid-infographic-kazakhstan-object");
+                    var svgDocument_kazakhstan = graphicObject_kazakhstan.contentDocument;
 
-            var objects_all = [];
-            objects_all.push(svgDocument_kazakhstan.getElementById("building"));
-            objects_all.push(svgDocument_kazakhstan.getElementById("person-left"));
-            objects_all.push(svgDocument_kazakhstan.getElementById("person-right"));
-            for (var i = 0; i < objects_all.length; i++) {
-                TweenMax.to(objects_all[i], 0.1, { opacity: 0, scaleX: 0.1, scaleY: 0.1, transformOrigin: "50% 50%", onComplete: countdown_initial });
-            }
-            /* #endregion Defining Elements */
-            /* #region INITAL function caller */
-            var counter_initial = 0;
-            function countdown_initial() {
-                counter_initial++;
-                if (counter_initial == objects_all.length) {
-                    TweenMax.to(htmlElement_kazakhstan, 0.2, { opacity: 1, ease: Back.easeInOut.config(1.7), onComplete: animate_initial });
+                    var objects_all = [];
+                    objects_all.push(svgDocument_kazakhstan.getElementById("building"));
+                    objects_all.push(svgDocument_kazakhstan.getElementById("person-left"));
+                    objects_all.push(svgDocument_kazakhstan.getElementById("person-right"));
+                    for (var i = 0; i < objects_all.length; i++) {
+                        TweenMax.to(objects_all[i], 0.1, { opacity: 0, scaleX: 0.1, scaleY: 0.1, transformOrigin: "50% 50%", onComplete: countdown_initial });
+                    }
+                    /* #endregion Defining Elements */
+                    /* #region INITAL function caller */
+                    var counter_initial = 0;
+                    function countdown_initial() {
+                        counter_initial++;
+                        if (counter_initial == objects_all.length) {
+                            TweenMax.to(htmlElement_kazakhstan, 0.2, { opacity: 1, ease: Back.easeInOut.config(1.7), onComplete: animate_initial });
+                        }
+                    }
+                    /* #endregion INITAL function caller */
+                    /* #region MAIN ANIMATIONS */
+                    var delayNumber = 0.02;
+                    function animate_initial() {
+                        for (var i = 0; i < objects_all.length; i++) {
+                            var animDelay = delayNumber * i;
+                            TweenMax.to(objects_all[i], 0.5, { opacity: 1, scaleX: 1, scaleY: 1, transformOrigin: "50% 50%", ease: Back.easeOut.config(1.7), delay: animDelay, onComplete: countdown_forFinished });
+                        }
+                    }
+                    /* #endregion MAIN ANIMATIONS */
+                    /* #region ALL ANIMATIONS FINISHED */
+                    var counter_finished = 0;
+                    function countdown_forFinished() {
+                        counter_finished++;
+                        if (counter_finished == objects_all.length) {
+                            animationInProgress_kazakhstan = false;
+                        }
+                    }
+                    /* #endregion ALL ANIMATIONS FINISHED */
+                } else {
+                    if (genericIntervalCounter > 99) {
+                        clearInterval(checkRenderedStatusInterval);
+                        console.log('Interval fired too many times! SVG animation canceled!');
+                    }
                 }
             }
-            /* #endregion INITAL function caller */
-            /* #region MAIN ANIMATIONS */
-            var delayNumber = 0.02;
-            function animate_initial() {
-                for (var i = 0; i < objects_all.length; i++) {
-                    var animDelay = delayNumber * i;
-                    TweenMax.to(objects_all[i], 0.5, { opacity: 1, scaleX: 1, scaleY: 1, transformOrigin: "50% 50%", ease: Back.easeOut.config(1.7), delay: animDelay, onComplete: countdown_forFinished });
-                }
-            }
-            /* #endregion MAIN ANIMATIONS */
-            /* #region ALL ANIMATIONS FINISHED */
-            var counter_finished = 0;
-            function countdown_forFinished() {
-                counter_finished++;
-                if (counter_finished == objects_all.length) {
-                    animationInProgress_kazakhstan = false;
-                }
-            }
-            /* #endregion ALL ANIMATIONS FINISHED */
         }
     }
     /* #endregion Country SVG graph animation - Kazakhstan  */
@@ -746,44 +870,58 @@ $(document).ready(function () {
     function svgAnimate_kosovo() {
         if (animationInProgress_kosovo == false) {
             animationInProgress_kosovo = true;
-            /* #region Defining Elements */
-            var htmlElement_kosovo = document.getElementById("cid-infographic-trigger-kosovo");
-            var graphicObject_kosovo = document.getElementById("cid-infographic-kosovo-object");
-            var svgDocument_kosovo = graphicObject_kosovo.contentDocument;
+            var checkRenderedStatusInterval = setInterval(checkRenderedFunction, 200);
+            var genericIntervalCounter = 0;
+            function checkRenderedFunction() {
+                genericIntervalCounter++;
+                var genericObjectTag = document.getElementById("cid-infographic-kosovo-object");
+                if (genericObjectTag != null) {
+                    clearInterval(checkRenderedStatusInterval);
+                    /* #region Defining Elements */
+                    var htmlElement_kosovo = document.getElementById("cid-infographic-trigger-kosovo");
+                    var graphicObject_kosovo = document.getElementById("cid-infographic-kosovo-object");
+                    var svgDocument_kosovo = graphicObject_kosovo.contentDocument;
 
-            var objects_all = [];
-            for (var i = 0; i < 5; i++) {
-                objects_all.push(svgDocument_kosovo.getElementById("bullet-" + (i + 1)));
-                TweenMax.to(objects_all[i], 0.1, { opacity: 0, scaleX: 0.1, scaleY: 0.1, transformOrigin: "50% 50%", onComplete: countdown_initial });
-            }
-            /* #endregion Defining Elements */
-            /* #region INITAL function caller */
-            var counter_initial = 0;
-            function countdown_initial() {
-                counter_initial++;
-                if (counter_initial == objects_all.length) {
-                    TweenMax.to(htmlElement_kosovo, 0.2, { opacity: 1, ease: Back.easeInOut.config(1.7), onComplete: animate_initial });
+                    var objects_all = [];
+                    for (var i = 0; i < 5; i++) {
+                        objects_all.push(svgDocument_kosovo.getElementById("bullet-" + (i + 1)));
+                        TweenMax.to(objects_all[i], 0.1, { opacity: 0, scaleX: 0.1, scaleY: 0.1, transformOrigin: "50% 50%", onComplete: countdown_initial });
+                    }
+                    /* #endregion Defining Elements */
+                    /* #region INITAL function caller */
+                    var counter_initial = 0;
+                    function countdown_initial() {
+                        counter_initial++;
+                        if (counter_initial == objects_all.length) {
+                            TweenMax.to(htmlElement_kosovo, 0.2, { opacity: 1, ease: Back.easeInOut.config(1.7), onComplete: animate_initial });
+                        }
+                    }
+                    /* #endregion INITAL function caller */
+                    /* #region MAIN ANIMATIONS */
+                    var delayNumber = 0.02;
+                    function animate_initial() {
+                        for (var i = 0; i < objects_all.length; i++) {
+                            var animDelay = delayNumber * i;
+                            TweenMax.to(objects_all[i], 0.5, { opacity: 1, scaleX: 1, scaleY: 1, transformOrigin: "50% 50%", ease: Back.easeOut.config(1.7), delay: animDelay, onComplete: countdown_forFinished });
+                        }
+                    }
+                    /* #endregion MAIN ANIMATIONS */
+                    /* #region ALL ANIMATIONS FINISHED */
+                    var counter_finished = 0;
+                    function countdown_forFinished() {
+                        counter_finished++;
+                        if (counter_finished == objects_all.length) {
+                            animationInProgress_kosovo = false;
+                        }
+                    }
+                    /* #endregion ALL ANIMATIONS FINISHED */
+                } else {
+                    if (genericIntervalCounter > 99) {
+                        clearInterval(checkRenderedStatusInterval);
+                        console.log('Interval fired too many times! SVG animation canceled!');
+                    }
                 }
             }
-            /* #endregion INITAL function caller */
-            /* #region MAIN ANIMATIONS */
-            var delayNumber = 0.02;
-            function animate_initial() {
-                for (var i = 0; i < objects_all.length; i++) {
-                    var animDelay = delayNumber * i;
-                    TweenMax.to(objects_all[i], 0.5, { opacity: 1, scaleX: 1, scaleY: 1, transformOrigin: "50% 50%", ease: Back.easeOut.config(1.7), delay: animDelay, onComplete: countdown_forFinished });
-                }
-            }
-            /* #endregion MAIN ANIMATIONS */
-            /* #region ALL ANIMATIONS FINISHED */
-            var counter_finished = 0;
-            function countdown_forFinished() {
-                counter_finished++;
-                if (counter_finished == objects_all.length) {
-                    animationInProgress_kosovo = false;
-                }
-            }
-            /* #endregion ALL ANIMATIONS FINISHED */
         }
     }
     /* #endregion Country SVG graph animation - Kosovo  */
@@ -792,45 +930,60 @@ $(document).ready(function () {
     function svgAnimate_kyrgyz() {
         if (animationInProgress_kyrgyz == false) {
             animationInProgress_kyrgyz = true;
-            /* #region Defining Elements */
-            var htmlElement_kyrgyz = document.getElementById("cid-infographic-trigger-kyrgyz");
-            var graphicObject_kyrgyz = document.getElementById("cid-infographic-kyrgyz-object");
-            var svgDocument_kyrgyz = graphicObject_kyrgyz.contentDocument;
+            var checkRenderedStatusInterval = setInterval(checkRenderedFunction, 200);
+            var genericIntervalCounter = 0;
+            function checkRenderedFunction() {
+                genericIntervalCounter++;
+                var genericObjectTag = document.getElementById("cid-infographic-kyrgyz-object");
+                if (genericObjectTag != null) {
+                    clearInterval(checkRenderedStatusInterval);
+                    /* #region Defining Elements */
+                    var htmlElement_kyrgyz = document.getElementById("cid-infographic-trigger-kyrgyz");
+                    var graphicObject_kyrgyz = document.getElementById("cid-infographic-kyrgyz-object");
+                    var svgDocument_kyrgyz = graphicObject_kyrgyz.contentDocument;
 
-            var objects_all = [];
-            objects_all.push(svgDocument_kyrgyz.getElementById("lybra"));
-            objects_all.push(svgDocument_kyrgyz.getElementById("hand"));
-            for (var i = 0; i < objects_all.length; i++) {
-                TweenMax.to(objects_all[i], 0.1, { opacity: 0, scaleX: 0.1, scaleY: 0.1, transformOrigin: "50% 50%", onComplete: countdown_initial });
-            }
-            /* #endregion Defining Elements */
-            /* #region INITAL function caller */
-            var counter_initial = 0;
-            function countdown_initial() {
-                counter_initial++;
-                if (counter_initial == objects_all.length) {
-                    TweenMax.to(htmlElement_kyrgyz, 0.2, { opacity: 1, ease: Back.easeInOut.config(1.7), onComplete: animate_initial });
+                    var objects_all = [];
+                    objects_all.push(svgDocument_kyrgyz.getElementById("lybra"));
+                    objects_all.push(svgDocument_kyrgyz.getElementById("hand"));
+                    for (var i = 0; i < objects_all.length; i++) {
+                        TweenMax.to(objects_all[i], 0.1, { opacity: 0, scaleX: 0.1, scaleY: 0.1, transformOrigin: "50% 50%", onComplete: countdown_initial });
+                    }
+                    /* #endregion Defining Elements */
+                    /* #region INITAL function caller */
+                    var counter_initial = 0;
+                    function countdown_initial() {
+                        counter_initial++;
+                        if (counter_initial == objects_all.length) {
+                            TweenMax.to(htmlElement_kyrgyz, 0.2, { opacity: 1, ease: Back.easeInOut.config(1.7), onComplete: animate_initial });
+                        }
+                    }
+                    /* #endregion INITAL function caller */
+                    /* #region MAIN ANIMATIONS */
+                    var delayNumber = 0.02;
+                    function animate_initial() {
+                        for (var i = 0; i < objects_all.length; i++) {
+                            var animDelay = delayNumber * i;
+                            TweenMax.to(objects_all[i], 0.5, { opacity: 1, scaleX: 1, scaleY: 1, transformOrigin: "50% 50%", ease: Back.easeOut.config(1.7), delay: animDelay, onComplete: countdown_forFinished });
+                        }
+                    }
+                    /* #endregion MAIN ANIMATIONS */
+                    /* #region ALL ANIMATIONS FINISHED */
+                    var counter_finished = 0;
+                    function countdown_forFinished() {
+                        counter_finished++;
+                        if (counter_finished == objects_all.length) {
+                            animationInProgress_kyrgyz = false;
+                        }
+                    }
+                    /* #endregion ALL ANIMATIONS FINISHED */
+                } else {
+                    if (genericIntervalCounter > 99) {
+                        clearInterval(checkRenderedStatusInterval);
+                        console.log('Interval fired too many times! SVG animation canceled!');
+                    }
                 }
             }
-            /* #endregion INITAL function caller */
-            /* #region MAIN ANIMATIONS */
-            var delayNumber = 0.02;
-            function animate_initial() {
-                for (var i = 0; i < objects_all.length; i++) {
-                    var animDelay = delayNumber * i;
-                    TweenMax.to(objects_all[i], 0.5, { opacity: 1, scaleX: 1, scaleY: 1, transformOrigin: "50% 50%", ease: Back.easeOut.config(1.7), delay: animDelay, onComplete: countdown_forFinished });
-                }
-            }
-            /* #endregion MAIN ANIMATIONS */
-            /* #region ALL ANIMATIONS FINISHED */
-            var counter_finished = 0;
-            function countdown_forFinished() {
-                counter_finished++;
-                if (counter_finished == objects_all.length) {
-                    animationInProgress_kyrgyz = false;
-                }
-            }
-            /* #endregion ALL ANIMATIONS FINISHED */
+
         }
     }
     /* #endregion Country SVG graph animation - Kyrgyz  */
@@ -839,45 +992,60 @@ $(document).ready(function () {
     function svgAnimate_moldova() {
         if (animationInProgress_moldova == false) {
             animationInProgress_moldova = true;
-            /* #region Defining Elements */
-            var htmlElement_moldova = document.getElementById("cid-infographic-trigger-moldova");
-            var graphicObject_moldova = document.getElementById("cid-infographic-moldova-object");
-            var svgDocument_moldova = graphicObject_moldova.contentDocument;
+            var checkRenderedStatusInterval = setInterval(checkRenderedFunction, 200);
+            var genericIntervalCounter = 0;
+            function checkRenderedFunction() {
+                genericIntervalCounter++;
+                var genericObjectTag = document.getElementById("cid-infographic-moldova-object");
+                if (genericObjectTag != null) {
+                    clearInterval(checkRenderedStatusInterval);
+                    /* #region Defining Elements */
+                    var htmlElement_moldova = document.getElementById("cid-infographic-trigger-moldova");
+                    var graphicObject_moldova = document.getElementById("cid-infographic-moldova-object");
+                    var svgDocument_moldova = graphicObject_moldova.contentDocument;
 
-            var objects_all = [];
-            objects_all.push(svgDocument_moldova.getElementById("phone"));
-            objects_all.push(svgDocument_moldova.getElementById("sos"));
-            for (var i = 0; i < objects_all.length; i++) {
-                TweenMax.to(objects_all[i], 0.1, { opacity: 0, scaleX: 0.1, scaleY: 0.1, transformOrigin: "50% 50%", onComplete: countdown_initial });
-            }
-            /* #endregion Defining Elements */
-            /* #region INITAL function caller */
-            var counter_initial = 0;
-            function countdown_initial() {
-                counter_initial++;
-                if (counter_initial == objects_all.length) {
-                    TweenMax.to(htmlElement_moldova, 0.2, { opacity: 1, ease: Back.easeInOut.config(1.7), onComplete: animate_initial });
+                    var objects_all = [];
+                    objects_all.push(svgDocument_moldova.getElementById("phone"));
+                    objects_all.push(svgDocument_moldova.getElementById("sos"));
+                    for (var i = 0; i < objects_all.length; i++) {
+                        TweenMax.to(objects_all[i], 0.1, { opacity: 0, scaleX: 0.1, scaleY: 0.1, transformOrigin: "50% 50%", onComplete: countdown_initial });
+                    }
+                    /* #endregion Defining Elements */
+                    /* #region INITAL function caller */
+                    var counter_initial = 0;
+                    function countdown_initial() {
+                        counter_initial++;
+                        if (counter_initial == objects_all.length) {
+                            TweenMax.to(htmlElement_moldova, 0.2, { opacity: 1, ease: Back.easeInOut.config(1.7), onComplete: animate_initial });
+                        }
+                    }
+                    /* #endregion INITAL function caller */
+                    /* #region MAIN ANIMATIONS */
+                    var delayNumber = 0.02;
+                    function animate_initial() {
+                        for (var i = 0; i < objects_all.length; i++) {
+                            var animDelay = delayNumber * i;
+                            TweenMax.to(objects_all[i], 0.5, { opacity: 1, scaleX: 1, scaleY: 1, transformOrigin: "50% 50%", ease: Back.easeOut.config(1.7), delay: animDelay, onComplete: countdown_forFinished });
+                        }
+                    }
+                    /* #endregion MAIN ANIMATIONS */
+                    /* #region ALL ANIMATIONS FINISHED */
+                    var counter_finished = 0;
+                    function countdown_forFinished() {
+                        counter_finished++;
+                        if (counter_finished == objects_all.length) {
+                            animationInProgress_moldova = false;
+                        }
+                    }
+                    /* #endregion ALL ANIMATIONS FINISHED */
+                } else {
+                    if (genericIntervalCounter > 99) {
+                        clearInterval(checkRenderedStatusInterval);
+                        console.log('Interval fired too many times! SVG animation canceled!');
+                    }
                 }
             }
-            /* #endregion INITAL function caller */
-            /* #region MAIN ANIMATIONS */
-            var delayNumber = 0.02;
-            function animate_initial() {
-                for (var i = 0; i < objects_all.length; i++) {
-                    var animDelay = delayNumber * i;
-                    TweenMax.to(objects_all[i], 0.5, { opacity: 1, scaleX: 1, scaleY: 1, transformOrigin: "50% 50%", ease: Back.easeOut.config(1.7), delay: animDelay, onComplete: countdown_forFinished });
-                }
-            }
-            /* #endregion MAIN ANIMATIONS */
-            /* #region ALL ANIMATIONS FINISHED */
-            var counter_finished = 0;
-            function countdown_forFinished() {
-                counter_finished++;
-                if (counter_finished == objects_all.length) {
-                    animationInProgress_moldova = false;
-                }
-            }
-            /* #endregion ALL ANIMATIONS FINISHED */
+
         }
     }
     /* #endregion Country SVG graph animation - Moldova  */
@@ -886,44 +1054,58 @@ $(document).ready(function () {
     function svgAnimate_montenegro() {
         if (animationInProgress_montenegro == false) {
             animationInProgress_montenegro = true;
-            /* #region Defining Elements */
-            var htmlElement_montenegro = document.getElementById("cid-infographic-trigger-montenegro");
-            var graphicObject_montenegro = document.getElementById("cid-infographic-montenegro-object");
-            var svgDocument_montenegro = graphicObject_montenegro.contentDocument;
+            var checkRenderedStatusInterval = setInterval(checkRenderedFunction, 200);
+            var genericIntervalCounter = 0;
+            function checkRenderedFunction() {
+                genericIntervalCounter++;
+                var genericObjectTag = document.getElementById("cid-infographic-montenegro-object");
+                if (genericObjectTag != null) {
+                    clearInterval(checkRenderedStatusInterval);
+                    /* #region Defining Elements */
+                    var htmlElement_montenegro = document.getElementById("cid-infographic-trigger-montenegro");
+                    var graphicObject_montenegro = document.getElementById("cid-infographic-montenegro-object");
+                    var svgDocument_montenegro = graphicObject_montenegro.contentDocument;
 
-            var objects_all = [];
-            for (var i = 0; i < 16; i++) {
-                objects_all.push(svgDocument_montenegro.getElementById("petal-" + (i + 1)));
-                TweenMax.to(objects_all[i], 0.1, { opacity: 0, scaleX: 0.1, scaleY: 0.1, transformOrigin: "50% 50%", onComplete: countdown_initial });
-            }
-            /* #endregion Defining Elements */
-            /* #region INITAL function caller */
-            var counter_initial = 0;
-            function countdown_initial() {
-                counter_initial++;
-                if (counter_initial == objects_all.length) {
-                    TweenMax.to(htmlElement_montenegro, 0.2, { opacity: 1, ease: Back.easeInOut.config(1.7), onComplete: animate_initial });
+                    var objects_all = [];
+                    for (var i = 0; i < 16; i++) {
+                        objects_all.push(svgDocument_montenegro.getElementById("petal-" + (i + 1)));
+                        TweenMax.to(objects_all[i], 0.1, { opacity: 0, scaleX: 0.1, scaleY: 0.1, transformOrigin: "50% 50%", onComplete: countdown_initial });
+                    }
+                    /* #endregion Defining Elements */
+                    /* #region INITAL function caller */
+                    var counter_initial = 0;
+                    function countdown_initial() {
+                        counter_initial++;
+                        if (counter_initial == objects_all.length) {
+                            TweenMax.to(htmlElement_montenegro, 0.2, { opacity: 1, ease: Back.easeInOut.config(1.7), onComplete: animate_initial });
+                        }
+                    }
+                    /* #endregion INITAL function caller */
+                    /* #region MAIN ANIMATIONS */
+                    var delayNumber = 0.02;
+                    function animate_initial() {
+                        for (var i = 0; i < objects_all.length; i++) {
+                            var animDelay = delayNumber * i;
+                            TweenMax.to(objects_all[i], 0.5, { opacity: 1, scaleX: 1, scaleY: 1, transformOrigin: "50% 50%", ease: Back.easeOut.config(1.7), delay: animDelay, onComplete: countdown_forFinished });
+                        }
+                    }
+                    /* #endregion MAIN ANIMATIONS */
+                    /* #region ALL ANIMATIONS FINISHED */
+                    var counter_finished = 0;
+                    function countdown_forFinished() {
+                        counter_finished++;
+                        if (counter_finished == objects_all.length) {
+                            animationInProgress_montenegro = false;
+                        }
+                    }
+                    /* #endregion ALL ANIMATIONS FINISHED */
+                } else {
+                    if (genericIntervalCounter > 99) {
+                        clearInterval(checkRenderedStatusInterval);
+                        console.log('Interval fired too many times! SVG animation canceled!');
+                    }
                 }
             }
-            /* #endregion INITAL function caller */
-            /* #region MAIN ANIMATIONS */
-            var delayNumber = 0.02;
-            function animate_initial() {
-                for (var i = 0; i < objects_all.length; i++) {
-                    var animDelay = delayNumber * i;
-                    TweenMax.to(objects_all[i], 0.5, { opacity: 1, scaleX: 1, scaleY: 1, transformOrigin: "50% 50%", ease: Back.easeOut.config(1.7), delay: animDelay, onComplete: countdown_forFinished });
-                }
-            }
-            /* #endregion MAIN ANIMATIONS */
-            /* #region ALL ANIMATIONS FINISHED */
-            var counter_finished = 0;
-            function countdown_forFinished() {
-                counter_finished++;
-                if (counter_finished == objects_all.length) {
-                    animationInProgress_montenegro = false;
-                }
-            }
-            /* #endregion ALL ANIMATIONS FINISHED */
         }
     }
     /* #endregion Country SVG graph animation - Montenegro  */
@@ -932,46 +1114,60 @@ $(document).ready(function () {
     function svgAnimate_serbia() {
         if (animationInProgress_serbia == false) {
             animationInProgress_serbia = true;
-            /* #region Defining Elements */
-            var htmlElement_serbia = document.getElementById("cid-infographic-trigger-serbia");
-            var graphicObject_serbia = document.getElementById("cid-infographic-serbia-object");
-            var svgDocument_serbia = graphicObject_serbia.contentDocument;
+            var checkRenderedStatusInterval = setInterval(checkRenderedFunction, 200);
+            var genericIntervalCounter = 0;
+            function checkRenderedFunction() {
+                genericIntervalCounter++;
+                var genericObjectTag = document.getElementById("cid-infographic-serbia-object");
+                if (genericObjectTag != null) {
+                    clearInterval(checkRenderedStatusInterval);
+                    /* #region Defining Elements */
+                    var htmlElement_serbia = document.getElementById("cid-infographic-trigger-serbia");
+                    var graphicObject_serbia = document.getElementById("cid-infographic-serbia-object");
+                    var svgDocument_serbia = graphicObject_serbia.contentDocument;
 
-            var objects_all = [];
-            objects_all.push(svgDocument_serbia.getElementById("document-back"));
-            objects_all.push(svgDocument_serbia.getElementById("document-front"));
-            objects_all.push(svgDocument_serbia.getElementById("checkmark"));
-            for (var i = 0; i < objects_all.length; i++) {
-                TweenMax.to(objects_all[i], 0.1, { opacity: 0, scaleX: 0.1, scaleY: 0.1, transformOrigin: "50% 50%", onComplete: countdown_initial });
-            }
-            /* #endregion Defining Elements */
-            /* #region INITAL function caller */
-            var counter_initial = 0;
-            function countdown_initial() {
-                counter_initial++;
-                if (counter_initial == objects_all.length) {
-                    TweenMax.to(htmlElement_serbia, 0.2, { opacity: 1, ease: Back.easeInOut.config(1.7), onComplete: animate_initial });
+                    var objects_all = [];
+                    objects_all.push(svgDocument_serbia.getElementById("document-back"));
+                    objects_all.push(svgDocument_serbia.getElementById("document-front"));
+                    objects_all.push(svgDocument_serbia.getElementById("checkmark"));
+                    for (var i = 0; i < objects_all.length; i++) {
+                        TweenMax.to(objects_all[i], 0.1, { opacity: 0, scaleX: 0.1, scaleY: 0.1, transformOrigin: "50% 50%", onComplete: countdown_initial });
+                    }
+                    /* #endregion Defining Elements */
+                    /* #region INITAL function caller */
+                    var counter_initial = 0;
+                    function countdown_initial() {
+                        counter_initial++;
+                        if (counter_initial == objects_all.length) {
+                            TweenMax.to(htmlElement_serbia, 0.2, { opacity: 1, ease: Back.easeInOut.config(1.7), onComplete: animate_initial });
+                        }
+                    }
+                    /* #endregion INITAL function caller */
+                    /* #region MAIN ANIMATIONS */
+                    var delayNumber = 0.02;
+                    function animate_initial() {
+                        for (var i = 0; i < objects_all.length; i++) {
+                            var animDelay = delayNumber * i;
+                            TweenMax.to(objects_all[i], 0.5, { opacity: 1, scaleX: 1, scaleY: 1, transformOrigin: "50% 50%", ease: Back.easeOut.config(1.7), delay: animDelay, onComplete: countdown_forFinished });
+                        }
+                    }
+                    /* #endregion MAIN ANIMATIONS */
+                    /* #region ALL ANIMATIONS FINISHED */
+                    var counter_finished = 0;
+                    function countdown_forFinished() {
+                        counter_finished++;
+                        if (counter_finished == objects_all.length) {
+                            animationInProgress_serbia = false;
+                        }
+                    }
+                    /* #endregion ALL ANIMATIONS FINISHED */
+                } else {
+                    if (genericIntervalCounter > 99) {
+                        clearInterval(checkRenderedStatusInterval);
+                        console.log('Interval fired too many times! SVG animation canceled!');
+                    }
                 }
             }
-            /* #endregion INITAL function caller */
-            /* #region MAIN ANIMATIONS */
-            var delayNumber = 0.02;
-            function animate_initial() {
-                for (var i = 0; i < objects_all.length; i++) {
-                    var animDelay = delayNumber * i;
-                    TweenMax.to(objects_all[i], 0.5, { opacity: 1, scaleX: 1, scaleY: 1, transformOrigin: "50% 50%", ease: Back.easeOut.config(1.7), delay: animDelay, onComplete: countdown_forFinished });
-                }
-            }
-            /* #endregion MAIN ANIMATIONS */
-            /* #region ALL ANIMATIONS FINISHED */
-            var counter_finished = 0;
-            function countdown_forFinished() {
-                counter_finished++;
-                if (counter_finished == objects_all.length) {
-                    animationInProgress_serbia = false;
-                }
-            }
-            /* #endregion ALL ANIMATIONS FINISHED */
         }
     }
     /* #endregion Country SVG graph animation - Serbia  */
@@ -980,45 +1176,59 @@ $(document).ready(function () {
     function svgAnimate_tajikistan() {
         if (animationInProgress_tajikistan == false) {
             animationInProgress_tajikistan = true;
-            /* #region Defining Elements */
-            var htmlElement_tajikistan = document.getElementById("cid-infographic-trigger-tajikistan");
-            var graphicObject_tajikistan = document.getElementById("cid-infographic-tajikistan-object");
-            var svgDocument_tajikistan = graphicObject_tajikistan.contentDocument;
+            var checkRenderedStatusInterval = setInterval(checkRenderedFunction, 200);
+            var genericIntervalCounter = 0;
+            function checkRenderedFunction() {
+                genericIntervalCounter++;
+                var genericObjectTag = document.getElementById("cid-infographic-tajikistan-object");
+                if (genericObjectTag != null) {
+                    clearInterval(checkRenderedStatusInterval);
+                    /* #region Defining Elements */
+                    var htmlElement_tajikistan = document.getElementById("cid-infographic-trigger-tajikistan");
+                    var graphicObject_tajikistan = document.getElementById("cid-infographic-tajikistan-object");
+                    var svgDocument_tajikistan = graphicObject_tajikistan.contentDocument;
 
-            var objects_all = [];
-            objects_all.push(svgDocument_tajikistan.getElementById("person-left"));
-            objects_all.push(svgDocument_tajikistan.getElementById("person-right"));
-            for (var i = 0; i < objects_all.length; i++) {
-                TweenMax.to(objects_all[i], 0.1, { opacity: 0, scaleX: 0.1, scaleY: 0.1, transformOrigin: "50% 50%", onComplete: countdown_initial });
-            }
-            /* #endregion Defining Elements */
-            /* #region INITAL function caller */
-            var counter_initial = 0;
-            function countdown_initial() {
-                counter_initial++;
-                if (counter_initial == objects_all.length) {
-                    TweenMax.to(htmlElement_tajikistan, 0.2, { opacity: 1, ease: Back.easeInOut.config(1.7), onComplete: animate_initial });
+                    var objects_all = [];
+                    objects_all.push(svgDocument_tajikistan.getElementById("person-left"));
+                    objects_all.push(svgDocument_tajikistan.getElementById("person-right"));
+                    for (var i = 0; i < objects_all.length; i++) {
+                        TweenMax.to(objects_all[i], 0.1, { opacity: 0, scaleX: 0.1, scaleY: 0.1, transformOrigin: "50% 50%", onComplete: countdown_initial });
+                    }
+                    /* #endregion Defining Elements */
+                    /* #region INITAL function caller */
+                    var counter_initial = 0;
+                    function countdown_initial() {
+                        counter_initial++;
+                        if (counter_initial == objects_all.length) {
+                            TweenMax.to(htmlElement_tajikistan, 0.2, { opacity: 1, ease: Back.easeInOut.config(1.7), onComplete: animate_initial });
+                        }
+                    }
+                    /* #endregion INITAL function caller */
+                    /* #region MAIN ANIMATIONS */
+                    var delayNumber = 0.02;
+                    function animate_initial() {
+                        for (var i = 0; i < objects_all.length; i++) {
+                            var animDelay = delayNumber * i;
+                            TweenMax.to(objects_all[i], 0.5, { opacity: 1, scaleX: 1, scaleY: 1, transformOrigin: "50% 50%", ease: Back.easeOut.config(1.7), delay: animDelay, onComplete: countdown_forFinished });
+                        }
+                    }
+                    /* #endregion MAIN ANIMATIONS */
+                    /* #region ALL ANIMATIONS FINISHED */
+                    var counter_finished = 0;
+                    function countdown_forFinished() {
+                        counter_finished++;
+                        if (counter_finished == objects_all.length) {
+                            animationInProgress_tajikistan = false;
+                        }
+                    }
+                    /* #endregion ALL ANIMATIONS FINISHED */
+                } else {
+                    if (genericIntervalCounter > 99) {
+                        clearInterval(checkRenderedStatusInterval);
+                        console.log('Interval fired too many times! SVG animation canceled!');
+                    }
                 }
             }
-            /* #endregion INITAL function caller */
-            /* #region MAIN ANIMATIONS */
-            var delayNumber = 0.02;
-            function animate_initial() {
-                for (var i = 0; i < objects_all.length; i++) {
-                    var animDelay = delayNumber * i;
-                    TweenMax.to(objects_all[i], 0.5, { opacity: 1, scaleX: 1, scaleY: 1, transformOrigin: "50% 50%", ease: Back.easeOut.config(1.7), delay: animDelay, onComplete: countdown_forFinished });
-                }
-            }
-            /* #endregion MAIN ANIMATIONS */
-            /* #region ALL ANIMATIONS FINISHED */
-            var counter_finished = 0;
-            function countdown_forFinished() {
-                counter_finished++;
-                if (counter_finished == objects_all.length) {
-                    animationInProgress_tajikistan = false;
-                }
-            }
-            /* #endregion ALL ANIMATIONS FINISHED */
         }
     }
     /* #endregion Country SVG graph animation - Tajikistan  */
@@ -1027,45 +1237,59 @@ $(document).ready(function () {
     function svgAnimate_macedonia() {
         if (animationInProgress_macedonia == false) {
             animationInProgress_macedonia = true;
-            /* #region Defining Elements */
-            var htmlElement_macedonia = document.getElementById("cid-infographic-trigger-macedonia");
-            var graphicObject_macedonia = document.getElementById("cid-infographic-macedonia-object");
-            var svgDocument_macedonia = graphicObject_macedonia.contentDocument;
+            var checkRenderedStatusInterval = setInterval(checkRenderedFunction, 200);
+            var genericIntervalCounter = 0;
+            function checkRenderedFunction() {
+                genericIntervalCounter++;
+                var genericObjectTag = document.getElementById("cid-infographic-macedonia-object");
+                if (genericObjectTag != null) {
+                    clearInterval(checkRenderedStatusInterval);
+                    /* #region Defining Elements */
+                    var htmlElement_macedonia = document.getElementById("cid-infographic-trigger-macedonia");
+                    var graphicObject_macedonia = document.getElementById("cid-infographic-macedonia-object");
+                    var svgDocument_macedonia = graphicObject_macedonia.contentDocument;
 
-            var objects_all = [];
-            objects_all.push(svgDocument_macedonia.getElementById("base"));
-            objects_all.push(svgDocument_macedonia.getElementById("hammer"));
-            for (var i = 0; i < objects_all.length; i++) {
-                TweenMax.to(objects_all[i], 0.1, { opacity: 0, scaleX: 0.1, scaleY: 0.1, transformOrigin: "50% 50%", onComplete: countdown_initial });
-            }
-            /* #endregion Defining Elements */
-            /* #region INITAL function caller */
-            var counter_initial = 0;
-            function countdown_initial() {
-                counter_initial++;
-                if (counter_initial == objects_all.length) {
-                    TweenMax.to(htmlElement_macedonia, 0.2, { opacity: 1, ease: Back.easeInOut.config(1.7), onComplete: animate_initial });
+                    var objects_all = [];
+                    objects_all.push(svgDocument_macedonia.getElementById("base"));
+                    objects_all.push(svgDocument_macedonia.getElementById("hammer"));
+                    for (var i = 0; i < objects_all.length; i++) {
+                        TweenMax.to(objects_all[i], 0.1, { opacity: 0, scaleX: 0.1, scaleY: 0.1, transformOrigin: "50% 50%", onComplete: countdown_initial });
+                    }
+                    /* #endregion Defining Elements */
+                    /* #region INITAL function caller */
+                    var counter_initial = 0;
+                    function countdown_initial() {
+                        counter_initial++;
+                        if (counter_initial == objects_all.length) {
+                            TweenMax.to(htmlElement_macedonia, 0.2, { opacity: 1, ease: Back.easeInOut.config(1.7), onComplete: animate_initial });
+                        }
+                    }
+                    /* #endregion INITAL function caller */
+                    /* #region MAIN ANIMATIONS */
+                    var delayNumber = 0.02;
+                    function animate_initial() {
+                        for (var i = 0; i < objects_all.length; i++) {
+                            var animDelay = delayNumber * i;
+                            TweenMax.to(objects_all[i], 0.5, { opacity: 1, scaleX: 1, scaleY: 1, transformOrigin: "50% 50%", ease: Back.easeOut.config(1.7), delay: animDelay, onComplete: countdown_forFinished });
+                        }
+                    }
+                    /* #endregion MAIN ANIMATIONS */
+                    /* #region ALL ANIMATIONS FINISHED */
+                    var counter_finished = 0;
+                    function countdown_forFinished() {
+                        counter_finished++;
+                        if (counter_finished == objects_all.length) {
+                            animationInProgress_macedonia = false;
+                        }
+                    }
+                    /* #endregion ALL ANIMATIONS FINISHED */
+                } else {
+                    if (genericIntervalCounter > 99) {
+                        clearInterval(checkRenderedStatusInterval);
+                        console.log('Interval fired too many times! SVG animation canceled!');
+                    }
                 }
             }
-            /* #endregion INITAL function caller */
-            /* #region MAIN ANIMATIONS */
-            var delayNumber = 0.02;
-            function animate_initial() {
-                for (var i = 0; i < objects_all.length; i++) {
-                    var animDelay = delayNumber * i;
-                    TweenMax.to(objects_all[i], 0.5, { opacity: 1, scaleX: 1, scaleY: 1, transformOrigin: "50% 50%", ease: Back.easeOut.config(1.7), delay: animDelay, onComplete: countdown_forFinished });
-                }
-            }
-            /* #endregion MAIN ANIMATIONS */
-            /* #region ALL ANIMATIONS FINISHED */
-            var counter_finished = 0;
-            function countdown_forFinished() {
-                counter_finished++;
-                if (counter_finished == objects_all.length) {
-                    animationInProgress_macedonia = false;
-                }
-            }
-            /* #endregion ALL ANIMATIONS FINISHED */
         }
     }
     /* #endregion Country SVG graph animation - Macedonia  */
@@ -1074,47 +1298,61 @@ $(document).ready(function () {
     function svgAnimate_turkey() {
         if (animationInProgress_turkey == false) {
             animationInProgress_turkey = true;
-            /* #region Defining Elements */
-            var htmlElement_turkey = document.getElementById("cid-infographic-trigger-turkey");
-            var graphicObject_turkey = document.getElementById("cid-infographic-turkey-object");
-            var svgDocument_turkey = graphicObject_turkey.contentDocument;
+            var checkRenderedStatusInterval = setInterval(checkRenderedFunction, 200);
+            var genericIntervalCounter = 0;
+            function checkRenderedFunction() {
+                genericIntervalCounter++;
+                var genericObjectTag = document.getElementById("cid-infographic-turkey-object");
+                if (genericObjectTag != null) {
+                    clearInterval(checkRenderedStatusInterval);
+                    /* #region Defining Elements */
+                    var htmlElement_turkey = document.getElementById("cid-infographic-trigger-turkey");
+                    var graphicObject_turkey = document.getElementById("cid-infographic-turkey-object");
+                    var svgDocument_turkey = graphicObject_turkey.contentDocument;
 
-            var objects_all = [];
-            objects_all.push(svgDocument_turkey.getElementById("group-left"));
-            objects_all.push(svgDocument_turkey.getElementById("group-right"));
-            objects_all.push(svgDocument_turkey.getElementById("person"));
-            objects_all.push(svgDocument_turkey.getElementById("document"));
-            for (var i = 0; i < objects_all.length; i++) {
-                TweenMax.to(objects_all[i], 0.1, { opacity: 0, scaleX: 0.1, scaleY: 0.1, transformOrigin: "50% 50%", onComplete: countdown_initial });
-            }
-            /* #endregion Defining Elements */
-            /* #region INITAL function caller */
-            var counter_initial = 0;
-            function countdown_initial() {
-                counter_initial++;
-                if (counter_initial == objects_all.length) {
-                    TweenMax.to(htmlElement_turkey, 0.2, { opacity: 1, ease: Back.easeInOut.config(1.7), onComplete: animate_initial });
+                    var objects_all = [];
+                    objects_all.push(svgDocument_turkey.getElementById("group-left"));
+                    objects_all.push(svgDocument_turkey.getElementById("group-right"));
+                    objects_all.push(svgDocument_turkey.getElementById("person"));
+                    objects_all.push(svgDocument_turkey.getElementById("document"));
+                    for (var i = 0; i < objects_all.length; i++) {
+                        TweenMax.to(objects_all[i], 0.1, { opacity: 0, scaleX: 0.1, scaleY: 0.1, transformOrigin: "50% 50%", onComplete: countdown_initial });
+                    }
+                    /* #endregion Defining Elements */
+                    /* #region INITAL function caller */
+                    var counter_initial = 0;
+                    function countdown_initial() {
+                        counter_initial++;
+                        if (counter_initial == objects_all.length) {
+                            TweenMax.to(htmlElement_turkey, 0.2, { opacity: 1, ease: Back.easeInOut.config(1.7), onComplete: animate_initial });
+                        }
+                    }
+                    /* #endregion INITAL function caller */
+                    /* #region MAIN ANIMATIONS */
+                    var delayNumber = 0.02;
+                    function animate_initial() {
+                        for (var i = 0; i < objects_all.length; i++) {
+                            var animDelay = delayNumber * i;
+                            TweenMax.to(objects_all[i], 0.5, { opacity: 1, scaleX: 1, scaleY: 1, transformOrigin: "50% 50%", ease: Back.easeOut.config(1.7), delay: animDelay, onComplete: countdown_forFinished });
+                        }
+                    }
+                    /* #endregion MAIN ANIMATIONS */
+                    /* #region ALL ANIMATIONS FINISHED */
+                    var counter_finished = 0;
+                    function countdown_forFinished() {
+                        counter_finished++;
+                        if (counter_finished == objects_all.length) {
+                            animationInProgress_turkey = false;
+                        }
+                    }
+                    /* #endregion ALL ANIMATIONS FINISHED */
+                } else {
+                    if (genericIntervalCounter > 99) {
+                        clearInterval(checkRenderedStatusInterval);
+                        console.log('Interval fired too many times! SVG animation canceled!');
+                    }
                 }
             }
-            /* #endregion INITAL function caller */
-            /* #region MAIN ANIMATIONS */
-            var delayNumber = 0.02;
-            function animate_initial() {
-                for (var i = 0; i < objects_all.length; i++) {
-                    var animDelay = delayNumber * i;
-                    TweenMax.to(objects_all[i], 0.5, { opacity: 1, scaleX: 1, scaleY: 1, transformOrigin: "50% 50%", ease: Back.easeOut.config(1.7), delay: animDelay, onComplete: countdown_forFinished });
-                }
-            }
-            /* #endregion MAIN ANIMATIONS */
-            /* #region ALL ANIMATIONS FINISHED */
-            var counter_finished = 0;
-            function countdown_forFinished() {
-                counter_finished++;
-                if (counter_finished == objects_all.length) {
-                    animationInProgress_turkey = false;
-                }
-            }
-            /* #endregion ALL ANIMATIONS FINISHED */
         }
     }
     /* #endregion Country SVG graph animation - Turkey  */
@@ -1123,45 +1361,59 @@ $(document).ready(function () {
     function svgAnimate_turkmenistan() {
         if (animationInProgress_turkmenistan == false) {
             animationInProgress_turkmenistan = true;
-            /* #region Defining Elements */
-            var htmlElement_turkmenistan = document.getElementById("cid-infographic-trigger-turkmenistan");
-            var graphicObject_turkmenistan = document.getElementById("cid-infographic-turkmenistan-object");
-            var svgDocument_turkmenistan = graphicObject_turkmenistan.contentDocument;
+            var checkRenderedStatusInterval = setInterval(checkRenderedFunction, 200);
+            var genericIntervalCounter = 0;
+            function checkRenderedFunction() {
+                genericIntervalCounter++;
+                var genericObjectTag = document.getElementById("cid-infographic-turkmenistan-object");
+                if (genericObjectTag != null) {
+                    clearInterval(checkRenderedStatusInterval);
+                    /* #region Defining Elements */
+                    var htmlElement_turkmenistan = document.getElementById("cid-infographic-trigger-turkmenistan");
+                    var graphicObject_turkmenistan = document.getElementById("cid-infographic-turkmenistan-object");
+                    var svgDocument_turkmenistan = graphicObject_turkmenistan.contentDocument;
 
-            var objects_all = [];
-            objects_all.push(svgDocument_turkmenistan.getElementById("shield-outer"));
-            objects_all.push(svgDocument_turkmenistan.getElementById("shield-inner"));
-            for (var i = 0; i < objects_all.length; i++) {
-                TweenMax.to(objects_all[i], 0.1, { opacity: 0, scaleX: 0.1, scaleY: 0.1, transformOrigin: "50% 50%", onComplete: countdown_initial });
-            }
-            /* #endregion Defining Elements */
-            /* #region INITAL function caller */
-            var counter_initial = 0;
-            function countdown_initial() {
-                counter_initial++;
-                if (counter_initial == objects_all.length) {
-                    TweenMax.to(htmlElement_turkmenistan, 0.2, { opacity: 1, ease: Back.easeInOut.config(1.7), onComplete: animate_initial });
+                    var objects_all = [];
+                    objects_all.push(svgDocument_turkmenistan.getElementById("shield-outer"));
+                    objects_all.push(svgDocument_turkmenistan.getElementById("shield-inner"));
+                    for (var i = 0; i < objects_all.length; i++) {
+                        TweenMax.to(objects_all[i], 0.1, { opacity: 0, scaleX: 0.1, scaleY: 0.1, transformOrigin: "50% 50%", onComplete: countdown_initial });
+                    }
+                    /* #endregion Defining Elements */
+                    /* #region INITAL function caller */
+                    var counter_initial = 0;
+                    function countdown_initial() {
+                        counter_initial++;
+                        if (counter_initial == objects_all.length) {
+                            TweenMax.to(htmlElement_turkmenistan, 0.2, { opacity: 1, ease: Back.easeInOut.config(1.7), onComplete: animate_initial });
+                        }
+                    }
+                    /* #endregion INITAL function caller */
+                    /* #region MAIN ANIMATIONS */
+                    var delayNumber = 0.02;
+                    function animate_initial() {
+                        for (var i = 0; i < objects_all.length; i++) {
+                            var animDelay = delayNumber * i;
+                            TweenMax.to(objects_all[i], 0.5, { opacity: 1, scaleX: 1, scaleY: 1, transformOrigin: "50% 50%", ease: Back.easeOut.config(1.7), delay: animDelay, onComplete: countdown_forFinished });
+                        }
+                    }
+                    /* #endregion MAIN ANIMATIONS */
+                    /* #region ALL ANIMATIONS FINISHED */
+                    var counter_finished = 0;
+                    function countdown_forFinished() {
+                        counter_finished++;
+                        if (counter_finished == objects_all.length) {
+                            animationInProgress_turkmenistan = false;
+                        }
+                    }
+                    /* #endregion ALL ANIMATIONS FINISHED */
+                } else {
+                    if (genericIntervalCounter > 99) {
+                        clearInterval(checkRenderedStatusInterval);
+                        console.log('Interval fired too many times! SVG animation canceled!');
+                    }
                 }
             }
-            /* #endregion INITAL function caller */
-            /* #region MAIN ANIMATIONS */
-            var delayNumber = 0.02;
-            function animate_initial() {
-                for (var i = 0; i < objects_all.length; i++) {
-                    var animDelay = delayNumber * i;
-                    TweenMax.to(objects_all[i], 0.5, { opacity: 1, scaleX: 1, scaleY: 1, transformOrigin: "50% 50%", ease: Back.easeOut.config(1.7), delay: animDelay, onComplete: countdown_forFinished });
-                }
-            }
-            /* #endregion MAIN ANIMATIONS */
-            /* #region ALL ANIMATIONS FINISHED */
-            var counter_finished = 0;
-            function countdown_forFinished() {
-                counter_finished++;
-                if (counter_finished == objects_all.length) {
-                    animationInProgress_turkmenistan = false;
-                }
-            }
-            /* #endregion ALL ANIMATIONS FINISHED */
         }
     }
     /* #endregion Country SVG graph animation - Turkmenistan  */
@@ -1170,45 +1422,59 @@ $(document).ready(function () {
     function svgAnimate_ukraine() {
         if (animationInProgress_ukraine == false) {
             animationInProgress_ukraine = true;
-            /* #region Defining Elements */
-            var htmlElement_ukraine = document.getElementById("cid-infographic-trigger-ukraine");
-            var graphicObject_ukraine = document.getElementById("cid-infographic-ukraine-object");
-            var svgDocument_ukraine = graphicObject_ukraine.contentDocument;
+            var checkRenderedStatusInterval = setInterval(checkRenderedFunction, 200);
+            var genericIntervalCounter = 0;
+            function checkRenderedFunction() {
+                genericIntervalCounter++;
+                var genericObjectTag = document.getElementById("cid-infographic-ukraine-object");
+                if (genericObjectTag != null) {
+                    clearInterval(checkRenderedStatusInterval);
+                    /* #region Defining Elements */
+                    var htmlElement_ukraine = document.getElementById("cid-infographic-trigger-ukraine");
+                    var graphicObject_ukraine = document.getElementById("cid-infographic-ukraine-object");
+                    var svgDocument_ukraine = graphicObject_ukraine.contentDocument;
 
-            var objects_all = [];
-            objects_all.push(svgDocument_ukraine.getElementById("building"));
-            objects_all.push(svgDocument_ukraine.getElementById("person"));
-            for (var i = 0; i < objects_all.length; i++) {
-                TweenMax.to(objects_all[i], 0.1, { opacity: 0, scaleX: 0.1, scaleY: 0.1, transformOrigin: "50% 50%", onComplete: countdown_initial });
-            }
-            /* #endregion Defining Elements */
-            /* #region INITAL function caller */
-            var counter_initial = 0;
-            function countdown_initial() {
-                counter_initial++;
-                if (counter_initial == objects_all.length) {
-                    TweenMax.to(htmlElement_ukraine, 0.2, { opacity: 1, ease: Back.easeInOut.config(1.7), onComplete: animate_initial });
+                    var objects_all = [];
+                    objects_all.push(svgDocument_ukraine.getElementById("building"));
+                    objects_all.push(svgDocument_ukraine.getElementById("person"));
+                    for (var i = 0; i < objects_all.length; i++) {
+                        TweenMax.to(objects_all[i], 0.1, { opacity: 0, scaleX: 0.1, scaleY: 0.1, transformOrigin: "50% 50%", onComplete: countdown_initial });
+                    }
+                    /* #endregion Defining Elements */
+                    /* #region INITAL function caller */
+                    var counter_initial = 0;
+                    function countdown_initial() {
+                        counter_initial++;
+                        if (counter_initial == objects_all.length) {
+                            TweenMax.to(htmlElement_ukraine, 0.2, { opacity: 1, ease: Back.easeInOut.config(1.7), onComplete: animate_initial });
+                        }
+                    }
+                    /* #endregion INITAL function caller */
+                    /* #region MAIN ANIMATIONS */
+                    var delayNumber = 0.02;
+                    function animate_initial() {
+                        for (var i = 0; i < objects_all.length; i++) {
+                            var animDelay = delayNumber * i;
+                            TweenMax.to(objects_all[i], 0.5, { opacity: 1, scaleX: 1, scaleY: 1, transformOrigin: "50% 50%", ease: Back.easeOut.config(1.7), delay: animDelay, onComplete: countdown_forFinished });
+                        }
+                    }
+                    /* #endregion MAIN ANIMATIONS */
+                    /* #region ALL ANIMATIONS FINISHED */
+                    var counter_finished = 0;
+                    function countdown_forFinished() {
+                        counter_finished++;
+                        if (counter_finished == objects_all.length) {
+                            animationInProgress_ukraine = false;
+                        }
+                    }
+                    /* #endregion ALL ANIMATIONS FINISHED */
+                } else {
+                    if (genericIntervalCounter > 99) {
+                        clearInterval(checkRenderedStatusInterval);
+                        console.log('Interval fired too many times! SVG animation canceled!');
+                    }
                 }
             }
-            /* #endregion INITAL function caller */
-            /* #region MAIN ANIMATIONS */
-            var delayNumber = 0.02;
-            function animate_initial() {
-                for (var i = 0; i < objects_all.length; i++) {
-                    var animDelay = delayNumber * i;
-                    TweenMax.to(objects_all[i], 0.5, { opacity: 1, scaleX: 1, scaleY: 1, transformOrigin: "50% 50%", ease: Back.easeOut.config(1.7), delay: animDelay, onComplete: countdown_forFinished });
-                }
-            }
-            /* #endregion MAIN ANIMATIONS */
-            /* #region ALL ANIMATIONS FINISHED */
-            var counter_finished = 0;
-            function countdown_forFinished() {
-                counter_finished++;
-                if (counter_finished == objects_all.length) {
-                    animationInProgress_ukraine = false;
-                }
-            }
-            /* #endregion ALL ANIMATIONS FINISHED */
         }
     }
     /* #endregion Country SVG graph animation - Ukraine  */
@@ -1217,47 +1483,61 @@ $(document).ready(function () {
     function svgAnimate_uzbekistan() {
         if (animationInProgress_uzbekistan == false) {
             animationInProgress_uzbekistan = true;
-            /* #region Defining Elements */
-            var htmlElement_uzbekistan = document.getElementById("cid-infographic-trigger-uzbekistan");
-            var graphicObject_uzbekistan = document.getElementById("cid-infographic-uzbekistan-object");
-            var svgDocument_uzbekistan = graphicObject_uzbekistan.contentDocument;
+            var checkRenderedStatusInterval = setInterval(checkRenderedFunction, 200);
+            var genericIntervalCounter = 0;
+            function checkRenderedFunction() {
+                genericIntervalCounter++;
+                var genericObjectTag = document.getElementById("cid-infographic-uzbekistan-object");
+                if (genericObjectTag != null) {
+                    clearInterval(checkRenderedStatusInterval);
+                    /* #region Defining Elements */
+                    var htmlElement_uzbekistan = document.getElementById("cid-infographic-trigger-uzbekistan");
+                    var graphicObject_uzbekistan = document.getElementById("cid-infographic-uzbekistan-object");
+                    var svgDocument_uzbekistan = graphicObject_uzbekistan.contentDocument;
 
-            var objects_all = [];
-            objects_all.push(svgDocument_uzbekistan.getElementById("document-3"));
-            objects_all.push(svgDocument_uzbekistan.getElementById("document-2"));
-            objects_all.push(svgDocument_uzbekistan.getElementById("document-1"));
-            objects_all.push(svgDocument_uzbekistan.getElementById("magnify"));
-            for (var i = 0; i < objects_all.length; i++) {
-                TweenMax.to(objects_all[i], 0.1, { opacity: 0, scaleX: 0.1, scaleY: 0.1, transformOrigin: "50% 50%", onComplete: countdown_initial });
-            }
-            /* #endregion Defining Elements */
-            /* #region INITAL function caller */
-            var counter_initial = 0;
-            function countdown_initial() {
-                counter_initial++;
-                if (counter_initial == objects_all.length) {
-                    TweenMax.to(htmlElement_uzbekistan, 0.2, { opacity: 1, ease: Back.easeInOut.config(1.7), onComplete: animate_initial });
+                    var objects_all = [];
+                    objects_all.push(svgDocument_uzbekistan.getElementById("document-3"));
+                    objects_all.push(svgDocument_uzbekistan.getElementById("document-2"));
+                    objects_all.push(svgDocument_uzbekistan.getElementById("document-1"));
+                    objects_all.push(svgDocument_uzbekistan.getElementById("magnify"));
+                    for (var i = 0; i < objects_all.length; i++) {
+                        TweenMax.to(objects_all[i], 0.1, { opacity: 0, scaleX: 0.1, scaleY: 0.1, transformOrigin: "50% 50%", onComplete: countdown_initial });
+                    }
+                    /* #endregion Defining Elements */
+                    /* #region INITAL function caller */
+                    var counter_initial = 0;
+                    function countdown_initial() {
+                        counter_initial++;
+                        if (counter_initial == objects_all.length) {
+                            TweenMax.to(htmlElement_uzbekistan, 0.2, { opacity: 1, ease: Back.easeInOut.config(1.7), onComplete: animate_initial });
+                        }
+                    }
+                    /* #endregion INITAL function caller */
+                    /* #region MAIN ANIMATIONS */
+                    var delayNumber = 0.02;
+                    function animate_initial() {
+                        for (var i = 0; i < objects_all.length; i++) {
+                            var animDelay = delayNumber * i;
+                            TweenMax.to(objects_all[i], 0.5, { opacity: 1, scaleX: 1, scaleY: 1, transformOrigin: "50% 50%", ease: Back.easeOut.config(1.7), delay: animDelay, onComplete: countdown_forFinished });
+                        }
+                    }
+                    /* #endregion MAIN ANIMATIONS */
+                    /* #region ALL ANIMATIONS FINISHED */
+                    var counter_finished = 0;
+                    function countdown_forFinished() {
+                        counter_finished++;
+                        if (counter_finished == objects_all.length) {
+                            animationInProgress_uzbekistan = false;
+                        }
+                    }
+                    /* #endregion ALL ANIMATIONS FINISHED */
+                } else {
+                    if (genericIntervalCounter > 99) {
+                        clearInterval(checkRenderedStatusInterval);
+                        console.log('Interval fired too many times! SVG animation canceled!');
+                    }
                 }
             }
-            /* #endregion INITAL function caller */
-            /* #region MAIN ANIMATIONS */
-            var delayNumber = 0.02;
-            function animate_initial() {
-                for (var i = 0; i < objects_all.length; i++) {
-                    var animDelay = delayNumber * i;
-                    TweenMax.to(objects_all[i], 0.5, { opacity: 1, scaleX: 1, scaleY: 1, transformOrigin: "50% 50%", ease: Back.easeOut.config(1.7), delay: animDelay, onComplete: countdown_forFinished });
-                }
-            }
-            /* #endregion MAIN ANIMATIONS */
-            /* #region ALL ANIMATIONS FINISHED */
-            var counter_finished = 0;
-            function countdown_forFinished() {
-                counter_finished++;
-                if (counter_finished == objects_all.length) {
-                    animationInProgress_uzbekistan = false;
-                }
-            }
-            /* #endregion ALL ANIMATIONS FINISHED */
         }
     }
     /* #endregion Country SVG graph animation - Uzbekistan  */

@@ -44,6 +44,7 @@ angular.module('Home')
                     if (siteData.countries[i].id == countryOfInterestId) {
                         $scope.selectedCountry = siteData.countries[i];
                         $scope.dataBindBAC = $scope.selectedCountry.backgroundData;
+                        $scope.dataBindStatement = $scope.selectedCountry.statement;
                         //console.log('$scope.selectedCountry: ' + $scope.selectedCountry.keyResults[2].text);
                         $scope.ctrlVars.isInterestCountryClicked = true;
                         $scope.$apply();
@@ -53,6 +54,7 @@ angular.module('Home')
             /* #endregion On country map click */
             /* #region Change Data displayed for 'Background', 'Assistance and Impact' & 'Challenges, Lessons Learned and Way Forward' */
             $scope.dataBindBAC = {};
+            $scope.dataBindStatement = {};
             $scope.currentBACindex = 0;
             $scope.enumBAC = {
                 backgroundData: 0,
@@ -62,12 +64,15 @@ angular.module('Home')
             $scope.changeCountryBACData = function (buttonIndex) {
                 if (buttonIndex == $scope.enumBAC.backgroundData) {
                     $scope.dataBindBAC = $scope.selectedCountry.backgroundData;
+                    $scope.dataBindStatement = $scope.selectedCountry.statement;
                     $scope.currentBACindex = buttonIndex;
                 } else if (buttonIndex == $scope.enumBAC.assistanceData) {
                     $scope.dataBindBAC = $scope.selectedCountry.assistanceData;
+                    $scope.dataBindStatement = $scope.selectedCountry.statement;
                     $scope.currentBACindex = buttonIndex;
                 } else if (buttonIndex == $scope.enumBAC.challengesData) {
                     $scope.dataBindBAC = $scope.selectedCountry.challengesData;
+                    $scope.dataBindStatement = $scope.selectedCountry.statement;
                     $scope.currentBACindex = buttonIndex;
                 }
             }
@@ -109,20 +114,33 @@ angular.module('Home')
             $scope.dataBindOKW = {};
             $scope.currentOKWindex = 0;
             //called from home.html
-            $scope.changeFocusAreaData = function (focusAreaIndex) {
-                if ($scope.ctrlVars.isOpenCountryOKWdata == false) {
-                    $scope.ctrlVars.isOpenCountryOKWdata = true;
-                    $timeout(function () {
-                        $location.hash('cid-anchor-OKW-content');
-                        // call $anchorScroll()
-                        $anchorScroll();
-                    }, 200);
-
-                }
-                for (var i = 0; i < $scope.focusData.length; i++) {
+            $scope.currentFocusAreaIndex = null;
+            var visibleFocusArea = [false, false, false, false];
+            $scope.toggleFocusAreaVisibility = function (focusAreaIndex) {
+                for (var i = 0; i < visibleFocusArea.length; i++) {
                     if (i == focusAreaIndex) {
-                        $scope.selectedFocusArea = $scope.focusData[i];
-                        $scope.changeCountryOKWData(0);
+                        if (visibleFocusArea[i] == false) {
+                            $scope.changeCountryOKWData(0);
+                            $scope.currentFocusAreaIndex = focusAreaIndex;
+                            visibleFocusArea[i] = true;
+                            $scope.ctrlVars.isOpenCountryOKWdata = true;
+                            for (var j = 0; j < $scope.focusData.length; j++) {
+                                if (j == focusAreaIndex) {
+                                    $scope.selectedFocusArea = $scope.focusData[j];
+                                    $timeout(function () {
+                                        $location.hash('cid-anchor-OKW-content');
+                                        // call $anchorScroll()
+                                        $anchorScroll();
+                                    }, 100);
+                                }
+                            }
+                        } else {
+                            $scope.ctrlVars.isOpenCountryOKWdata = false;
+                            $scope.currentFocusAreaIndex = null;
+                            visibleFocusArea[i] = false;
+                        }
+                    } else {
+                        visibleFocusArea[i] = false;
                     }
                 }
             }
@@ -144,144 +162,6 @@ angular.module('Home')
                 }
             }
             /* #endregion FOCUS AREAS RELATED CODE */
-
-
-            /* #region Setter for random infographics sets on reload */
-            //$scope.firstRandomIndex = '';
-            //$scope.secondRandomIndex = '';
-            //$scope.infographicsGroups = [
-            //    {
-            //        countries: [
-            //            {
-            //                shortName:'albania',
-            //                fullName:'Albania'
-            //            },
-            //            {
-            //                shortName:'armenia',
-            //                fullName: 'Armenia'
-            //            },
-            //            {
-            //                shortName:'azerbaijan',
-            //                fullName: 'Azerbaijan'
-            //            }
-            //        ]
-            //    },
-            //    {
-            //        countries: [
-            //            {
-            //                shortName:'belarus',
-            //                fullName: 'Belarus'
-            //            },
-            //            {
-            //                shortName:'bosnia',
-            //                fullName: 'Bosnia'
-            //            },
-            //            {
-            //                shortName:'georgia',
-            //                fullName: 'Georgia'
-            //            }
-            //        ]
-            //    },
-            //    {
-            //        countries: [
-            //            {
-            //                shortName:'kazakhstan',
-            //                fullName: 'Kazakhstan'
-            //            },
-            //            {
-            //                shortName:'kosovo',
-            //                fullName: 'Kosovo'
-            //            },
-            //            {
-            //                shortName:'kyrgyz',
-            //                fullName: 'Kyrgyz'
-            //            }
-            //        ]
-            //    },
-            //    {
-            //        countries: [
-            //            {
-            //                shortName:'moldova',
-            //                fullName: 'Moldova'
-            //            },
-            //            {
-            //                shortName:'montenegro',
-            //                fullName: 'Montenegro'
-            //            },
-            //            {
-            //                shortName:'serbia',
-            //                fullName:'Serbia'
-            //            }
-            //        ]
-            //    },
-            //    {
-            //        countries: [
-            //            {
-            //                shortName:'tajikistan',
-            //                fullName:'Tajikistan'
-            //            },
-            //            {
-            //                shortName:'macedonia',
-            //                fullName:'Macedonia'
-            //            },
-            //            {
-            //                shortName:'turkey',
-            //                fullName:'Turkey'
-            //            }
-            //        ]
-            //    },
-            //    {
-            //        countries: [
-            //            {
-            //                shortName:'turkmenistan',
-            //                fullName:'Turkmenistan'
-            //            },
-            //            {
-            //                shortName:'ukraine',
-            //                fullName:'Ukraine'
-            //            },
-            //            {
-            //                shortName:'uzbekistan',
-            //                fullName:'Uzbekistan'
-            //            }
-            //        ]
-            //    }
-            //];
-            //function setRandomInfographics() {
-            //    var groupLength = $scope.infographicsGroups.length;
-            //    //get index for first group
-            //    $scope.firstRandomIndex = Math.floor(Math.random() * (groupLength - 0 )) + 0;
-            //    console.log('$scope.firstRandomIndex: ' + $scope.firstRandomIndex);
-            //    //setup for second index
-            //    var randomInterval_secondGroup = setInterval(getRandomIndex_secondGroup, 10);
-            //    function getRandomIndex_secondGroup() {
-            //        // get index for second group
-            //        var secondIndex = Math.floor(Math.random() * (groupLength - 0 )) + 0;
-            //        if (secondIndex != $scope.firstRandomIndex) {
-            //            $scope.secondRandomIndex = secondIndex;
-            //            console.log('$scope.secondRandomIndex: ' + $scope.secondRandomIndex);
-            //            // stop the interval
-            //            clearInterval(randomInterval_secondGroup);
-            //            //we need $timeout to provide some time until html is rendered
-            //            $timeout(function () {
-            //                $scope.ctrlVars.areInfographicsReady = true;
-            //                console.log('$timeout: ');
-            //                //calling functions inside 'index-controller.js'
-            //                var arrayWithRandomCountries = [];
-            //                for (var i = 0; i < $scope.infographicsGroups[0].countries.length; i++) {
-            //                    arrayWithRandomCountries.push($scope.infographicsGroups[0].countries[i]);
-            //                }
-            //                for (var i = 0; i < $scope.infographicsGroups[$scope.secondRandomIndex].countries.length; i++) {
-            //                    arrayWithRandomCountries.push($scope.infographicsGroups[$scope.secondRandomIndex].countries[i]);
-            //                }
-            //                callExternalSvgSetup(arrayWithRandomCountries);
-            //            }, 300);
-            //        }
-            //    }
-            //}
-            //setRandomInfographics();
-            /* #endregion Setter for random infographics sets on reload */
-
         }
     ]
 );

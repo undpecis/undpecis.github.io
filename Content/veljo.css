@@ -1,0 +1,172 @@
+/* CSS Document */
+
+.tableCss {
+    width: 540px;
+    color: white;
+    margin: 40px auto;
+}
+
+.img_contet {
+    vertical-align: bottom;
+    background-color: #d2406c;
+}
+
+.img_contet {
+    margin: 0;
+    width: 144px;
+    height: 340px;
+    padding: 20px;
+    vertical-align: bottom;
+}
+
+.signature {
+    background-color: #333;
+    padding: 5px 15px;
+}
+
+.graph_title {
+    text-align: center;
+}
+
+.graph_small {
+    text-align: center;
+}
+
+.graphSub {
+    color: #ac9d90;
+    font-size: 14px;
+    float: left;
+    margin: 20px 0;
+    width: 100%;
+    text-align: center;
+}
+
+.albania_table_img .assistance_img1 {
+    background-image: url(../Content/images/photos-and-graphic/image-albania-strana-71-1.jpg);
+}
+
+.albania_table_img .assistance_img2 {
+    background-image: url(../Content/images/photos-and-graphic/image-albania-strana-72-1.jpg );
+}
+
+.armenia_table_img .assistance_img1 {
+    background-image: url('images/photos-and-graphic/IMAGE-armenia-strana-76-1.jpg');
+}
+
+.armenia_table_img .assistance_img2 {
+    background-image: url('images/photos-and-graphic/IMAGE-armenia-strana-77-1.jpg');
+}
+
+.azerbaijan_table_img .assistance_img1 {
+    background-image: url('images/photos-and-graphic/image-azerbaijan-80-1.jpg');
+}
+
+.azerbaijan_table_img .assistance_img2 {
+    background-image: url('images/photos-and-graphic/image-azerbaijan-80-2.jpg');
+}
+
+.belarus_table_img .assistance_img1 {
+    background-image: url('images/photos-and-graphic/image-belarus-84-1.jpg');
+}
+
+.belarus_table_img .assistance_img2 {
+    background-image: url('images/photos-and-graphic/image-belarus-85-1.jpg');
+}
+
+.bih_table_img .assistance_img1 {
+    background-image: url('images/photos-and-graphic/image-BiH-89-1.jpg');
+}
+
+.bih_table_img .assistance_img2 {
+    background-image: url('images/photos-and-graphic/image-BiH-90-1.jpg');
+}
+
+.georgia_table_img .assistance_img1 {
+    background-image: url('images/photos-and-graphic/image-Georgia-94-1.jpg');
+}
+
+.georgia_table_img .assistance_img2 {
+    background-image: url('images/photos-and-graphic/image-Georgia-95-1.jpg');
+}
+
+.kazakhstan_table_img .assistance_img1 {
+    background-image: url('images/photos-and-graphic/image-kazakhstan-99-1.jpg');
+}
+
+.kazakhstan_table_img .assistance_img2 {
+    background-image: url('images/photos-and-graphic/image-kazakhstan-100-1.jpg');
+}
+
+.kosovo_table_img .assistance_img1 {
+    background-image: url('images/photos-and-graphic/image-kosovo-103-1.jpg');
+}
+
+.kosovo_table_img .assistance_img2 {
+    background-image: url('images/photos-and-graphic/image-kosovo-104-1.jpg');
+}
+
+.kyrgyzstan_table_img .assistance_img1 {
+    background-image: url('images/photos-and-graphic/image-kyrgiz-109-1.jpg');
+}
+
+.kyrgyzstan_table_img .assistance_img2 {
+    background-image: url('images/photos-and-graphic/image-kyrgiz-110-1.jpg');
+}
+
+.moldova_table_img .assistance_img1 {
+    background-image: url('images/photos-and-graphic/image-moldova-114-1.jpg');
+}
+
+.moldova_table_img .assistance_img2 {
+    background-image: url('images/photos-and-graphic/image-moldova-116-1.jpg');
+}
+
+.montenegro_table_img .assistance_img1 {
+    background-image: url('images/photos-and-graphic/image-montenegro-120-1.jpg');
+}
+
+.montenegro_table_img .assistance_img2 {
+    background-image: url('images/photos-and-graphic/image-montenegro-120-2.jpg');
+}
+.serbia_table_img .assistance_img1 {
+    background-image: url('images/photos-and-graphic/image-serbia-123-1.jpg');
+}
+.serbia_table_img .assistance_img2 {
+    background-image: url('images/photos-and-graphic/image-serbia-124-1.jpg');
+}
+.tajikistan_table_img .assistance_img1 {
+    background-image: url('images/photos-and-graphic/image-tajikistan-128-1.jpg');
+} 
+.tajikistan_table_img .assistance_img2 {
+    background-image: url('images/photos-and-graphic/image-tajikistan-128-2.jpg');
+} 
+.macedonia_table_img .assistance_img1 {
+    background-image: url('images/photos-and-graphic/image-macedonia-133-1.jpg');
+}
+.macedonia_table_img .assistance_img2 {
+    background-image: url('images/photos-and-graphic/image-macedonia-134-1.jpg');
+}
+.turkey_table_img .assistance_img1 {
+    background-image: url('images/photos-and-graphic/image-turkey-137-1.jpg');
+}
+.turkey_table_img .assistance_img2 {
+    background-image: url('images/photos-and-graphic/image-turkey-138-1.jpg');
+}
+.turkmenistan_table_img .assistance_img1 {
+    background-image: url('images/photos-and-graphic/image-turkmenistan-141-1.jpg');
+}
+.turkmenistan_table_img .assistance_img2 {
+    background-image: url('images/photos-and-graphic/image-turkmenistan-142-1.jpg');
+}
+.ukraine_table_img .assistance_img1 {
+    background-image: url('images/photos-and-graphic/image-ukraine-145-1.jpg');
+}
+.ukraine_table_img .assistance_img2 {
+    background-image: url('images/photos-and-graphic/image-ukraine-146-1.jpg.');
+}
+.uzbekistan_table_img .assistance_img1 {
+    background-image: url('images/photos-and-graphic/image-uzbekistan-149-1.jpg');
+}
+.uzbekistan_table_img .assistance_img2 {
+    background-image: url('images/photos-and-graphic/image-uzbekistan-150-1.jpg');
+}

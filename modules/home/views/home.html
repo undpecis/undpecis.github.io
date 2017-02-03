@@ -1,7 +1,7 @@
 ﻿    <!-- #region Cover block -->
 <div class="c-wide-wrap">
     <div class="c-stripes-wide-wrap">
-        <div class="c-container">
+        <div class="c-container c-custom-click">
             <!-- #region Header wrapper -->
             <div class="c-header-wrap c-show-when-lg">
                 <div class="c-table">
@@ -127,7 +127,9 @@
                             <span class="c-dynamic-country-title">{{selectedCountry.title}}</span>
                         </div>
                         <div class="c-cell c-w-1perc" ng-click="toggleKeyContent('closeInterestCountry')">
-                            <i class="c-ico icon-close"></i>
+                            <button class="c-bttn c-bttn-combo c-bttn-blue">
+                                <i class="c-ico icon-close"></i>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -143,13 +145,21 @@
                             </ul>
                             <div class="c-buttons-wrap">
                                 <!-- #region Learn more button -->
-                                <button class="c-bttn c-bttn-combo c-bttn-blue" ng-click="toggleKeyContent('isOpenCountryBACdata_lg')">
+                                <button class="c-bttn c-bttn-combo c-bttn-blue" ng-click="toggleKeyContent('isOpenCountryBACdata_lg')" ng-if="!ctrlVars.isOpenCountryBACdata_lg">
                                     <div class="c-circle-icon-box">
                                         <i class="c-ico icon-login"></i>
                                     </div>
                                     <span>LEARN MORE</span>
                                 </button>
                                 <!-- #endregion Learn more button -->
+                                <!-- #region Close more button -->
+                                <button class="c-bttn c-bttn-combo c-bttn-blue" ng-click="toggleKeyContent('isOpenCountryBACdata_lg')" ng-if="ctrlVars.isOpenCountryBACdata_lg">
+                                    <div class="c-circle-icon-box">
+                                        <i class="c-ico icon-close"></i>
+                                    </div>
+                                    <span>Close country profile</span>
+                                </button>
+                                <!-- #endregion Close more button -->
                                 <!-- #region Download section -->
                                 <a class="c-bttn c-bttn-combo c-bttn-blue" ng-href="{{selectedCountry.sectionPdfUrl}}">
                                     <div class="c-circle-icon-box">
@@ -213,14 +223,18 @@
                     <!-- #region Right content -->
                     <div class="c-cell c-has-right-content c-col-1-5-lg">
                         <!-- #region Graph -->
-                        <div class="c-svg-graph-wrap">
-                            <p>Graph:<br /><br />Internet Penetration in Kazakhstan – 2000 to 2014</p>
-                        </div>
+                        <a class="swipebox" ng-href="Content/images/photos-and-graphic/{{dataBindStatement.img}}" title="{{dataBindStatement.title}}">
+                            <img ng-src="Content/images/photos-and-graphic/{{dataBindStatement.imgThumb}}" alt="{{dataBindStatement.title}}">
+                        </a>
+                        <!--<img src="Content/images/belarus-266x150.jpg" alt="Statement Cover Image" id="imagelightbox">-->
+                        <!--<a href="Content/images/belarus-266x150.jpg" data-imagelightbox="c" id="imagelightbox" class="c-statement-cover-image-wrapper">
+                            <img src="Content/images/belarus-266x150.jpg" alt="Statement Cover Image">
+                        </a>-->
                         <!-- #endregion Graph -->
                         <!-- #region Statement text -->
-                        <h5 class="c-24-700">Statement</h5>
-                        <p class="c-18-400">“Since its establishment, the hub has become a recognized multi-institutional platform for the incessant exchange of experience and knowledge in the field of civil service, aimed at stimulating the transformation of civil service in the region through capacity building and dissemination of innovative approaches in the field of civil service”</p>
-                        <p class="c-11-400">Mr. Rolf Alter, OECD Director for Public Governance and Territorial Development at the ‘Partnership for Civil Service Excellence’ conference</p>
+                        <h5 class="c-24-700" ng-bind-html="dataBindStatement.title">Statement</h5>
+                        <p class="c-18-400" ng-bind-html="dataBindStatement.bodyText">“Since its establishment, the hub has become a recognized multi-institutional platform for the incessant exchange of experience and knowledge in the field of civil service, aimed at stimulating the transformation of civil service in the region through capacity building and dissemination of innovative approaches in the field of civil service”</p>
+                        <p class="c-11-400" ng-bind-html="dataBindStatement.signatureText">Mr. Rolf Alter, OECD Director for Public Governance and Territorial Development at the ‘Partnership for Civil Service Excellence’ conference</p>
                         <!-- #endregion Statement text -->
                     </div>
                     <!-- #endregion Right content -->
@@ -583,13 +597,21 @@
                     <!-- #region Buttons -->
                     <div class="c-buttons-wrap">
                         <!-- #region Learn more button -->
-                        <button class="c-bttn c-bttn-combo c-ng-bttn-focus" ng-click="changeFocusAreaData(0)">
+                        <button class="c-bttn c-bttn-combo c-ng-bttn-focus" ng-click="toggleFocusAreaVisibility(0)" ng-hide="ctrlVars.isOpenCountryOKWdata && currentFocusAreaIndex==0">
                             <div class="c-circle-icon-box">
                                 <i class="c-ico icon-login"></i>
                             </div>
                             <span>LEARN MORE</span>
                         </button>
                         <!-- #endregion Learn more button -->
+                        <!-- #region Close more button -->
+                        <button class="c-bttn c-bttn-combo" ng-click="toggleFocusAreaVisibility(0)" ng-show="ctrlVars.isOpenCountryOKWdata && currentFocusAreaIndex==0">
+                            <div class="c-circle-icon-box">
+                                <i class="c-ico icon-close"></i>
+                            </div>
+                            <span>Close Focus Area</span>
+                        </button>
+                        <!-- #endregion Close more button -->
                         <!-- #region Download section -->
                         <a class="c-bttn c-bttn-combo" ng-href="{{focusData[0].sectionPdfUrl}}">
                             <div class="c-circle-icon-box">
@@ -613,13 +635,21 @@
                     <!-- #region Buttons -->
                     <div class="c-buttons-wrap">
                         <!-- #region Learn more button -->
-                        <button class="c-bttn c-bttn-combo c-ng-bttn-focus" ng-click="changeFocusAreaData(1)">
+                        <button class="c-bttn c-bttn-combo c-ng-bttn-focus" ng-click="toggleFocusAreaVisibility(1)" ng-hide="ctrlVars.isOpenCountryOKWdata && currentFocusAreaIndex==1">
                             <div class="c-circle-icon-box">
                                 <i class="c-ico icon-login"></i>
                             </div>
                             <span>LEARN MORE</span>
                         </button>
                         <!-- #endregion Learn more button -->
+                        <!-- #region Close more button -->
+                        <button class="c-bttn c-bttn-combo" ng-click="toggleFocusAreaVisibility(1)" ng-show="ctrlVars.isOpenCountryOKWdata && currentFocusAreaIndex==1">
+                            <div class="c-circle-icon-box">
+                                <i class="c-ico icon-close"></i>
+                            </div>
+                            <span>Close Focus Area</span>
+                        </button>
+                        <!-- #endregion Close more button -->
                         <!-- #region Download section -->
                         <a class="c-bttn c-bttn-combo" ng-href="{{focusData[1].sectionPdfUrl}}">
                             <div class="c-circle-icon-box">
@@ -643,13 +673,21 @@
                     <!-- #region Buttons -->
                     <div class="c-buttons-wrap">
                         <!-- #region Learn more button -->
-                        <button class="c-bttn c-bttn-combo c-ng-bttn-focus" ng-click="changeFocusAreaData(2)">
+                        <button class="c-bttn c-bttn-combo c-ng-bttn-focus" ng-click="toggleFocusAreaVisibility(2)" ng-hide="ctrlVars.isOpenCountryOKWdata && currentFocusAreaIndex==2">
                             <div class="c-circle-icon-box">
                                 <i class="c-ico icon-login"></i>
                             </div>
                             <span>LEARN MORE</span>
                         </button>
                         <!-- #endregion Learn more button -->
+                        <!-- #region Close more button -->
+                        <button class="c-bttn c-bttn-combo" ng-click="toggleFocusAreaVisibility(2)" ng-show="ctrlVars.isOpenCountryOKWdata && currentFocusAreaIndex==2">
+                            <div class="c-circle-icon-box">
+                                <i class="c-ico icon-close"></i>
+                            </div>
+                            <span>Close Focus Area</span>
+                        </button>
+                        <!-- #endregion Close more button -->
                         <!-- #region Download section -->
                         <a class="c-bttn c-bttn-combo" ng-href="{{focusData[1].sectionPdfUrl}}">
                             <div class="c-circle-icon-box">
@@ -673,13 +711,21 @@
                     <!-- #region Buttons -->
                     <div class="c-buttons-wrap">
                         <!-- #region Learn more button -->
-                        <button class="c-bttn c-bttn-combo c-ng-bttn-focus" ng-click="changeFocusAreaData(3)">
+                        <button class="c-bttn c-bttn-combo c-ng-bttn-focus" ng-click="toggleFocusAreaVisibility(3)" ng-hide="ctrlVars.isOpenCountryOKWdata && currentFocusAreaIndex==3">
                             <div class="c-circle-icon-box">
                                 <i class="c-ico icon-login"></i>
                             </div>
                             <span>LEARN MORE</span>
                         </button>
                         <!-- #endregion Learn more button -->
+                        <!-- #region Close more button -->
+                        <button class="c-bttn c-bttn-combo" ng-click="toggleFocusAreaVisibility(3)" ng-show="ctrlVars.isOpenCountryOKWdata && currentFocusAreaIndex==3">
+                            <div class="c-circle-icon-box">
+                                <i class="c-ico icon-close"></i>
+                            </div>
+                            <span>Close Focus Area</span>
+                        </button>
+                        <!-- #endregion Close more button -->
                         <!-- #region Download section -->
                         <a class="c-bttn c-bttn-combo" ng-href="{{focusData[3].sectionPdfUrl}}">
                             <div class="c-circle-icon-box">
@@ -807,7 +853,7 @@
 </div>
 <!-- #endregion Expandable content -->
 <!-- #region Facts and figures -->
-<div class="c-wide-wrap c-gray-background">
+<div id="svg-graph-master-wrap-first" class="c-wide-wrap">
     <div class="c-container">
         <!-- #region Title -->
         <div class="c-section-title">
@@ -897,7 +943,7 @@
 </div>
 <!-- #endregion Regional context -->
 <!-- #region Facts and figures -->
-<div class="c-wide-wrap c-peach-light-background">
+<div id="svg-graph-master-wrap-second" class="c-wide-wrap">
     <div class="c-container">
         <!-- #region Title -->
         <div class="c-section-title">
