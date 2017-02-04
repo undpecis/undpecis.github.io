@@ -202,6 +202,8 @@ h1, h2, h3, h4, h5, h6, p, a { margin:0; padding:0;}
 .c-w-1perc{ width:1%;}
 .c-w-50perc{ width:50%;}
 .c-w-100{width:100%}
+.c-max-h-420{display:inline-block; max-height:420px !important; overflow:hidden !important;}
+.c-max-h-700{display:inline-block; max-height:700px !important; overflow:hidden !important;}
 /* #endregion Dimensions */
 /* #region Mixins */
 .mx-set-as-border-box(){
@@ -374,6 +376,67 @@ h1, h2, h3, h4, h5, h6, p, a { margin:0; padding:0;}
             left:-3px;
         }
     }
+}
+.c-read-more-feather-button{
+    display:block;
+    position:absolute;
+    bottom:0;
+    width:100%;
+    height:80px;
+    color:@col-white;
+    text-align:center;
+    vertical-align:middle;
+    cursor:pointer;
+    z-index:999;
+    //
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#383839+0,383839+30,383839+74,383839+100,383839+100&0+0,0+30,1+74,1+100 */
+    background: -moz-linear-gradient(top,  rgba(56,56,57,0) 0%, rgba(56,56,57,0) 30%, rgba(56,56,57,1) 74%, rgba(56,56,57,1) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top,  rgba(56,56,57,0) 0%,rgba(56,56,57,0) 30%,rgba(56,56,57,1) 74%,rgba(56,56,57,1) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom,  rgba(56,56,57,0) 0%,rgba(56,56,57,0) 30%,rgba(56,56,57,1) 74%,rgba(56,56,57,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00383839', endColorstr='#383839',GradientType=0 ); /* IE6-9 */
+    //
+    span{
+        font-size:12px;
+        display:inline-block;
+        padding:3px 20px;
+        background-color:@col-focus-stripe-blue;
+        color:@col-white;
+        border-radius:2px;
+        position:absolute;
+        top:50%;
+        left:50%;
+        .mx-transform-translate(-50%, -50%);
+        .c-ico{
+            position:relative;
+            top:2px;
+        }
+    }
+    //hover
+    &:hover{
+        span{
+            background-color:darken(@col-focus-stripe-blue, 5);
+            color:@col-white;
+        }
+    }
+    ///blue
+    &.c-blue-version{
+        /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#00699e+0,00699e+30,00699e+74,383839+100,00699e+100&0+0,0+30,1+74,1+100 */
+        background: -moz-linear-gradient(top,  rgba(0,105,158,0) 0%, rgba(0,105,158,0) 30%, rgba(0,105,158,1) 74%, rgba(0,105,158,1) 100%); /* FF3.6-15 */
+        background: -webkit-linear-gradient(top,  rgba(0,105,158,0) 0%,rgba(0,105,158,0) 30%,rgba(0,105,158,1) 74%,rgba(0,105,158,1) 100%); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(to bottom,  rgba(0,105,158,0) 0%,rgba(0,105,158,0) 30%,rgba(0,105,158,1) 74%,rgba(0,105,158,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0000699e', endColorstr='#00699e',GradientType=0 ); /* IE6-9 */
+        span{
+            background-color:@col-focus-stripe-blue;
+        }
+        //hover
+        &:hover{
+            span{
+                background-color:darken(@col-focus-stripe-blue, 5);
+                color:@col-white;
+            }
+        }
+    }
+
 }
 /* #endregion Buttons */
 /* #region Lists links */
@@ -1908,6 +1971,7 @@ h1, h2, h3, h4, h5, h6, p, a { margin:0; padding:0;}
                             padding-right:0;
                         }
                         &.c-has-right-content{
+                            height:420px;
                             /*.c-svg-graph-wrap{
                                 .mx-set-as-border-box();
                                 display:block;
@@ -1925,9 +1989,26 @@ h1, h2, h3, h4, h5, h6, p, a { margin:0; padding:0;}
                             .c-18-400{
                                 margin-bottom:20px;
                             }
+                            &.c-statement-right-content{
+
+                            }
                         }
                         &.c-has-text{
+                            position:relative;
                             //padding-bottom:200px;
+                            #cid-expandable-okw-wrapper, #cid-expandable-bac-wrapper{
+                                display:block;
+                                position:relative;
+                                width:100%;
+                                height:100%;
+                                #cid-binded-okw-text, #cid-binded-bac-text{
+                                    display:block;
+                                    position:relative;
+                                    width:100%;
+                                    //height:100%;
+                                    padding-bottom:80px;
+                                }
+                            }
                         }
                         p{
                             margin-bottom:1em;

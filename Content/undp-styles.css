@@ -180,6 +180,16 @@ a {
 .c-w-100 {
   width: 100%;
 }
+.c-max-h-420 {
+  display: inline-block;
+  max-height: 420px !important;
+  overflow: hidden !important;
+}
+.c-max-h-700 {
+  display: inline-block;
+  max-height: 700px !important;
+  overflow: hidden !important;
+}
 /* #endregion Dimensions */
 /* #region Mixins */
 /* #endregion Mixins */
@@ -339,6 +349,67 @@ a {
 .c-circle-icon-box .c-ico.icon-login {
   position: relative;
   left: -3px;
+}
+.c-read-more-feather-button {
+  display: block;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 80px;
+  color: #fff;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  z-index: 999;
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#383839+0,383839+30,383839+74,383839+100,383839+100&0+0,0+30,1+74,1+100 */
+  background: -moz-linear-gradient(top, rgba(56, 56, 57, 0) 0%, rgba(56, 56, 57, 0) 30%, #383839 74%, #383839 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, rgba(56, 56, 57, 0) 0%, rgba(56, 56, 57, 0) 30%, #383839 74%, #383839 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, rgba(56, 56, 57, 0) 0%, rgba(56, 56, 57, 0) 30%, #383839 74%, #383839 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00383839', endColorstr='#383839', GradientType=0);
+  /* IE6-9 */
+}
+.c-read-more-feather-button span {
+  font-size: 12px;
+  display: inline-block;
+  padding: 3px 20px;
+  background-color: #00699e;
+  color: #fff;
+  border-radius: 2px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+.c-read-more-feather-button span .c-ico {
+  position: relative;
+  top: 2px;
+}
+.c-read-more-feather-button:hover span {
+  background-color: #005885;
+  color: #fff;
+}
+.c-read-more-feather-button.c-blue-version {
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#00699e+0,00699e+30,00699e+74,383839+100,00699e+100&0+0,0+30,1+74,1+100 */
+  background: -moz-linear-gradient(top, rgba(0, 105, 158, 0) 0%, rgba(0, 105, 158, 0) 30%, #00699e 74%, #00699e 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, rgba(0, 105, 158, 0) 0%, rgba(0, 105, 158, 0) 30%, #00699e 74%, #00699e 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, rgba(0, 105, 158, 0) 0%, rgba(0, 105, 158, 0) 30%, #00699e 74%, #00699e 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0000699e', endColorstr='#00699e', GradientType=0);
+  /* IE6-9 */
+}
+.c-read-more-feather-button.c-blue-version span {
+  background-color: #00699e;
+}
+.c-read-more-feather-button.c-blue-version:hover span {
+  background-color: #005885;
+  color: #fff;
 }
 /* #endregion Buttons */
 /* #region Lists links */
@@ -1664,6 +1735,7 @@ a {
     padding-right: 0;
   }
   .c-expandable-content-wrap .c-content-wrap.c-show-when-lg .c-table .c-cell.c-has-right-content {
+    height: 420px;
     /*.c-svg-graph-wrap{
                                 .mx-set-as-border-box();
                                 display:block;
@@ -1681,6 +1753,25 @@ a {
   }
   .c-expandable-content-wrap .c-content-wrap.c-show-when-lg .c-table .c-cell.c-has-right-content .c-18-400 {
     margin-bottom: 20px;
+  }
+  .c-expandable-content-wrap .c-content-wrap.c-show-when-lg .c-table .c-cell.c-has-text {
+    position: relative;
+  }
+  .c-expandable-content-wrap .c-content-wrap.c-show-when-lg .c-table .c-cell.c-has-text #cid-expandable-okw-wrapper,
+  .c-expandable-content-wrap .c-content-wrap.c-show-when-lg .c-table .c-cell.c-has-text #cid-expandable-bac-wrapper {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+  .c-expandable-content-wrap .c-content-wrap.c-show-when-lg .c-table .c-cell.c-has-text #cid-expandable-okw-wrapper #cid-binded-okw-text,
+  .c-expandable-content-wrap .c-content-wrap.c-show-when-lg .c-table .c-cell.c-has-text #cid-expandable-bac-wrapper #cid-binded-okw-text,
+  .c-expandable-content-wrap .c-content-wrap.c-show-when-lg .c-table .c-cell.c-has-text #cid-expandable-okw-wrapper #cid-binded-bac-text,
+  .c-expandable-content-wrap .c-content-wrap.c-show-when-lg .c-table .c-cell.c-has-text #cid-expandable-bac-wrapper #cid-binded-bac-text {
+    display: block;
+    position: relative;
+    width: 100%;
+    padding-bottom: 80px;
   }
   .c-expandable-content-wrap .c-content-wrap.c-show-when-lg .c-table .c-cell p {
     margin-bottom: 1em;

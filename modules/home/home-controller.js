@@ -54,8 +54,8 @@ angular.module('Home')
                 for (var i = 0; i < siteData.countries.length; i++) {
                     if (siteData.countries[i].id == countryOfInterestId) {
                         $scope.selectedCountry = siteData.countries[i];
-                        $scope.dataBindBAC = $scope.selectedCountry.backgroundData;
-                        $scope.dataBindStatement = $scope.selectedCountry.statement;
+                        $scope.ctrlVars.dataBindBAC = $scope.selectedCountry.backgroundData;
+                        $scope.ctrlVars.dataBindStatement = $scope.selectedCountry.statement;
                         //console.log('$scope.selectedCountry: ' + $scope.selectedCountry.keyResults[2].text);
                         $scope.ctrlVars.isInterestCountryClicked = true;
                         $scope.$apply();
@@ -64,9 +64,6 @@ angular.module('Home')
             }
             /* #endregion On country map click */
             /* #region Change Data displayed for 'Background', 'Assistance and Impact' & 'Challenges, Lessons Learned and Way Forward' */
-            $scope.dataBindBAC = {};
-            $scope.dataBindStatement = {};
-            $scope.currentBACindex = 0;
             $scope.enumBAC = {
                 backgroundData: 0,
                 assistanceData: 1,
@@ -74,20 +71,48 @@ angular.module('Home')
             }
             $scope.changeCountryBACData = function (buttonIndex) {
                 if (buttonIndex == $scope.enumBAC.backgroundData) {
-                    $scope.dataBindBAC = $scope.selectedCountry.backgroundData;
-                    $scope.dataBindStatement = $scope.selectedCountry.statement;
-                    $scope.currentBACindex = buttonIndex;
+                    $scope.ctrlVars.dataBindBAC = $scope.selectedCountry.backgroundData;
+                    $scope.ctrlVars.dataBindStatement = $scope.selectedCountry.statement;
+                    $scope.ctrlVars.currentBACindex = buttonIndex;
+                    /* #region Check if text exceeded height */
+                    checkHeightOfTextBAC();
+                    /* #endregion Check if text exceeded height */
                 } else if (buttonIndex == $scope.enumBAC.assistanceData) {
-                    $scope.dataBindBAC = $scope.selectedCountry.assistanceData;
-                    $scope.dataBindStatement = $scope.selectedCountry.statement;
-                    $scope.currentBACindex = buttonIndex;
+                    $scope.ctrlVars.dataBindBAC = $scope.selectedCountry.assistanceData;
+                    $scope.ctrlVars.dataBindStatement = $scope.selectedCountry.statement;
+                    $scope.ctrlVars.currentBACindex = buttonIndex;
+                    /* #region Check if text exceeded height */
+                    checkHeightOfTextBAC();
+                    /* #endregion Check if text exceeded height */
                 } else if (buttonIndex == $scope.enumBAC.challengesData) {
-                    $scope.dataBindBAC = $scope.selectedCountry.challengesData;
-                    $scope.dataBindStatement = $scope.selectedCountry.statement;
-                    $scope.currentBACindex = buttonIndex;
+                    $scope.ctrlVars.dataBindBAC = $scope.selectedCountry.challengesData;
+                    $scope.ctrlVars.dataBindStatement = $scope.selectedCountry.statement;
+                    $scope.ctrlVars.currentBACindex = buttonIndex;
+                    /* #region Check if text exceeded height */
+                    checkHeightOfTextBAC();
+                    /* #endregion Check if text exceeded height */
                 }
             }
             /* #endregion Change Data displayed for 'Background', 'Assistance and Impact' & 'Challenges, Lessons Learned and Way Forward' */
+            /* #region Check if text exceeded height */
+            function checkHeightOfTextBAC() {
+                var checkForElementInterval = setInterval(getTextBoxElement, 10);
+                function getTextBoxElement() {
+                    var htmlElement = document.getElementById('cid-expandable-bac-wrapper');
+                    if (htmlElement != null && htmlElement != undefined) {
+                        clearInterval(checkForElementInterval);
+                        var textOuterBoxHeight = document.getElementById('cid-expandable-bac-wrapper').offsetHeight;
+                        var textInnerBoxHeight = document.getElementById('cid-binded-bac-text').offsetHeight;
+                        if (textInnerBoxHeight >= textOuterBoxHeight) {
+                            $scope.ctrlVars.dataBindBAC.isLargeText = true;
+                            $scope.$apply();
+                        } else {
+                            $scope.ctrlVars.dataBindBAC.isLargeText = false;
+                        }
+                    }
+                }
+            }
+            /* #endregion Check if text exceeded height */
             /* #endregion COUNTRIES RELATED CODE */
 
             /* #region Content Visibility */
@@ -96,10 +121,26 @@ angular.module('Home')
                 //Key Result (Baskcground, Assistance.. Challanges..) = BAC
                 isOpenCountryBACdata_lg: false,
                 isOpenCountryBACdata_xs: false,
+                //keeps data for BAC text
+                dataBindBAC: {},
+                dataBindStatement: {},
+                currentBACindex: 0,
                 //Focus Areas (Overview, Key trends, What we..) = OKW
                 isOpenCountryOKWdata: false,
                 //keeps visibility for Infographics SVG
-                areInfographicsReady: false
+                areInfographicsReady: false,
+                //keeps data of all Focus Areas
+                focusData: null,
+                //object with currently selected Focus Area data
+                selectedFocusAreaData: {},
+                //object with Overview, Key trends, What we do
+                dataBindOKW: {},
+                //keeep index of currently visible OKW text
+                currentOKWindex: 0,
+                //keeps index of currently clicked Focus Area button
+                currentFocusAreaIndex: null,
+                //keeps data for modal screen (Gender Equality, Peace, ...)
+                genderPeaceDataToShow: null
             }
             $scope.toggleKeyContent = function (callerName) {
                 if (callerName == 'closeInterestCountry') {
@@ -117,31 +158,26 @@ angular.module('Home')
                 }
             }
             /* #endregion Content Visibility */
+            /* #region Toggle OKW full text visibility (see less see more) */
+            $scope.toggleBACtextExpanded = function () {
+                $scope.ctrlVars.dataBindBAC.isTextExpanded = !$scope.ctrlVars.dataBindBAC.isTextExpanded;
+            }
+            /* #endregion Toggle OKW full text visibility (see less see more) */
 
             /* #region FOCUS AREAS RELATED CODE */
-            //keeps data of all Focus Areas
-            $scope.focusData = siteData.focusAreas;
-            //object with currently selected Focus Area data
-            $scope.selectedFocusArea = {};
-            //object with Overview, Key trends, What we do
-            $scope.dataBindOKW = {};
-            //keeep index of currently visible OKW text
-            $scope.currentOKWindex = 0;
-            //keeps index of currently clicked Focus Area button
-            $scope.currentFocusAreaIndex = null;
             //keeps visibility status of clicked Focus Area
             $scope.toggleFocusAreaVisibility = function (focusAreaIndex) {
                 //find index match of Focus Area button clicked
-                for (var i = 0; i < $scope.focusData.length; i++) {
+                for (var i = 0; i < $scope.ctrlVars.focusData.length; i++) {
                     //if index matched
                     if (i == focusAreaIndex) {
                         //if this button not already opened
-                        if ($scope.focusData[i].activeInView == false) {
-                            $scope.focusData[i].activeInView = true;
-                            $scope.selectedFocusArea = $scope.focusData[i];
-                            $scope.changeCountryOKWData(0);
+                        if ($scope.ctrlVars.focusData[i].activeInView == false) {
+                            $scope.ctrlVars.focusData[i].activeInView = true;
+                            $scope.ctrlVars.selectedFocusAreaData = $scope.ctrlVars.focusData[i];                            
                             $scope.ctrlVars.isOpenCountryOKWdata = true;
-                            $scope.currentFocusAreaIndex = focusAreaIndex;
+                            $scope.ctrlVars.currentFocusAreaIndex = focusAreaIndex;
+                            $scope.changeCountryOKWData(0);
                             if (isLargeResolution == false) {
                                 $timeout(function () {
                                     $location.hash('cid-anchor-OKW-content');
@@ -151,12 +187,12 @@ angular.module('Home')
                         //if button is already open then close everything
                         } else {
                             $scope.ctrlVars.isOpenCountryOKWdata = false;
-                            $scope.currentFocusAreaIndex = null;
-                            $scope.focusData[i].activeInView = false;
+                            $scope.ctrlVars.currentFocusAreaIndex = null;
+                            $scope.ctrlVars.focusData[i].activeInView = false;
                         }
                     //if index not matched we will set status to false for all other buttons
                     } else {
-                        $scope.focusData[i].activeInView = false;
+                        $scope.ctrlVars.focusData[i].activeInView = false;
                     }
                 }
             }
@@ -165,43 +201,73 @@ angular.module('Home')
                 keyTrendsData: 1,
                 whatWeDoData: 2
             }
+            //character count maximum
             $scope.changeCountryOKWData = function (buttonIndex) {
-                console.log('changeCountryOKWData: ' + buttonIndex);
                 if (buttonIndex == $scope.enumOKW.overviewData) {
-                    $scope.dataBindOKW = $scope.selectedFocusArea.overviewData;
-                    $scope.currentOKWindex = buttonIndex;
+                    $scope.ctrlVars.dataBindOKW = $scope.ctrlVars.selectedFocusAreaData.overviewData;                    
+                    $scope.ctrlVars.currentOKWindex = buttonIndex;
+                    /* #region Check if text exceeded height */
+                    checkHeightOfTextOKW();
+                    /* #endregion Check if text exceeded height */
                 } else if (buttonIndex == $scope.enumOKW.keyTrendsData) {
-                    $scope.dataBindOKW = $scope.selectedFocusArea.keyTrendsData;
-                    $scope.currentOKWindex = buttonIndex;
+                    $scope.ctrlVars.dataBindOKW = $scope.ctrlVars.selectedFocusAreaData.keyTrendsData;
+                    $scope.ctrlVars.currentOKWindex = buttonIndex;
+                    /* #region Check if text exceeded height */
+                    checkHeightOfTextOKW();
+                    /* #endregion Check if text exceeded height */
                 } else if (buttonIndex == $scope.enumOKW.whatWeDoData) {
-                    $scope.dataBindOKW = $scope.selectedFocusArea.whatWeDoData;
-                    $scope.currentOKWindex = buttonIndex;
+                    $scope.ctrlVars.dataBindOKW = $scope.ctrlVars.selectedFocusAreaData.whatWeDoData;
+                    $scope.ctrlVars.currentOKWindex = buttonIndex;
+                    /* #region Check if text exceeded height */
+                    checkHeightOfTextOKW();
+                    /* #endregion Check if text exceeded height */
                 }
             }
+            /* #region Check if text exceeded height */
+            function checkHeightOfTextOKW() {
+                var checkForElementInterval = setInterval(getTextBoxElement, 10);
+                function getTextBoxElement() {
+                    var htmlElement = document.getElementById('cid-expandable-okw-wrapper');
+                    if (htmlElement != null && htmlElement != undefined) {
+                        clearInterval(checkForElementInterval);
+                        var textOuterBoxHeight = document.getElementById('cid-expandable-okw-wrapper').offsetHeight;
+                        var textInnerBoxHeight = document.getElementById('cid-binded-okw-text').offsetHeight;
+                        if (textInnerBoxHeight >= textOuterBoxHeight) {
+                            $scope.ctrlVars.dataBindOKW.isLargeText = true;
+                            $scope.$apply();
+                        } else {
+                            $scope.ctrlVars.dataBindOKW.isLargeText = false;
+                        }
+                    }
+                }
+            }
+            /* #endregion Check if text exceeded height */
+
+            /* #region Toggle OKW full text visibility (see less see more) */
+            $scope.toggleOKWtextExpanded = function () {                
+                $scope.ctrlVars.dataBindOKW.isTextExpanded = !$scope.ctrlVars.dataBindOKW.isTextExpanded;
+            }
+            /* #endregion Toggle OKW full text visibility (see less see more) */
 
             /* #region Modal for Gender Equality + Peace, Justice and Strong Institutions */
-            $scope.genderPeaceDataToShow = null;
             $scope.openGenderPeaceModal = function (buttonName) {
                 if (buttonName == 'gender') {
                     for (var i = 0; i < siteData.genderPeace.genderEquality.length; i++) {
-                        if (i == $scope.currentFocusAreaIndex) {
-                            console.log('gender + $scope.currentFocusAreaIndex: ' + i);
-                            $scope.genderPeaceDataToShow = siteData.genderPeace.genderEquality[i].modalText;
+                        if (i == $scope.ctrlVars.currentFocusAreaIndex) {
+                            $scope.ctrlVars.genderPeaceDataToShow = siteData.genderPeace.genderEquality[i].modalText;
                             openModalInstance();
                         }
                     }
                 } else if (buttonName == 'peace') {
                     for (var i = 0; i < siteData.genderPeace.peaceAndJustice.length; i++) {
-                        if (i == $scope.currentFocusAreaIndex) {
-                            console.log('peace + $scope.currentFocusAreaIndex: ' + i);
-                            $scope.genderPeaceDataToShow = siteData.genderPeace.peaceAndJustice[i].modalText;
+                        if (i == $scope.ctrlVars.currentFocusAreaIndex) {
+                            $scope.ctrlVars.genderPeaceDataToShow = siteData.genderPeace.peaceAndJustice[i].modalText;
                             openModalInstance();
                         }
                     }
                 }
             }
             function openModalInstance() {
-                console.log('open modal');
                 var modalInstance = $uibModal.open({
                     templateUrl: 'modules/home/views/modals/gender-peace-modal.html',
                     controller: 'ModalInstanceCtrl',
@@ -211,7 +277,7 @@ angular.module('Home')
                     resolve: {
                         passedData: function () {
                             return {
-                                text: $scope.genderPeaceDataToShow
+                                text: $scope.ctrlVars.genderPeaceDataToShow
                             }
                         }
                     }
@@ -224,6 +290,12 @@ angular.module('Home')
             }
             /* #endregion Modal for Gender Equality + Peace, Justice and Strong Institutions */
             /* #endregion FOCUS AREAS RELATED CODE */
+
+            activate();
+            function activate() {
+                //keeps data of all Focus Areas
+                $scope.ctrlVars.focusData = siteData.focusAreas;
+            }
         }
     ]
 );

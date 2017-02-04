@@ -201,30 +201,37 @@
                     <!-- #region Left content / Vertical navigation -->
                     <div class="c-cell c-has-vertical-nav c-col-1-5-lg">
                         <ul class="c-vertical-list c-expandable-nav c-blue-background">
-                            <li ng-click="changeCountryBACData(0)" ng-class="{'c-active' : currentBACindex == 0}"><a>Background</a></li>
-                            <li ng-click="changeCountryBACData(1)" ng-class="{'c-active' : currentBACindex == 1}"><a>Assistance and Impact</a></li>
-                            <li ng-click="changeCountryBACData(2)" ng-class="{'c-active' : currentBACindex == 2}"><a>Challenges, Lessons Learned and Way Forward</a></li>
+                            <li ng-click="changeCountryBACData(0)" ng-class="{'c-active' : ctrlVars.currentBACindex == 0}"><a>Background</a></li>
+                            <li ng-click="changeCountryBACData(1)" ng-class="{'c-active' : ctrlVars.currentBACindex == 1}"><a>Assistance and Impact</a></li>
+                            <li ng-click="changeCountryBACData(2)" ng-class="{'c-active' : ctrlVars.currentBACindex == 2}"><a>Challenges, Lessons Learned and Way Forward</a></li>
                         </ul>
                     </div>
                     <!-- #endregion Left content / Vertical navigation -->
                     <!-- #region Middle text -->
-                    <div class="c-cell c-has-text c-col-3-5-lg c-p-bottom-90">
-                        <span ng-bind-html="dataBindBAC.text"></span>
-                        <!-- #region Download section -->
-                        <button class="c-bttn c-bttn-combo c-bttn-blue c-m-top-40">
-                            <div class="c-circle-icon-box">
-                                <i class="c-ico icon-cloud-download"></i>
+                    <div class="c-cell c-has-text c-col-3-5-lg">
+                        <div id="cid-expandable-bac-wrapper" ng-class="{'c-max-h-700' : !ctrlVars.dataBindBAC.isTextExpanded}">
+                            <div id="cid-binded-bac-text" ng-bind-html="ctrlVars.dataBindBAC.text">
                             </div>
-                            <span>DOWNLOAD country report</span>
-                        </button>
-                        <!-- #endregion Download section -->
+                            <!-- #region Download section -->
+                            <!--<button class="c-bttn c-bttn-combo c-bttn-blue c-m-top-40">
+                                <div class="c-circle-icon-box">
+                                    <i class="c-ico icon-cloud-download"></i>
+                                </div>
+                                <span>DOWNLOAD country report</span>
+                            </button>-->
+                            <!-- #endregion Download section -->
+                        </div>
+                        <div class="c-read-more-feather-button c-blue-version" ng-click="toggleBACtextExpanded()" ng-if="ctrlVars.dataBindBAC.isLargeText">
+                            <span ng-if="!ctrlVars.dataBindBAC.isTextExpanded">Show more&nbsp;&nbsp;<i class="c-ico icon-arrow-down"></i></span>
+                            <span ng-if="ctrlVars.dataBindBAC.isTextExpanded">Show less&nbsp;&nbsp;<i class="c-ico icon-arrow-up"></i></span>
+                        </div>
                     </div>
                     <!-- #endregion Middle text -->
                     <!-- #region Right content -->
-                    <div class="c-cell c-has-right-content c-col-1-5-lg">
+                    <div class="c-cell c-has-right-content c-max-h-700 c-col-1-5-lg">
                         <!-- #region Graph -->
-                        <a class="swipebox" ng-href="Content/images/photos-and-graphic/{{dataBindStatement.img}}" title="{{dataBindStatement.title}}">
-                            <img ng-src="Content/images/photos-and-graphic/{{dataBindStatement.imgThumb}}" alt="{{dataBindStatement.title}}">
+                        <a class="swipebox" ng-href="Content/images/photos-and-graphic/{{ctrlVars.dataBindStatement.img}}" title="{{ctrlVars.dataBindStatement.title}}">
+                            <img ng-src="Content/images/photos-and-graphic/{{ctrlVars.dataBindStatement.imgThumb}}" alt="{{ctrlVars.dataBindStatement.title}}">
                         </a>
                         <!--<img src="Content/images/belarus-266x150.jpg" alt="Statement Cover Image" id="imagelightbox">-->
                         <!--<a href="Content/images/belarus-266x150.jpg" data-imagelightbox="c" id="imagelightbox" class="c-statement-cover-image-wrapper">
@@ -232,9 +239,9 @@
                         </a>-->
                         <!-- #endregion Graph -->
                         <!-- #region Statement text -->
-                        <h5 class="c-24-700" ng-bind-html="dataBindStatement.title">Statement</h5>
-                        <p class="c-18-400" ng-bind-html="dataBindStatement.bodyText">“Since its establishment, the hub has become a recognized multi-institutional platform for the incessant exchange of experience and knowledge in the field of civil service, aimed at stimulating the transformation of civil service in the region through capacity building and dissemination of innovative approaches in the field of civil service”</p>
-                        <p class="c-11-400" ng-bind-html="dataBindStatement.signatureText">Mr. Rolf Alter, OECD Director for Public Governance and Territorial Development at the ‘Partnership for Civil Service Excellence’ conference</p>
+                        <h5 class="c-24-700" ng-bind-html="ctrlVars.dataBindStatement.title">Statement</h5>
+                        <p class="c-18-400" ng-bind-html="ctrlVars.dataBindStatement.bodyText">“Since its establishment, the hub has become a recognized multi-institutional platform for the incessant exchange of experience and knowledge in the field of civil service, aimed at stimulating the transformation of civil service in the region through capacity building and dissemination of innovative approaches in the field of civil service”</p>
+                        <p class="c-11-400" ng-bind-html="ctrlVars.dataBindStatement.signatureText">Mr. Rolf Alter, OECD Director for Public Governance and Territorial Development at the ‘Partnership for Civil Service Excellence’ conference</p>
                         <!-- #endregion Statement text -->
                     </div>
                     <!-- #endregion Right content -->
@@ -589,15 +596,15 @@
                 <!-- #region First content -->
                 <div class="c-cell c-black-border">
                     <!-- #region Headline -->
-                    <h5 class="c-headline">{{focusData[0].title}}</h5>
+                    <h5 class="c-headline">{{ctrlVars.focusData[0].title}}</h5>
                     <!-- #endregion Headline -->
                     <!-- #region Text -->
-                    <p>{{focusData[0].shortIntroText}}</p>
+                    <p>{{ctrlVars.focusData[0].shortIntroText}}</p>
                     <!-- #endregion Text -->
                     <!-- #region Buttons -->
                     <div class="c-buttons-wrap">
                         <!-- #region Learn more button -->
-                        <button class="c-bttn c-bttn-combo c-ng-bttn-focus" ng-click="toggleFocusAreaVisibility(0)" ng-hide="ctrlVars.isOpenCountryOKWdata && currentFocusAreaIndex==0">
+                        <button class="c-bttn c-bttn-combo c-ng-bttn-focus" ng-click="toggleFocusAreaVisibility(0)" ng-hide="ctrlVars.isOpenCountryOKWdata && ctrlVars.currentFocusAreaIndex==0">
                             <div class="c-circle-icon-box">
                                 <i class="c-ico icon-login"></i>
                             </div>
@@ -605,7 +612,7 @@
                         </button>
                         <!-- #endregion Learn more button -->
                         <!-- #region Close more button -->
-                        <button class="c-bttn c-bttn-combo" ng-click="toggleFocusAreaVisibility(0)" ng-show="ctrlVars.isOpenCountryOKWdata && currentFocusAreaIndex==0">
+                        <button class="c-bttn c-bttn-combo" ng-click="toggleFocusAreaVisibility(0)" ng-show="ctrlVars.isOpenCountryOKWdata && ctrlVars.currentFocusAreaIndex==0">
                             <div class="c-circle-icon-box">
                                 <i class="c-ico icon-close"></i>
                             </div>
@@ -613,7 +620,7 @@
                         </button>
                         <!-- #endregion Close more button -->
                         <!-- #region Download section -->
-                        <a class="c-bttn c-bttn-combo" ng-href="{{focusData[0].sectionPdfUrl}}">
+                        <a class="c-bttn c-bttn-combo" ng-href="{{ctrlVars.focusData[0].sectionPdfUrl}}">
                             <div class="c-circle-icon-box">
                                 <i class="c-ico icon-cloud-download"></i>
                             </div>
@@ -627,15 +634,15 @@
                 <!-- #region Second content -->
                 <div class="c-cell c-red-border">
                     <!-- #region Headline -->
-                    <h5 class="c-headline">{{focusData[1].title}}</h5>
+                    <h5 class="c-headline">{{ctrlVars.focusData[1].title}}</h5>
                     <!-- #endregion Headline -->
                     <!-- #region Text -->
-                    <p>{{focusData[1].shortIntroText}}</p>
+                    <p>{{ctrlVars.focusData[1].shortIntroText}}</p>
                     <!-- #endregion Text -->
                     <!-- #region Buttons -->
                     <div class="c-buttons-wrap">
                         <!-- #region Learn more button -->
-                        <button class="c-bttn c-bttn-combo c-ng-bttn-focus" ng-click="toggleFocusAreaVisibility(1)" ng-hide="ctrlVars.isOpenCountryOKWdata && currentFocusAreaIndex==1">
+                        <button class="c-bttn c-bttn-combo c-ng-bttn-focus" ng-click="toggleFocusAreaVisibility(1)" ng-hide="ctrlVars.isOpenCountryOKWdata && ctrlVars.currentFocusAreaIndex==1">
                             <div class="c-circle-icon-box">
                                 <i class="c-ico icon-login"></i>
                             </div>
@@ -643,7 +650,7 @@
                         </button>
                         <!-- #endregion Learn more button -->
                         <!-- #region Close more button -->
-                        <button class="c-bttn c-bttn-combo" ng-click="toggleFocusAreaVisibility(1)" ng-show="ctrlVars.isOpenCountryOKWdata && currentFocusAreaIndex==1">
+                        <button class="c-bttn c-bttn-combo" ng-click="toggleFocusAreaVisibility(1)" ng-show="ctrlVars.isOpenCountryOKWdata && ctrlVars.currentFocusAreaIndex==1">
                             <div class="c-circle-icon-box">
                                 <i class="c-ico icon-close"></i>
                             </div>
@@ -651,7 +658,7 @@
                         </button>
                         <!-- #endregion Close more button -->
                         <!-- #region Download section -->
-                        <a class="c-bttn c-bttn-combo" ng-href="{{focusData[1].sectionPdfUrl}}">
+                        <a class="c-bttn c-bttn-combo" ng-href="{{ctrlVars.focusData[1].sectionPdfUrl}}">
                             <div class="c-circle-icon-box">
                                 <i class="c-ico icon-cloud-download"></i>
                             </div>
@@ -665,15 +672,15 @@
                 <!-- #region Third content -->
                 <div class="c-cell c-blue-border">
                     <!-- #region Headline -->
-                    <h5 class="c-headline">{{focusData[2].title}}</h5>
+                    <h5 class="c-headline">{{ctrlVars.focusData[2].title}}</h5>
                     <!-- #endregion Headline -->
                     <!-- #region Text -->
-                    <p>{{focusData[2].shortIntroText}}</p>
+                    <p>{{ctrlVars.focusData[2].shortIntroText}}</p>
                     <!-- #endregion Text -->
                     <!-- #region Buttons -->
                     <div class="c-buttons-wrap">
                         <!-- #region Learn more button -->
-                        <button class="c-bttn c-bttn-combo c-ng-bttn-focus" ng-click="toggleFocusAreaVisibility(2)" ng-hide="ctrlVars.isOpenCountryOKWdata && currentFocusAreaIndex==2">
+                        <button class="c-bttn c-bttn-combo c-ng-bttn-focus" ng-click="toggleFocusAreaVisibility(2)" ng-hide="ctrlVars.isOpenCountryOKWdata && ctrlVars.currentFocusAreaIndex==2">
                             <div class="c-circle-icon-box">
                                 <i class="c-ico icon-login"></i>
                             </div>
@@ -681,7 +688,7 @@
                         </button>
                         <!-- #endregion Learn more button -->
                         <!-- #region Close more button -->
-                        <button class="c-bttn c-bttn-combo" ng-click="toggleFocusAreaVisibility(2)" ng-show="ctrlVars.isOpenCountryOKWdata && currentFocusAreaIndex==2">
+                        <button class="c-bttn c-bttn-combo" ng-click="toggleFocusAreaVisibility(2)" ng-show="ctrlVars.isOpenCountryOKWdata && ctrlVars.currentFocusAreaIndex==2">
                             <div class="c-circle-icon-box">
                                 <i class="c-ico icon-close"></i>
                             </div>
@@ -689,7 +696,7 @@
                         </button>
                         <!-- #endregion Close more button -->
                         <!-- #region Download section -->
-                        <a class="c-bttn c-bttn-combo" ng-href="{{focusData[1].sectionPdfUrl}}">
+                        <a class="c-bttn c-bttn-combo" ng-href="{{ctrlVars.focusData[1].sectionPdfUrl}}">
                             <div class="c-circle-icon-box">
                                 <i class="c-ico icon-cloud-download"></i>
                             </div>
@@ -703,15 +710,15 @@
                 <!-- #region Fourth content -->
                 <div class="c-cell c-peach-border">
                     <!-- #region Headline -->
-                    <h5 class="c-headline">{{focusData[3].title}}</h5>
+                    <h5 class="c-headline">{{ctrlVars.focusData[3].title}}</h5>
                     <!-- #endregion Headline -->
                     <!-- #region Text -->
-                    <p>{{focusData[3].shortIntroText}}</p>
+                    <p>{{ctrlVars.focusData[3].shortIntroText}}</p>
                     <!-- #endregion Text -->
                     <!-- #region Buttons -->
                     <div class="c-buttons-wrap">
                         <!-- #region Learn more button -->
-                        <button class="c-bttn c-bttn-combo c-ng-bttn-focus" ng-click="toggleFocusAreaVisibility(3)" ng-hide="ctrlVars.isOpenCountryOKWdata && currentFocusAreaIndex==3">
+                        <button class="c-bttn c-bttn-combo c-ng-bttn-focus" ng-click="toggleFocusAreaVisibility(3)" ng-hide="ctrlVars.isOpenCountryOKWdata && ctrlVars.currentFocusAreaIndex==3">
                             <div class="c-circle-icon-box">
                                 <i class="c-ico icon-login"></i>
                             </div>
@@ -719,7 +726,7 @@
                         </button>
                         <!-- #endregion Learn more button -->
                         <!-- #region Close more button -->
-                        <button class="c-bttn c-bttn-combo" ng-click="toggleFocusAreaVisibility(3)" ng-show="ctrlVars.isOpenCountryOKWdata && currentFocusAreaIndex==3">
+                        <button class="c-bttn c-bttn-combo" ng-click="toggleFocusAreaVisibility(3)" ng-show="ctrlVars.isOpenCountryOKWdata && ctrlVars.currentFocusAreaIndex==3">
                             <div class="c-circle-icon-box">
                                 <i class="c-ico icon-close"></i>
                             </div>
@@ -727,7 +734,7 @@
                         </button>
                         <!-- #endregion Close more button -->
                         <!-- #region Download section -->
-                        <a class="c-bttn c-bttn-combo" ng-href="{{focusData[3].sectionPdfUrl}}">
+                        <a class="c-bttn c-bttn-combo" ng-href="{{ctrlVars.focusData[3].sectionPdfUrl}}">
                             <div class="c-circle-icon-box">
                                 <i class="c-ico icon-cloud-download"></i>
                             </div>
@@ -759,15 +766,21 @@
                     <!-- #region Left content / Vertical navigation -->
                     <div class="c-cell c-has-vertical-nav c-col-1-5-lg">
                         <ul class="c-vertical-list c-expandable-nav c-black-background">
-                            <li ng-click="changeCountryOKWData(0)" ng-class="{'c-active' : currentOKWindex == 0}"><a>Overview</a></li>
-                            <li ng-click="changeCountryOKWData(1)" ng-class="{'c-active' : currentOKWindex == 1}"><a>Key trends</a></li>
-                            <li ng-click="changeCountryOKWData(2)" ng-class="{'c-active' : currentOKWindex == 2}"><a>What we do</a></li>
+                            <li ng-click="changeCountryOKWData(0)" ng-class="{'c-active' : ctrlVars.currentOKWindex == 0}"><a>Overview</a></li>
+                            <li ng-click="changeCountryOKWData(1)" ng-class="{'c-active' : ctrlVars.currentOKWindex == 1}"><a>Key trends</a></li>
+                            <li ng-click="changeCountryOKWData(2)" ng-class="{'c-active' : ctrlVars.currentOKWindex == 2}"><a>What we do</a></li>
                         </ul>
                     </div>
                     <!-- #endregion Left content / Vertical navigation -->
                     <!-- #region Middle text -->
                     <div class="c-cell c-has-text c-col-3-5-lg">
-                        <span ng-bind-html="dataBindOKW.text"></span>
+                        <div id="cid-expandable-okw-wrapper" ng-class="{'c-max-h-420' : !ctrlVars.dataBindOKW.isTextExpanded}">
+                            <div id="cid-binded-okw-text" ng-bind-html="ctrlVars.dataBindOKW.text"></div>
+                        </div>
+                        <div class="c-read-more-feather-button" ng-click="toggleOKWtextExpanded()" ng-if="ctrlVars.dataBindOKW.isLargeText">
+                            <span ng-if="!ctrlVars.dataBindOKW.isTextExpanded">Show more&nbsp;&nbsp;<i class="c-ico icon-arrow-down"></i></span>
+                            <span ng-if="ctrlVars.dataBindOKW.isTextExpanded">Show less&nbsp;&nbsp;<i class="c-ico icon-arrow-up"></i></span>
+                        </div>
                     </div>
                     <!-- #endregion Middle text -->
                     <!-- #region Right content -->
