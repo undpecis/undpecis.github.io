@@ -2,6 +2,7 @@
     focusAreas: [
         {
             id: 1,
+            activeInView: false,
             title: 'Conflict prevention and peacebuilding',
             shortName: 'conflictData',
             shortIntroText: 'Promoting social cohesion, strengthening intercommunity ties and improving inclusiveness to prevent conflict, build peace and make nations more resilient.',
@@ -18,6 +19,7 @@
         },
         {
             id: 2,
+            activeInView: false,
             title: 'Responsive and accountable institutions',
             shortName: 'responsiveData',
             shortIntroText: 'Working with governments and citizens to ensure government processes and service delivery at national and local levels meets the needs of citizens, maximizes transparency, and have clear chains of accountability.',
@@ -34,6 +36,7 @@
         },
         {
             id: 3,
+            activeInView: false,
             title: 'Inclusive political processes',
             shortName: 'inclusiveData',
             shortIntroText: 'Ensuring that parliaments, elections and the political system in general is inclusive, responsive and provides a voice for all citizens.',
@@ -50,6 +53,7 @@
         },
         {
             id: 4,
+            activeInView: false,
             title: 'Rule of law, justice, security and human rights',
             shortName: 'ruleData',
             shortIntroText: 'Working with, governments, justice and security institutions and citizens to strengthen the rule of law, improve the capacity and fairness of the justice system, and support the promotion and protection of human rights for all.',
@@ -65,6 +69,36 @@
             }
         }
     ],
+    genderPeace:{
+        genderEquality : [
+            {
+                modalText: 'First text for Gender Equality modal: The legacy of conflict and the prevalence of protracted and so-called frozen conflicts throughout the ECIS region has long undermined developme'
+            },
+            {
+                modalText: 'Second text for Gender Equality modal: Lorem Ipsum: translation<br/>The Latin scholar H. Rackham translated the above in 1914:<br/>De Finibus Bonorum Et Malorum But I must explain to you how all this mistaken '
+            },
+            {
+                modalText: 'Third text for Gender Equality modal: The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress'
+            },
+            {
+                modalText: 'Fourth text for Gender Equality modal: Or else, an alternative route: set checkpoints, networks, processes, junctions between content and layout. Depending on the state of affairs it may be fine to concentrate either on design or content, reversing gears when needed.<br/>Or maybe not. How about this: build in appropriate intersections and checkpoints between design and content. Accept that it’s sometimes okay to focus just on the content or just on the design.'
+            }
+        ],
+        peaceAndJustice: [
+            {
+                modalText: 'First text for Peace, Justice and Strong Institutions modal: The legacy of conflict and the prevalence of protracted and so-called frozen conflicts throughout the ECIS region has long undermined developme'
+            },
+            {
+                modalText: 'Second text for Peace, Justice and Strong Institutions modal: Lorem Ipsum: translation<br/>The Latin scholar H. Rackham translated the above in 1914:<br/>De Finibus Bonorum Et Malorum But I must explain to you how all this mistaken'
+            },
+            {
+                modalText: 'Third text for Peace, Justice and Strong Institutions modal: The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress'
+            },
+            {
+                modalText: 'Fourth text for Gender Peace, Justice and Strong Institutions: Or else, an alternative route: set checkpoints, networks, processes, junctions between content and layout. Depending on the state of affairs it may be fine to concentrate either on design or content, reversing gears when needed.<br/>Or maybe not. How about this: build in appropriate intersections and checkpoints between design and content. Accept that it’s sometimes okay to focus just on the content or just on the design.'
+            }
+        ]
+    },
     countries: [
         /* #region Albania */
         {

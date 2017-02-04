@@ -2,7 +2,7 @@
 
 // declare modules
 angular.module('Authentication', []);
-angular.module('Home', ['ngSanitize']);
+angular.module('Home', ['ngSanitize', 'ui.bootstrap']);
 
 angular.module('BasicHttpAuthExample', [
     'Authentication',

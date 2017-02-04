@@ -2360,3 +2360,14 @@ a {
   max-width: 960px;
 }
 /* #endregion Swiperbox Lightbox */
+/* #region UI Bootstrap Modal */
+.c-custom-modal-wrapper .modal-dialog .modal-content {
+  border-radius: 0;
+}
+.c-custom-modal-wrapper .modal-dialog .modal-content .modal-header {
+  padding: 30px;
+}
+.c-custom-modal-wrapper .modal-dialog .modal-content .modal-body {
+  padding: 30px;
+}
+/* #endregion UI Bootstrap Modal */

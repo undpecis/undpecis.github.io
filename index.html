@@ -4,16 +4,16 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>UNDP Annual Report</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="Content/bootstrap.min.css" />
     <!-- #region Styles -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
     <link rel="stylesheet" href="Content/ammap/ammap.css">
     <!--<link rel="stylesheet" href="Content/font-awesome.min.css">-->
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="Content/font-awesome.min.css" />
     <!--<link rel="stylesheet" href="Content/simple-line-icons.css">-->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="Content/simple-line-icons.min.css" />
     <!--<link rel="stylesheet" href="Content/normalize.css">-->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="Content/normalize.min.css" />
     <!-- -->
     <link rel="stylesheet" href="Content/swipebox.min.css">
     <link rel="stylesheet" href="Content/undp-iconfont-style.css">
@@ -25,16 +25,21 @@
     <div ng-view id="mainContainerId">
     </div>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.0/angular.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.0/angular-route.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.0/angular-cookies.min.js"></script>
+    <script src="Scripts/jquery.min.js"></script>
+    <script src="Scripts/angular.min.js"></script>
+    <script src="Scripts/angular-animate.min.js"></script>
+    <script src="Scripts/angular-route.min.js"></script>
+    <script src="Scripts/angular-cookies.min.js"></script>
     <script src="Scripts/angular-sanitize.min.js"></script>
+    <script src="Scripts/angular-touch.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+    <script src="Scripts/ui-bootstrap-tpls-2.5.0.min.js"></script>
     <script src="app/allcontentdata.js"></script>
     <script src="app/app.js"></script>
     <script src="modules/authentication/services.js"></script>
     <script src="modules/authentication/authentication-controller.js"></script>
     <script src="modules/home/home-controller.js"></script>
+    <script src="modules/home/views/modals/gender-peace-modal-controller.js"></script>
 
     <!-- SCRIPTS -->
     <script src="Scripts/TweenMax.min.js"></script>
@@ -45,9 +50,6 @@
     <!-- #region AMCharts Maps -->
     <script src="Scripts/ammap/ammap.js"></script>
     <script src="Scripts/ammap/maps/worldLow.js"></script>
-    <!--<script src="https://www.amcharts.com/lib/3/ammap.js"></script>
-    <script src="https://www.amcharts.com/lib/3/maps/js/worldLow.js"></script>
-    <script src="https://www.amcharts.com/lib/3/themes/light.js"></script>-->
     <!-- #endregion AMCharts Maps -->
 </body>
 </html>
