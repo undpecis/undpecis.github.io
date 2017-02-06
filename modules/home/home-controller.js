@@ -103,7 +103,7 @@ angular.module('Home')
                         clearInterval(checkForElementInterval);
                         var textOuterBoxHeight = document.getElementById('cid-expandable-bac-wrapper').offsetHeight;
                         var textInnerBoxHeight = document.getElementById('cid-binded-bac-text').offsetHeight;
-                        if (textInnerBoxHeight >= textOuterBoxHeight) {
+                        if (textInnerBoxHeight > textOuterBoxHeight) {
                             $scope.ctrlVars.dataBindBAC.isLargeText = true;
                             $scope.$apply();
                         } else {
@@ -135,6 +135,8 @@ angular.module('Home')
                 selectedFocusAreaData: {},
                 //object with Overview, Key trends, What we do
                 dataBindOKW: {},
+                //object with exact part of text of Overview, Key trends, What we do
+                textPartOKWtoBind: null,
                 //keeep index of currently visible OKW text
                 currentOKWindex: 0,
                 //keeps index of currently clicked Focus Area button
@@ -182,7 +184,7 @@ angular.module('Home')
                                 $timeout(function () {
                                     $location.hash('cid-anchor-OKW-content');
                                     $anchorScroll();
-                                }, 100);
+                                }, 300);
                             }
                         //if button is already open then close everything
                         } else {
@@ -201,28 +203,34 @@ angular.module('Home')
                 keyTrendsData: 1,
                 whatWeDoData: 2
             }
-            //character count maximum
             $scope.changeCountryOKWData = function (buttonIndex) {
                 if (buttonIndex == $scope.enumOKW.overviewData) {
                     $scope.ctrlVars.dataBindOKW = $scope.ctrlVars.selectedFocusAreaData.overviewData;                    
                     $scope.ctrlVars.currentOKWindex = buttonIndex;
-                    /* #region Check if text exceeded height */
-                    checkHeightOfTextOKW();
-                    /* #endregion Check if text exceeded height */
+                    $scope.changeOKWpartText(0);
                 } else if (buttonIndex == $scope.enumOKW.keyTrendsData) {
                     $scope.ctrlVars.dataBindOKW = $scope.ctrlVars.selectedFocusAreaData.keyTrendsData;
                     $scope.ctrlVars.currentOKWindex = buttonIndex;
-                    /* #region Check if text exceeded height */
-                    checkHeightOfTextOKW();
-                    /* #endregion Check if text exceeded height */
+                    $scope.changeOKWpartText(0);
                 } else if (buttonIndex == $scope.enumOKW.whatWeDoData) {
                     $scope.ctrlVars.dataBindOKW = $scope.ctrlVars.selectedFocusAreaData.whatWeDoData;
                     $scope.ctrlVars.currentOKWindex = buttonIndex;
-                    /* #region Check if text exceeded height */
-                    checkHeightOfTextOKW();
-                    /* #endregion Check if text exceeded height */
+                    $scope.changeOKWpartText(0);
+
                 }
             }
+            $scope.changeOKWpartText = function (newPartIndex) {
+                console.log('clicked changeOKWpartText: ' + newPartIndex);
+                for (var i = 0; i < $scope.ctrlVars.dataBindOKW.textParts.length; i++) {
+                    if (i == newPartIndex) {
+                        $scope.ctrlVars.textPartOKWtoBind = $scope.ctrlVars.dataBindOKW.textParts[i].text;
+                        /* #region Check if text exceeded height */
+                        checkHeightOfTextOKW();
+                        /* #endregion Check if text exceeded height */
+                    }
+                }
+            }
+
             /* #region Check if text exceeded height */
             function checkHeightOfTextOKW() {
                 var checkForElementInterval = setInterval(getTextBoxElement, 10);
@@ -232,7 +240,7 @@ angular.module('Home')
                         clearInterval(checkForElementInterval);
                         var textOuterBoxHeight = document.getElementById('cid-expandable-okw-wrapper').offsetHeight;
                         var textInnerBoxHeight = document.getElementById('cid-binded-okw-text').offsetHeight;
-                        if (textInnerBoxHeight >= textOuterBoxHeight) {
+                        if (textInnerBoxHeight > textOuterBoxHeight) {
                             $scope.ctrlVars.dataBindOKW.isLargeText = true;
                             $scope.$apply();
                         } else {
@@ -248,6 +256,14 @@ angular.module('Home')
                 $scope.ctrlVars.dataBindOKW.isTextExpanded = !$scope.ctrlVars.dataBindOKW.isTextExpanded;
             }
             /* #endregion Toggle OKW full text visibility (see less see more) */
+
+            /* #region OKW xs screens logic (mobile+) */
+            $scope.toggleCountryOKWData_xs = function (okwDataIndex) {
+                if (okwDataIndex == 0) {
+
+                }
+            }
+            /* #endregion OKW xs screens logic (mobile+) */
 
             /* #region Modal for Gender Equality + Peace, Justice and Strong Institutions */
             $scope.openGenderPeaceModal = function (buttonName) {

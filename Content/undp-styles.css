@@ -185,6 +185,11 @@ a {
   max-height: 420px !important;
   overflow: hidden !important;
 }
+.c-max-h-470 {
+  display: inline-block;
+  max-height: 470px !important;
+  overflow: hidden !important;
+}
 .c-max-h-700 {
   display: inline-block;
   max-height: 700px !important;
@@ -503,6 +508,14 @@ a {
   background-color: #2b2b2c;
   color: #fff;
   font-weight: bold;
+}
+.c-vertical-list.c-subnavigation li a {
+  display: block;
+  text-align: left;
+  padding: 5px 8px;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: normal !important;
 }
 .c-vertical-list.c-footer-nav {
   display: block;
@@ -1640,10 +1653,6 @@ a {
 /* #endregion Flags sprite */
 /* #endregion MAP CONTENT */
 /* #region EXPANDABLE CONTENT */
-#c-ng-expandable-content-01,
-#c-ng-expandable-content-02 {
-  display: none;
-}
 .c-expandable-content-wrap {
   display: block;
   color: #fff;
@@ -1735,7 +1744,7 @@ a {
     padding-right: 0;
   }
   .c-expandable-content-wrap .c-content-wrap.c-show-when-lg .c-table .c-cell.c-has-right-content {
-    height: 420px;
+    height: 470px;
     /*.c-svg-graph-wrap{
                                 .mx-set-as-border-box();
                                 display:block;
@@ -1748,11 +1757,17 @@ a {
                                 padding:15px;
                             }*/
   }
-  .c-expandable-content-wrap .c-content-wrap.c-show-when-lg .c-table .c-cell.c-has-right-content .c-24-700 {
-    margin-bottom: 30px;
+  .c-expandable-content-wrap .c-content-wrap.c-show-when-lg .c-table .c-cell.c-has-right-content.c-statement-right-content .c-statement-title {
+    margin: 15px 0 10px;
+    font-size: 24px;
   }
-  .c-expandable-content-wrap .c-content-wrap.c-show-when-lg .c-table .c-cell.c-has-right-content .c-18-400 {
-    margin-bottom: 20px;
+  .c-expandable-content-wrap .c-content-wrap.c-show-when-lg .c-table .c-cell.c-has-right-content.c-statement-right-content .c-statement-body-txxt {
+    font-size: 12px;
+    line-height: 1.4;
+  }
+  .c-expandable-content-wrap .c-content-wrap.c-show-when-lg .c-table .c-cell.c-has-right-content.c-statement-right-content .c-statement-signature-txxt {
+    font-size: 11px;
+    line-height: 1.4;
   }
   .c-expandable-content-wrap .c-content-wrap.c-show-when-lg .c-table .c-cell.c-has-text {
     position: relative;

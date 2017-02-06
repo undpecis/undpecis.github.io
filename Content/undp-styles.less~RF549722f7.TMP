@@ -203,7 +203,6 @@ h1, h2, h3, h4, h5, h6, p, a { margin:0; padding:0;}
 .c-w-50perc{ width:50%;}
 .c-w-100{width:100%}
 .c-max-h-420{display:inline-block; max-height:420px !important; overflow:hidden !important;}
-.c-max-h-470{display:inline-block; max-height:470px !important; overflow:hidden !important;}
 .c-max-h-700{display:inline-block; max-height:700px !important; overflow:hidden !important;}
 /* #endregion Dimensions */
 /* #region Mixins */
@@ -490,9 +489,9 @@ h1, h2, h3, h4, h5, h6, p, a { margin:0; padding:0;}
     display:inline-block;
     li{
         cursor:pointer;
-        display:block;
+        //display:block;
         a{
-            display: block;
+            display: inline-block;
             text-align: left;
             padding: 5px 8px;
             text-decoration: none;
@@ -502,7 +501,7 @@ h1, h2, h3, h4, h5, h6, p, a { margin:0; padding:0;}
     &.c-expandable-nav{
         li{
             a{
-                display: block;
+                //display: block;
                 text-align: left;
                 padding: 10px 8px;
                 text-decoration: none;
@@ -552,22 +551,6 @@ h1, h2, h3, h4, h5, h6, p, a { margin:0; padding:0;}
                         font-weight:bold;
                     }
                 }
-            }
-        }
-    }
-    //expandable content subnav
-    &.c-subnavigation{
-        li{
-            a{
-                display: block;
-                text-align: left;
-                padding: 5px 8px;
-                text-decoration: none;
-                font-size:12px;
-                font-weight:normal !important;
-            }
-            &.c-active{
-                //font-weight:bold !important;
             }
         }
     }
@@ -1909,6 +1892,9 @@ h1, h2, h3, h4, h5, h6, p, a { margin:0; padding:0;}
 /* #endregion Flags sprite */
 /* #endregion MAP CONTENT */
 /* #region EXPANDABLE CONTENT */
+#c-ng-expandable-content-01, #c-ng-expandable-content-02{
+    display:none;
+}
 .c-expandable-content-wrap{
     display:block;
     color:@col-white;
@@ -1985,7 +1971,7 @@ h1, h2, h3, h4, h5, h6, p, a { margin:0; padding:0;}
                             padding-right:0;
                         }
                         &.c-has-right-content{
-                            height:470px;
+                            height:420px;
                             /*.c-svg-graph-wrap{
                                 .mx-set-as-border-box();
                                 display:block;
@@ -1997,21 +1983,14 @@ h1, h2, h3, h4, h5, h6, p, a { margin:0; padding:0;}
                                 margin-bottom:15px;
                                 padding:15px;
                             }*/
+                            .c-24-700{
+                                margin-bottom:30px;
+                            }
+                            .c-18-400{
+                                margin-bottom:20px;
+                            }
                             &.c-statement-right-content{
-                                .c-statement-img-thumb{                                    
-                                }
-                                .c-statement-title{
-                                    margin:15px 0 10px;
-                                    font-size:24px;
-                                }
-                                .c-statement-body-txxt{
-                                    font-size:12px;
-                                    line-height:1.4;
-                                }
-                                .c-statement-signature-txxt{
-                                    font-size:11px;
-                                    line-height:1.4;
-                                }
+
                             }
                         }
                         &.c-has-text{

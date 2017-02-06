@@ -10,17 +10,58 @@
             overviewData: {
                 isLargeText: false,
                 isTextExpanded: false,
-                text: 'The legacy of conflict and the prevalence of protracted and so-called frozen conflicts throughout the ECIS region has long undermined development efforts and progress on a range of socio-economic and other indicators. In addition, a number of places in the region exist where tensions between different ethnic, religious and political groups risk escalating into more formal conflicts.<br/>UNDP\'s work on conflict prevention and peacebuilding aims to promote social cohesion and empower nations and communities to become more inclusive and resilient to external and internal shocks. In order to achieve these aims, UNDP utilizes overlapping approaches with different focuses, which in the region can be classified into several broad categories:<br/>• Conflict Analysis and Risk Assessment – Sound analysis is not only central to understanding the causes and drivers of conflict, capacities for peace, and key stakeholders, but is also critical to developing strategic approaches for the UN system to comprehensively support national efforts to address conflicts and protect development gains.<br/>• Opening Dialogues and Confidence-Building – In areas where conflict and/or reoccurring violence have led to divisions, opening dialogues and confidence building aims to increase engagement and trust between people and communities on opposite sides of conflict divides by identifying and addressing shared challenges, and establishing formal frameworks to pre-empt future conflict.<br/>• Reconciliation and Peacebuilding – Where communities with a history of tension and conflict continue to live together, an increased emphasis on reconciliation and the prevention of violence is required to mitigate the higher risk of conflict re-emerging and sustain peace over the long term.<br/>• Conflict Management and Recovery – Typically combining elements of cross-border peacebuilding and confidence building, managing active conflict and facilitating recovery requires a specialized approach that also aims to reduce and eliminate violence, reintegrate internally displaced persons (IDPs), support reforms that address the causes of conflict, and identify priorities for rebuilding.'
+                textParts: [
+                    {
+                        partName: '',
+                        text: '0 Ovde ide ceo tekst za Overview Data'
+                    }
+                ]
+                
             },
             keyTrendsData: {
                 isLargeText: false,
                 isTextExpanded: false,
-                text: 'Protracted Conflicts and Ongoing<br/>Tension<br/>The ECIS region provides a wide and diverse range of examples of protracted conflict and conflict-related political complexity. These range from highly volatile situations with regular outbreaks of violence, to situations where conflict is not an immediate risk and/or sovereignty is not overtly contested, but where structural tensions, conflict drivers and/or the legacy of armed conflict have complicated the political landscape.<br/>The most recent, and arguably most significant, conflict to occur in the ECIS region since the end of the wars in the Western Balkans is the conflict in eastern Ukraine. Initiated by a series of events starting in 2013, the conflict continues in the eastern Donbas region of Ukraine. Despite a series of ceasefires negotiated over the past two years, regular violations continue to occur.<br/>In other parts of the ECIS region, ceasefires have ended formal conflicts and contributed to a fragile stability, but internationally mediated peace talks have, broadly, failed to bring lasting solutions.<br/>This can be seen in locations such as Transnistria in Moldova, the Nagorno-Karabakh14 region in Azerbaijan, and Abkhazia and South Ossetia in Georgia. Often, in the absence of a political settlement, these conflicts continue in political form, perpetuating the divides in and polarisation of societies. The legacy of the conflicts in the former Yugoslavia have similar qualities, as political challenges continue to haunt the region. Concessions arising from negotiations are often hard fought and suffer from a lack of support from the population, as was evidenced in 2015 by the large-scale protests in both Pristina and Belgrade after EU-brokered negotiations between Kosovo and Serbia.<br/>In BiH, the presence of a peace treaty has not addressed the country\'s divisions along ethnic lines, both politically and geographically. In 2015, several issues reinforced this polarization and placed a renewed strain on peacebuilding efforts. Similarly, in the former Yugoslav Republic of Macedonia, tension between ethnic Albanians and Macedonians has led to occasional flare-ups, including a gun battle between Macedonian Police and ethnic Albanian gunmen in Kumanovo in May 2015.<br/>The Fergana Valley shared by Tajikistan, the Kyrgyz Republic and Uzbekistan represents another source of volatility in the ECIS region. As a result of the multi-ethnic composition of the valley and the historical rivalries between those ethnic groups, disputes often arise due to the location of different ethnic communities across modern boundaries, and the need to share resources, such as arable land, water and transport.<br/>While many of these conflicts appear small and localized, they present a considerable threat to the wider European and Eurasian security architecture, with a risk that outbreaks of violence can spread quickly and/or lead to undesirable political and economic outcomes. It is also for this reason that developments that can exacerbate existing tensions, like the migration crisis in the Western Balkans and Turkey, or the economic slowdown impacting countries in the Caucasus and Central Asia, are carefully considered in the context of conflict prevention and peacebuilding.<br/>New and Old Threats from Violent<br/>Extremism<br/>Violent extremism in the ECIS region threatens to reverse the development gains made over the past twenty years. Some places are more impacted than others, with the situation in parts of the Western Balkans, Turkey and the Caucasus being particularly challenging. More recently, the threat level has been increasing substantially in Central Asia.<br/>Much of the discourse on violent extremism paints it as a religious phenomenon, and while religious drivers are a factor, this is not always the case. Many of the causes of violent extremism relate to a broad range of identity-based concerns, such as political exclusion of certain groups and ideologies around separatism. Broadly, radical ideologies are associated with high and extreme inequality and injustice (or the perception of inequality and injustice) – whether it be social, economic and political. Resorting to violence can therefore be understood as being motivated by hopelessness and frustration.<br/>Extremist organizations look to take advantage of this frustration by preying on vulnerable members of society, such as the marginalized and unemployed, particularly among the youth. Another group at a high risk are economic migrants, for example Central Asian migrants to Russia who, by virtue of being in a foreign country, are cut off from their normal social networks. Social and other forms of new media are also a factor in higher and more active means of recruitment.<br/>A relatively new threat that has emerged as a result of violent extremism, both in the ECIS region and in Western Europe, is that of individuals who opt to become foreign terrorist fighters. In the ECIS region, Turkey and Uzbekistan have seen the largest number of people leave to fight in foreign conflicts, at least partially due to their proximity to active conflicts (Syria and Afghanistan respectively), but several other countries and territories in the region have also seen significant numbers of citizens take up arms.<br/>In order to counter the violence of extremists, some governments in the ECIS region, particularly those in Central Asia, have used security responses and crackdowns, including restrictions on movement, assembly and free speech. This type of response often exacerbates the feelings of injustice and grievance already present, heightening the risk of further violent extremism and creating new populations that can be targeted by extremist recruiters.<br/>Some governments have also modified or introduced laws to ensure foreign fighters can be prosecuted when they return. However, due to the transnational nature of the phenomenon making it difficult to know whom among a population has become a foreign fighter or even how many there are, the effectiveness of this strategy appears limited.'
+                textParts: [
+                    {
+                        partName: 'Protracted Conflicts and Ongoing Tension',
+                        text: '0 Ovde ide tekst koji pripada delu pod gore navedenim nazivom'
+                    },
+                    {
+                        partName: 'New and Old Threats from V iolent Extremism',
+                        text: '1 Ovde ide tekst koji pripada delu pod gore navedenim nazivom'
+                    }
+                ]
             },
             whatWeDoData: {
                 isLargeText: false,
                 isTextExpanded: false,
-                text: 'Conflict Analysis and Risk Assessment<br/>UNDP has been working in contexts of conflict-related political complexity in the ECIS region for more than 15 years, particularly in partnership with the EU and the United Nations Department of Political Affairs (DPA). It has developed a range of tools in these contexts to drive an increasingly analytical and evidence-based approach, and has cultivated a strong knowledge base in effective programming that ranges from conflict-sensitive approaches to area-based development to more active work using development assistance to foster confidence in protracted conflict situations. The development mandate provides UNDP with political neutrality and substantial operational capacities to deliver development solutions in these challenging environments.<br/>Based on this extensive experience, UNDP\'s approach has two key dimensions:<br/>• Accurately identify and assess development needs and priorities at the local level, in order to effectively target assistance, and thus adhere to core principles of conflict sensitivity, including the \'do no harm\' philosophy; and<br/>• Directly engage with and facilitate inclusive participation of people at the community level in decision-making, to focus on addressing shared challenges and development issues at the inter-community level, irrespective of the higher level political context.<br/>A key pillar in UNDP\'s conflict analysis and risk assessment work, as well as conflict and peacebuilding programming more generally, is the deployment of Peace and Development Advisors, with the UNDP-DPA Joint Programme on Building National Capacities for Conflict Prevention being the primary facilitator of these deployments. This global programme, with support from the EU, enables access to a global network of specialized expertise at the local level, helping Resident Coordinators and UN Country Teams analyse, adapt and respond to complex political development with conflict-sensitive programming. In 2015, Peace and Development Advisors were deployed in eight countries in the ECIS region.<br/>UNDP also has a number of other partners in its conflict analysis and risk assessment work. The Office of the United Nations High Commissioner for Human Rights (OHCHR) has deployed Human Rights Advisors to provide guidance on navigating politically complex situations where human rights violations are in question and the Human Rights Up-Front mechanism has reviewed risks in specific countries in the region. The Organization for Security and Cooperation in Europe (OSCE) has also been an important and long-term partner in this work across the region.<br/>Opening Dialogues and ConfIence-Building<br/>With a goal of improving the relationships between people, communities and eventually populations that are divided due to conflict, UNDP employs a range of measures to open dialogues, build confidence, encourage interaction, and establish shared understanding.<br/>In Moldova, the absence of a political resolution to the Transnistria dispute and the functional separation of societies and political structures on both sides of the Dniester river has complicated future negotiations and hinders socio-economic development, stability and security. The protracted division has also led to the emergence of parallel systems, which in turn have created both practical and psychological barriers to inter-communal interactions. As such, UNDP\'s goals in affected border communities are to increase positive interactions and diminish the negative impact of high-level political disputes on the local populations.<br/>To achieve this, UNDP has been working in partnership with the EU since 2009 to employ a range of confidence building measures, including a combination of infrastructure works, capacity development initiatives, and financial support mechanisms for communities on both sides of the Dniester. Although activities tend to focus on reducing the isolation of Transnistria, they strive to balance the benefits received by both sides to avoid creating resentment or exacerbating tensions, and place priority on initiatives implemented by cross-river partnerships.<br/>Local development has also been a key focus during this work. Social infrastructure, such as the rehabilitation of shared healthcare institutions, community markets, roads, and educational institutions in strategic locations, often provides a place for individuals from different communities to interact and engage through common interests. Infrastructure projects also help to alleviate unemployment through the creation of short-term employment during the construction phase and long-term employment through agreements with the community to take over maintenance of the facilities.<br/>The integration of civil society has proven to be one of the more successful aspects of this work. With grant eligibility often conditional on the partnering of civil society organisations representing communities on both sides of the river, these projects have helped establish ongoing and meaningful partnerships.<br/>Similarly, in Georgia, UNDP has been using confidence building measures to help bring communities closer together on the ground. Working in partnership with the EU and the Kingdom of the Netherlands since 2010, the Confidence Building Early Response Mechanism (COBERM) programme is a status-neutral, apolitical and flexible programme designed to provide support to confidence building opportunities throughout Georgia (including the territories of Abkhazia and South Ossetia) at the grassroots level.<br/>At its core, COBERM is a small-scale grants facility for civil society organisations to strengthen their capacity to monitor and improve the accountability and transparency of authorities (both de jure and de facto). With improved skills and other capacities, and the financial motivation to re-establish connections across the conflict divide, there have been corresponding improvements in transparency and accountability, and a reduction in tensions and the potential for conflict.<br/>COBERM has also provided a platform for civil society organizations, together with local communities from conflict-affected areas, to identify conflict triggers and propose ways to address them in the form of development projects. The large number and wide geographical coverage of the grants, as well as the wide range of civil society partners, have ensured an increase in direct interactions across the conflict divides. This has provided numerous opportunities for joint cooperation on issues of common interest, normalizing cooperation between communities, and helping to establish sustainable partnerships involving youth groups, writers, farmers, linguists, and veterinarians. An independent evaluation has confirmed that COBERM is an effective model for confidence building and has changed the civil dialogue climate, which is particularly crucial in Georgia, where little progress has been made on the political front on bridging the divide between communities.<br/>In the South Caucasus, existing high tensions, including over the Nagorno-Karabakh conflict, and the lack of any direct contact between civil society groups and/or other actors from Armenia and Azerbaijan, have created a situation where there is little opportunity to discuss possible paths forward. In an attempt to open up a new dialogue, the Peace and Development Advisor in Georgia took the lead in organising two roundtables with representatives from the UN and partner civil society organisations from Armenia, Azerbaijan and Georgia to discuss the future of the United Nation\'s development agenda and the \'World We Want\' in the South Caucasus. In this case, the SDGs offered an entry point for the UN in the South Caucasus to link peacebuilding and development. Civil society actors from the South Caucasus were brought together for an open joint discussion on common issues, with interactions between participants from all three countries remaining constructive, and a set of common issues, opportunities and challenges being agreed by everyone.<br/>Reconciliation and Peacebuilding<br/>In many places in the ECIS region, communities remain in close proximity and are required to interact on a daily basis despite the legacy of conflict and division. In these cases, UNDP\'s work focuses facilitating reconciliation and preventing outbreaks of violence.<br/>In 2014 and 2015, one of UNDP\'s major initiatives aimed to address ongoing tensions between communities in the border areas of Tajikistan and the Kyrgyz Republic, particularly in and around the Fergana Valley where communities are often in close proximity and not always in alignment with modern borders.<br/>UNDP\'s interventions were based on the assessment that much of the tension between these communities arises due to a lack of information. With local community leaders being important figures in these communities, UNDP provided these leaders with information on the challenges and risks facing their communities, allowing them to advocate for joint projects and activities with other communities to address those problems. As a result, this cooperative problem solving helped to normalize relationships, build trust, and reduce the potential for violent conflict.<br/>The project was designed on three pillars:<br/>• Providing Kyrgyz and Tajik community leaders with access to reliable and balanced information about local conflict dynamics and trends;<br/>• Strengthening local mechanisms for dialogue, deliberation, and problem-solving; and<br/>• Support for jointly agreed and jointly implemented activities to build trust and establish a pattern of practical cooperation between communities.<br/>To address the first pillar, a community-based conflict monitoring mechanism, TRACTION (TRends for ACTION), was developed to monitor the conflict situation based on a list of ten substantive policy areas including water resources, access to land, road/transport, and prevailing attitudes toward the other side. TRACTION also allows for the tracking of conflict likelihood over time, the categorization and quantification of reported disputes and clashes, and the identification of trends and patterns. With this information, themes and issues for community dialogues were identified, allowing the subsequent implementation of confidence-building infrastructure initiatives to remain focused on addressing specific conflict causes and drivers.<br/>The results of this cross-border intervention were so convincing that, in 2015, the UN country teams in the Kyrgyz Republic and Tajikistan developed a joint programme, supported by the United Nations Peacebuilding Support Office Peacebuilding Fund and the Swiss Development Cooperation, to be implemented with assistance from five UN agencies between 2015 and 2017.<br/>Addressing the legacy of the conflicts in the breakup of the former Yugoslavia is also a focus of UNDP\'s engagement. In BiH, the Dialogue for the Future remains one of the flagship projects for reconciliation in the ECIS region, helping to address past grievances, bring together communities from different ethnic groups, and build understanding. To date, Dialogue for the Future has directly engaged over 54,000 citizens with Dialogue Platform Conferences, youth forums, trainings, and various grants facility projects. Similarly, in the former Yugoslav Republic of Macedonia, UNDP is working to reconcile differences between ethnic Albanians and Macedonians in Kumanovo and Gostivar. With the goal of strengthening social cohesion among youth living in multi-ethnic areas, in 2015 this work focused on establishing youth councils, with workshops, trainings, street art performances and debates to raise awareness of the councils, as well as bringing youth from different communities together.<br/>Conflict Management and Recovery<br/>In situations where violence and conflict are still occurring, a different approach must be taken to peacebuilding that recognizes the fragility and dangers of the situation, as well as the risks of exacerbating violence and underlying tensions. UNDP\'s support in the ECIS region\'s most active conflict in Ukraine has centred around a two-pronged approach: supporting broad scale reform linked to the drivers of conflict and the Maidan protests, and facilitating recovery and peacebuilding, specifically in the Donbas region.<br/>At the national level, UNDP aims to facilitate government reform processes in several areas, including decentralisation, rule of law, human rights, voice and participation, anti-corruption, as well as those that seek to address the often difficult political, social and regional aspirations within Ukrainian society. A survey on decentralisation and the rights of women in rural areas was implemented in partnership with the Office of the Ombudsman, with the information collected by this survey to be used to help inform future decentralization reforms. UNDP has also been working extensively with local civil society and NGOs in the areas of decentralization, constitutional reform, and parliamentary development. Looking forward, two major projects are planned targeting parliamentary reform, and rule of law and community justice. Developed in 2015, these projects have now secured funding from the EU and the Netherlands respectively, ensuring UNDP\'s work in these areas can continue.<br/>In support of recovery, UNDP launched a Dialogue Support Platform to help improve coordination and cooperation between organizations working in Ukraine, allowing for the sharing of knowledge and expertise, and improving the impact of development efforts. UNDP also supported the provision of legal aid in conflict-affected communities, allowing people in those communities to seek justice without resorting to violence or other forms of retaliation. The Restoration of Governance and Reconciliation Project in the Donbas, with support of Switzerland and Sweden, also launched a number of important initiatives aimed at reducing social tension and enhancing the capacity of local governments to improve public service provision and include citizens in decision-making process. Funds from the EU will support expansion of the project to the implementation of decentralization reform and the strengthening of gender equality impact in cooperation with UN Women.<br/>As a framework for this work in 2015, UNDP helped to coordinate and complete the Recovery and Peacebuilding Assessment of government controlled areas of Eastern Ukraine. Aimed at providing a review of the current state of governance and infrastructure in conflict-affected areas, the assessment was widely circulated amongst national and international stakeholders and formally endorsed through a Resolution of the Cabinet of Ministers, establishing it as a government-owned framework for prioritizing recovery and peacebuilding programming in the short to medium term.<br/>Following up on the assessment, UNDP has provided technical support to the inter-ministerial working group charged with implementing the Recovery and Peacebuilding Assessment. Already this work has led to a draft resolution on the establishment of a Council for Donbas Recovery. This council, when established, will serve as a high-level forum for policy dialogue with international partners on rolling out the Recovery and Peacebuilding Assessment, under the Government\'s leadership.<br/>Finally, with a risk of conflict spreading to neighbouring areas, UNDP performed an early assessment of the risks to inter-community relations, and the implementation of the steps to mitigate those risks. This included confidence-building measures and dialogues at the local level in four neighbouring oblasts (Kharkiv, Dnipropetrovsk, Zaporizhia and Kherson).'
+                textParts: [
+                    {
+                        partName: 'Conflict Analysis and Risk Assessment',
+                        text: '0 Ovde ide tekst koji pripada delu pod gore navedenim nazivom'
+                    },
+                    {
+                        partName: 'Turning impartiality into action – How DPA and UNDP work together to support citizens in areas where few others can operate',
+                        text: '1 Ovde ide tekst koji pripada delu pod gore navedenim nazivom'
+                    },
+                    {
+                        partName: 'Opening D ialogues and ConfIence- Building',
+                        text: '2 Ovde ide tekst koji pripada delu pod gore navedenim nazivom'
+                    },
+                    {
+                        partName: 'Understanding what divides and unites societies – How the Social Cohesion and Reconciliation I ndex (SCORE) has better targeted UNDP’s peacebuilding assistance',
+                        text: '3 Ovde ide tekst koji pripada delu pod gore navedenim nazivom'
+                    },
+                    {
+                        partName: 'Reconciliation and Peacebuilding',
+                        text: '4 Ovde ide tekst koji pripada delu pod gore navedenim nazivom'
+                    },
+                    {
+                        partName: 'Conflict Management and Recovery',
+                        text: '5 Ovde ide tekst koji pripada delu pod gore navedenim nazivom'
+                    }
+                ]
+                
             }
         },
         {
@@ -33,17 +74,61 @@
             overviewData: {
                 isLargeText: false,
                 isTextExpanded: false,
-                text: 'Lorem ipsum is a pseudo-Latin text used in web design, typography, layout, and printing in place of English to emphasise design elements over content. It\'s also called placeholder (or filler) text. It\'s a convenient tool for mock-ups. It helps to outline the visual elements of a document or presentation, eg typography, font, or layout. Lorem ipsum is mostly a part of a Latin text by the classical author and philosopher Cicero. Its words and letters have been changed by addition or removal, so to deliberately render its content nonsensical; it\'s not genuine, correct, or comprehensible Latin anymore. While lorem ipsum\'s still resembles classical Latin, it actually has no meaning whatsoever. As Cicero\'s text doesn\'t contain the letters K, W, or Z, alien to latin, these, and others are often inserted randomly to mimic the typographic appearence of European languages, as are digraphs not to be found in the original.<br/>In a professional context it often happens that private or corporate clients corder a publication to be made and presented with the actual content still not being ready. Think of a news blog that\'s filled with content hourly on the day of going live. However, reviewers tend to be distracted by comprehensible content, say, a random text copied from a newspaper or the internet. The are likely to focus on the text, disregarding the layout and its elements. Besides, random text risks to be unintendedly humorous or offensive, an unacceptable risk in corporate environments. Lorem ipsum and its many variants have been employed since the early 1960ies, and quite likely since the sixteenth century.<br/>Lorem Ipsum: common examples'
+                textParts: [
+                    {
+                        partName: '',
+                        text: '0 Ovde ide ceo tekst za Overview Data'
+                    }
+                ]
+                
             },
             keyTrendsData: {
                 isLargeText: false,
                 isTextExpanded: false,
-                text: 'Most of its text is made up from sections 1.10.32–3 of Cicero\'s De finibus bonorum et malorum (On the Boundaries of Goods and Evils; finibus may also be translated as purposes). Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit is the first known version ("Neither is there anyone who loves grief itself since it is grief and thus wants to obtain it"). It was found by Richard McClintock, a philologist, director of publications at Hampden-Sydney College in Virginia; he searched for citings of consectetur in classical Latin literature, a term of remarkably low frequency in that literary corpus.<br/>Cicero famously orated against his political opponent Lucius Sergius Catilina. Occasionally the first Oration against Catiline is taken for type specimens: Quo usque tandem abutere, Catilina, patientia nostra? Quam diu etiam furor iste tuus nos eludet? (How long, O Catiline, will you abuse our patience? And for how long will that madness of yours mock us?)<br/>Cicero\'s version of Liber Primus (first Book), sections 1.10.32–3 (fragments included in most Lorem Ipsum variants in red):'
+                textParts: [
+                    {
+                        partName: 'Corruption Slowly Declining',
+                        text: '1 Ovde ide tekst koji pripada delu pod gore navedenim nazivom'
+                    },
+                    {
+                        partName: 'Increasing Government Effectiveness and Regulatory Quality',
+                        text: '2 Ovde ide tekst koji pripada delu pod gore navedenim nazivom'
+                    },
+                    {
+                        partName: 'The Growing Use of Technology and I nnovation',
+                        text: '3 Ovde ide tekst koji pripada delu pod gore navedenim nazivom'
+                    }
+                ]
             },
             whatWeDoData: {
                 isLargeText: false,
                 isTextExpanded: false,
-                text: 'Lorem Ipsum: translation<br/>The Latin scholar H. Rackham translated the above in 1914:<br/>De Finibus Bonorum Et Malorum But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?<br/>On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish. In a free hour, when our power of choice is untrammelled and when nothing prevents our being able to do what we like best, every pleasure is to be welcomed and every pain avoided. But in certain circumstances and owing to the claims of duty or the obligations of business it will frequently occur that pleasures have to be repudiated and annoyances accepted. The wise man therefore always holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains.<br/>Lorem Ipsum: variants and technical information<br/>Adobe Fireworks Lorem Ipsum plugin In 1985 Aldus Corporation launched its first desktop publishing program Aldus PageMaker for Apple Macintosh computers, released in 1987 for PCs running Windows 1.0. Both contained the variant lorem ipsum most common today. Laura Perry, then art director with Aldus, modified prior versions of Lorem Ipsum text from typographical specimens; in the 1960s and 1970s it appeared often in lettering catalogs by Letraset. Anecdotal evidence has it that Letraset used Lorem ipsum already from 1970 onwards, eg. for grids (page layouts) for ad agencies. Many early desktop publishing programs, eg. Adobe PageMaker, used it to create template.'
+                textParts: [
+                    {
+                        partName: 'Anti-Corruption and Transparency',
+                        text: '0 Ovde ide tekst koji pripada delu pod gore navedenim nazivom'
+                    },
+                    {
+                        partName: 'Open Data, Better Governance',
+                        text: '1 Ovde ide tekst koji pripada delu pod gore navedenim nazivom'
+                    },
+                    {
+                        partName: 'Core Government Functions',
+                        text: '2 Ovde ide tekst koji pripada delu pod gore navedenim nazivom'
+                    },
+                    {
+                        partName: 'Regional Hub of Civil Service in Astana',
+                        text: '3 Ovde ide tekst koji pripada delu pod gore navedenim nazivom'
+                    },
+                    {
+                        partName: 'Local Governance and Local Development',
+                        text: '4 Ovde ide tekst koji pripada delu pod gore navedenim nazivom'
+                    },
+                    {
+                        partName: 'Migration and Displacement: A Resilience-Based Development Approach',
+                        text: '5 Ovde ide tekst koji pripada delu pod gore navedenim nazivom'
+                    }
+                ]
             }
         },
         {
@@ -56,17 +141,56 @@
             overviewData: {
                 isLargeText: false,
                 isTextExpanded: false,
-                text: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. But what about your daily bread? Design comps, layouts, wireframes—will your clients accept that you go about things the facile way? Authorities in our business will tell in no uncertain terms that Lorem Ipsum is that huge, huge no no to forswear forever. Not so fast, I\'d say, there are some redeeming factors in favor of greeking text, as its use is merely the symptom of a worse problem to take into consideration.'
+                textParts: [
+                    {
+                        partName: '',
+                        text: '0 Ovde ide ceo tekst za Overview Data'
+                    }
+                ]
             },
             keyTrendsData: {
                 isLargeText: false,
                 isTextExpanded: false,
-                text: 'So Lorem Ipsum is bad (not necessarily)<br/>There\'s lot of hate out there for a text that amounts to little more than garbled words in an old language. The villagers are out there with a vengeance to get that Frankenstein, wielding torches and pitchforks, wanting to tar and feather it at the least, running it out of town in shame.'
+                textParts: [
+                    {
+                        partName: 'Diverging Levels of Voice and Accountability',
+                        text: '1 Ovde ide tekst koji pripada delu pod gore navedenim nazivom'
+                    },
+                    {
+                        partName: 'The Growing Presence of Women in Decision-Making Roles',
+                        text: '2 Ovde ide tekst koji pripada delu pod gore navedenim nazivom'
+                    }
+                ]
             },
             whatWeDoData: {
                 isLargeText: false,
                 isTextExpanded: false,
-                text: 'Or else, an alternative route: set checkpoints, networks, processes, junctions between content and layout. Depending on the state of affairs it may be fine to concentrate either on design or content, reversing gears when needed.<br/>Or maybe not. How about this: build in appropriate intersections and checkpoints between design and content. Accept that it’s sometimes okay to focus just on the content or just on the design.'
+                textParts: [
+                    {
+                        partName: 'Parliamentary Development',
+                        text: '0 Ovde ide tekst koji pripada delu pod gore navedenim nazivom'
+                    },
+                    {
+                        partName: 'Constitutional Reform',
+                        text: '1 Ovde ide tekst koji pripada delu pod gore navedenim nazivom'
+                    },
+                    {
+                        partName: 'Electoral Cycle Support',
+                        text: '2 Ovde ide tekst koji pripada delu pod gore navedenim nazivom'
+                    },
+                    {
+                        partName: 'Civic Engagement',
+                        text: '3 Ovde ide tekst koji pripada delu pod gore navedenim nazivom'
+                    },
+                    {
+                        partName: 'Women’s Equal Political Participation',
+                        text: '4 Ovde ide tekst koji pripada delu pod gore navedenim nazivom'
+                    },
+                    {
+                        partName: 'Women in Decision-Making - Increasing the Proportion of Women Parliamentarians',
+                        text: '5 Ovde ide tekst koji pripada delu pod gore navedenim nazivom'
+                    }
+                ]
             }
         },
         {
@@ -79,17 +203,76 @@
             overviewData: {
                 isLargeText: false,
                 isTextExpanded: false,
-                text: 'Lorem Ipsum: translation<br/>The Latin scholar H. Rackham translated the above in 1914:<br/>De Finibus Bonorum Et Malorum But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?<br/>On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish. In a free hour, when our power of choice is untrammelled and when nothing prevents our being able to do what we like best, every pleasure is to be welcomed and every pain avoided. But in certain circumstances and owing to the claims of duty or the obligations of business it will frequently occur that pleasures have to be repudiated and annoyances accepted. The wise man therefore always holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains.<br/>Lorem Ipsum: variants and technical information<br/>Adobe Fireworks Lorem Ipsum plugin In 1985 Aldus Corporation launched its first desktop publishing program Aldus PageMaker for Apple Macintosh computers, released in 1987 for PCs running Windows 1.0. Both contained the variant lorem ipsum most common today. Laura Perry, then art director with Aldus, modified prior versions of Lorem Ipsum text from typographical specimens; in the 1960s and 1970s it appeared often in lettering catalogs by Letraset. Anecdotal evidence has it that Letraset used Lorem ipsum already from 1970 onwards, eg. for grids (page layouts) for ad agencies. Many early desktop publishing programs, eg. Adobe PageMaker, used it to create template.'
+                textParts: [
+                    {
+                        partName: '',
+                        text: '0 Ovde ide ceo tekst za Overview Data'
+                    }
+                ]
             },
             keyTrendsData: {
                 isLargeText: false,
                 isTextExpanded: false,
-                text: 'The toppings you may chose for that TV dinner pizza slice when you forgot to shop for foods, the paint you may slap on your face to impress the new boss is your business. But what about your daily bread? Design comps, layouts, wireframes—will your clients accept that you go about things the facile way? Authorities in our business will tell in no uncertain terms that Lorem Ipsum is that huge, huge no no to forswear forever. Not so fast, I\'d say, there are some redeeming factors in favor of greeking text, as its use is merely the symptom of a worse problem to take into consideration.'
+                textParts: [
+                    {
+                        partName: 'Variable Conditions for Human Rights Protections and the Rule of Law',
+                        text: '0 Ovde ide tekst koji pripada delu pod gore navedenim nazivom'
+                    },
+                    {
+                        partName: 'Continuing Security Threats',
+                        text: '1 Ovde ide tekst koji pripada delu pod gore navedenim nazivom'
+                    }
+                ]
             },
             whatWeDoData: {
                 isLargeText: false,
                 isTextExpanded: false,
-                text: 'The legacy of conflict and the prevalence of protracted and so-called frozen conflicts throughout the ECIS region has long undermined development efforts and progress on a range of socio-economic and other indicators. In addition, a number of places in the region exist where tensions between different ethnic, religious and political groups risk escalating into more formal conflicts.<br/>UNDP\'s work on conflict prevention and peacebuilding aims to promote social cohesion and empower nations and communities to become more inclusive and resilient to external and internal shocks. In order to achieve these aims, UNDP utilizes overlapping approaches with different focuses, which in the region can be classified into several broad categories:<br/>• Conflict Analysis and Risk Assessment – Sound analysis is not only central to understanding the causes and drivers of conflict, capacities for peace, and key stakeholders, but is also critical to developing strategic approaches for the UN system to comprehensively support national efforts to address conflicts and protect development gains.<br/>• Opening Dialogues and Confidence-Building – In areas where conflict and/or reoccurring violence have led to divisions, opening dialogues and confidence building aims to increase engagement and trust between people and communities on opposite sides of conflict divides by identifying and addressing shared challenges, and establishing formal frameworks to pre-empt future conflict.<br/>• Reconciliation and Peacebuilding – Where communities with a history of tension and conflict continue to live together, an increased emphasis on reconciliation and the prevention of violence is required to mitigate the higher risk of conflict re-emerging and sustain peace over the long term.<br/>• Conflict Management and Recovery – Typically combining elements of cross-border peacebuilding and confidence building, managing active conflict and facilitating recovery requires a specialized approach that also aims to reduce and eliminate violence, reintegrate internally displaced persons (IDPs), support reforms that address the causes of conflict, and identify priorities for rebuilding.'
+                textParts: [
+                    {
+                        partName: 'Strengthening National Systems Human Rights Protection',
+                        text: '0 Ovde ide tekst koji pripada delu pod gore navedenim nazivom'
+                    },
+                    {
+                        partName: 'National Human Rights Institutions: Key human rights actors in conflict and post-conflict situations',
+                        text: '1 Ovde ide tekst koji pripada delu pod gore navedenim nazivom'
+                    },
+                    {
+                        partName: 'Legislative Reform and Effective',
+                        text: '2 Ovde ide tekst koji pripada delu pod gore navedenim nazivom'
+                    },
+                    {
+                        partName: 'Justice Systems',
+                        text: '3 Ovde ide tekst koji pripada delu pod gore navedenim nazivom'
+                    },
+                    {
+                        partName: 'Improving Access to Justice',
+                        text: '4 Ovde ide tekst koji pripada delu pod gore navedenim nazivom'
+                    },
+                    {
+                        partName: 'Anti-Discrimination and the Rights of Persons with Disabilities',
+                        text: '5 Ovde ide tekst koji pripada delu pod gore navedenim nazivom'
+                    },
+                    {
+                        partName: 'Torture Prevention and Improvement of Detention Conditions',
+                        text: '6 Ovde ide tekst koji pripada delu pod gore navedenim nazivom'
+                    },
+                    {
+                        partName: 'Community Security and Reduction of Armed Violence',
+                        text: '7 Ovde ide tekst koji pripada delu pod gore navedenim nazivom'
+                    },
+                    {
+                        partName: 'Prevention and Response to Sexual and Gender-Based Violence',
+                        text: '8 Ovde ide tekst koji pripada delu pod gore navedenim nazivom'
+                    },
+                    {
+                        partName: 'Reform in the Western Balkans – Gender Equality in the Military',
+                        text: '9 Ovde ide tekst koji pripada delu pod gore navedenim nazivom'
+                    },
+                    {
+                        partName: 'Transitional Justice',
+                        text: '10 Ovde ide tekst koji pripada delu pod gore navedenim nazivom'
+                    }
+                ]
             }
         }
     ],
@@ -256,11 +439,6 @@
                     iconClass: 'xn-desktop-monitor',
                     textColor: '#ddd',
                     text: '2.5 million users of the e-Government services in 2015',
-                },
-                {
-                    iconClass: '',
-                    textColor: '',
-                    text: '',
                 }
             ],
             backgroundData: {
@@ -862,7 +1040,7 @@
                     text: '8,646 men and women directly benefitted from civil society’s active role in implementation of gender related policies',
                 },
                 {
-                    iconClass: 'xn-',
+                    iconClass: 'xn-legal-hammer',
                     textColor: '#ddd',
                     text: 'Initiated programme to provide legal aid services to disadvantaged groups in southern Turkey, including Syrian refugees',
                 },
@@ -904,17 +1082,17 @@
             },
             keyResults: [
                 {
-                    iconClass: 'xn-',
+                    iconClass: 'xn-men-women',
                     textColor: '#ddd',
                     text: 'Human rights action plan developed based on the recommendations from the 2013 UPR and approved by the Presidential Decree in January 2016 ',
                 },
                 {
-                    iconClass: 'xn-',
+                    iconClass: 'xn-government',
                     textColor: '#ddd',
                     text: 'Completed a review of administrative, legal, and financial systems of the local governance in order to develop a list of proposals for improvement',
                 },
                 {
-                    iconClass: 'xn-',
+                    iconClass: 'xn-legal-hammer',
                     textColor: '#ddd',
                     text: 'Provided expertise and guidance on the drafting of a new Constitution',
                 },
@@ -952,22 +1130,22 @@
             },
             keyResults: [
                 {
-                    iconClass: 'xn-',
+                    iconClass: 'xn-men-women',
                     textColor: '#ddd',
                     text: 'National Human Rights Strategy was adopted by Presidential decree ',
                 },
                 {
-                    iconClass: 'xn-',
+                    iconClass: ' xn-government',
                     textColor: '#ddd',
                     text: 'Open data legislation was approved by the Parliament ',
                 },
                 {
-                    iconClass: 'xn-',
+                    iconClass: ' xn-anti-corruption-shield',
                     textColor: '#ddd',
                     text: 'UNDP Anti-Corruption School opened, offering exposure to some of the leading experts on national transparency and integrity ',
                 },
                 {
-                    iconClass: 'xn-',
+                    iconClass: 'xn-multi-document-magnify',
                     textColor: '#ddd',
                     text: '50,000 IDPs and their host communities benefited from a UNDP programme to rehabilitate social infrastructure',
                 }
@@ -1004,22 +1182,22 @@
             },
             keyResults: [
                 {
-                    iconClass: 'xn-',
+                    iconClass: 'xn-staff-training',
                     textColor: '#ddd',
                     text: 'Access to 4,000 ratified international treaties enhanced',
                 },
                 {
-                    iconClass: 'xn-',
+                    iconClass: 'xn-anti-corruption-shield',
                     textColor: '#ddd',
                     text: 'Public consultation platform www.regulation.gov.uz launched and receives over 500 comments on 300 draft laws',
                 },
                 {
-                    iconClass: 'xn-',
+                    iconClass: 'xn-women-elected',
                     textColor: '#ddd',
                     text: 'Open Data Portal http://data.gov.uz launched and now has 748 datasets from 64 agencies',
                 },
                 {
-                    iconClass: 'xn-',
+                    iconClass: 'xn-staff-training',
                     textColor: '#ddd',
                     text: 'New streamlined model of public service delivery piloted',
                 }
