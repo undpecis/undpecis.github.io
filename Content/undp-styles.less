@@ -488,10 +488,10 @@ h1, h2, h3, h4, h5, h6, p, a { margin:0; padding:0;}
     padding: 0;
     background-color: none;
     display:inline-block;
-    li{
+    > li{
         cursor:pointer;
         display:block;
-        a{
+        > a{
             display: block;
             text-align: left;
             padding: 5px 8px;
@@ -500,8 +500,8 @@ h1, h2, h3, h4, h5, h6, p, a { margin:0; padding:0;}
     }
     //expandable content nav
     &.c-expandable-nav{
-        li{
-            a{
+        > li{
+            > a{
                 display: block;
                 text-align: left;
                 padding: 10px 8px;
@@ -509,65 +509,76 @@ h1, h2, h3, h4, h5, h6, p, a { margin:0; padding:0;}
                 font-size:24px;
             }
             &.c-active{
-                font-weight:bold;
+                //font-weight:bold;
+            }
+            //
+            &.c-has-subnavigation{
+                background:none !important;
+                .c-subnavigation-list{
+                    list-style-type: none;
+                    margin: 0;
+                    padding: 0;
+                    background-color: none;
+                    display:inline-block;
+                    li{
+                        a{
+                            display: block;
+                            text-align: left;
+                            padding: 5px 8px;
+                            text-decoration: none;
+                            font-size:12px;
+                            font-weight:normal !important;
+                            color:rgba(255,255,255, 0.5);
+                        }
+                        &.c-active{
+                            a{
+                                color:@col-text-blue;
+                            }
+                        }
+                    }
+                }
             }
         }
         &.c-blue-background{
-            li{
-                a{
+            > li{
+                > a{
                     background-color:@col-focus-stripe-blue;
                     color:@col-white;
                 }
                 &:hover{
-                    a{
+                    > a{
                         background-color:darken(@col-focus-stripe-blue, 5);
                         color:@col-white;
                     }
                 }
                 &.c-active{
-                    a{
+                    > a{
                         background-color:darken(@col-focus-stripe-blue, 5);
                         color:@col-white;
-                        font-weight:bold;
+                        //font-weight:bold;
                     }
                 }
             }
         }
         &.c-black-background{
-            li{
-                a{
+            > li{
+                > a{
                     background-color:@col-stripe-black;
                     color:@col-white;
                 }
                 &:hover{
-                    a{
+                    > a{
                         background-color:darken(@col-stripe-black, 5);
                         color:@col-white;
                     }
                 }
                 &.c-active{
-                    a{
+                    > a{
                         background-color:darken(@col-stripe-black, 5);
                         color:@col-white;
-                        font-weight:bold;
+                        //font-weight:bold;
                     }
                 }
-            }
-        }
-    }
-    //expandable content subnav
-    &.c-subnavigation{
-        li{
-            a{
-                display: block;
-                text-align: left;
-                padding: 5px 8px;
-                text-decoration: none;
-                font-size:12px;
-                font-weight:normal !important;
-            }
-            &.c-active{
-                //font-weight:bold !important;
             }
         }
     }

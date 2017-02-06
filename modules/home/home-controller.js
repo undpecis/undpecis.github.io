@@ -137,6 +137,7 @@ angular.module('Home')
                 dataBindOKW: {},
                 //object with exact part of text of Overview, Key trends, What we do
                 textPartOKWtoBind: null,
+                activeIndexTextPartOKW: null,
                 //keeep index of currently visible OKW text
                 currentOKWindex: 0,
                 //keeps index of currently clicked Focus Area button
@@ -224,6 +225,7 @@ angular.module('Home')
                 for (var i = 0; i < $scope.ctrlVars.dataBindOKW.textParts.length; i++) {
                     if (i == newPartIndex) {
                         $scope.ctrlVars.textPartOKWtoBind = $scope.ctrlVars.dataBindOKW.textParts[i].text;
+                        $scope.ctrlVars.activeIndexTextPartOKW = i;
                         /* #region Check if text exceeded height */
                         checkHeightOfTextOKW();
                         /* #endregion Check if text exceeded height */

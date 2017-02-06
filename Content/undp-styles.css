@@ -463,59 +463,68 @@ a {
   background-color: none;
   display: inline-block;
 }
-.c-vertical-list li {
+.c-vertical-list > li {
   cursor: pointer;
   display: block;
 }
-.c-vertical-list li a {
+.c-vertical-list > li > a {
   display: block;
   text-align: left;
   padding: 5px 8px;
   text-decoration: none;
 }
-.c-vertical-list.c-expandable-nav li a {
+.c-vertical-list.c-expandable-nav > li > a {
   display: block;
   text-align: left;
   padding: 10px 8px;
   text-decoration: none;
   font-size: 24px;
 }
-.c-vertical-list.c-expandable-nav li.c-active {
-  font-weight: bold;
+.c-vertical-list.c-expandable-nav > li.c-has-subnavigation {
+  background: none !important;
 }
-.c-vertical-list.c-expandable-nav.c-blue-background li a {
-  background-color: #00699e;
-  color: #fff;
+.c-vertical-list.c-expandable-nav > li.c-has-subnavigation .c-subnavigation-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  background-color: none;
+  display: inline-block;
 }
-.c-vertical-list.c-expandable-nav.c-blue-background li:hover a {
-  background-color: #005885;
-  color: #fff;
-}
-.c-vertical-list.c-expandable-nav.c-blue-background li.c-active a {
-  background-color: #005885;
-  color: #fff;
-  font-weight: bold;
-}
-.c-vertical-list.c-expandable-nav.c-black-background li a {
-  background-color: #383839;
-  color: #fff;
-}
-.c-vertical-list.c-expandable-nav.c-black-background li:hover a {
-  background-color: #2b2b2c;
-  color: #fff;
-}
-.c-vertical-list.c-expandable-nav.c-black-background li.c-active a {
-  background-color: #2b2b2c;
-  color: #fff;
-  font-weight: bold;
-}
-.c-vertical-list.c-subnavigation li a {
+.c-vertical-list.c-expandable-nav > li.c-has-subnavigation .c-subnavigation-list li a {
   display: block;
   text-align: left;
   padding: 5px 8px;
   text-decoration: none;
   font-size: 12px;
   font-weight: normal !important;
+  color: rgba(255, 255, 255, 0.5);
+}
+.c-vertical-list.c-expandable-nav > li.c-has-subnavigation .c-subnavigation-list li.c-active a {
+  color: #00699e;
+}
+.c-vertical-list.c-expandable-nav.c-blue-background > li > a {
+  background-color: #00699e;
+  color: #fff;
+}
+.c-vertical-list.c-expandable-nav.c-blue-background > li:hover > a {
+  background-color: #005885;
+  color: #fff;
+}
+.c-vertical-list.c-expandable-nav.c-blue-background > li.c-active > a {
+  background-color: #005885;
+  color: #fff;
+}
+.c-vertical-list.c-expandable-nav.c-black-background > li > a {
+  background-color: #383839;
+  color: #fff;
+}
+.c-vertical-list.c-expandable-nav.c-black-background > li:hover > a {
+  background-color: #2b2b2c;
+  color: #fff;
+}
+.c-vertical-list.c-expandable-nav.c-black-background > li.c-active > a {
+  background-color: #2b2b2c;
+  color: #fff;
 }
 .c-vertical-list.c-footer-nav {
   display: block;

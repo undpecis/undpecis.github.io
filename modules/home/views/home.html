@@ -768,20 +768,24 @@
                             <li ng-click="changeCountryOKWData(1)" ng-class="{'c-active' : ctrlVars.currentOKWindex == 1}">
                                 <a>Key trends</a>
                             </li>
-                            <li>
+                            <li class="c-has-subnavigation">
                                 <!-- #region Subnavigation -->
-                                <ul class="c-vertical-list c-subnavigation" ng-if="ctrlVars.currentOKWindex == 1">
-                                    <li ng-repeat="textPartTitle in ctrlVars.dataBindOKW.textParts" ng-click="changeOKWpartText($index)"><a>{{textPartTitle.partName}}</a></li>
+                                <ul class="c-subnavigation-list" ng-if="ctrlVars.currentOKWindex == 1">
+                                    <li ng-repeat="textPartTitle in ctrlVars.dataBindOKW.textParts" ng-click="changeOKWpartText($index)" ng-class="{'c-active' : ctrlVars.activeIndexTextPartOKW == $index}">
+                                        <a>{{textPartTitle.partName}}</a>
+                                    </li>
                                 </ul>
                                 <!-- #endregion Subnavigation -->
                             </li>
                             <li ng-click="changeCountryOKWData(2)" ng-class="{'c-active' : ctrlVars.currentOKWindex == 2}">
                                 <a>What we do</a>
                             </li>
-                            <li>
+                            <li class="c-has-subnavigation">
                                 <!-- #region Subnavigation -->
-                                <ul class="c-vertical-list c-subnavigation" ng-if="ctrlVars.currentOKWindex == 2">
-                                    <li ng-repeat="textPartTitle in ctrlVars.dataBindOKW.textParts" ng-click="changeOKWpartText($index)"><a>{{textPartTitle.partName}}</a></li>
+                                <ul class="c-subnavigation-list" ng-if="ctrlVars.currentOKWindex == 2">
+                                    <li ng-repeat="textPartTitle in ctrlVars.dataBindOKW.textParts" ng-click="changeOKWpartText($index)" ng-class="{'c-active' : ctrlVars.activeIndexTextPartOKW == $index}">
+                                        <a>{{textPartTitle.partName}}</a>
+                                    </li>
                                 </ul>
                                 <!-- #endregion Subnavigation -->
                             </li>

@@ -27,7 +27,7 @@
                         text: '0 Ovde ide tekst koji pripada delu pod gore navedenim nazivom'
                     },
                     {
-                        partName: 'New and Old Threats from V iolent Extremism',
+                        partName: 'New and Old Threats from Violent Extremism',
                         text: '1 Ovde ide tekst koji pripada delu pod gore navedenim nazivom'
                     }
                 ]
@@ -45,7 +45,7 @@
                         text: '1 Ovde ide tekst koji pripada delu pod gore navedenim nazivom'
                     },
                     {
-                        partName: 'Opening D ialogues and ConfIence- Building',
+                        partName: 'Opening Dialogues and ConfIence- Building',
                         text: '2 Ovde ide tekst koji pripada delu pod gore navedenim nazivom'
                     },
                     {
@@ -95,7 +95,7 @@
                         text: '2 Ovde ide tekst koji pripada delu pod gore navedenim nazivom'
                     },
                     {
-                        partName: 'The Growing Use of Technology and I nnovation',
+                        partName: 'The Growing Use of Technology and Innovation',
                         text: '3 Ovde ide tekst koji pripada delu pod gore navedenim nazivom'
                     }
                 ]
