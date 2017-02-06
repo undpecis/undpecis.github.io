@@ -1,7 +1,8 @@
 /* CSS Document */
 
 .tableCss {
-    width: 540px;
+    /*width: 540px;*/
+    width:100%;
     color: white;
     margin: 40px auto;
 }

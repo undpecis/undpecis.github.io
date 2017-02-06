@@ -65,29 +65,53 @@ angular.module('Home')
             /* #endregion On country map click */
             /* #region Change Data displayed for 'Background', 'Assistance and Impact' & 'Challenges, Lessons Learned and Way Forward' */
             $scope.enumBAC = {
-                backgroundData: 0,
-                assistanceData: 1,
-                challengesData: 2
+                backgroundData: {
+                    enumIndex: 0,
+                    isXsContentVisible: false
+                },
+                assistanceData: {
+                    enumIndex: 1,
+                    isXsContentVisible: false
+                },
+                challengesData: {
+                    enumIndex: 2,
+                    isXsContentVisible: false
+                }
             }
             $scope.changeCountryBACData = function (buttonIndex) {
-                if (buttonIndex == $scope.enumBAC.backgroundData) {
+                if (buttonIndex == $scope.enumBAC.backgroundData.enumIndex) {
                     $scope.ctrlVars.dataBindBAC = $scope.selectedCountry.backgroundData;
                     $scope.ctrlVars.dataBindStatement = $scope.selectedCountry.statement;
                     $scope.ctrlVars.currentBACindex = buttonIndex;
+                    //toggle visibility of xs device content
+                    $scope.enumBAC.backgroundData.isXsContentVisible = !$scope.enumBAC.backgroundData.isXsContentVisible;
+                    //seto others to invisible
+                    $scope.enumBAC.assistanceData.isXsContentVisible = false;
+                    $scope.enumBAC.challengesData.isXsContentVisible = false;
                     /* #region Check if text exceeded height */
                     checkHeightOfTextBAC();
                     /* #endregion Check if text exceeded height */
-                } else if (buttonIndex == $scope.enumBAC.assistanceData) {
+                } else if (buttonIndex == $scope.enumBAC.assistanceData.enumIndex) {
                     $scope.ctrlVars.dataBindBAC = $scope.selectedCountry.assistanceData;
                     $scope.ctrlVars.dataBindStatement = $scope.selectedCountry.statement;
                     $scope.ctrlVars.currentBACindex = buttonIndex;
+                    //toggle visibility of xs device content
+                    $scope.enumBAC.assistanceData.isXsContentVisible = !$scope.enumBAC.assistanceData.isXsContentVisible;
+                    //seto others to invisible
+                    $scope.enumBAC.backgroundData.isXsContentVisible = false;
+                    $scope.enumBAC.challengesData.isXsContentVisible = false;
                     /* #region Check if text exceeded height */
                     checkHeightOfTextBAC();
                     /* #endregion Check if text exceeded height */
-                } else if (buttonIndex == $scope.enumBAC.challengesData) {
+                } else if (buttonIndex == $scope.enumBAC.challengesData.enumIndex) {
                     $scope.ctrlVars.dataBindBAC = $scope.selectedCountry.challengesData;
                     $scope.ctrlVars.dataBindStatement = $scope.selectedCountry.statement;
                     $scope.ctrlVars.currentBACindex = buttonIndex;
+                    //toggle visibility of xs device content
+                    $scope.enumBAC.challengesData.isXsContentVisible = !$scope.enumBAC.challengesData.isXsContentVisible;
+                    //seto others to invisible
+                    $scope.enumBAC.backgroundData.isXsContentVisible = false;
+                    $scope.enumBAC.assistanceData.isXsContentVisible = false;
                     /* #region Check if text exceeded height */
                     checkHeightOfTextBAC();
                     /* #endregion Check if text exceeded height */
@@ -138,6 +162,7 @@ angular.module('Home')
                 //object with exact part of text of Overview, Key trends, What we do
                 textPartOKWtoBind: null,
                 activeIndexTextPartOKW: null,
+                selectedSubnavTitle_xs: null,
                 //keeep index of currently visible OKW text
                 currentOKWindex: 0,
                 //keeps index of currently clicked Focus Area button
@@ -177,7 +202,7 @@ angular.module('Home')
                         //if this button not already opened
                         if ($scope.ctrlVars.focusData[i].activeInView == false) {
                             $scope.ctrlVars.focusData[i].activeInView = true;
-                            $scope.ctrlVars.selectedFocusAreaData = $scope.ctrlVars.focusData[i];                            
+                            $scope.ctrlVars.selectedFocusAreaData = $scope.ctrlVars.focusData[i];
                             $scope.ctrlVars.isOpenCountryOKWdata = true;
                             $scope.ctrlVars.currentFocusAreaIndex = focusAreaIndex;
                             $scope.changeCountryOKWData(0);
@@ -200,24 +225,53 @@ angular.module('Home')
                 }
             }
             $scope.enumOKW = {
-                overviewData: 0,
-                keyTrendsData: 1,
-                whatWeDoData: 2
+                overviewData: {
+                    enumIndex: 0,
+                    isXsSubnavActive: false
+                },
+                keyTrendsData: {
+                    enumIndex: 1,
+                    isXsSubnavActive: false
+                },
+                whatWeDoData: {
+                    enumIndex: 2,
+                    isXsSubnavActive: false
+                }
             }
             $scope.changeCountryOKWData = function (buttonIndex) {
-                if (buttonIndex == $scope.enumOKW.overviewData) {
-                    $scope.ctrlVars.dataBindOKW = $scope.ctrlVars.selectedFocusAreaData.overviewData;                    
+                if (buttonIndex == $scope.enumOKW.overviewData.enumIndex) {
+                    $scope.ctrlVars.dataBindOKW = $scope.ctrlVars.selectedFocusAreaData.overviewData;
                     $scope.ctrlVars.currentOKWindex = buttonIndex;
                     $scope.changeOKWpartText(0);
-                } else if (buttonIndex == $scope.enumOKW.keyTrendsData) {
+                    //set first item for mobile dropdown subnav
+                    $scope.okwXsVars.selectedItemTitle = $scope.ctrlVars.dataBindOKW.textParts[0].partName;
+                    $scope.okwXsVars.isDropdownOpen = false;
+                    $scope.enumOKW.overviewData.isXsSubnavActive = !$scope.enumOKW.overviewData.isXsSubnavActive;
+                    //set others to false so they will close
+                    $scope.enumOKW.keyTrendsData.isXsSubnavActive = false;
+                    $scope.enumOKW.whatWeDoData.isXsSubnavActive = false;
+                } else if (buttonIndex == $scope.enumOKW.keyTrendsData.enumIndex) {
                     $scope.ctrlVars.dataBindOKW = $scope.ctrlVars.selectedFocusAreaData.keyTrendsData;
                     $scope.ctrlVars.currentOKWindex = buttonIndex;
                     $scope.changeOKWpartText(0);
-                } else if (buttonIndex == $scope.enumOKW.whatWeDoData) {
-                    $scope.ctrlVars.dataBindOKW = $scope.ctrlVars.selectedFocusAreaData.whatWeDoData;
+                    //set first item for mobile dropdown subnav
+                    $scope.okwXsVars.selectedItemTitle = $scope.ctrlVars.dataBindOKW.textParts[0].partName;
+                    $scope.okwXsVars.isDropdownOpen = false;
+                    $scope.enumOKW.keyTrendsData.isXsSubnavActive = !$scope.enumOKW.keyTrendsData.isXsSubnavActive;
+                    //set others to false so they will close
+                    $scope.enumOKW.overviewData.isXsSubnavActive = false;
+                    $scope.enumOKW.whatWeDoData.isXsSubnavActive = false;
+                } else if (buttonIndex == $scope.enumOKW.whatWeDoData.enumIndex) {
+                    $scope.ctrlVars.dataBindOKW = $scope.ctrlVars.selectedFocusAreaData.whatWeDoData;                    
                     $scope.ctrlVars.currentOKWindex = buttonIndex;
                     $scope.changeOKWpartText(0);
-
+                    //set first item for mobile dropdown subnav
+                    $scope.okwXsVars.selectedItemTitle = $scope.ctrlVars.dataBindOKW.textParts[0].partName;
+                    $scope.okwXsVars.isDropdownOpen = false;
+                    $scope.enumOKW.whatWeDoData.isXsSubnavActive = !$scope.enumOKW.whatWeDoData.isXsSubnavActive;
+                    //set others to false so they will close
+                    $scope.enumOKW.overviewData.isXsSubnavActive = false;
+                    $scope.enumOKW.keyTrendsData.isXsSubnavActive = false;
                 }
             }
             $scope.changeOKWpartText = function (newPartIndex) {
@@ -226,13 +280,45 @@ angular.module('Home')
                     if (i == newPartIndex) {
                         $scope.ctrlVars.textPartOKWtoBind = $scope.ctrlVars.dataBindOKW.textParts[i].text;
                         $scope.ctrlVars.activeIndexTextPartOKW = i;
+                        $scope.ctrlVars.selectedSubnavTitle_xs = $scope.ctrlVars.dataBindOKW.textParts[i].partName;
                         /* #region Check if text exceeded height */
                         checkHeightOfTextOKW();
                         /* #endregion Check if text exceeded height */
                     }
                 }
             }
-
+            $scope.changeOKWpartText_xs = function (selectedOptionItemObject) {
+                console.log('selectedOptionTitle: ' + selectedOptionItemObject);
+                for (var i = 0; i < $scope.ctrlVars.dataBindOKW.textParts.length; i++) {
+                    if ($scope.ctrlVars.dataBindOKW.textParts[i].partName == selectedOptionItemObject.partName) {
+                        $scope.ctrlVars.textPartOKWtoBind = $scope.ctrlVars.dataBindOKW.textParts[i].text;
+                        $scope.ctrlVars.activeIndexTextPartOKW = i;
+                        console.log('selectedOptionItemObject.partName: ' + selectedOptionItemObject.partName);
+                    }
+                }
+            }
+            $scope.okwXsVars = {
+                selectedItemTitle: '',
+                isDropdownOpen:false
+            }
+            $scope.selectOKWdropdownItem = function (clickedIndex) {
+                console.log('clickedIndex: ' + clickedIndex);
+                for (var i = 0; i < $scope.ctrlVars.dataBindOKW.textParts.length; i++) {
+                    if (i == clickedIndex) {
+                        console.log('equals clickedIndex: ');
+                        $scope.okwXsVars.selectedItemTitle = $scope.ctrlVars.dataBindOKW.textParts[i].partName;
+                        $scope.okwXsVars.isDropdownOpen = !$scope.okwXsVars.isDropdownOpen;
+                        $scope.ctrlVars.textPartOKWtoBind = $scope.ctrlVars.dataBindOKW.textParts[i].text;
+                        $scope.ctrlVars.activeIndexTextPartOKW = i;
+                    }
+                }
+            }
+            $scope.toggleDropdownOpen = function (dropdownType) {
+                if (dropdownType == 'okw') {
+                    $scope.okwXsVars.isDropdownOpen = !$scope.okwXsVars.isDropdownOpen;
+                    console.log('$scope.okwXsVars.isDropdownOpen: ' + $scope.okwXsVars.isDropdownOpen);
+                }
+            }
             /* #region Check if text exceeded height */
             function checkHeightOfTextOKW() {
                 var checkForElementInterval = setInterval(getTextBoxElement, 10);
@@ -258,15 +344,6 @@ angular.module('Home')
                 $scope.ctrlVars.dataBindOKW.isTextExpanded = !$scope.ctrlVars.dataBindOKW.isTextExpanded;
             }
             /* #endregion Toggle OKW full text visibility (see less see more) */
-
-            /* #region OKW xs screens logic (mobile+) */
-            $scope.toggleCountryOKWData_xs = function (okwDataIndex) {
-                if (okwDataIndex == 0) {
-
-                }
-            }
-            /* #endregion OKW xs screens logic (mobile+) */
-
             /* #region Modal for Gender Equality + Peace, Justice and Strong Institutions */
             $scope.openGenderPeaceModal = function (buttonName) {
                 if (buttonName == 'gender') {

@@ -390,7 +390,7 @@
                 <div class="c-table">
                     <!-- #region Text -->
                     <div class="c-cell c-has-text">
-                        <p class="c-21-400">Key results://mobile//</p>
+                        <p class="c-21-400">Key results:</p>
                         <ul>
                             <li ng-repeat="keyItem in selectedCountry.keyResults"><span class="c-list-item">{{keyItem.text}}</span></li>
                         </ul>
@@ -416,42 +416,61 @@
             <!-- #endregion Country flag // SMALL RESOLUTIONS -->
             <!-- #region BAC texts content // SMALL RESOLUTIONS -->
             <div class="c-content-wrap">
-                <ul class="c-vertical-list c-key-results-list">
+                <ul class="c-vertical-list c-xs-devices">
                     <!-- #region Single item -->
                     <li>
-                        <a class="c-list-title"><b>Background//mobile//</b></a>
-                        <div class="c-item-content">
-                            <p>An ethnically diverse nation with large oil, gas and mineral reserves, Kazakhstan has experienced rapid economic growth since the turn of the century and has become the dominant economy in Central Asia. However, with oil and other petroleum products making up over 60 percent of exports, the fall in prices for many commodities in 2015 had a significant impact on the Kazakh economy.</p>
-                            <p>In April 2015, Nursultan Nazarbaev won the latest presidential election with a reported 97.7 percent of the vote.59 His re-election coincided with the launch of an important reform process, entitled ‘100 Concrete Steps to Implement Five Institutional Reforms’, which is anticipated to strongly impact on institutional efficiency, government openness and long-term economic development. Furthermore, the President has made a commitment to reforms encouraging a multi-party system, while the country has also been exploring ways to decentralize power to the local level, with several initiatives from the Government in this area. To date, however, there is still significant potential for the further decentralization of power to local executive bodies. </p>
-                            <p>Over the past two decades, Kazakhstan has implemented significant public administration and civil service reforms to improve the effectiveness and efficiency of government. Nonetheless, more progress is needed in addressing the development challenges facing Kazakhstan. Restrictions on freedom of expression remain, with newspapers and other media outlets presenting dissenting views still subject to closure by authorities. Further improvement is also required to reduce discrimination against ethnic minorities, the LGTBI community and some religious groups.     </p>
-                            <p>More recently, Kazakhstan has been playing an active role in attempts to counter violent extremism in Central Asia. In June 2015, Kazakhstan hosted the two-day Central and South Asia Regional Conference on Countering Violent Extremism. Co-organized by the Kazakh and US governments, the event was attended by 200 high-level government officials, representatives of the private sector and civil society activists from Afghanistan, Bangladesh, Kazakhstan, the Kyrgyz Republic, India, Pakistan, Sri Lanka, Tajikistan and Uzbekistan. As a result of the conference, a set of recommendations were adopted and concrete steps proposed to enhance national and regional efforts.</p>
-                            <!-- #region Download section -->
-                            <button class="c-bttn c-bttn-combo c-bttn-blue c-m-top-40">
-                                <div class="c-circle-icon-box">
-                                    <i class="c-ico icon-cloud-download"></i>
+                        <a class="c-list-title" ng-click="changeCountryBACData(0)" ng-class="{'c-active' : enumBAC.backgroundData.isXsContentVisible == true}">
+                            <div class="c-table">
+                                <div class="c-cell">Background</div>
+                                <div class="c-cell c-w-1perc">
+                                    <i class="c-ico icon-arrow-down" ng-if="enumBAC.backgroundData.isXsContentVisible == false"></i>
+                                    <i class="c-ico icon-arrow-up" ng-if="enumBAC.backgroundData.isXsContentVisible == true"></i>
                                 </div>
-                                <span>DOWNLOAD country report</span>
-                            </button>
-                            <!-- #endregion Download section -->
-                        </div>
+                            </div>
+                        </a>
                     </li>
                     <!-- #endregion Single item -->
+                    <!-- #region Subnavigation content -->
+                    <li class="c-has-subcontent c-blue-background" ng-if="enumBAC.backgroundData.isXsContentVisible == true">
+                        <div class="c-text-wrapper" ng-bind-html="ctrlVars.dataBindBAC.text"></div>
+                    </li>
+                    <!-- #endregion Subnavigation content -->
                     <!-- #region Single item -->
                     <li>
-                        <a class="c-list-title"><b>Assistance and Impact</b></a>
-                        <div class="c-item-content">
-                            <p>More recently, Kazakhstan has been playing an active role in attempts to counter violent extremism in Central Asia. In June 2015, Kazakhstan hosted the two-day Central and South Asia Regional Conference on Countering Violent Extremism. Co-organized by the Kazakh and US governments, the event was attended by 200 high-level government officials, representatives of the private sector and civil society activists from Afghanistan, Bangladesh, Kazakhstan, the Kyrgyz Republic, India, Pakistan, Sri Lanka, Tajikistan and Uzbekistan. As a result of the conference, a set of recommendations were adopted and concrete steps proposed to enhance national and regional efforts.</p>
-                        </div>
+                        <a class="c-list-title" ng-click="changeCountryBACData(1)" ng-class="{'c-active' : enumBAC.assistanceData.isXsContentVisible == true}">
+                            <div class="c-table">
+                                <div class="c-cell">Assistance and Impact</div>
+                                <div class="c-cell c-w-1perc">
+                                    <i class="c-ico icon-arrow-down" ng-if="enumBAC.assistanceData.isXsContentVisible == false"></i>
+                                    <i class="c-ico icon-arrow-up" ng-if="enumBAC.assistanceData.isXsContentVisible == true"></i>
+                                </div>
+                            </div>
+                        </a>
                     </li>
                     <!-- #endregion Single item -->
+                    <!-- #region Subnavigation content -->
+                    <li class="c-has-subcontent c-blue-background" ng-if="enumBAC.assistanceData.isXsContentVisible == true">
+                        <div class="c-text-wrapper" ng-bind-html="ctrlVars.dataBindBAC.text"></div>
+                    </li>
+                    <!-- #endregion Subnavigation content -->
                     <!-- #region Single item -->
                     <li>
-                        <a class="c-list-title"><b>Challenges, Lessons Learned and Way Forward</b></a>
-                        <div class="c-item-content">
-                            <p>Over the past two decades, Kazakhstan has implemented significant public administration and civil service reforms to improve the effectiveness and efficiency of government. Nonetheless, more progress is needed in addressing the development challenges facing Kazakhstan. Restrictions on freedom of expression remain, with newspapers and other media outlets presenting dissenting views still subject to closure by authorities. Further improvement is also required to reduce discrimination against ethnic minorities, the LGTBI community and some religious groups.     </p>
-                        </div>
+                        <a class="c-list-title" ng-click="changeCountryBACData(2)" ng-class="{'c-active' : enumBAC.challengesData.isXsContentVisible == true}">
+                            <div class="c-table">
+                                <div class="c-cell">Challenges, Lessons Learned and Way Forward</div>
+                                <div class="c-cell c-w-1perc">
+                                    <i class="c-ico icon-arrow-down" ng-if="enumBAC.challengesData.isXsContentVisible == false"></i>
+                                    <i class="c-ico icon-arrow-up" ng-if="enumBAC.challengesData.isXsContentVisible == true"></i>
+                                </div>
+                            </div>
+                        </a>
                     </li>
                     <!-- #endregion Single item -->
+                    <!-- #region Subnavigation content -->
+                    <li class="c-has-subcontent c-blue-background" ng-if="enumBAC.challengesData.isXsContentVisible == true">
+                        <div class="c-text-wrapper" ng-bind-html="ctrlVars.dataBindBAC.text"></div>
+                    </li>
+                    <!-- #endregion Subnavigation content -->
                 </ul>
             </div>
             <!-- #endregion BAC texts content // SMALL RESOLUTIONS -->
@@ -753,7 +772,7 @@
         <div class="c-expandable-content-wrap">
             <!-- #region Title -->
             <div class="c-title">
-                <h3>Inclusive political processes</h3>
+                <h3>{{ctrlVars.selectedFocusAreaData.title}}</h3>
             </div>
             <!-- #endregion Title -->
             <!-- #region Content // LARGE RESOLUTIONS -->
@@ -768,9 +787,9 @@
                             <li ng-click="changeCountryOKWData(1)" ng-class="{'c-active' : ctrlVars.currentOKWindex == 1}">
                                 <a>Key trends</a>
                             </li>
-                            <li class="c-has-subnavigation">
+                            <li class="c-has-subnavigation" ng-if="ctrlVars.currentOKWindex == 1">
                                 <!-- #region Subnavigation -->
-                                <ul class="c-subnavigation-list" ng-if="ctrlVars.currentOKWindex == 1">
+                                <ul class="c-subnavigation-list">
                                     <li ng-repeat="textPartTitle in ctrlVars.dataBindOKW.textParts" ng-click="changeOKWpartText($index)" ng-class="{'c-active' : ctrlVars.activeIndexTextPartOKW == $index}">
                                         <a>{{textPartTitle.partName}}</a>
                                     </li>
@@ -780,9 +799,9 @@
                             <li ng-click="changeCountryOKWData(2)" ng-class="{'c-active' : ctrlVars.currentOKWindex == 2}">
                                 <a>What we do</a>
                             </li>
-                            <li class="c-has-subnavigation">
+                            <li class="c-has-subnavigation" ng-if="ctrlVars.currentOKWindex == 2">
                                 <!-- #region Subnavigation -->
-                                <ul class="c-subnavigation-list" ng-if="ctrlVars.currentOKWindex == 2">
+                                <ul class="c-subnavigation-list">
                                     <li ng-repeat="textPartTitle in ctrlVars.dataBindOKW.textParts" ng-click="changeOKWpartText($index)" ng-class="{'c-active' : ctrlVars.activeIndexTextPartOKW == $index}">
                                         <a>{{textPartTitle.partName}}</a>
                                     </li>
@@ -836,50 +855,97 @@
             <!-- #endregion Content // LARGE RESOLUTIONS -->
             <!-- #region Content // SMALL RESOLUTIONS -->
             <div class="c-content-wrap c-show-when-xs">
-                <ul class="c-vertical-list c-key-results-list c-black-background">
+                <ul class="c-vertical-list c-xs-devices">
                     <!-- #region Single item -->
-                    <li ng-click="toggleCountryOKWData_xs(0)">
-                        <a class="c-list-title"><b>Overview</b></a>
-                        <div class="c-item-content">
-                            <p>An ethnically diverse nation with large oil, gas and mineral reserves, Kazakhstan has experienced rapid economic growth since the turn of the century and has become the dominant economy in Central Asia. However, with oil and other petroleum products making up over 60 percent of exports, the fall in prices for many commodities in 2015 had a significant impact on the Kazakh economy.</p>
-                            <p>In April 2015, Nursultan Nazarbaev won the latest presidential election with a reported 97.7 percent of the vote.59 His re-election coincided with the launch of an important reform process, entitled ‘100 Concrete Steps to Implement Five Institutional Reforms’, which is anticipated to strongly impact on institutional efficiency, government openness and long-term economic development. Furthermore, the President has made a commitment to reforms encouraging a multi-party system, while the country has also been exploring ways to decentralize power to the local level, with several initiatives from the Government in this area. To date, however, there is still significant potential for the further decentralization of power to local executive bodies. </p>
-                            <p>Over the past two decades, Kazakhstan has implemented significant public administration and civil service reforms to improve the effectiveness and efficiency of government. Nonetheless, more progress is needed in addressing the development challenges facing Kazakhstan. Restrictions on freedom of expression remain, with newspapers and other media outlets presenting dissenting views still subject to closure by authorities. Further improvement is also required to reduce discrimination against ethnic minorities, the LGTBI community and some religious groups.     </p>
-                            <p>More recently, Kazakhstan has been playing an active role in attempts to counter violent extremism in Central Asia. In June 2015, Kazakhstan hosted the two-day Central and South Asia Regional Conference on Countering Violent Extremism. Co-organized by the Kazakh and US governments, the event was attended by 200 high-level government officials, representatives of the private sector and civil society activists from Afghanistan, Bangladesh, Kazakhstan, the Kyrgyz Republic, India, Pakistan, Sri Lanka, Tajikistan and Uzbekistan. As a result of the conference, a set of recommendations were adopted and concrete steps proposed to enhance national and regional efforts.</p>
-                            <!-- #region Download section -->
-                            <button class="c-bttn c-bttn-combo c-bttn-black c-m-top-40">
-                                <div class="c-circle-icon-box">
-                                    <i class="c-ico icon-cloud-download"></i>
+                    <li>
+                        <a class="c-list-title" ng-click="changeCountryOKWData(0)" ng-class="{'c-active' : enumOKW.overviewData.isXsSubnavActive == true}">
+                            <div class="c-table">
+                                <div class="c-cell">Overview</div>
+                                <div class="c-cell c-w-1perc">
+                                    <i class="c-ico icon-arrow-down" ng-if="enumOKW.overviewData.isXsSubnavActive == false"></i>
+                                    <i class="c-ico icon-arrow-up" ng-if="enumOKW.overviewData.isXsSubnavActive == true"></i>
                                 </div>
-                                <span>DOWNLOAD country report</span>
-                            </button>
-                            <!-- #endregion Download section -->
-                        </div>
+                            </div>
+                        </a>
                     </li>
                     <!-- #endregion Single item -->
+                    <!-- #region Subnavigation content -->
+                    <li class="c-has-subcontent c-black-background" ng-if="enumOKW.overviewData.isXsSubnavActive == true">
+                        <div class="c-text-wrapper" ng-bind-html="ctrlVars.textPartOKWtoBind"></div>
+                    </li>
+                    <!-- #endregion Subnavigation content -->
                     <!-- #region Single item -->
-                    <li ng-click="toggleCountryOKWData_xs(1)">
-                        <a class="c-list-title"><b>Key trends</b></a>
-                        <div class="c-item-content">
-                            <p>More recently, Kazakhstan has been playing an active role in attempts to counter violent extremism in Central Asia. In June 2015, Kazakhstan hosted the two-day Central and South Asia Regional Conference on Countering Violent Extremism. Co-organized by the Kazakh and US governments, the event was attended by 200 high-level government officials, representatives of the private sector and civil society activists from Afghanistan, Bangladesh, Kazakhstan, the Kyrgyz Republic, India, Pakistan, Sri Lanka, Tajikistan and Uzbekistan. As a result of the conference, a set of recommendations were adopted and concrete steps proposed to enhance national and regional efforts.</p>
+                    <li>
+                        <a class="c-list-title" ng-click="changeCountryOKWData(1)" ng-class="{'c-active' : enumOKW.keyTrendsData.isXsSubnavActive == true}">
+                            <div class="c-table">
+                                <div class="c-cell">Key trends</div>
+                                <div class="c-cell c-w-1perc">
+                                    <i class="c-ico icon-arrow-down" ng-if="enumOKW.keyTrendsData.isXsSubnavActive == false"></i>
+                                    <i class="c-ico icon-arrow-up" ng-if="enumOKW.keyTrendsData.isXsSubnavActive == true"></i>
+                                </div>
+                            </div>
+                        </a>
+                        <!-- #region Subnavigation dropdown -->
+                        <div class="c-has-dropdown-subnav c-black-background" ng-if="enumOKW.keyTrendsData.isXsSubnavActive == true">
+                            <div class="c-selected-item" ng-click="toggleDropdownOpen('okw')">
+                                <div class="c-has-text">
+                                    {{okwXsVars.selectedItemTitle}}
+                                </div>
+                                <div class="c-has-icon">
+                                    <i class="c-ico icon-list" ng-if="okwXsVars.isDropdownOpen == false"></i>
+                                    <i class="c-ico icon-check" ng-if="okwXsVars.isDropdownOpen == true"></i>
+                                </div>
+                            </div>
+                            <ul class="c-dropdown-list" ng-if="okwXsVars.isDropdownOpen == true">
+                                <li ng-repeat="dropdownItem in ctrlVars.dataBindOKW.textParts" ng-click="selectOKWdropdownItem($index)">
+                                    <a>{{dropdownItem.partName}}</a>
+                                </li>
+                            </ul>
                         </div>
+                        <!-- #endregion Subnavigation dropdown -->
                     </li>
                     <!-- #endregion Single item -->
+                    <!-- #region Subnavigation content -->
+                    <li class="c-has-subcontent c-black-background" ng-if="enumOKW.keyTrendsData.isXsSubnavActive == true">
+                        <div class="c-text-wrapper" ng-bind-html="ctrlVars.textPartOKWtoBind"></div>
+                    </li>
+                    <!-- #endregion Subnavigation content -->
                     <!-- #region Single item -->
-                    <li ng-click="toggleCountryOKWData_xs(2)">
-                        <a class="c-list-title"><b>What we do</b></a>
-                        <div class="c-item-content">
-                            <p>Over the past two decades, Kazakhstan has implemented significant public administration and civil service reforms to improve the effectiveness and efficiency of government. Nonetheless, more progress is needed in addressing the development challenges facing Kazakhstan. Restrictions on freedom of expression remain, with newspapers and other media outlets presenting dissenting views still subject to closure by authorities. Further improvement is also required to reduce discrimination against ethnic minorities, the LGTBI community and some religious groups.     </p>
+                    <li>
+                        <a class="c-list-title" ng-click="changeCountryOKWData(2)" ng-class="{'c-active' : enumOKW.whatWeDoData.isXsSubnavActive == true}">
+                            <div class="c-table">
+                                <div class="c-cell">What we do</div>
+                                <div class="c-cell c-w-1perc">
+                                    <i class="c-ico icon-arrow-down" ng-if="enumOKW.whatWeDoData.isXsSubnavActive == false"></i>
+                                    <i class="c-ico icon-arrow-up" ng-if="enumOKW.whatWeDoData.isXsSubnavActive == true"></i>
+                                </div>
+                            </div>
+                        </a>
+                        <!-- #region Subnavigation dropdown -->
+                        <div class="c-has-dropdown-subnav c-black-background" ng-if="enumOKW.whatWeDoData.isXsSubnavActive == true">
+                            <div class="c-selected-item" ng-click="toggleDropdownOpen('okw')">
+                                <div class="c-has-text">
+                                    {{okwXsVars.selectedItemTitle}}
+                                </div>
+                                <div class="c-has-icon">
+                                    <i class="c-ico icon-list" ng-if="okwXsVars.isDropdownOpen == false"></i>
+                                    <i class="c-ico icon-check" ng-if="okwXsVars.isDropdownOpen == true"></i>
+                                </div>
+                            </div>
+                            <ul class="c-dropdown-list" ng-if="okwXsVars.isDropdownOpen == true">
+                                <li ng-repeat="dropdownItem in ctrlVars.dataBindOKW.textParts" ng-click="selectOKWdropdownItem($index)">
+                                    <a>{{dropdownItem.partName}}</a>
+                                </li>
+                            </ul>
                         </div>
+                        <!-- #endregion Subnavigation dropdown -->
                     </li>
                     <!-- #endregion Single item -->
-                    <!-- #region Single item -->
-                    <li ng-click="toggleCountryOKWData_xs(3)">
-                        <a class="c-list-title"><b>Facts and figures</b></a>
-                        <div class="c-item-content">
-                            <p>Over the past two decades, Kazakhstan has implemented significant public administration and civil service reforms to improve the effectiveness and efficiency of government. Nonetheless, more progress is needed in addressing the development challenges facing Kazakhstan. Restrictions on freedom of expression remain, with newspapers and other media outlets presenting dissenting views still subject to closure by authorities. Further improvement is also required to reduce discrimination against ethnic minorities, the LGTBI community and some religious groups.     </p>
-                        </div>
+                    <!-- #region Subnavigation content -->
+                    <li class="c-has-subcontent c-black-background" ng-if="enumOKW.whatWeDoData.isXsSubnavActive == true">
+                        <div class="c-text-wrapper" ng-bind-html="ctrlVars.textPartOKWtoBind"></div>
                     </li>
-                    <!-- #endregion Single item -->
+                    <!-- #endregion Subnavigation content -->
                 </ul>
             </div>
             <!-- #endregion Content // SMALL RESOLUTIONS -->

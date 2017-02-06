@@ -445,98 +445,29 @@ h1, h2, h3, h4, h5, h6, p, a { margin:0; padding:0;}
     display:block;
     position:relative;
     width:100%;
-    font-size:14px;
-    /* #region Item that is selected from dropdown*/
     .c-selected-item{
         display:block;
         width:100%;
         position:relative;
         height:40px;
+        font-size:12px;
         padding:0 15px;
-        color:@col-focus-stripe-blue;
-        .c-has-text{
-            display:block;
-            position:absolute;
-            top:5px;
-            right:45px;
-            bottom:5px;
-            left:15px;
-            overflow:hidden;
-            white-space:nowrap;
-            text-overflow:ellipsis;
-            line-height:30px;
-        }
-        .c-has-icon{
-            display:block;
-            position:absolute;
-            right:0;
-            top:0;
-            bottom:0;
-            padding:10px;
-            line-height:24px;
-        }
-    }
-    /* #endregion Item that is selected from dropdown*/
-    /* #region Dropdown list of items */
-    .c-dropdown-list{
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-        display:block;
-        width:100%;
-        color:@col-text-black;
-        background-color:@col-white;
-        position:absolute;
-        top:100%;
-        z-index:99999999;
-        max-height:160px;
-        overflow-x:hidden;
-        overflow-y:auto;
-        /* #region Box shadow */
-        -webkit-box-shadow: 0px 10px 12px 0px rgba(0,0,0,0.4);
-        -moz-box-shadow: 0px 10px 12px 0px rgba(0,0,0,0.4);
-        box-shadow: 0px 10px 12px 0px rgba(0,0,0,0.4);
-        /* #endregion Box shadow */
-        > li{
-            cursor:pointer;
-            display:block;
-            overflow:hidden;
-            position:relative;
-            width:100%;
-            height:40px;
-            border-top:1px solid lighten(@col-text-black, 40);
-            > a{
-                text-decoration:none;
-                display:block;
-                position:absolute;
-                top:5px;
-                right:15px;
-                bottom:5px;
-                left:15px;
-                overflow:hidden;
+        > .c-table{
+            .c-cell{
+                text-align:left;
+                vertical-align:middle;
                 white-space:nowrap;
-                text-overflow:ellipsis;
-                line-height:30px;
-            }
-            &:last-child{
-                border-bottom:1px solid lighten(@col-text-black, 40);
-                margin-bottom:25px;
-            }
-            &:hover{
-                background-color:@col-focus-stripe-blue;
-                color:@col-white;
-                > a{
-                    color:@col-white;
+                overflow:hidden;
+                position:relative;
+                &.c-has-icon{
+                    position:absolute;
+                    right:0;
+                    top:0;
+                    bottom:0;
                 }
             }
         }
     }
-    /* #endregion Dropdown list of items */
-    /* #region Black background */
-    &.c-black-background{
-        background-color:darken(@col-stripe-black, 2);
-    }
-    /* #endregion Black background */
 }
 /* #endregion Dropdown list */
 /* #region Lists links */
@@ -773,6 +704,7 @@ h1, h2, h3, h4, h5, h6, p, a { margin:0; padding:0;}
                     }
                     //active
                     &.c-active{
+                        font-weight:bold;
                         color:@col-graphics-burnt-sienna;
                     }
                 }
@@ -795,16 +727,8 @@ h1, h2, h3, h4, h5, h6, p, a { margin:0; padding:0;}
             }
             //
             &.c-has-subcontent{
-                font-size:14px;
-                text-align:left;
-                .c-text-wrapper{
-                    padding:20px 15px;
-                }
                 &.c-black-background{
                     background-color:darken(@col-stripe-black, 5);
-                }
-                &.c-blue-background{
-                    background-color:darken(@col-focus-stripe-blue, 5);
                 }
             }
         }
