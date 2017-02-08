@@ -74,6 +74,9 @@
     font-size:24px;
     .fmx-open-sans-bold();
 }
+.c-32-400{
+    font-size:32px;
+}
 .c-42-400{
     font-size:42px;
 }
@@ -212,7 +215,7 @@ h1, h2, h3, h4, h5, h6, p, a { margin:0; padding:0;}
     -webkit-box-sizing:border-box;
     box-sizing:border-box;
 }
-.mx-transform-translate(@xPerc; @yPerc){
+.mx-transform-translate(@xPerc, @yPerc){
     -webkit-transform: translate(@xPerc, @yPerc);
     -ms-transform: translate(@xPerc, @yPerc);
     transform: translate(@xPerc, @yPerc);
@@ -259,6 +262,8 @@ h1, h2, h3, h4, h5, h6, p, a { margin:0; padding:0;}
     /* #endregion Medium resolutions */
     /* #region Large resolutions */
     @media only screen and (min-width : @var-breakpoint-start-lg) {
+        padding-left:10px;
+        padding-right:10px;
         &.c-show-when-xs{
             display:none;
         }
@@ -267,6 +272,12 @@ h1, h2, h3, h4, h5, h6, p, a { margin:0; padding:0;}
         }
     }
     /* #endregion Large resolutions */
+    /* #region Extra Large resolutions */
+    @media only screen and (min-width : @var-breakpoint-start-xlg) {
+        padding-left:0;
+        padding-right:0;
+    }
+    /* #endregion Extra Large resolutions */
     /* #endregion RESPONSIVE QUERY */
 }
 .c-container{
@@ -277,7 +288,7 @@ h1, h2, h3, h4, h5, h6, p, a { margin:0; padding:0;}
     position:relative;
     line-height:1;
 }
-
+/* #endregion Display */
 /* #region Buttons */
 .c-bttn{
     display:inline-block;
@@ -381,7 +392,9 @@ h1, h2, h3, h4, h5, h6, p, a { margin:0; padding:0;}
 .c-read-more-feather-button{
     display:block;
     position:absolute;
-    bottom:0;
+    //bottom:0;
+    //to prevent overlaping over text
+    bottom:-30px;
     width:100%;
     height:80px;
     color:@col-white;
@@ -437,7 +450,23 @@ h1, h2, h3, h4, h5, h6, p, a { margin:0; padding:0;}
             }
         }
     }
-
+    //black
+    &.c-white-version{
+        background: -moz-linear-gradient(top,  rgba(255,255,255,0) 0%, rgba(255,255,255,0) 30%, rgba(255,255,255,1) 74%, rgba(255,255,255,1) 100%); /* FF3.6-15 */
+        background: -webkit-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(255,255,255,0) 30%,rgba(255,255,255,1) 74%,rgba(255,255,255,1) 100%); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(to bottom,  rgba(255,255,255,0) 0%,rgba(255,255,255,0) 30%,rgba(255,255,255,1) 74%,rgba(255,255,255,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0000699e', endColorstr='#00699e',GradientType=0 ); /* IE6-9 */
+        span{
+            background-color:@col-focus-stripe-blue;
+        }
+        //hover
+        &:hover{
+            span{
+                background-color:darken(@col-focus-stripe-blue, 5);
+                color:@col-white;
+            }
+        }
+    }
 }
 /* #endregion Buttons */
 /* #region Dropdown list */
@@ -1279,9 +1308,9 @@ h1, h2, h3, h4, h5, h6, p, a { margin:0; padding:0;}
                     @media only screen and (min-width : @var-breakpoint-start-lg) {
                         position:absolute;
                         bottom:0;
-                        right:@var-description-sidebar-width-lg;
+                        right:@var-description-sidebar-width-lg - 30;
                         height:auto;
-                        max-width:320px;
+                        max-width:390px;
                         text-align:left;
                         padding-right:80px;
                         padding-bottom:70px;
@@ -2103,7 +2132,7 @@ h1, h2, h3, h4, h5, h6, p, a { margin:0; padding:0;}
     /* #endregion Medium resolutions */
     /* #region Large resolutions */
     @media only screen and (min-width : @var-breakpoint-start-lg) {
-        padding:@var-key-results-padding-Y-lg @var-key-results-padding-X-lg;
+        padding:@var-key-results-padding-Y-lg @var-key-results-padding-X-lg 50px;
         .c-title{
             font-size:36px;
             .mx-unify-h-sizes(36px);
@@ -2165,7 +2194,7 @@ h1, h2, h3, h4, h5, h6, p, a { margin:0; padding:0;}
                                     position:relative;
                                     width:100%;
                                     //height:100%;
-                                    padding-bottom:80px;
+                                    //padding-bottom:80px;
                                 }
                             }
                         }
@@ -2620,48 +2649,16 @@ h1, h2, h3, h4, h5, h6, p, a { margin:0; padding:0;}
 @var-regional-image-height-sm:240px;
 @var-regional-image-height-md:320px;
 @var-regional-image-height-lg:390px;
-.c-reg-context-content-wrap{
+.c-foreword-content-wrap{
     .c-table{
         .c-cell{
+            position:relative;
             &.c-has-text{
                 line-height:1.5;
                 font-size:14px;
             }
-            .c-image-box-wrap{
-                display:block;
-                position:relative;
-                .c-image-content{
-                    display:block;
-                    position:relative;
-                    width:100%;
-                    height:@var-regional-image-height-xsm;
-                    background: url(../Content/images/undp-kosovo-regional-context.jpg) no-repeat top center;
-                    -webkit-background-size: cover;
-                    -moz-background-size: cover;
-                    -o-background-size: cover;
-                    background-size: cover;
-                }
-                .c-title-content{
-                    .mx-set-as-border-box();
-                    padding:12px 25px 15px;
-                    display:block;
-                    width:100%;
-                    background-color:@col-primary-red-mandy;
-                    color:@col-white;
-                    font-size:24px;
-                    p{
-                        line-height:1.1;
-                    }
-                }
-                .c-photo-credits-content{
-                    display:block;
-                    position:relative;
-                    .mx-set-as-border-box();
-                    width:100%;
-                    background-color:@col-focus-stripe-peach;
-                    padding:10px 25px;
-                    font-size:11px;
-                }
+            &.c-has-image-box{
+                text-align:center;
             }
         }
     }
@@ -2759,6 +2756,67 @@ h1, h2, h3, h4, h5, h6, p, a { margin:0; padding:0;}
     }
     /* #endregion Extra Large resolutions */
     /* #endregion RESPONSIVE QUERY */
+}
+.c-inserted-image-wrapper{
+    display:inline-block;
+    position:relative;
+    overflow:hidden;
+    > img{
+        max-width:none !important;
+        width:auto;
+        height:100%;
+        max-height:100%;
+        display:block;
+        position:absolute;
+        top:50%;
+        left:50%;
+        .mx-transform-translate(-50%,-50%);
+    }
+    //over content
+    .c-over-img-content{
+        position:absolute;
+        left:0;
+        bottom:0;
+        display:block;
+        width:100%;
+        .c-photo-credits-content{
+            display:block;
+            position:relative;
+            width:100%;
+            padding:15px;
+            background-color:#fdceaa;
+            color:@col-text-black;
+        }
+    }
+    //dimensions
+    &.c-foreword-image{
+        max-width:560px;
+        max-height:420px;
+        /* #region RESPONSIVE QUERY */
+        /* #region Extra small resolutions */
+        @media only screen and (min-width : @var-breakpoint-start-zero) {
+            @media (max-width: (@var-breakpoint-start-lg - 1) ){
+                width:100%;
+                height:360px;
+            }
+        }
+        /* #endregion Extra small resolutions */
+        /* #region Large resolutions */
+        @media only screen and (min-width : @var-breakpoint-start-lg) {
+            @media (max-width: (@var-breakpoint-start-xlg - 1) ){
+                width:100%;
+                height:420px;
+            }
+        }
+        /* #endregion Large resolutions */
+        /* #region Extra Large resolutions */
+        @media only screen and (min-width : @var-breakpoint-start-xlg) {
+            width:560px;
+            height:420px;
+        }
+        /* #endregion Extra Large resolutions */
+        /* #endregion RESPONSIVE QUERY */
+    }
 }
 /* #endregion REGIONAL CONTEXT CONTENT */
 /* #region FOOTER CONTENT */

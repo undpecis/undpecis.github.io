@@ -1,4 +1,4 @@
-﻿    <!-- #region Cover block -->
+﻿<!-- #region Cover block -->
 <div class="c-wide-wrap">
     <div class="c-stripes-wide-wrap">
         <div class="c-container c-custom-click">
@@ -67,15 +67,14 @@
                     <!-- #region Title -->
                     <div class="c-title-over-wrap">
                         <div class="c-text-content">
-                            <h1 class="c-42-400">2016</h1>
-                            <h2 class="c-24-400"><b>Governance and Peacebuilding</b> in Europe and the Commonwealth of Independent States</h2>
+                            <h1 class="c-32-400">TOWARDS SDG 16:</h1>
+                            <h2 class="c-18-400">Promoting Just, Peaceful and Inclusive Societies in Europe and Central Asia</h2>
                         </div>
                     </div>
                     <!-- #endregion Title -->
                     <!-- #region Description text -->
                     <div class="c-description-over-wrap">
-                        <p class="c-txxt c-16-400 c-txxt-upper c-m-bottom-30"><b class="c-16-700">UNDP</b> in Europe <br class="c-ctrl-break" />and Central Asia 2016</p>
-                        <p class="c-txxt c-14-400">In the Europe and the Commonwealth of Independent States (ECIS) region, the United Nations Development Programme (UNDP) works with local, national and international partners to strengthen inclusive and effective governance and peace, by advocating, advising, enabling discussion, fostering consensus and capacitating institutions. UNDP achieves these goals by creating an environment in which all partners, including civil society, can grow in strength and contribute towards sustainable development.</p>
+                        <p class="c-txxt c-14-400">In the Europe and the Commonwealth of Independent States (ECIS) region, UNDP works with local, national and international partners to strengthen inclusive and effective governance and peace, by advocating, advising, enabling discussion, fostering consensus and capacitating institutions. This report provides an overview of UNDP’s governance and peacebuilding work, and serves as a baseline for measuring progress as countries across the region begin working towards the Sustainable Development Goals.</p>
                     </div>
                     <!-- #endregion Description text -->
                 </div>
@@ -206,7 +205,7 @@
                     <!-- #region Middle text -->
                     <div class="c-cell c-has-text c-col-3-5-lg">
                         <div id="cid-expandable-bac-wrapper" ng-class="{'c-max-h-700' : !ctrlVars.dataBindBAC.isTextExpanded}">
-                            <div id="cid-binded-bac-text" ng-bind-html="ctrlVars.dataBindBAC.text">
+                            <div id="cid-binded-bac-text" ng-bind-html="ctrlVars.dataBindBAC.text" ng-class="{'c-p-bottom-50' : ctrlVars.dataBindBAC.isTextExpanded}">
                             </div>
                             <!-- #region Download section -->
                             <!--<button class="c-bttn c-bttn-combo c-bttn-blue c-m-top-40">
@@ -598,7 +597,7 @@
 </div>
 <!-- #endregion Expandable BAC content // SMALL RESOLUTIONS -->
 <!-- #region Focus areas -->
-<div class="c-wide-wrap">
+<div class="c-wide-wrap" id="cid-focus-areas-wrapper">
     <div class="c-container">
         <!-- #region Title -->
         <div class="c-section-title">
@@ -999,41 +998,29 @@
     <div class="c-container c-p-bottom-40">
         <!-- #region Title -->
         <div class="c-section-title">
-            <h2>Regional context</h2>
+            <h2>{{dataBindForeword.title}}</h2>
         </div>
         <!-- #endregion Title -->
         <!-- #region Regional Context content -->
-        <div class="c-reg-context-content-wrap">
+        <div class="c-foreword-content-wrap">
             <div class="c-table">
                 <div class="c-cell c-has-text">
-                    <p>The ECIS region is a geographically, economically and politically diverse region. While all countries and territories in the region (except Albania and Turkey) were part of the former Soviet Union or the former Yugoslavia, they have diverged significantly from that shared past. The establishment of democratic institutions, market economies and conflict prevention strategies have had different levels of success. Foreign policy decisions to prioritise a relationship with the Russian Federation, the European Union (EU), or neither, have also led to very different approaches to governance and domestic policy.<br /><br />Economically, all countries and territories in the region are considered middle income, however, significant variation exists within this categorization. In 2014, gross domestic product (GDP) per capita varied from over US$10,000 in Turkey  to just over US$1,000 in Tajikistan.  This variation in GDP also alludes to some of the different drivers of these economies. Countries such as Azerbaijan, Kazakhstan and Turkmenistan have undergone rapid economic growth as a result of large resource endowments and high commodity prices. Other countries, such as the Kyrgyz Republic, Tajikistan, and Moldova, have seen slower growth and remain heavily reliant on agriculture and remittances from migrant workers.<br /><br />The different political and economic environments in the region provide not only a range of challenges in themselves, but also impact on how different events and crises are experienced. In order to be effective, UNDP’s governance and peacebuilding support intrinsically takes into account how socio-economic and political developments impact each country and territory in the region, and in turn affect UNDP’s programming.</p>
-                    <div class="c-buttons-wrap">
-                        <!-- #region Learn more button -->
-                        <button class="c-bttn c-bttn-combo">
-                            <div class="c-circle-icon-box">
-                                <i class="c-ico icon-login"></i>
-                            </div>
-                            <span>LEARN MORE</span>
-                        </button>
-                        <!-- #endregion Learn more button -->
-                        <!-- #region Download section -->
-                        <button class="c-bttn c-bttn-combo">
-                            <div class="c-circle-icon-box">
-                                <i class="c-ico icon-cloud-download"></i>
-                            </div>
-                            <span>DOWNLOAD SECTION</span>
-                        </button>
-                        <!-- #endregion Download section -->
+                    <div id="cid-expandable-bac-wrapper" ng-class="{'c-max-h-420' : !forewordVars.isTextExpanded}">
+                        <div id="cid-binded-bac-text" ng-bind-html="forewordVars.dataBindForeword.text" ng-class="{'c-p-bottom-50' : forewordVars.isTextExpanded}">
+                        </div>
+                    </div>
+                    <div class="c-read-more-feather-button c-white-version" ng-click="toggleForewordtextExpanded()">
+                        <span ng-if="!forewordVars.isTextExpanded">Show more&nbsp;&nbsp;<i class="c-ico icon-arrow-down"></i></span>
+                        <span ng-if="forewordVars.isTextExpanded">Show less&nbsp;&nbsp;<i class="c-ico icon-arrow-up"></i></span>
                     </div>
                 </div>
                 <div class="c-cell c-has-image-box">
                     <!-- #region Image box -->
-                    <div class="c-image-box-wrap">
-                        <div class="c-image-content"></div>
-                        <div class="c-title-content">
-                            <p>Participants in Week of Women 2015 discuss the role of women in the fight against corruption</p>
+                    <div class="c-inserted-image-wrapper c-foreword-image">
+                        <img ng-src="Content/images/photos-and-graphic/{{forewordVars.dataBindForeword.img}}" alt="{{forewordVars.dataBindForeword.title}}">
+                        <div class="c-over-img-content">
+                            <div class="c-photo-credits-content">Publication Towards SDG 16: Promoting Just, Peaceful and Inclusive Societies in Europe and Central Asia</div>
                         </div>
-                        <div class="c-photo-credits-content">Photo by: UNDP Kosovo</div>
                     </div>
                     <!-- #endregion Image box -->
                 </div>
@@ -1093,17 +1080,17 @@
                 <!-- #region First column -->
                 <div class="c-cell">
                     <!-- #region Title -->
-                    <div class="c-title">UNDP Ecis</div>
+                    <div class="c-title">UNDP in Europe <br />and Central Asia</div>
                     <!-- #endregion Title -->
                     <!-- #region Content -->
-                    <p>References to Kosovo on this website shall be understood to be in the context of Security Council Resolution 1244 (1999).</p>
+                    <p>UNDP works in 22 countries and territories in the region, helping them to improve the standard of living for all citizens - especially those at greater risk of exclusion, such as ethnic minorities, persons with disabilities, internally displaced persons, rural populations, women and young people.</p>
                     <!-- #endregion Content -->
                     <!-- #region Social media buttons -->
                     <ul class="c-horizontal-list c-social-medial-links-list">
-                        <li><a><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                        <li><a><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                        <li><a><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-                        <li><a><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                        <li><a href="https://www.facebook.com/UNDPinEuropeandCIS" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                        <li><a href="https://twitter.com/UNDPEurasia" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                        <li><a href="https://www.instagram.com/undpeurasia" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                        <li><a href="http://www.eurasia.undp.org" target="_blank"><i class="fa fa-home" aria-hidden="true"></i></a></li>
                     </ul>
                     <!-- #endregion Social media buttons -->
                 </div>
@@ -1114,22 +1101,31 @@
                     <div class="c-title">QUICK LINKS</div>
                     <!-- #endregion Title -->
                     <!-- #region Content -->
-                    <p>Focus areas</p>
-                    <p>Facts and Figures</p>
-                    <p>Regional context</p>
-                    <p>Country profiles</p>
-                    <p>Sustainable development goals</p>
+                    <p>
+                        <a ng-click="scrollToAnchor('cid-focus-areas-wrapper')">{{ctrlVars.focusData[0].title}}</a>
+                    </p>
+                    <p>
+                        <a ng-click="scrollToAnchor('cid-focus-areas-wrapper')">{{ctrlVars.focusData[1].title}}</a>
+                    </p>
+                    <p>
+                        <a ng-click="scrollToAnchor('cid-focus-areas-wrapper')">{{ctrlVars.focusData[2].title}}</a>
+                    </p>
+                    <p>
+                        <a ng-click="scrollToAnchor('cid-focus-areas-wrapper')">{{ctrlVars.focusData[3].title}}</a>
+                    </p>
+                    <p>
+                        <a href="http://www.un.org/sustainabledevelopment/sustainable-development-goals/" target="_blank">Sustainable development goals</a>
+                    </p>
                     <!-- #endregion Content -->
                 </div>
                 <!-- #endregion Second column -->
                 <!-- #region Third column -->
                 <div class="c-cell">
                     <!-- #region Title -->
-                    <div class="c-title">RECENT TWEETS</div>
+                    <div class="c-title">REFERENCES</div>
                     <!-- #endregion Title -->
                     <!-- #region Content -->
-                    <p>Maecenas etos sit amet, consectetur adipis cing elit. Terminal volutpat rutrum metro <a>http://www.google.com</a> 2 hours ago</p>
-                    <p>Maecenas etos sit amet, consectetur adipis cing elit. Terminal volutpat rutrum metro <a>http://www.google.com</a> 2 hours ago</p>
+                    <p>References to Kosovo on this website shall be understood to be in the context of Security Council Resolution 1244 (1999).”</p>
                     <!-- #endregion Content -->
                 </div>
                 <!-- #endregion Third column -->
@@ -1139,25 +1135,17 @@
                     <div class="c-title">CONTACT US</div>
                     <!-- #endregion Title -->
                     <!-- #region Content -->
-                    <p>Governance and Peacebuilding Istanbul Regional Hub Key Plaza, Abide-i Hürriyet Cd Istanbul Turkey</p>
-                    <p><span class="c-white-color">Ph. :&nbsp;</span>+90 (801) 4567, +90 (802)6789</p>
-                    <p><span class="c-white-color">Fax :&nbsp;</span>+90 (123( 7890</p>
-                    <p><span class="c-white-color">Email :&nbsp;</span>info@undpecis.com</p>
+                    <p>Governance and Peacebuilding Cluster<br />UNDP Regional Hub<br />Istanbul, Turkey</p>
+                    <p><span class="c-white-color">Email :&nbsp;</span><a href="mailto:registry.rsci@undp.org?Subject=From%20UNDP%20ECIS" target="_top">registry.rsci@undp.org</a></p>
+                    <p><span class="c-white-color">Website:&nbsp;</span><a href="http://www.eurasia.undp.org/" target="_blank">www.eurasia.undp.org</a></p>
                     <!-- #endregion Content -->
                 </div>
                 <!-- #endregion Fourth column -->
             </div>
             <div class="c-copy-wrap">
                 <div class="c-table">
-                    <div class="c-cell">
-                        <p>Copyright 2013. All Rights Reserved by UNDP ECIS</p>
-                    </div>
-                    <div class="c-cell">
-                        <ul class="c-horizontal-list c-copy-links-list">
-                            <li><a>Terms and Condition</a></li>
-                            <li><a>Legal Desclaimer</a></li>
-                            <li><a>Privacy Policy</a></li>
-                        </ul>
+                    <div class="c-cell c-align-left">
+                        <p>Copyright 2017. All Rights Reserved by UNDP ECIS</p>
                     </div>
                 </div>
             </div>
@@ -1169,53 +1157,51 @@
                 <!-- #region Single item -->
                 <li class="c-nav-title"><a>UNDP ECIS</a></li>
                 <li class="c-nav-content">
-                    <p>Maecenas etos sit amet, consectetur adipis cing elit. Terminal volutpat rutrum metro amet sollicitudin interdum.</p>
-                    <p>Ante tellus gravida mollis tellus neque vitae elit. Mauris adipiscing mauris.</p>
+                    <!-- #region Title -->
+                    <div class="c-title">UNDP in Europe <br />and Central Asia</div>
+                    <!-- #endregion Title -->
+                    <!-- #region Content -->
+                    <p>UNDP works in 22 countries and territories in the region, helping them to improve the standard of living for all citizens - especially those at greater risk of exclusion, such as ethnic minorities, persons with disabilities, internally displaced persons, rural populations, women and young people.</p>
+                    <!-- #endregion Content -->
                     <!-- #region Social media buttons -->
                     <ul class="c-horizontal-list c-social-medial-links-list">
-                        <li><a><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                        <li><a><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                        <li><a><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-                        <li><a><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                        <li><a href="https://www.facebook.com/UNDPinEuropeandCIS" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                        <li><a href="https://twitter.com/UNDPEurasia" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                        <li><a href="https://www.instagram.com/undpeurasia" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                        <li><a href="http://www.eurasia.undp.org" target="_blank"><i class="fa fa-home" aria-hidden="true"></i></a></li>
                     </ul>
-                    <!-- #endregion Social media buttons -->
                 </li>
                 <!-- #endregion Single item -->
                 <!-- #region Single item -->
                 <li class="c-nav-title"><a>QUICK LINKS</a></li>
                 <li class="c-nav-content">
-                    <ul class="c-vertical-list c-footer-subnav">
-                        <li><a>Focus areas</a></li>
-                        <li><a>Facts and Figures</a></li>
-                        <li><a>Regional context</a></li>
-                        <li><a>Country profiles</a></li>
-                        <li><a>Sustainable development goals</a></li>
-                    </ul>
+                    <a ng-click="scrollToAnchor('cid-focus-areas-wrapper')">{{ctrlVars.focusData[0].title}}</a>
+                    <a ng-click="scrollToAnchor('cid-focus-areas-wrapper')">{{ctrlVars.focusData[1].title}}</a>
+                    <a ng-click="scrollToAnchor('cid-focus-areas-wrapper')">{{ctrlVars.focusData[2].title}}</a>
+                    <a ng-click="scrollToAnchor('cid-focus-areas-wrapper')">{{ctrlVars.focusData[3].title}}</a>
+                    <a href="http://www.un.org/sustainabledevelopment/sustainable-development-goals/" target="_blank">Sustainable development goals</a>
                 </li>
                 <!-- #endregion Single item -->
                 <!-- #region Single item -->
-                <li class="c-nav-title"><a>RECENT TWEETS</a></li>
+                <li class="c-nav-title"><a>REFERENCES</a></li>
                 <li class="c-nav-content">
-                    <p>Maecenas etos sit amet, consectetur adipis cing elit. Terminal volutpat rutrum metro <a>http://www.google.com</a> 2 hours ago</p>
-                    <p>Maecenas etos sit amet, consectetur adipis cing elit. Terminal volutpat rutrum metro <a>http://www.google.com</a> 2 hours ago</p>
+                    <p>References to Kosovo on this website shall be understood to be in the context of Security Council Resolution 1244 (1999).”</p>
                 </li>
                 <!-- #endregion Single item -->
                 <!-- #region Single item -->
                 <li class="c-nav-title"><a>CONTACT US</a></li>
                 <li class="c-nav-content">
-                    <p>Governance and Peacebuilding Istanbul Regional Hub Key Plaza, Abide-i Hürriyet Cd Istanbul Turkey</p>
-                    <p><span class="c-white-color">Ph. :&nbsp;</span>+90 (801) 4567, +90 (802)6789</p>
-                    <p><span class="c-white-color">Fax :&nbsp;</span>+90 (123( 7890</p>
-                    <p><span class="c-white-color">Email :&nbsp;</span>info@undpecis.com</p>
+                    <!-- #region Content -->
+                    <p>Governance and Peacebuilding Cluster<br />UNDP Regional Hub<br />Istanbul, Turkey</p>
+                    <p><span class="c-white-color">Email :&nbsp;</span><a href="mailto:registry.rsci@undp.org?Subject=From%20UNDP%20ECIS" target="_top">registry.rsci@undp.org</a></p>
+                    <p><span class="c-white-color">Website:&nbsp;</span><a href="http://www.eurasia.undp.org/" target="_blank">www.eurasia.undp.org</a></p>
+                    <!-- #endregion Content -->
                 </li>
                 <!-- #endregion Single item -->
             </ul>
             <!-- #region Single item -->
             <div class="c-copy-content">
-                <p>Terms and Condition</p>
-                <p>Legal Desclaimer</p>
-                <p>Privacy Policy</p>
-                <p>Copyright 2013. All Rights Reserved by UNDP ECIS</p>
+                <p>Copyright 2017. All Rights Reserved by UNDP ECIS</p>
             </div>
             <!-- #endregion Single item -->
         </div>

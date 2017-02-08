@@ -54,8 +54,7 @@ angular.module('Home')
                 for (var i = 0; i < siteData.countries.length; i++) {
                     if (siteData.countries[i].id == countryOfInterestId) {
                         $scope.selectedCountry = siteData.countries[i];
-                        $scope.ctrlVars.dataBindBAC = $scope.selectedCountry.backgroundData;
-                        $scope.ctrlVars.dataBindStatement = $scope.selectedCountry.statement;
+                        $scope.changeCountryBACData(0);
                         //console.log('$scope.selectedCountry: ' + $scope.selectedCountry.keyResults[2].text);
                         $scope.ctrlVars.isInterestCountryClicked = true;
                         $scope.$apply();
@@ -208,9 +207,8 @@ angular.module('Home')
                             $scope.changeCountryOKWData(0);
                             if (isLargeResolution == false) {
                                 $timeout(function () {
-                                    $location.hash('cid-anchor-OKW-content');
-                                    $anchorScroll();
-                                }, 300);
+                                    $scope.scrollToAnchor('cid-anchor-OKW-content');
+                                }, 500);
                             }
                         //if button is already open then close everything
                         } else {
@@ -386,10 +384,30 @@ angular.module('Home')
             /* #endregion Modal for Gender Equality + Peace, Justice and Strong Institutions */
             /* #endregion FOCUS AREAS RELATED CODE */
 
+            /* #region FOREWORD AREA RELATED CODE */
+            $scope.forewordVars = {
+                dataBindForeword: {},
+                isTextExpanded: false
+            }
+            /* #region Toggle OKW full text visibility (see less see more) */
+            $scope.toggleForewordtextExpanded = function () {
+                $scope.forewordVars.isTextExpanded = !$scope.forewordVars.isTextExpanded
+            }
+            /* #endregion Toggle OKW full text visibility (see less see more) */
+            /* #endregion FOREWORD AREA RELATED CODE */
+
+            /* #region Anchor Scroll */
+            $scope.scrollToAnchor = function (anchorId) {
+                $location.hash(anchorId);
+                $anchorScroll();
+            };
+            /* #endregion Anchor Scroll */
+
             activate();
             function activate() {
                 //keeps data of all Focus Areas
                 $scope.ctrlVars.focusData = siteData.focusAreas;
+                $scope.forewordVars.dataBindForeword = siteData.regionalContext;
             }
         }
     ]
