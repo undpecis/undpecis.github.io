@@ -301,8 +301,8 @@ $(document).ready(function () {
     /* #region Get Random SVG groups */
     function setupRandomSvgGraphics() {
         /* #region Get random numbers */
-        //var firstRandomIndex = Math.floor(Math.random() * (infographicsGroups.length - 0)) + 0;
-        var firstRandomIndex = 0;
+        var firstRandomIndex = Math.floor(Math.random() * (infographicsGroups.length - 0)) + 0;
+        //var firstRandomIndex = 0;
         //setup interval that will keep firing until we get second index different from first index
         var randomInterval_secondGroup = setInterval(getRandomIndex_secondGroup, 10);
         function getRandomIndex_secondGroup() {

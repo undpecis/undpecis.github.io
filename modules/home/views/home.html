@@ -205,16 +205,8 @@
                     <!-- #region Middle text -->
                     <div class="c-cell c-has-text c-col-3-5-lg">
                         <div id="cid-expandable-bac-wrapper" ng-class="{'c-max-h-700' : !ctrlVars.dataBindBAC.isTextExpanded}">
-                            <div id="cid-binded-bac-text" ng-bind-html="ctrlVars.dataBindBAC.text" ng-class="{'c-p-bottom-50' : ctrlVars.dataBindBAC.isTextExpanded}">
+                            <div id="cid-binded-bac-text" class="c-bind-txxt-wrapper" ng-bind-html="ctrlVars.dataBindBAC.text" ng-class="{'c-p-bottom-50' : ctrlVars.dataBindBAC.isTextExpanded}">
                             </div>
-                            <!-- #region Download section -->
-                            <!--<button class="c-bttn c-bttn-combo c-bttn-blue c-m-top-40">
-                                <div class="c-circle-icon-box">
-                                    <i class="c-ico icon-cloud-download"></i>
-                                </div>
-                                <span>DOWNLOAD country report</span>
-                            </button>-->
-                            <!-- #endregion Download section -->
                         </div>
                         <div class="c-read-more-feather-button c-blue-version" ng-click="toggleBACtextExpanded()" ng-if="ctrlVars.dataBindBAC.isLargeText">
                             <span ng-if="!ctrlVars.dataBindBAC.isTextExpanded">Show more&nbsp;&nbsp;<i class="c-ico icon-arrow-down"></i></span>
@@ -618,7 +610,7 @@
                     <!-- #region Buttons -->
                     <div class="c-buttons-wrap">
                         <!-- #region Learn more button -->
-                        <button class="c-bttn c-bttn-combo c-ng-bttn-focus" ng-click="toggleFocusAreaVisibility(0)" ng-hide="ctrlVars.isOpenCountryOKWdata && ctrlVars.currentFocusAreaIndex==0">
+                        <button class="c-bttn c-bttn-combo" ng-click="toggleFocusAreaVisibility(0)" ng-hide="ctrlVars.isOpenCountryOKWdata && ctrlVars.currentFocusAreaIndex==0">
                             <div class="c-circle-icon-box">
                                 <i class="c-ico icon-login"></i>
                             </div>
@@ -656,7 +648,7 @@
                     <!-- #region Buttons -->
                     <div class="c-buttons-wrap">
                         <!-- #region Learn more button -->
-                        <button class="c-bttn c-bttn-combo c-ng-bttn-focus" ng-click="toggleFocusAreaVisibility(1)" ng-hide="ctrlVars.isOpenCountryOKWdata && ctrlVars.currentFocusAreaIndex==1">
+                        <button class="c-bttn c-bttn-combo" ng-click="toggleFocusAreaVisibility(1)" ng-hide="ctrlVars.isOpenCountryOKWdata && ctrlVars.currentFocusAreaIndex==1">
                             <div class="c-circle-icon-box">
                                 <i class="c-ico icon-login"></i>
                             </div>
@@ -694,7 +686,7 @@
                     <!-- #region Buttons -->
                     <div class="c-buttons-wrap">
                         <!-- #region Learn more button -->
-                        <button class="c-bttn c-bttn-combo c-ng-bttn-focus" ng-click="toggleFocusAreaVisibility(2)" ng-hide="ctrlVars.isOpenCountryOKWdata && ctrlVars.currentFocusAreaIndex==2">
+                        <button class="c-bttn c-bttn-combo" ng-click="toggleFocusAreaVisibility(2)" ng-hide="ctrlVars.isOpenCountryOKWdata && ctrlVars.currentFocusAreaIndex==2">
                             <div class="c-circle-icon-box">
                                 <i class="c-ico icon-login"></i>
                             </div>
@@ -732,7 +724,7 @@
                     <!-- #region Buttons -->
                     <div class="c-buttons-wrap">
                         <!-- #region Learn more button -->
-                        <button class="c-bttn c-bttn-combo c-ng-bttn-focus" ng-click="toggleFocusAreaVisibility(3)" ng-hide="ctrlVars.isOpenCountryOKWdata && ctrlVars.currentFocusAreaIndex==3">
+                        <button class="c-bttn c-bttn-combo" ng-click="toggleFocusAreaVisibility(3)" ng-hide="ctrlVars.isOpenCountryOKWdata && ctrlVars.currentFocusAreaIndex==3">
                             <div class="c-circle-icon-box">
                                 <i class="c-ico icon-login"></i>
                             </div>
@@ -813,7 +805,7 @@
                     <!-- #region Middle text -->
                     <div class="c-cell c-has-text c-col-3-5-lg">
                         <div id="cid-expandable-okw-wrapper" ng-class="{'c-max-h-470' : !ctrlVars.dataBindOKW.isTextExpanded}">
-                            <div id="cid-binded-okw-text" ng-bind-html="ctrlVars.textPartOKWtoBind">
+                            <div id="cid-binded-okw-text" class="c-bind-txxt-wrapper" ng-bind-html="ctrlVars.textPartOKWtoBind">
                             </div>
                         </div>
                         <div class="c-read-more-feather-button" ng-click="toggleOKWtextExpanded()" ng-if="ctrlVars.dataBindOKW.isLargeText">
@@ -998,29 +990,37 @@
     <div class="c-container c-p-bottom-40">
         <!-- #region Title -->
         <div class="c-section-title">
-            <h2>{{dataBindForeword.title}}</h2>
+            <h2>{{regionalContextVars.dataBindForeword.title}}</h2>
         </div>
         <!-- #endregion Title -->
         <!-- #region Regional Context content -->
-        <div class="c-foreword-content-wrap">
+        <div class="c-regional-text-content-wrap">
             <div class="c-table">
                 <div class="c-cell c-has-text">
-                    <div id="cid-expandable-bac-wrapper" ng-class="{'c-max-h-420' : !forewordVars.isTextExpanded}">
-                        <div id="cid-binded-bac-text" ng-bind-html="forewordVars.dataBindForeword.text" ng-class="{'c-p-bottom-50' : forewordVars.isTextExpanded}">
+                    <div ng-class="{'c-max-h-420' : !regionalContextVars.isTextExpanded}">
+                        <div ng-bind-html="regionalContextVars.dataBindForeword.text" ng-class="{'c-p-bottom-50' : regionalContextVars.isTextExpanded}">
                         </div>
                     </div>
                     <div class="c-read-more-feather-button c-white-version" ng-click="toggleForewordtextExpanded()">
-                        <span ng-if="!forewordVars.isTextExpanded">Show more&nbsp;&nbsp;<i class="c-ico icon-arrow-down"></i></span>
-                        <span ng-if="forewordVars.isTextExpanded">Show less&nbsp;&nbsp;<i class="c-ico icon-arrow-up"></i></span>
+                        <!-- #region Learn more button -->
+                        <button class="c-bttn c-bttn-combo">
+                            <div class="c-circle-icon-box">
+                                <i class="c-ico icon-login" ng-if="!regionalContextVars.isTextExpanded"></i>
+                                <i class="c-ico icon-close" ng-if="regionalContextVars.isTextExpanded"></i>
+                            </div>
+                            <span ng-if="!regionalContextVars.isTextExpanded">SHOW MORE</span>
+                            <span ng-if="regionalContextVars.isTextExpanded">SHOW LESS</span>
+                        </button>
+                        <!-- #endregion Learn more button -->
                     </div>
                 </div>
                 <div class="c-cell c-has-image-box">
                     <!-- #region Image box -->
-                    <div class="c-inserted-image-wrapper c-foreword-image">
-                        <img ng-src="Content/images/photos-and-graphic/{{forewordVars.dataBindForeword.img}}" alt="{{forewordVars.dataBindForeword.title}}">
-                        <div class="c-over-img-content">
-                            <div class="c-photo-credits-content">Publication Towards SDG 16: Promoting Just, Peaceful and Inclusive Societies in Europe and Central Asia</div>
+                    <div class="c-inserted-image-wrapper c-regional-context-image">
+                        <div class="c-img-crop-box">
+                            <img ng-src="Content/images/{{regionalContextVars.dataBindForeword.img}}" alt="{{regionalContextVars.dataBindForeword.title}}">
                         </div>
+                        <div class="c-photo-credits-content">Publication Towards SDG 16: Promoting Just, Peaceful and Inclusive Societies in Europe and Central Asia</div>
                     </div>
                     <!-- #endregion Image box -->
                 </div>
@@ -1087,9 +1087,9 @@
                     <!-- #endregion Content -->
                     <!-- #region Social media buttons -->
                     <ul class="c-horizontal-list c-social-medial-links-list">
-                        <li><a href="https://www.facebook.com/UNDPinEuropeandCIS" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                        <li><a href="https://twitter.com/UNDPEurasia" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                        <li><a href="https://www.instagram.com/undpeurasia" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                        <li><a class="c-icon-bttn-facebook" href="https://www.facebook.com/UNDPinEuropeandCIS" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                        <li><a class="c-icon-bttn-twitter" href="https://twitter.com/UNDPEurasia" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                        <li><a class="c-icon-bttn-instagram" href="https://www.instagram.com/undpeurasia" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
                         <li><a href="http://www.eurasia.undp.org" target="_blank"><i class="fa fa-home" aria-hidden="true"></i></a></li>
                     </ul>
                     <!-- #endregion Social media buttons -->
@@ -1102,19 +1102,19 @@
                     <!-- #endregion Title -->
                     <!-- #region Content -->
                     <p>
-                        <a ng-click="scrollToAnchor('cid-focus-areas-wrapper')">{{ctrlVars.focusData[0].title}}</a>
+                        <a class="c-link-text" ng-click="scrollToAnchor('cid-focus-areas-wrapper')">{{ctrlVars.focusData[0].title}}</a>
                     </p>
                     <p>
-                        <a ng-click="scrollToAnchor('cid-focus-areas-wrapper')">{{ctrlVars.focusData[1].title}}</a>
+                        <a class="c-link-text" ng-click="scrollToAnchor('cid-focus-areas-wrapper')">{{ctrlVars.focusData[1].title}}</a>
                     </p>
                     <p>
-                        <a ng-click="scrollToAnchor('cid-focus-areas-wrapper')">{{ctrlVars.focusData[2].title}}</a>
+                        <a class="c-link-text" ng-click="scrollToAnchor('cid-focus-areas-wrapper')">{{ctrlVars.focusData[2].title}}</a>
                     </p>
                     <p>
-                        <a ng-click="scrollToAnchor('cid-focus-areas-wrapper')">{{ctrlVars.focusData[3].title}}</a>
+                        <a class="c-link-text" ng-click="scrollToAnchor('cid-focus-areas-wrapper')">{{ctrlVars.focusData[3].title}}</a>
                     </p>
                     <p>
-                        <a href="http://www.un.org/sustainabledevelopment/sustainable-development-goals/" target="_blank">Sustainable development goals</a>
+                        <a class="c-link-text" href="http://www.un.org/sustainabledevelopment/sustainable-development-goals/" target="_blank">Sustainable development goals</a>
                     </p>
                     <!-- #endregion Content -->
                 </div>
@@ -1136,8 +1136,8 @@
                     <!-- #endregion Title -->
                     <!-- #region Content -->
                     <p>Governance and Peacebuilding Cluster<br />UNDP Regional Hub<br />Istanbul, Turkey</p>
-                    <p><span class="c-white-color">Email :&nbsp;</span><a href="mailto:registry.rsci@undp.org?Subject=From%20UNDP%20ECIS" target="_top">registry.rsci@undp.org</a></p>
-                    <p><span class="c-white-color">Website:&nbsp;</span><a href="http://www.eurasia.undp.org/" target="_blank">www.eurasia.undp.org</a></p>
+                    <p><span class="c-white-color">Email :&nbsp;</span><a class="c-link-text" href="mailto:registry.rsci@undp.org?Subject=From%20UNDP%20ECIS" target="_top">registry.rsci@undp.org</a></p>
+                    <p><span class="c-white-color">Website:&nbsp;</span><a class="c-link-text" href="http://www.eurasia.undp.org/" target="_blank">www.eurasia.undp.org</a></p>
                     <!-- #endregion Content -->
                 </div>
                 <!-- #endregion Fourth column -->

@@ -392,7 +392,7 @@ a {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00383839', endColorstr='#383839', GradientType=0);
   /* IE6-9 */
 }
-.c-read-more-feather-button span {
+.c-read-more-feather-button > span {
   font-size: 12px;
   display: inline-block;
   padding: 3px 20px;
@@ -406,11 +406,11 @@ a {
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
-.c-read-more-feather-button span .c-ico {
+.c-read-more-feather-button > span .c-ico {
   position: relative;
   top: 2px;
 }
-.c-read-more-feather-button:hover span {
+.c-read-more-feather-button:hover > span {
   background-color: #005885;
   color: #fff;
 }
@@ -425,10 +425,10 @@ a {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0000699e', endColorstr='#00699e', GradientType=0);
   /* IE6-9 */
 }
-.c-read-more-feather-button.c-blue-version span {
+.c-read-more-feather-button.c-blue-version > span {
   background-color: #00699e;
 }
-.c-read-more-feather-button.c-blue-version:hover span {
+.c-read-more-feather-button.c-blue-version:hover > span {
   background-color: #005885;
   color: #fff;
 }
@@ -442,10 +442,10 @@ a {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0000699e', endColorstr='#00699e', GradientType=0);
   /* IE6-9 */
 }
-.c-read-more-feather-button.c-white-version span {
+.c-read-more-feather-button.c-white-version > span {
   background-color: #00699e;
 }
-.c-read-more-feather-button.c-white-version:hover span {
+.c-read-more-feather-button.c-white-version:hover > span {
   background-color: #005885;
   color: #fff;
 }
@@ -587,6 +587,22 @@ a {
 .c-horizontal-list.c-social-medial-links-list li a .fa {
   font-size: 18px;
   line-height: 1.7;
+}
+.c-horizontal-list.c-social-medial-links-list li a:hover {
+  background: #9e9b98;
+  color: #fff;
+}
+.c-horizontal-list.c-social-medial-links-list li a.c-icon-bttn-facebook:hover {
+  background: #3b5998;
+  color: #fff;
+}
+.c-horizontal-list.c-social-medial-links-list li a.c-icon-bttn-twitter:hover {
+  background: #00aced;
+  color: #fff;
+}
+.c-horizontal-list.c-social-medial-links-list li a.c-icon-bttn-instagram:hover {
+  background: #517fa4;
+  color: #fff;
 }
 .c-vertical-list {
   list-style-type: none;
@@ -785,6 +801,15 @@ a {
   margin-bottom: 1em;
 }
 /* #endregion Lists links */
+/* #region Text links */
+.c-link-text {
+  color: #00699e !important;
+  cursor: pointer;
+}
+.c-link-text:hover {
+  color: #05abff !important;
+}
+/* #endregion Text links */
 /* #region RESPONSIVE CLASSES */
 /* #region RESPONSIVE QUERY */
 /* #region Extra small resolutions */
@@ -2096,6 +2121,8 @@ a {
   }
 }
 /* #endregion EXPANDABLE CONTENT */
+/* #region BINDED TEXT CUSTOM STYLES */
+/* #endregion BINDED TEXT CUSTOM STYLES */
 /* #region FOCUS AREAS CONTENT */
 .c-focus-areas-content-wrap {
   display: block;
@@ -2348,7 +2375,7 @@ a {
 }
 /* #endregion FACTS & FIGURES CONTENT */
 /* #region REGIONAL CONTEXT CONTENT */
-.c-foreword-content-wrap {
+.c-regional-text-content-wrap {
   /* #region RESPONSIVE QUERY */
   /* #region Extra small resolutions */
   /* #endregion Extra small resolutions */
@@ -2362,22 +2389,25 @@ a {
   /* #endregion Extra Large resolutions */
   /* #endregion RESPONSIVE QUERY */
 }
-.c-foreword-content-wrap .c-table .c-cell {
+.c-regional-text-content-wrap .c-table .c-cell {
   position: relative;
 }
-.c-foreword-content-wrap .c-table .c-cell.c-has-text {
+.c-regional-text-content-wrap .c-table .c-cell.c-has-text {
   line-height: 1.5;
   font-size: 14px;
 }
-.c-foreword-content-wrap .c-table .c-cell.c-has-image-box {
+.c-regional-text-content-wrap .c-table .c-cell.c-has-text .c-read-more-feather-button {
+  height: 60px !important;
+}
+.c-regional-text-content-wrap .c-table .c-cell.c-has-image-box {
   text-align: center;
 }
 @media only screen and (min-width: 1px) and (max-width: 991px) {
-  .c-foreword-content-wrap .c-table {
+  .c-regional-text-content-wrap .c-table {
     display: block;
     width: 100%;
   }
-  .c-foreword-content-wrap .c-table .c-cell {
+  .c-regional-text-content-wrap .c-table .c-cell {
     display: block;
     width: 100%;
     -moz-box-sizing: border-box;
@@ -2387,28 +2417,31 @@ a {
     text-align: left;
     vertical-align: top;
   }
-  .c-foreword-content-wrap .c-table .c-cell.c-has-text {
+  .c-regional-text-content-wrap .c-table .c-cell.c-has-text {
     line-height: 1.5;
     font-size: 14px;
   }
-  .c-foreword-content-wrap .c-table .c-cell.c-has-text p {
+  .c-regional-text-content-wrap .c-table .c-cell.c-has-text p {
     line-height: 1.5;
   }
-  .c-foreword-content-wrap .c-table .c-cell.c-has-text .c-buttons-wrap {
+  .c-regional-text-content-wrap .c-table .c-cell.c-has-text .c-buttons-wrap {
     margin-top: 20px;
+  }
+  .c-regional-text-content-wrap .c-table .c-cell .c-read-more-feather-button {
+    position: relative !important;
   }
 }
 @media only screen and (min-width: 992px) {
-  .c-foreword-content-wrap {
+  .c-regional-text-content-wrap {
     display: inline-block;
     max-width: 1210px;
   }
-  .c-foreword-content-wrap .c-table {
+  .c-regional-text-content-wrap .c-table {
     display: table;
     width: 100%;
     height: 100%;
   }
-  .c-foreword-content-wrap .c-table .c-cell {
+  .c-regional-text-content-wrap .c-table .c-cell {
     display: table-cell;
     width: 100%;
     height: 100%;
@@ -2417,19 +2450,19 @@ a {
     text-align: left;
     padding: 0;
   }
-  .c-foreword-content-wrap .c-table .c-cell.c-has-text {
+  .c-regional-text-content-wrap .c-table .c-cell.c-has-text {
     padding-right: 30px;
     font-size: 14px;
     line-height: 1.5;
   }
-  .c-foreword-content-wrap .c-table .c-cell.c-has-text .c-buttons-wrap {
+  .c-regional-text-content-wrap .c-table .c-cell.c-has-text .c-buttons-wrap {
     margin-top: 20px;
   }
-  .c-foreword-content-wrap .c-table .c-cell .c-image-box-wrap {
+  .c-regional-text-content-wrap .c-table .c-cell .c-image-box-wrap {
     display: block;
     position: relative;
   }
-  .c-foreword-content-wrap .c-table .c-cell .c-image-box-wrap .c-image-content {
+  .c-regional-text-content-wrap .c-table .c-cell .c-image-box-wrap .c-image-content {
     display: block;
     position: relative;
     width: 100%;
@@ -2440,10 +2473,10 @@ a {
     -o-background-size: cover;
     background-size: cover;
   }
-  .c-foreword-content-wrap .c-table .c-cell .c-image-box-wrap .c-title-content {
+  .c-regional-text-content-wrap .c-table .c-cell .c-image-box-wrap .c-title-content {
     font-size: 24px;
   }
-  .c-foreword-content-wrap .c-table .c-cell .c-image-box-wrap .c-title-content p {
+  .c-regional-text-content-wrap .c-table .c-cell .c-image-box-wrap .c-title-content p {
     max-width: 50%;
     line-height: 1.1;
   }
@@ -2453,7 +2486,13 @@ a {
   position: relative;
   overflow: hidden;
 }
-.c-inserted-image-wrapper > img {
+.c-inserted-image-wrapper > .c-img-crop-box {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.c-inserted-image-wrapper > .c-img-crop-box > img {
   max-width: none !important;
   width: auto;
   height: 100%;
@@ -2473,7 +2512,7 @@ a {
   display: block;
   width: 100%;
 }
-.c-inserted-image-wrapper .c-over-img-content .c-photo-credits-content {
+.c-inserted-image-wrapper .c-photo-credits-content {
   display: block;
   position: relative;
   width: 100%;
@@ -2481,9 +2520,7 @@ a {
   background-color: #fdceaa;
   color: #273338;
 }
-.c-inserted-image-wrapper.c-foreword-image {
-  max-width: 560px;
-  max-height: 420px;
+.c-inserted-image-wrapper.c-regional-context-image {
   /* #region RESPONSIVE QUERY */
   /* #region Extra small resolutions */
   /* #endregion Extra small resolutions */
@@ -2493,20 +2530,24 @@ a {
   /* #endregion Extra Large resolutions */
   /* #endregion RESPONSIVE QUERY */
 }
+.c-inserted-image-wrapper.c-regional-context-image > .c-img-crop-box {
+  max-width: 560px;
+  max-height: 420px;
+}
 @media only screen and (min-width: 1px) and (max-width: 991px) {
-  .c-inserted-image-wrapper.c-foreword-image {
+  .c-inserted-image-wrapper.c-regional-context-image > .c-img-crop-box {
     width: 100%;
     height: 360px;
   }
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
-  .c-inserted-image-wrapper.c-foreword-image {
+  .c-inserted-image-wrapper.c-regional-context-image > .c-img-crop-box {
     width: 100%;
     height: 420px;
   }
 }
 @media only screen and (min-width: 1200px) {
-  .c-inserted-image-wrapper.c-foreword-image {
+  .c-inserted-image-wrapper.c-regional-context-image > .c-img-crop-box {
     width: 560px;
     height: 420px;
   }

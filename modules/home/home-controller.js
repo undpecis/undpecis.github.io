@@ -385,13 +385,13 @@ angular.module('Home')
             /* #endregion FOCUS AREAS RELATED CODE */
 
             /* #region FOREWORD AREA RELATED CODE */
-            $scope.forewordVars = {
+            $scope.regionalContextVars = {
                 dataBindForeword: {},
                 isTextExpanded: false
             }
             /* #region Toggle OKW full text visibility (see less see more) */
             $scope.toggleForewordtextExpanded = function () {
-                $scope.forewordVars.isTextExpanded = !$scope.forewordVars.isTextExpanded
+                $scope.regionalContextVars.isTextExpanded = !$scope.regionalContextVars.isTextExpanded
             }
             /* #endregion Toggle OKW full text visibility (see less see more) */
             /* #endregion FOREWORD AREA RELATED CODE */
@@ -407,7 +407,7 @@ angular.module('Home')
             function activate() {
                 //keeps data of all Focus Areas
                 $scope.ctrlVars.focusData = siteData.focusAreas;
-                $scope.forewordVars.dataBindForeword = siteData.regionalContext;
+                $scope.regionalContextVars.dataBindForeword = siteData.regionalContext;
             }
         }
     ]
