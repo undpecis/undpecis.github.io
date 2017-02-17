@@ -22,9 +22,41 @@
                                 </button>
                             </div>
                             <div class="c-cell c-has-burger">
-                                <button class="c-bttn">
-                                    <i class="c-ico icon-menu"></i>
-                                </button>
+                                <div class="btn-group c-dropdown-btn-group">
+                                    <button type="button" class="c-bttn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="c-ico icon-menu"></i>
+                                    </button>
+                                    <ul id="cid-burger-dropdown-menu-lg" class="dropdown-menu dropdown-menu-right c-header-burger-dropdown">
+                                        <li ng-click="toggleBurgerMenu('focus')">
+                                            <a>
+                                                FOCUS AREAS
+                                                <i ng-if="ctrlVars.burgerMenuSubmenuVisible_focusAreas == true" class="c-ico icon-arrow-up"></i>
+                                                <i ng-if="ctrlVars.burgerMenuSubmenuVisible_focusAreas == false" class="c-ico icon-arrow-down"></i>
+                                            </a>
+                                        </li>
+                                        <li ng-if="ctrlVars.burgerMenuSubmenuVisible_focusAreas == true">
+                                            <ul class="c-dropdown-menu-subnav c-focus-areas c-max-h-300">
+                                                <li ng-repeat="areaSubitem in ctrlVars.focusData" ng-class="'c-vdash-fareas-' + areaSubitem.id" ng-click="toggleFocusAreaVisibility($index)">
+                                                    <a>{{areaSubitem.title}}</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li ng-click="toggleBurgerMenu('countries')">
+                                            <a>
+                                                COUNTRY PROFILES
+                                                <i ng-if="ctrlVars.burgerMenuSubmenuVisible_countries == true" class="c-ico icon-arrow-up"></i>
+                                                <i ng-if="ctrlVars.burgerMenuSubmenuVisible_countries == false" class="c-ico icon-arrow-down"></i>
+                                            </a>
+                                        </li>
+                                        <li ng-if="ctrlVars.burgerMenuSubmenuVisible_countries == true">
+                                            <ul class="c-dropdown-menu-subnav c-countries c-max-h-300">
+                                                <li ng-repeat="countrySubitem in activeCountriesList" class="c-vdash-countries" ng-click="countryClickedFunc_fromBurger(countrySubitem.id)">
+                                                    <a>{{countrySubitem.title}}</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -46,9 +78,41 @@
                                 </button>
                             </div>
                             <div class="c-cell c-has-burger">
-                                <button class="c-bttn">
-                                    <i class="c-ico icon-menu"></i>
-                                </button>
+                                <div class="btn-group c-dropdown-btn-group">
+                                    <button type="button" class="c-bttn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="c-ico icon-menu"></i>
+                                    </button>
+                                    <ul id="cid-burger-dropdown-menu-xs" class="dropdown-menu dropdown-menu-right c-header-burger-dropdown">
+                                        <li ng-click="toggleBurgerMenu('focus')">
+                                            <a>
+                                                FOCUS AREAS
+                                                <i ng-if="ctrlVars.burgerMenuSubmenuVisible_focusAreas == true" class="c-ico icon-arrow-up"></i>
+                                                <i ng-if="ctrlVars.burgerMenuSubmenuVisible_focusAreas == false" class="c-ico icon-arrow-down"></i>
+                                            </a>
+                                        </li>
+                                        <li ng-if="ctrlVars.burgerMenuSubmenuVisible_focusAreas == true">
+                                            <ul class="c-dropdown-menu-subnav c-focus-areas c-max-h-300">
+                                                <li ng-repeat="areaSubitem in ctrlVars.focusData" ng-class="'c-vdash-fareas-' + areaSubitem.id" ng-click="toggleFocusAreaVisibility($index)">
+                                                    <a>{{areaSubitem.title}}</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li ng-click="toggleBurgerMenu('countries')">
+                                            <a>
+                                                COUNTRY PROFILES
+                                                <i ng-if="ctrlVars.burgerMenuSubmenuVisible_countries == true" class="c-ico icon-arrow-up"></i>
+                                                <i ng-if="ctrlVars.burgerMenuSubmenuVisible_countries == false" class="c-ico icon-arrow-down"></i>
+                                            </a>
+                                        </li>
+                                        <li ng-if="ctrlVars.burgerMenuSubmenuVisible_countries == true">
+                                            <ul class="c-dropdown-menu-subnav c-countries c-max-h-300">
+                                                <li ng-repeat="countrySubitem in activeCountriesList" class="c-vdash-countries">
+                                                    <a>{{countrySubitem.title}}</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -168,7 +232,7 @@
                         <!-- #endregion Text -->
                         <!-- #region Flag -->
                         <div class="c-cell c-has-flag">
-                            <div class="c-flag-sprite {{selectedCountry.flagClass}}"></div>
+                            <div class="c-flag-sprite {{selectedCountry.flagClass}}" ng-if="selectedCountry.id != 'XK'"></div>
                         </div>
                         <!-- #endregion Flag -->
                     </div>
@@ -205,7 +269,7 @@
                     <!-- #region Middle text -->
                     <div class="c-cell c-has-text c-col-3-5-lg">
                         <div id="cid-expandable-bac-wrapper" ng-class="{'c-max-h-700' : !ctrlVars.dataBindBAC.isTextExpanded}">
-                            <div id="cid-binded-bac-text" class="c-bind-txxt-wrapper" ng-bind-html="ctrlVars.dataBindBAC.text" ng-class="{'c-p-bottom-50' : ctrlVars.dataBindBAC.isTextExpanded}">
+                            <div id="cid-binded-bac-text" class="c-bind-txxt-wrapper"  ng-bind-html="to_trusted(ctrlVars.dataBindBAC.text)" ng-class="{'c-p-bottom-50' : ctrlVars.dataBindBAC.isTextExpanded}">
                             </div>
                         </div>
                         <div class="c-read-more-feather-button c-blue-version" ng-click="toggleBACtextExpanded()" ng-if="ctrlVars.dataBindBAC.isLargeText">
@@ -216,20 +280,18 @@
                     <!-- #endregion Middle text -->
                     <!-- #region Right content -->
                     <div class="c-cell c-has-right-content c-statement-right-content c-max-h-700 c-col-1-5-lg">
-                        <!-- #region Graph -->
-                        <a class="c-statement-img-thumb swipebox" ng-href="Content/images/photos-and-graphic/{{ctrlVars.dataBindStatement.img}}" title="{{ctrlVars.dataBindStatement.title}}">
-                            <img ng-src="Content/images/photos-and-graphic/{{ctrlVars.dataBindStatement.imgThumb}}" alt="{{ctrlVars.dataBindStatement.title}}">
-                        </a>
-                        <!--<img src="Content/images/belarus-266x150.jpg" alt="Statement Cover Image" id="imagelightbox">-->
-                        <!--<a href="Content/images/belarus-266x150.jpg" data-imagelightbox="c" id="imagelightbox" class="c-statement-cover-image-wrapper">
-                            <img src="Content/images/belarus-266x150.jpg" alt="Statement Cover Image">
-                        </a>-->
-                        <!-- #endregion Graph -->
-                        <!-- #region Statement text -->
-                        <h5 class="c-statement-title" ng-bind-html="ctrlVars.dataBindStatement.title">Statement</h5>
-                        <p class="c-statement-body-txxt" ng-bind-html="ctrlVars.dataBindStatement.bodyText">“Since its establishment, the hub has become a recognized multi-institutional platform for the incessant exchange of experience and knowledge in the field of civil service, aimed at stimulating the transformation of civil service in the region through capacity building and dissemination of innovative approaches in the field of civil service”</p>
-                        <p class="c-statement-signature-txxt" ng-bind-html="ctrlVars.dataBindStatement.signatureText">Mr. Rolf Alter, OECD Director for Public Governance and Territorial Development at the ‘Partnership for Civil Service Excellence’ conference</p>
-                        <!-- #endregion Statement text -->
+                        <div ng-if="ctrlVars.dataBindStatement.bodyText != ''">
+                            <!-- #region Graph -->
+                            <a class="c-statement-img-thumb swipebox" ng-href="Content/images/photos-and-graphic/{{ctrlVars.dataBindStatement.img}}" title="{{ctrlVars.dataBindStatement.title}}">
+                                <img ng-src="Content/images/photos-and-graphic/{{ctrlVars.dataBindStatement.imgThumb}}" alt="{{ctrlVars.dataBindStatement.title}}">
+                            </a>
+                            <!-- #endregion Graph -->
+                            <!-- #region Statement text -->
+                            <h5 class="c-statement-title" ng-bind-html="ctrlVars.dataBindStatement.title">Statement</h5>
+                            <p class="c-statement-body-txxt" ng-bind-html="ctrlVars.dataBindStatement.bodyText">“Since its establishment, the hub has become a recognized multi-institutional platform for the incessant exchange of experience and knowledge in the field of civil service, aimed at stimulating the transformation of civil service in the region through capacity building and dissemination of innovative approaches in the field of civil service”</p>
+                            <p class="c-statement-signature-txxt" ng-bind-html="ctrlVars.dataBindStatement.signatureText">Mr. Rolf Alter, OECD Director for Public Governance and Territorial Development at the ‘Partnership for Civil Service Excellence’ conference</p>
+                            <!-- #endregion Statement text -->
+                        </div>
                     </div>
                     <!-- #endregion Right content -->
                 </div>
@@ -348,6 +410,26 @@
                                 <!-- #endregion Right cell content -->
                             </div>
                             <!-- #endregion Second row -->
+                            <!-- #region Third row -->
+                            <div class="c-row" ng-if="selectedCountry.keyResults.length > 4">
+                                <!-- #region Left cell content -->
+                                <div class="c-cell" ng-if="selectedCountry.keyResults[4].text != ''">
+                                    <!-- #region Icon & text -->
+                                    <div class="c-icon-text-content">
+                                        <div class="c-table">
+                                            <div class="c-cell c-w-1perc">
+                                                <i class="xn {{selectedCountry.keyResults[4].iconClass}}" aria-hidden="true"></i>
+                                            </div>
+                                            <div class="c-cell">
+                                                <p>{{selectedCountry.keyResults[4].text}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- #endregion Icon & text -->
+                                </div>
+                                <!-- #endregion Left cell content -->
+                            </div>
+                            <!-- #endregion Third row -->
                         </div>
                     </div>
                 </div>
@@ -399,7 +481,7 @@
                     <!-- #endregion Text -->
                     <!-- #region Flag -->
                     <div class="c-cell c-has-flag">
-                        <div class="c-flag-sprite {{selectedCountry.flagClass}}"></div>
+                        <div class="c-flag-sprite {{selectedCountry.flagClass}}" ng-if="selectedCountry.id != 'XK'"></div>
                     </div>
                     <!-- #endregion Flag -->
                 </div>
@@ -529,7 +611,7 @@
                             </div>
                             <!-- #endregion First row -->
                             <!-- #region Second row -->
-                            <div class="c-row">
+                            <div class="c-row" ng-if="selectedCountry.keyResults[2].text != ''">
                                 <!-- #region Left cell content -->
                                 <div class="c-cell" ng-if="selectedCountry.keyResults[2].text != ''">
                                     <!-- #region Icon & text -->
@@ -578,6 +660,26 @@
                                 <!-- #endregion Right cell content -->
                             </div>
                             <!-- #endregion Second row -->
+                            <!-- #region Third row -->
+                            <div class="c-row" ng-if="selectedCountry.keyResults.length > 4">
+                                <!-- #region Left cell content -->
+                                <div class="c-cell" ng-if="selectedCountry.keyResults[4].text != ''">
+                                    <!-- #region Icon & text -->
+                                    <div class="c-icon-text-content">
+                                        <div class="c-table">
+                                            <div class="c-cell c-w-1perc">
+                                                <i class="xn {{selectedCountry.keyResults[4].iconClass}}" aria-hidden="true"></i>
+                                            </div>
+                                            <div class="c-cell">
+                                                <p>{{selectedCountry.keyResults[4].text}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- #endregion Icon & text -->
+                                </div>
+                                <!-- #endregion Left cell content -->
+                            </div>
+                            <!-- #endregion Third row -->
                         </div>
                     </div>
                 </div>
@@ -758,7 +860,7 @@
 </div>
 <!-- #endregion Focus areas -->
 <!-- #region Expandable content -->
-<div class="c-wide-wrap c-black-background" ng-if="ctrlVars.isOpenCountryOKWdata" id="cid-anchor-OKW-content">
+<div class="c-wide-wrap c-black-background" ng-if="ctrlVars.isOpenCountryOKWdata" id="cid-anchor-OKW-content" ng-class="{'c-black-line-top' : ctrlVars.currentFocusAreaIndex ==0, 'c-blue-line-top' : ctrlVars.currentFocusAreaIndex ==1, 'c-red-line-top' : ctrlVars.currentFocusAreaIndex ==2, 'c-peach-line-top' : ctrlVars.currentFocusAreaIndex ==3}">
     <div class="c-container">
         <div class="c-expandable-content-wrap">
             <!-- #region Title -->
@@ -805,7 +907,7 @@
                     <!-- #region Middle text -->
                     <div class="c-cell c-has-text c-col-3-5-lg">
                         <div id="cid-expandable-okw-wrapper" ng-class="{'c-max-h-470' : !ctrlVars.dataBindOKW.isTextExpanded}">
-                            <div id="cid-binded-okw-text" class="c-bind-txxt-wrapper" ng-bind-html="ctrlVars.textPartOKWtoBind">
+                            <div id="cid-binded-okw-text" class="c-bind-txxt-wrapper" ng-bind-html="to_trusted(ctrlVars.textPartOKWtoBind)" ng-class="{'c-p-bottom-50' : ctrlVars.dataBindOKW.isTextExpanded}">
                             </div>
                         </div>
                         <div class="c-read-more-feather-button" ng-click="toggleOKWtextExpanded()" ng-if="ctrlVars.dataBindOKW.isLargeText">
@@ -818,14 +920,14 @@
                     <div class="c-cell c-has-right-content c-col-1-5-lg">
                         <p>UNDP’s Conflict Prevention and Peacebuilding work is designed to help countries meet targets under:</p>
                         <!-- #region SVG graphic -->
-                        <a class="c-content-block c-svg-graph-wrap" ng-click="openGenderPeaceModal('gender')">
+                        <a class="c-content-block c-pictograms-wrap" ng-click="openGenderPeaceModal('gender')">
                             <object type="image/svg+xml" data="Content/images/sidebar-gender-equality.svg" class="c-svg-object">
                                 Peace and justice
                             </object>
                         </a>
                         <!-- #endregion SVG graphic -->
                         <!-- #region SVG graphic -->
-                        <a class="c-content-block c-svg-graph-wrap" ng-click="openGenderPeaceModal('peace')">
+                        <a class="c-content-block c-pictograms-wrap" ng-click="openGenderPeaceModal('peace')">
                             <object type="image/svg+xml" data="Content/images/sidebar-peace-and-justice.svg" class="c-svg-object">
                                 Gender equality
                             </object>
@@ -878,7 +980,22 @@
                         </a>
                         <!-- #region Subnavigation dropdown -->
                         <div class="c-has-dropdown-subnav c-black-background" ng-if="enumOKW.keyTrendsData.isXsSubnavActive == true">
-                            <div class="c-selected-item" ng-click="toggleDropdownOpen('okw')">
+                            <div class="btn-group c-dropdown-btn-group">
+                                <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <div class="c-has-text">
+                                        {{okwXsVars.selectedItemTitle}}
+                                    </div>
+                                    <div class="c-has-icon">
+                                        <i class="c-ico icon-list"></i>
+                                    </div>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li ng-repeat="dropdownItem in ctrlVars.dataBindOKW.textParts" ng-click="selectOKWdropdownItem($index)">
+                                        <a>{{dropdownItem.partName}}</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!--<div class="c-selected-item" ng-click="toggleDropdownOpen('okw')">
                                 <div class="c-has-text">
                                     {{okwXsVars.selectedItemTitle}}
                                 </div>
@@ -891,7 +1008,7 @@
                                 <li ng-repeat="dropdownItem in ctrlVars.dataBindOKW.textParts" ng-click="selectOKWdropdownItem($index)">
                                     <a>{{dropdownItem.partName}}</a>
                                 </li>
-                            </ul>
+                            </ul>-->
                         </div>
                         <!-- #endregion Subnavigation dropdown -->
                     </li>
@@ -914,7 +1031,22 @@
                         </a>
                         <!-- #region Subnavigation dropdown -->
                         <div class="c-has-dropdown-subnav c-black-background" ng-if="enumOKW.whatWeDoData.isXsSubnavActive == true">
-                            <div class="c-selected-item" ng-click="toggleDropdownOpen('okw')">
+                            <div class="btn-group c-dropdown-btn-group">
+                                <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <div class="c-has-text">
+                                        {{okwXsVars.selectedItemTitle}}
+                                    </div>
+                                    <div class="c-has-icon">
+                                        <i class="c-ico icon-list"></i>
+                                    </div>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li ng-repeat="dropdownItem in ctrlVars.dataBindOKW.textParts" ng-click="selectOKWdropdownItem($index)">
+                                        <a>{{dropdownItem.partName}}</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!--<div class="c-selected-item" ng-click="toggleDropdownOpen('okw')">
                                 <div class="c-has-text">
                                     {{okwXsVars.selectedItemTitle}}
                                 </div>
@@ -927,7 +1059,7 @@
                                 <li ng-repeat="dropdownItem in ctrlVars.dataBindOKW.textParts" ng-click="selectOKWdropdownItem($index)">
                                     <a>{{dropdownItem.partName}}</a>
                                 </li>
-                            </ul>
+                            </ul>-->
                         </div>
                         <!-- #endregion Subnavigation dropdown -->
                     </li>

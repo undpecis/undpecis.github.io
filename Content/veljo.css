@@ -1,8 +1,7 @@
 /* CSS Document */
 
 .tableCss {
-    /*width: 540px;*/
-    width:100%;
+    width: 540px;
     color: white;
     margin: 40px auto;
 }
@@ -41,7 +40,12 @@
     width: 100%;
     text-align: center;
 }
-
+.red-text {
+    color: red;
+}
+.blue-text {
+    color: #00699d;
+}
 .albania_table_img .assistance_img1 {
     background-image: url(../Content/images/photos-and-graphic/image-albania-strana-71-1.jpg);
 }

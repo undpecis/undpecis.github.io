@@ -3,8 +3,8 @@
 angular.module('Home')
 
 .controller('HomeController',
-    ['$scope', '$window', '$anchorScroll', '$location', '$timeout', '$uibModal',
-        function ($scope, $window, $anchorScroll, $location, $timeout, $uibModal) {
+    ['$scope', '$window', '$anchorScroll', '$location', '$timeout', '$uibModal', '$sce', '$document',
+        function ($scope, $window, $anchorScroll, $location, $timeout, $uibModal, $sce, $document) {
             var winElement = angular.element($window);
             var screenWidth = winElement.width();
             var breakpointStart_lg = 992;
@@ -13,6 +13,9 @@ angular.module('Home')
             winElement.bind('resize', function () {
                 screenWidth = winElement.width();
                 updateResolutionStatus();
+                //reset some values
+                $scope.ctrlVars.burgerMenuSubmenuVisible_countries = false;
+                $scope.ctrlVars.burgerMenuSubmenuVisible_focusAreas = false;
             });
             function updateResolutionStatus() {
                 if (screenWidth >= breakpointStart_lg) {
@@ -21,6 +24,9 @@ angular.module('Home')
                     isLargeResolution = false;
                 }
             }
+            $scope.to_trusted = function (html_code) {
+                return $sce.trustAsHtml(html_code);
+            }
             //'undpData' is object with side data defined inside 'allcontentdata.js' file
             var siteData = undpData;
             ///####################################################################################
@@ -28,25 +34,25 @@ angular.module('Home')
             //object with currently selected country data
             $scope.selectedCountry = {};
             //we are defining list of active countries (this 'listOfActiveCountries' is also defined inside 'index-controller.js' file)
-            var listOfActiveCountries = [
-              { "id": "AL", "title": "Albania" },
-              { "id": "AM", "title": "Armenia" },
-              { "id": "AZ", "title": "Azerbaijan" },
-              { "id": "BY", "title": "Belarus" },
-              { "id": "BA", "title": "Bosnia and Herzegovina" },
-              { "id": "MK", "title": "FYR Macedonia" },
-              { "id": "GE", "title": "Georgia" },
-              { "id": "KZ", "title": "Kazakhstan" },
-              { "id": "XK", "title": "Kosovo" },
-              { "id": "KG", "title": "Kyrgyz Republic" },
-              { "id": "MD", "title": "Moldova" },
-              { "id": "ME", "title": "Montenegro" },
-              { "id": "RS", "title": "Serbia" },
-              { "id": "TJ", "title": "Tajikistan" },
-              { "id": "TR", "title": "Turkey" },
-              { "id": "TM", "title": "Turkmenistan" },
-              { "id": "UA", "title": "Ukraine" },
-              { "id": "UZ", "title": "Uzbekistan" }
+            $scope.activeCountriesList = [
+              { id: "AL", title: "Albania" },
+              { id: "AM", title: "Armenia" },
+              { id: "AZ", title: "Azerbaijan" },
+              { id: "BY", title: "Belarus" },
+              { id: "BA", title: "Bosnia and Herzegovina" },
+              { id: "MK", title: "FYR Macedonia" },
+              { id: "GE", title: "Georgia" },
+              { id: "KZ", title: "Kazakhstan" },
+              { id: "XK", title: "Kosovo" },
+              { id: "KG", title: "Kyrgyz Republic" },
+              { id: "MD", title: "Moldova" },
+              { id: "ME", title: "Montenegro" },
+              { id: "RS", title: "Serbia" },
+              { id: "TJ", title: "Tajikistan" },
+              { id: "TR", title: "Turkey" },
+              { id: "TM", title: "Turkmenistan" },
+              { id: "UA", title: "Ukraine" },
+              { id: "UZ", title: "Uzbekistan" }
             ];
             /* #region On country map click */
             //we are calling 'countryClickedFunc' from external file 'index-controller.js' and passing name of country that has been clicked
@@ -57,9 +63,27 @@ angular.module('Home')
                         $scope.changeCountryBACData(0);
                         //console.log('$scope.selectedCountry: ' + $scope.selectedCountry.keyResults[2].text);
                         $scope.ctrlVars.isInterestCountryClicked = true;
-                        $scope.$apply();
                     }
                 }
+            }
+            $scope.countryClickedFunc_fromBurger = function (countryOfInterestId) {
+                for (var i = 0; i < siteData.countries.length; i++) {
+                    if (siteData.countries[i].id == countryOfInterestId) {
+                        $scope.selectedCountry = siteData.countries[i];
+                        $scope.changeCountryBACData(0);
+                        //console.log('$scope.selectedCountry: ' + $scope.selectedCountry.keyResults[2].text);
+                        $scope.ctrlVars.isInterestCountryClicked = true;
+                        $timeout(function () {
+                            console.log('crolled to anchor map');
+                            $scope.scrollToAnchor('mapdiv');
+                        }, 500);
+                    }
+                }
+                if ($('#cid-burger-dropdown-menu-lg').not(':hidden')) {
+                    console.log('ton hiden lg country');
+                    //$("#cid-burger-dropdown-menu-xs").hide();
+                    $('[data-toggle="dropdown"]').parent().removeClass('open');
+                };
             }
             /* #endregion On country map click */
             /* #region Change Data displayed for 'Background', 'Assistance and Impact' & 'Challenges, Lessons Learned and Way Forward' */
@@ -89,6 +113,7 @@ angular.module('Home')
                     $scope.enumBAC.challengesData.isXsContentVisible = false;
                     /* #region Check if text exceeded height */
                     checkHeightOfTextBAC();
+                    $scope.callExternalRebindingOfHtmlContent();
                     /* #endregion Check if text exceeded height */
                 } else if (buttonIndex == $scope.enumBAC.assistanceData.enumIndex) {
                     $scope.ctrlVars.dataBindBAC = $scope.selectedCountry.assistanceData;
@@ -101,6 +126,7 @@ angular.module('Home')
                     $scope.enumBAC.challengesData.isXsContentVisible = false;
                     /* #region Check if text exceeded height */
                     checkHeightOfTextBAC();
+                    $scope.callExternalRebindingOfHtmlContent();
                     /* #endregion Check if text exceeded height */
                 } else if (buttonIndex == $scope.enumBAC.challengesData.enumIndex) {
                     $scope.ctrlVars.dataBindBAC = $scope.selectedCountry.challengesData;
@@ -113,9 +139,19 @@ angular.module('Home')
                     $scope.enumBAC.assistanceData.isXsContentVisible = false;
                     /* #region Check if text exceeded height */
                     checkHeightOfTextBAC();
+                    $scope.callExternalRebindingOfHtmlContent();
                     /* #endregion Check if text exceeded height */
                 }
             }
+
+            $scope.callExternalRebindingOfHtmlContent = function () {
+                //$scope.$apply();
+                $timeout(function () {
+                    console.log('caliing code in angular');
+                    externalCompileCaller();
+                }, 500);
+            }
+
             /* #endregion Change Data displayed for 'Background', 'Assistance and Impact' & 'Challenges, Lessons Learned and Way Forward' */
             /* #region Check if text exceeded height */
             function checkHeightOfTextBAC() {
@@ -167,7 +203,19 @@ angular.module('Home')
                 //keeps index of currently clicked Focus Area button
                 currentFocusAreaIndex: null,
                 //keeps data for modal screen (Gender Equality, Peace, ...)
-                genderPeaceDataToShow: null
+                genderPeaceDataToShow: null,
+                //burger menu
+                burgerMenuSubmenuVisible_focusAreas: false,
+                burgerMenuSubmenuVisible_countries: false
+            }
+            $scope.toggleBurgerMenu = function (callerName) {
+                if (callerName == 'focus') {
+                    $scope.ctrlVars.burgerMenuSubmenuVisible_focusAreas = !$scope.ctrlVars.burgerMenuSubmenuVisible_focusAreas;
+                    $scope.ctrlVars.burgerMenuSubmenuVisible_countries = false;
+                } else if (callerName == 'countries') {
+                    $scope.ctrlVars.burgerMenuSubmenuVisible_countries = !$scope.ctrlVars.burgerMenuSubmenuVisible_countries;
+                    $scope.ctrlVars.burgerMenuSubmenuVisible_focusAreas = false;
+                }
             }
             $scope.toggleKeyContent = function (callerName) {
                 if (callerName == 'closeInterestCountry') {
@@ -194,6 +242,12 @@ angular.module('Home')
             /* #region FOCUS AREAS RELATED CODE */
             //keeps visibility status of clicked Focus Area
             $scope.toggleFocusAreaVisibility = function (focusAreaIndex) {
+                //check if click was initialized from burger menu and close burger menu
+                if ($('#cid-burger-dropdown-menu-xs').not(':hidden')) {
+                    console.log('ton hiden');
+                    //$("#cid-burger-dropdown-menu-xs").hide();
+                    $('[data-toggle="dropdown"]').parent().removeClass('open');
+                };
                 //find index match of Focus Area button clicked
                 for (var i = 0; i < $scope.ctrlVars.focusData.length; i++) {
                     //if index matched
@@ -206,7 +260,15 @@ angular.module('Home')
                             $scope.ctrlVars.currentFocusAreaIndex = focusAreaIndex;
                             $scope.changeCountryOKWData(0);
                             if (isLargeResolution == false) {
+                                //small devices, mobile phones
                                 $timeout(function () {
+                                    console.log('crolled to anchor');
+                                    $scope.scrollToAnchor('cid-anchor-OKW-content');
+                                }, 500);
+                            } else {
+                                //large resolutions
+                                $timeout(function () {
+                                    console.log('crolled to anchor 000');
                                     $scope.scrollToAnchor('cid-anchor-OKW-content');
                                 }, 500);
                             }
@@ -281,6 +343,7 @@ angular.module('Home')
                         $scope.ctrlVars.selectedSubnavTitle_xs = $scope.ctrlVars.dataBindOKW.textParts[i].partName;
                         /* #region Check if text exceeded height */
                         checkHeightOfTextOKW();
+                        $scope.callExternalRebindingOfHtmlContent();
                         /* #endregion Check if text exceeded height */
                     }
                 }
@@ -345,19 +408,11 @@ angular.module('Home')
             /* #region Modal for Gender Equality + Peace, Justice and Strong Institutions */
             $scope.openGenderPeaceModal = function (buttonName) {
                 if (buttonName == 'gender') {
-                    for (var i = 0; i < siteData.genderPeace.genderEquality.length; i++) {
-                        if (i == $scope.ctrlVars.currentFocusAreaIndex) {
-                            $scope.ctrlVars.genderPeaceDataToShow = siteData.genderPeace.genderEquality[i].modalText;
-                            openModalInstance();
-                        }
-                    }
+                    $scope.ctrlVars.genderPeaceDataToShow = $scope.ctrlVars.selectedFocusAreaData.pictogramModals.gender;
+                    openModalInstance();
                 } else if (buttonName == 'peace') {
-                    for (var i = 0; i < siteData.genderPeace.peaceAndJustice.length; i++) {
-                        if (i == $scope.ctrlVars.currentFocusAreaIndex) {
-                            $scope.ctrlVars.genderPeaceDataToShow = siteData.genderPeace.peaceAndJustice[i].modalText;
-                            openModalInstance();
-                        }
-                    }
+                    $scope.ctrlVars.genderPeaceDataToShow = $scope.ctrlVars.selectedFocusAreaData.pictogramModals.peace;
+                    openModalInstance();
                 }
             }
             function openModalInstance() {
@@ -370,7 +425,7 @@ angular.module('Home')
                     resolve: {
                         passedData: function () {
                             return {
-                                text: $scope.ctrlVars.genderPeaceDataToShow
+                                content: $scope.ctrlVars.genderPeaceDataToShow
                             }
                         }
                     }
@@ -402,6 +457,22 @@ angular.module('Home')
                 $anchorScroll();
             };
             /* #endregion Anchor Scroll */
+
+            /* #region Check*/
+
+            $(document).on('click', '#cid-burger-dropdown-menu-xs.dropdown-menu', function (e) {
+                console.log('hearing');
+                e.stopPropagation();
+            });
+            $(document).on('click', '#cid-burger-dropdown-menu-lg.dropdown-menu', function (e) {
+                console.log('hearing');
+                e.stopPropagation();
+            });
+
+            //$document.bind('click', function (event) {
+            //    console.log('call an click target keys: ' + Object.keys(event));
+            //    var elTarget = $(event.target);
+            //});
 
             activate();
             function activate() {

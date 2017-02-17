@@ -1,14 +1,16 @@
 ﻿'use strict';
 
 // declare modules
-angular.module('Authentication', []);
+angular.module('Authentication', ['ngSanitize', 'ui.bootstrap']);
 angular.module('Home', ['ngSanitize', 'ui.bootstrap']);
 
 angular.module('BasicHttpAuthExample', [
     'Authentication',
     'Home',
     'ngRoute',
-    'ngCookies'
+    'ngCookies',
+    'ngSanitize',
+    'ui.bootstrap'
 ])
 
 .config(['$routeProvider', function ($routeProvider) {

@@ -3,9 +3,21 @@
 //- ScrollMagic (for detecting scroll events)
 //- TweenMax (GreenSock GSAP) (for animation)
 //
-//
-$('.swipebox').swipebox();
+function externalCompileCaller() {
+    console.log('calling... outisde func');
+    $('[data-toggle="popover"]').popover(
+        {
+            html: true,
+            viewport: '.c-bind-txxt-wrapper',
+            trigger: 'focus',
+        }
+    );
+}
+
 $(document).ready(function () {
+    /* #region Swipebox lightbox */
+    $('.swipebox').swipebox();
+    /* #endregion Swipebox lightbox */
     var listOfActiveCountries = [
       { "id": "AL", "title": "Albania" },
       { "id": "AM", "title": "Armenia" },

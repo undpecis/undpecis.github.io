@@ -1,7 +1,6 @@
 ﻿<div class="modal-header">
     <div class="c-table">
-        <div class="c-cell">
-            Title header
+        <div class="c-cell" ng-bind-html="to_trustedModalText(dataToBind.title)">
         </div>
         <div class="c-cell c-w-1perc">
             <button class="c-bttn" ng-click="closeModal()">
@@ -10,6 +9,5 @@
         </div>
     </div>
 </div>
-<div class="modal-body">
-    <p>{{dataToBind.text}}</p>
+<div class="modal-body" ng-bind-html="to_trustedModalText(dataToBind.text)">
 </div>
