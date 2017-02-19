@@ -1000,6 +1000,7 @@ h1, h2, h3, h4, h5, h6, p, a { margin:0; padding:0;}
                 text-align:left;
                 .c-text-wrapper{
                     padding:20px 15px;
+                    overflow:auto;
                 }
                 &.c-black-background{
                     background-color:darken(@col-stripe-black, 5);
@@ -1027,6 +1028,101 @@ h1, h2, h3, h4, h5, h6, p, a { margin:0; padding:0;}
                 }
                 .c-item-content{
                     background-color:darken(@col-stripe-black, 5);
+                }
+            }
+        }
+    }
+    //footer focus areas links
+    &.c-footer-focus-areas{
+        > li{
+            cursor:pointer;
+            display:block;
+            border-bottom:1px solid lighten(@col-stripe-black, 10);
+            position:relative;
+            &:last-child{
+                border-bottom:none;
+            }
+            > a{
+                display: block;
+                text-align: left;
+                padding: 6px 0;
+                text-decoration: none;
+            }
+            //active
+            &.c-active{
+                border-bottom:1px solid @col-text-blue;
+            }
+            //hover
+            &:hover:not(.c-just-link){
+                background-color:lighten(@col-stripe-black, 2);
+            }
+            &.c-just-link{
+                > a{
+                    &:hover{
+                        color:@col-text-blue;
+                    }
+                }
+            }
+            //subnav
+            .c-vertical-list{
+                padding:5px 0;
+                width:100%;
+                background-color:darken(@col-stripe-black, 2);
+                &.c-subnav{
+                    > li{
+                        > a{
+                            display: block;
+                            text-align: left;
+                            padding: 2px 10px;
+                            //text-decoration: none;
+                            color:@col-white;
+                        }
+                        //hover
+                        &:hover{
+                            > a{
+                                color:@col-text-blue;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    //footer navigation
+    &.c-footer-nav-items{
+        display:block;
+        width:100%;
+        padding:0;
+        > li{
+            &.c-has-subcontent{
+                font-size:14px;
+                text-align:left;
+                color:@col-white;
+                line-height:1.4;
+                .c-text-wrapper{
+                    padding:20px 15px;
+                    overflow:auto;
+                    .c-title{
+                        margin-bottom:10px;
+                    }
+                }
+                //
+                .c-footer-focus-areas{
+                    width:100%;
+                    li{
+                        a{
+                            padding:10px;
+                        }
+                        .c-vertical-list{
+                            &.c-subnav{
+                                li{
+                                    a{
+                                        text-align:center;
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -3207,6 +3303,26 @@ h1, h2, h3, h4, h5, h6, p, a { margin:0; padding:0;}
     /* #endregion RESPONSIVE QUERY */
 }
 .c-footer-content-wrap-xs{
+    font-size:12px;
+    .c-title{
+        display:inline-block;
+        width:auto;
+        text-align:left;
+        position:relative;
+        border-bottom:1px solid @col-text-footer-brown;
+        padding-bottom:10px;
+        margin-bottom:30px;
+        .fmx-open-sans-regular();
+        font-size:16px;
+        color:@col-white;
+        text-transform:uppercase;
+    }
+    a{
+        color:@col-white;
+    }
+    p{
+        margin-bottom:1em;
+    }
     /* #region RESPONSIVE QUERY */
     /* #region Extra small resolutions */
     @media only screen and (min-width : @var-breakpoint-start-zero) {
@@ -3299,3 +3415,9 @@ h1, h2, h3, h4, h5, h6, p, a { margin:0; padding:0;}
     }
 }
 /* #endregion Bootstrap Popover */
+
+.c-sup-popover{
+    a{
+        color:@col-text-blue !important;
+    }
+}

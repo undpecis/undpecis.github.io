@@ -330,7 +330,7 @@
             id: 'AL',
             title: 'Albania',
             flagClass: 'c-albania',
-            sectionPdfUrl: 'http://www.google.com',
+            sectionPdfUrl: 'https://undpecis.github.io/download/country-profiles-albania.pdf',
             statement: {
                 img: 'albania.jpg',
                 imgThumb: 'albania-thumb.jpg',

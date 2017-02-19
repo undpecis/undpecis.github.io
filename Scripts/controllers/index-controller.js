@@ -2,7 +2,7 @@
 //- jquery (for DOM manipulation)
 //- ScrollMagic (for detecting scroll events)
 //- TweenMax (GreenSock GSAP) (for animation)
-//
+
 function externalCompileCaller() {
     console.log('calling... outisde func');
     $('[data-toggle="popover"]').popover(
@@ -120,7 +120,7 @@ $(document).ready(function () {
                     }
                     if (countryOfInterest == true) {
                         //'mainContainerId' is id of main html container; we need it to access angular controller and send the id of country that has been clicked; ID of country is defined in this controller in 'listOfActiveCountries' object AND IT SHOULD BE DEFINED ALSO in 'home-controller.js'
-                        angular.element(document.getElementById('mainContainerId')).scope().countryClickedFunc(event.mapObject.id);
+                        angular.element(document.getElementById('mainContainerId')).scope().countryClickedFunc('fromMap', event.mapObject.id);
                         //var titleObjects = document.getElementsByClassName('c-dynamic-country-title');
                         //for (var i = 0; i < titleObjects.length; i++) {
                         //    titleObjects[i].innerHTML = event.mapObject.title;
@@ -371,7 +371,8 @@ $(document).ready(function () {
                 scrollMagicInitController
             ).on("start", function (e) {
                 startCountryAnimation(e);
-                //e.currentTarget.enabled(false);
+                //enable: true it will always trigger event; enable: false animation will fire only once
+                e.currentTarget.enabled(false);
             }
             );
             allScrollMagicScenesArray.push(generic_scrollMagicScene);
@@ -1201,8 +1202,8 @@ $(document).ready(function () {
                     var svgDocument_tajikistan = graphicObject_tajikistan.contentDocument;
 
                     var objects_all = [];
-                    objects_all.push(svgDocument_tajikistan.getElementById("person-left"));
-                    objects_all.push(svgDocument_tajikistan.getElementById("person-right"));
+                    objects_all.push(svgDocument_tajikistan.getElementById("base"));
+                    objects_all.push(svgDocument_tajikistan.getElementById("hammer"));
                     for (var i = 0; i < objects_all.length; i++) {
                         TweenMax.to(objects_all[i], 0.1, { opacity: 0, scaleX: 0.1, scaleY: 0.1, transformOrigin: "50% 50%", onComplete: countdown_initial });
                     }
@@ -1262,8 +1263,8 @@ $(document).ready(function () {
                     var svgDocument_macedonia = graphicObject_macedonia.contentDocument;
 
                     var objects_all = [];
-                    objects_all.push(svgDocument_macedonia.getElementById("base"));
-                    objects_all.push(svgDocument_macedonia.getElementById("hammer"));
+                    objects_all.push(svgDocument_macedonia.getElementById("person-left"));
+                    objects_all.push(svgDocument_macedonia.getElementById("person-right"));
                     for (var i = 0; i < objects_all.length; i++) {
                         TweenMax.to(objects_all[i], 0.1, { opacity: 0, scaleX: 0.1, scaleY: 0.1, transformOrigin: "50% 50%", onComplete: countdown_initial });
                     }
