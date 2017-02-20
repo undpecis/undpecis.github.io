@@ -11,8 +11,8 @@ angular.module('Home')
               { id: "AL", title: "Albania" },
               { id: "AM", title: "Armenia" },
               { id: "AZ", title: "Azerbaijan" },
-              { id: "BY", title: "Belarus" },
               { id: "BA", title: "Bosnia and Herzegovina" },
+              { id: "BY", title: "Belarus" },
               { id: "MK", title: "FYR Macedonia" },
               { id: "GE", title: "Georgia" },
               { id: "KZ", title: "Kazakhstan" },
@@ -24,8 +24,8 @@ angular.module('Home')
               { id: "TJ", title: "Tajikistan" },
               { id: "TR", title: "Turkey" },
               { id: "TM", title: "Turkmenistan" },
-              { id: "UA", title: "Ukraine" },
-              { id: "UZ", title: "Uzbekistan" }
+              { id: "UZ", title: "Uzbekistan" },
+                { id: "UA", title: "Ukraine" }
             ];
             /* #region Variables for application */
             $scope.ctrlVars = {
@@ -45,6 +45,7 @@ angular.module('Home')
                 // @= Countries Keys vars
                 //object with currently selected country data
                 selectedCountry: {},
+                selectedCountryIndex: null,
                 //object for binding into view with Background, Assistance and Impact & Challages, Lesssons...
                 dataBindBAC: {},
                 //keeps track of visible part for Country BAC content
@@ -102,6 +103,8 @@ angular.module('Home')
                         isXsSubnavActive: false
                     }
                 ],
+                //modal for Gender Equality and Peace, Justice..
+                genderPeaceDataToShow: null,
                 // @= Foreword vars
                 forewordData: {
                     data: null,
@@ -134,20 +137,19 @@ angular.module('Home')
             /* #endregion Variables for application */
             /* #===================================================================== Content visibility related code =======# */
             $scope.toggleVisibility = function (callerName, subTarget) {
-                console.log('callerName: ' + callerName + ' subTarget: ' + subTarget);
                 if (callerName == 'burgerMenu_focusAreas') {
                     $scope.ctrlVars.visibleStates.burger_focusAreas = !$scope.ctrlVars.visibleStates.burger_focusAreas;
                     $scope.ctrlVars.visibleStates.burger_countries = false;
                 } else if (callerName == 'burgerMenu_countries') {
                     $scope.ctrlVars.visibleStates.burger_countries = !$scope.ctrlVars.visibleStates.burger_countries;
                     $scope.ctrlVars.visibleStates.burger_focusAreas = false;
+                    //call external function that will select country on map
                 } else if (callerName == 'focusAreasContent') {
                     // if click came from footer links then 'footer_focusAreaIndex' must be different from null
                     //this means that click came from footer links
                     //this if/else is needed becouse only footer links can select specific OKW content selection; In other cases we just open wanted Focus Area and always show first OKW content (index 0)
                     //also, Focus Area content visibility can be toggled ONLY if click came from Focus Areas 'Learn More' buttons; In other cases we ALWAYS open FA, never closing
                     if ($scope.ctrlVars.visibleStates.footer_focusAreaIndex != null) {
-                        console.log('called from footer');
                         for (var i = 0; i < $scope.ctrlVars.focusData.length; i++) {
                             //if index matched
                             if (i == $scope.ctrlVars.visibleStates.footer_focusAreaIndex) {
@@ -165,7 +167,6 @@ angular.module('Home')
                         }
                     //check if click was initialized from burger menu
                     } else if ($('.c-header-burger-dropdown').is(':visible')) {
-                        console.log('called from burger');
                         //then close burger menu
                         $('[data-toggle="dropdown"]').parent().removeClass('open');
                         //set Focus Ares Content to visible
@@ -174,14 +175,12 @@ angular.module('Home')
                         $scope.openFocusAreaOKWtext(subTarget, 0);
                     //then click came from Focus Areas 'Learn More' buttons
                     } else {
-                        console.log('else FA clicked');
                         //check if user is toggling FA content visibility by clicking 'Learn More' button
                         //this means that user is clicking on 'Close Focus Area' button
                         if ($scope.ctrlVars.visibleStates.visibleFocusAreaContentIndex == subTarget) {
                             $scope.ctrlVars.visibleStates.isVisibleFocusAreaContent = false;
                             $scope.ctrlVars.visibleStates.visibleFocusAreaContentIndex = null;
                         } else {
-                            console.log('set to true');
                             $scope.ctrlVars.visibleStates.isVisibleFocusAreaContent = true;
                             //bind Focus Ares Content
                             $scope.openFocusAreaOKWtext(subTarget, 0);
@@ -208,6 +207,14 @@ angular.module('Home')
                 } else if (callerName == 'countryOnMap') {
                     $scope.ctrlVars.visibleStates.isCountryVisible = !$scope.ctrlVars.visibleStates.isCountryVisible;
                     $scope.ctrlVars.visibleStates.isOpenCountryBACdata_lg = false;
+                    var countryIndex = $scope.ctrlVars.selectedCountryIndex;
+                    undpWorldMap.dataProvider.areas[countryIndex].showAsSelected = false;
+                    //
+                    undpWorldMap.dataProvider.zoomLevel = undpWorldMap.zoomLevel();
+                    undpWorldMap.dataProvider.zoomLatitude = undpWorldMap.zoomLatitude();
+                    undpWorldMap.dataProvider.zoomLongitude = undpWorldMap.zoomLongitude();
+                    ////
+                    undpWorldMap.validateData();
                 } else if (callerName == 'countryLearnMore_lg') {
                     $scope.ctrlVars.visibleStates.isOpenCountryBACdata_lg = !$scope.ctrlVars.visibleStates.isOpenCountryBACdata_lg;
                 } else if (callerName == 'bacContentMoreLess') {
@@ -249,27 +256,38 @@ angular.module('Home')
                 e.stopPropagation();
             });
             $(document).on('click', '#cid-burger-dropdown-menu-lg.dropdown-menu', function (e) {
-                console.log('hearing');
                 e.stopPropagation();
             });
             /* #===================================================================== Countries Map related code =======# */
-            $scope.countryClickedFunc = function (callerName, countryOfInterestId) {
-                for (var i = 0; i < siteData.countries.length; i++) {
-                    if (siteData.countries[i].id == countryOfInterestId) {
-                        $scope.ctrlVars.selectedCountry = siteData.countries[i];
-                        $scope.ctrlVars.visibleStates.isCountryVisible = true;
-                        $scope.changeCountryBACData(0);
-                        if (callerName == 'countriesFromBurger') {
-                            if ($('.c-header-burger-dropdown').is(':visible')) {
-                                $('[data-toggle="dropdown"]').parent().removeClass('open');
-                            };
-                            $timeout(function () {
-                                scrollToAnchor('mapdiv');
-                            }, 700);
-                        }
-                        break;
+            $scope.countryClickedFunc = function (callerName, countryIndex) {
+                for (var i = 0; i < undpWorldMap.dataProvider.areas.length; i++){
+                    if (i == countryIndex) {
+                        console.log('33countryIndex and i: ' + countryIndex + ' ' + i);
+                        undpWorldMap.dataProvider.areas[i].showAsSelected = true;
+                    } else {
+                        undpWorldMap.dataProvider.areas[i].showAsSelected = false;
                     }
                 }
+                console.log('countryIndex: ' + countryIndex);
+                $scope.ctrlVars.selectedCountry = siteData.countries[countryIndex];
+                $scope.ctrlVars.visibleStates.isCountryVisible = true;
+                $scope.ctrlVars.selectedCountryIndex = countryIndex;
+                if (callerName == 'countriesFromBurger') {
+                    if ($('.c-header-burger-dropdown').is(':visible')) {
+                        $('[data-toggle="dropdown"]').parent().removeClass('open');
+                    };
+                    $timeout(function () {
+                        scrollToAnchor('mapdiv');
+                    }, 500);
+                };
+                
+                undpWorldMap.dataProvider.zoomLevel = undpWorldMap.zoomLevel();
+                undpWorldMap.dataProvider.zoomLatitude = undpWorldMap.zoomLatitude();
+                undpWorldMap.dataProvider.zoomLongitude = undpWorldMap.zoomLongitude();
+                ////
+                undpWorldMap.validateData();
+                //
+                $scope.changeCountryBACData(0);
             }
             $scope.changeCountryBACData = function (countryBACbttnIndex) {
                 for (var i = 0; i < $scope.ctrlVars.enumBAC.length; i++) {
@@ -339,14 +357,11 @@ angular.module('Home')
                         scrollToAnchor('cid-anchor-OKW-content');
                     }, 500);
                 }
-                console.log('openFocusAreaOKWtext:>  wantedFocusAreaIndex: ' + wantedFocusAreaIndex + '  wantedFocusAreaOKWcontentIndex: ' + wantedFocusAreaOKWcontentIndex);
-                console.log('$scope.ctrlVars.enumOKW.length: ' + $scope.ctrlVars.enumOKW.length);
             }
             //function that will toggle between Focus Area OKW content
             $scope.changeCountryOKWData = function (buttonIndex) {
                 for (var i = 0; i < $scope.ctrlVars.enumOKW.length; i++) {
                     if (i == buttonIndex) {
-                        console.log('wantedFocusAreaOKWcontentIndex: ' + buttonIndex);
                         //give data to bind for Focus Areas OKW content
                         if (buttonIndex == 0) {
                             //check if wanted sub content is Overview
@@ -373,14 +388,12 @@ angular.module('Home')
                             }, 500);
                         }
                     } else {
-                        console.log('isXsSubnavActive: ' + $scope.ctrlVars.enumOKW[i].isXsSubnavActive);
                         $scope.ctrlVars.enumOKW[i].isXsSubnavActive = false;
                     }
                 }
             }
             //function that will show selected text part from OKW texts
             $scope.changeOKWpartText = function (newPartIndex) {
-                console.log('clicked changeOKWpartText: ' + newPartIndex);
                 for (var i = 0; i < $scope.ctrlVars.dataBindOKW.textParts.length; i++) {
                     if (i == newPartIndex) {
                         $scope.ctrlVars.textPartOKWtoBind = $scope.ctrlVars.dataBindOKW.textParts[i].text;
@@ -396,10 +409,8 @@ angular.module('Home')
             }
             //function that will change text content when small device navigation is used
             $scope.selectOKWdropdownItem = function (clickedIndex) {
-                console.log('clickedIndex: ' + clickedIndex);
                 for (var i = 0; i < $scope.ctrlVars.dataBindOKW.textParts.length; i++) {
                     if (i == clickedIndex) {
-                        console.log('equals clickedIndex: ');
                         $scope.ctrlVars.mobile_OKWdropdownTitle = $scope.ctrlVars.dataBindOKW.textParts[i].partName;
                         $scope.ctrlVars.mobile_OKWdropdownOpen = !$scope.ctrlVars.mobile_OKWdropdownOpen;
                         $scope.ctrlVars.textPartOKWtoBind = $scope.ctrlVars.dataBindOKW.textParts[i].text;
@@ -433,7 +444,40 @@ angular.module('Home')
                     }
                 }
             }
-            /* #===================================================================== Foreword related code =======# */
+            /* #region Modal for Gender Equality + Peace, Justice and Strong Institutions */
+            $scope.openGenderPeaceModal = function (buttonName) {
+                if (buttonName == 'gender') {
+                    $scope.ctrlVars.genderPeaceDataToShow = $scope.ctrlVars.selectedFocusAreaData.pictogramModals.gender;
+                    openModalInstance();
+                } else if (buttonName == 'peace') {
+                    $scope.ctrlVars.genderPeaceDataToShow = $scope.ctrlVars.selectedFocusAreaData.pictogramModals.peace;
+                    openModalInstance();
+                }
+            }
+            function openModalInstance() {
+                var modalInstance = $uibModal.open({
+                    templateUrl: 'modules/home/views/modals/gender-peace-modal.html',
+                    controller: 'ModalInstanceCtrl',
+                    size: 'lg',
+                    windowClass: 'c-custom-modal-wrapper',
+                    backdrop: 'static',
+                    resolve: {
+                        passedData: function () {
+                            return {
+                                content: $scope.ctrlVars.genderPeaceDataToShow
+                            }
+                        }
+                    }
+                });
+                modalInstance.result.then(
+                    function (response) {
+                        if (response) {
+
+                        }
+                    }
+                );
+            }
+            /* #endregion Modal for Gender Equality + Peace, Justice and Strong Institutions */
             /* #===================================================================== Helper functions =======# */
             // @= Returns content with html properly parsed for binding
             $scope.to_trusted = function (html_code) {
@@ -463,7 +507,6 @@ angular.module('Home')
             $scope.callExternalRebindingOfHtmlContent = function () {
                 //$scope.$apply();
                 $timeout(function () {
-                    console.log('caliing code in angular');
                     externalCompileCaller();
                 }, 600);
             }

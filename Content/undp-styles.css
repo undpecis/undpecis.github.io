@@ -172,6 +172,9 @@ a {
 .c-align-right {
   text-align: right;
 }
+.c-valign-middle {
+  vertical-align: middle;
+}
 /* #endregion Aligning */
 /* #region Dimensions */
 .c-w-1perc {
@@ -218,6 +221,9 @@ a {
 }
 .c-p-bottom-90 {
   padding-bottom: 90px;
+}
+.c-p-left-15 {
+  padding-left: 15px;
 }
 /* #endregion Paddings */
 /* #region Margins */
@@ -3026,8 +3032,13 @@ a {
 .c-custom-modal-wrapper .modal-dialog .modal-content .modal-header {
   padding: 30px;
 }
+.c-custom-modal-wrapper .modal-dialog .modal-content .modal-header p {
+  font-size: 20px;
+}
 .c-custom-modal-wrapper .modal-dialog .modal-content .modal-body {
   padding: 30px;
+  font-size: 14px;
+  line-height: 1.6;
 }
 /* #endregion UI Bootstrap Modal */
 /* #region Bootstrap Popover */

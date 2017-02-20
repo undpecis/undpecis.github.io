@@ -200,6 +200,7 @@ h1, h2, h3, h4, h5, h6, p, a { margin:0; padding:0;}
 .c-align-center{text-align:center;}
 .c-align-left{text-align:left;}
 .c-align-right{text-align:right;}
+.c-valign-middle{vertical-align:middle;}
 /* #endregion Aligning */
 /* #region Dimensions */
 .c-w-1perc{ width:1%;}
@@ -227,6 +228,7 @@ h1, h2, h3, h4, h5, h6, p, a { margin:0; padding:0;}
 .c-p-bottom-40{padding-bottom:40px;}
 .c-p-bottom-50{padding-bottom:50px;}
 .c-p-bottom-90{padding-bottom:90px;}
+.c-p-left-15{padding-left:15px;}
 /* #endregion Paddings */
 /* #region Margins */
 .c-m-top-40{margin-top:40px !important;}
@@ -3394,9 +3396,14 @@ h1, h2, h3, h4, h5, h6, p, a { margin:0; padding:0;}
             border-radius:0;
             .modal-header{
                 padding:30px;
+                p{
+                    font-size:20px;
+                }
             }
             .modal-body{
                 padding:30px;
+                font-size:14px;
+                line-height:1.6;
             }
         }
     }

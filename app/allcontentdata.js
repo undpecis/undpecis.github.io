@@ -12,7 +12,7 @@
             title: 'Conflict Prevention and Peacebuilding',
             shortName: 'conflictData',
             shortIntroText: 'With a legacy of conflict throughout the ECIS region, UNDP works to promote social cohesion, and empower nations and communities to become more inclusive and resilient to external and internal shocks.',
-            sectionPdfUrl: 'http://www.google.com',
+            sectionPdfUrl: 'https://undpecis.github.io/download/01-conflict-prevention-and-peacebuilding.pdf',
             pictogramModals: {
                 gender: {
                     title: ' <p class="red-text"><strong>GOAL 5 – ACHIEVE GENDER EQUALITY AND EMPOWER ALL WOMEN AND GIRLS</strong></p>',
@@ -87,7 +87,7 @@
             title: 'Responsive and Accountable Institutions',
             shortName: 'responsiveData',
             shortIntroText: 'Central to ensuring that development is both effective and sustainable for citizens, UNDP works with partners to improve transparency and improve the capabilities of governmental bodies and institutions at all levels.',
-            sectionPdfUrl: 'http://www.google.com',
+            sectionPdfUrl: 'https://undpecis.github.io/download/02-responsive-and-accountable-institutions.pdf',
             pictogramModals: {
                 gender: {
                     title: '<p class="red-text"><strong>GOAL 5 – ACHIEVE GENDER EQUALITY AND EMPOWER ALL WOMEN AND GIRLS</strong></p>',
@@ -164,7 +164,7 @@
             title: 'Inclusive Political Processes',
             shortName: 'inclusiveData',
             shortIntroText: 'Vital to the health of democracies, UNDP works to increase the participation and political influence of citizens, assist governments and institutions to be more representative, and build a stronger and more inclusive social contract.',
-            sectionPdfUrl: 'http://www.google.com',
+            sectionPdfUrl: 'https://undpecis.github.io/download/03-inclusive-political-processes.pdf',
             pictogramModals: {
                 gender: {
                     title: '<p class="red-text"><strong>GOAL 5 – ACHIEVE GENDER EQUALITY AND EMPOWER ALL WOMEN AND GIRLS:</strong></p>',
@@ -236,7 +236,7 @@
             title: 'Rule of Law, Justice, Security and Human Rights',
             shortName: 'ruleData',
             shortIntroText: 'Partnering with governments, justice and security institutions and citizens, UNDP works to strengthen the rule of law, improve the capacity and fairness of the justice system, and support the promotion and protection of human rights for all.',
-            sectionPdfUrl: 'http://www.google.com',
+            sectionPdfUrl: 'https://undpecis.github.io/download/04-rule-of-law-justice-security-and-human-rights.pdf',
             pictogramModals: {
                 gender: {
                     title: '<p class="red-text"><strong>GOAL 5 – ACHIEVE GENDER EQUALITY AND EMPOWER ALL WOMEN AND GIRLS:</strong></p>',
@@ -382,7 +382,7 @@
             id: 'AM',
             title: 'Armenia',
             flagClass: 'c-armenia',
-            sectionPdfUrl: 'http://www.google.com',
+            sectionPdfUrl: 'https://undpecis.github.io/download/country-profiles-armenia.pdf',
             statement: {
                 img: '',
                 imgThumb: 'armenia-thumb.jpg',
@@ -434,7 +434,7 @@
             id: 'AZ',
             title: 'Azerbaijan',
             flagClass: 'c-azerbaijan',
-            sectionPdfUrl: 'http://www.google.com',
+            sectionPdfUrl: 'https://undpecis.github.io/download/country-profiles-azerbaijan.pdf',
             statement: {
                 img: 'azerbaijan.jpg',
                 imgThumb: 'azerbaijan-thumb.jpg',
@@ -476,64 +476,12 @@
             }
         },
         /* #endregion Azerbaijan */
-        /* #region Belarus */
-        {
-            id: 'BY',
-            title: 'Belarus',
-            flagClass: 'c-belarus',
-            sectionPdfUrl: 'http://www.google.com',
-            statement: {
-                img: 'belarus.jpg',
-                imgThumb: 'belarus-thumb.jpg',
-                title: 'Statement',
-                bodyText: '“The Belarusian society followed the media and kept a close eye on the journey the Train took across Belarus. This initiative got the world’s attention. It aimed at getting the residents of Belarus to know better the SDGs. They are our goals and we will do our best to achieve them” ',
-                signatureText: '–<strong>Ms. Valentin Rybakov</strong>, Deputy Minister of Foreign Affairs of Belarus, ceremony of signing the Declaration of Commitment to the SDGs'
-            },
-            keyResults: [
-                {
-                    iconClass: 'xn-multi-document-magnify',
-                    textColor: '#ddd',
-                    text: 'Participatory development documents drafted for all 118 districts in Belarus',
-                },
-                {
-                    iconClass: 'xn-people-dialogue',
-                    textColor: '#ddd',
-                    text: 'Tripartite dialogue between government, civil society and UN is sustained on key human rights issues as part of the UPR follow-up process',
-                },
-                {
-                    iconClass: 'xn-staff-training',
-                    textColor: '#ddd',
-                    text: 'State Border Committee Human Resources Development and Training Strategy developed in line with EU best practices and officially approved',
-                },
-                {
-                    iconClass: 'xn-action-plan',
-                    textColor: '#ddd',
-                    text: 'CRPD signed',
-                }
-            ],
-            backgroundData: {
-                isLargeText: false,
-                isTextExpanded: false,
-                text: 'Taking a different path than many of the ex-Soviet republics, Belarus has stayed closer to its centrally planned heritage with government maintaining control of large sectors of the economy. While questions remain about the sustainability of this form of government, Belarus has also developed one of the highest standards of living among the former republics of the Soviet Union. <br /> <br /> The major event in 2015 was the presidential election in October, which resulted in President Alexander Lukashenko winning his fifth term in office with over 83 percent of the vote.<sup>48</sup> This win continues his run of winning every presidential election since independence in 1991. In a positive step, the election was immediately preceded by the release of six opposition figures on humanitarian grounds. This gesture, along with the relative lack of violence during the election, was enough to convince EU foreign ministers to lift sanctions that had been in place since 2004, ending asset freezes and travel bans against 170 individuals, including Lukashenko himself. <br /> <br /> n another positive development, the Government adopted the ‘National Sustainable Socio-Economic Development Strategy 2030’, which includes a commitment to transparency and openness in public administration. The first phase aims to improve the efficiency and effectiveness of governance, expand the roles and areas of responsibility of local governance and self-governance, as well as modernizing and professionalizing the civil service at central and local levels. These have been identified as the primary targets to improve the quality and accessibility of public services. <br /> <br /> At the same time, the Government has shown a strong commitment to the UPR process and has engaged with the UN and civil society organizations in the country to ensure follow-up on the accepted recommendations. Despite these positive signs and some improvements, the human rights situation in Belarus remains under close scrutiny from international organizations, including OHCHR and OSCE. Belarus also continues to rank poorly in international ratings and reports on civic and political freedoms.'
-            },
-            assistanceData: {
-                isLargeText: false,
-                isTextExpanded: false,
-                text: 'Since 2014, UNDP has been running a large-scale local development programme in all six regions in Belarus, with the purpose of facilitating citizen engagement in planning and development at the local and regional level. In 2015, this project started yielding results with UNDP supporting the drafting of participatory development documents for all 118 districts. These documents identify unique challenges and opportunities for each district, and provide guidelines for engaging public, private and civil society organizations to address them. The next phase of the project will see UNDP providing grants to local organizations and individuals for initiatives to address the identified challenges and opportunities. In preparation for this next stage, UNDP helped train local organizations on the grant application process and project management best practices.. <br /> <br /> To improve public administration performance, following on from the adoption of the ‘National Sustainable Socio Economic Development Strategy 2030’, the Government sought UNDP assistance to deliver more inclusive and responsive public services. As a first step, UNDP coordinated an international conference on the central role of transparent, inclusive and responsive institutions, both in delivering on the SDG agenda, and in ensuring inclusive and accessible quality services are provided to all citizens. The conference resulted in commitments from the authorities at central and regional levels, and all stakeholders to work together towards enhancing the capacity of civil servants and improving the opportunities for citizens to influence the delivery of public services. <br /> <br /> The new SDG agenda was also the main focus of a massive one-week partnership building, communication and advocacy campaign. Led by UNDP in partnership with a number of UN agencies, the main feature was a train caravan, the UN70 Express, that travelled across Belarus in October, bringing on board hundreds of people representing public, private and civil society partners, donors, international organizations, and vulnerable groups. Stopping in all six regional capitals and Minsk to discuss issues around the SDGs and their relevance for Belarus, the campaign drew over 30,000 participants to more than 250 events. In addition, the Governors of the six regions and Minsk signed declarations committing to the new agenda. <table class="belarus_table_img tableCss" border="0" cellpadding="0" cellspacing="0"><tbody><tr class="assistance_img1"><td></td><td class="img_contet"> <p>UN70 Express: Sustainable development, creative economy and a big fair of initiatives</p></td></tr><tr><td class="signature" colspan="2" align="right">Photo by: Ariel Rubin/UNDP Eurasia</td></tr></tbody></table>  <br /> <br /> <p class="graph_small"><img src="../Content/images/photos-and-graphic/graph-belarus-85-1.png" /> <br /> <span class="graphSub">CITIES VISITED BY THE UN70 EXPRESS</span></p> <br /> <br /> In the security sector, UNDP supported the State Border Committee with its conversion from a military body to a law enforcement agency, with reforms focusing on both infrastructure and capacity building. Two buildings of the Border Training Institute went through significant physical improvements, including the reconstruction of a three-storey dormitory and one-storey training facility. The Strategy on Psychological Support Service Development was also approved as a guiding framework for work with vulnerable groups of migrants, and as a general resource for <br /> <br /> State Border Committee personnel. In addition, a State Border Committee Human Resources Development and Training Strategy was developed in line with EU best practices and officially approved by the Committee in April 2016. UNDP played a leading role coordinating key all stakeholders to ensure they are responsive to the needs of vulnerable migrants and victims of human trafficking.<br /> <table class="armenia_table_img tableCss" border="0" cellpadding="0" cellspacing="0"><tbody><tr class="assistance_img1"><td></td><td class="img_contet"> <p>Voting in the June 2015 local elections</p></td></tr><tr><td class="signature" colspan="2" align="right">Photo by: UNDP Armenia</td></tr></tbody></table><br />Although human rights remain a sensitive area in Belarus, UNDP was able to advance the human rights agenda in 2015. Firstly, with UNDP assistance, the dialogue between the Government and civil society was expanded to include a number of key issues, including the death penalty, creation of a NHRI, and the drafting of a National Human Rights Action Plan. Following a sustained campaign by UNDP, Belarus signed the CRPD in September. UNDP also supported the follow up on the 2nd cycle UPR in May and organized a successful visit of Belarusian officials to Washington, DC in December with a series of meetings on human rights and rule of law issues with the US State Department.<br /><br />UNDP has also been expanding the use of innovation and technology to address existing challenges, including citizen based approaches such as social innovation labs. UNDP developed with the National Centre of Legislation and Legal Research an innovative prototype public e-feedback mechanism. The existing system of citizen feedback to public authorities, based on citizen appeals, was reviewed together with the best practices from the country and the region, and used to develop a new online system that is user-friendly for people with disabilities and can be adapted for all government websites.<br /><br />The use of innovation and technology has also resulted in a shift in the way that UNDP and the authorities are working to combat corruption and the informal economy. In an initiative expected to generate ongoing dividends, UNDP facilitated the visit of the Behavioural Insight Team from the UK government to work with the Ministry of Finance and tax officers in Minsk. During this visit, interventions were designed to facilitate informal workers being reintegrated back into the formal economy.'
-            },
-            challengesData: {
-                isLargeText: false,
-                isTextExpanded: false,
-                text: 'Like many countries in the region, Belarus is expected to experience worsening economic conditions. Despite these expected fiscal pressures, UNDP will continue working closely with the Government, civil society organizations and private sector partners to continue on the path to a fairer and more open society.<br /><br /> Planned work includes the rolling out of a long-term comprehensive rule of law and access to justice programme, continuing advocacy for the establishment of a NHRI, and implementation of a National Human Rights Action Plan as part of the UPR follow-up process. In addition, UNDP will proceed with publication of materials from the International Conference ‘Death Penalty: Transcending the Divide’ held in March 2016 and will continue the dialogue on the death penalty with the Parliament.<br /><br /> Efforts are planned to support the rights of people with disabilities. With the ratification of the CRPD in late 2016, UNDP plans to work closely with other UN agencies and national partners on the implementation of needed reforms. This will be complemented by a nationwide two-month advocacy and awareness raising campaign: ‘Inclusive Belarus’. UNDP will also work to boost national gender equality mechanisms and to support an assessment of where inequality continues to have the most significant impacts. <br /><br />UNDP will also continue providing support and assistance to the Government’s planned changes to improve the performance of public administration. In early 2016, UNDP launched a 3-year project to support public administration in building the capacities of civil servants, and making local governance and public service delivery more responsive to citizens. The project will improve the selection, training and performance assessment of civil servants at all levels, strengthen public engagement in planning and implementation processes, and boost the ability of the public and civil society to conduct monitoring of public services and provide feedback. In order to achieve these goals, the project will test a range of initiatives and will pilot two integrated customer service centres. <br /><br /> Finally, UNDP will continue to use innovation to enhance the influence and reach of its efforts. After the positive response to the pilot e-feedback system in 2015, further testing and development of the system will be undertaken as it moves towards a full rollout. UNDP’s anti-corruption work will also continue, with the interventions designed in partnership with the UK Government’s Behavioural Insight Team expected to begin implementation. As a result of this work, a team of tax officers from Moldova that participated in the event is also expected to launch its own initiative.'
-            }
-        },
-        /* #endregion Belarus */
         /* #region Bosnia and Herzegovina */
         {
             id: 'BA',
             title: 'Bosnia and Herzegovina',
             flagClass: 'c-bosnia-and-herzegovina',
-            sectionPdfUrl: 'http://www.google.com',
+            sectionPdfUrl: 'https://undpecis.github.io/download/country-profiles-bosnia-and-herzegovina.pdf',
             statement: {
                 img: 'BiH.jpg',
                 imgThumb: 'BiH-thumb.jpg',
@@ -580,12 +528,64 @@
             }
         },
         /* #endregion Bosnia and Herzegovina */
+        /* #region Belarus */
+        {
+            id: 'BY',
+            title: 'Belarus',
+            flagClass: 'c-belarus',
+            sectionPdfUrl: 'https://undpecis.github.io/download/country-profiles-belarus.pdf',
+            statement: {
+                img: 'belarus.jpg',
+                imgThumb: 'belarus-thumb.jpg',
+                title: 'Statement',
+                bodyText: '“The Belarusian society followed the media and kept a close eye on the journey the Train took across Belarus. This initiative got the world’s attention. It aimed at getting the residents of Belarus to know better the SDGs. They are our goals and we will do our best to achieve them” ',
+                signatureText: '–<strong>Ms. Valentin Rybakov</strong>, Deputy Minister of Foreign Affairs of Belarus, ceremony of signing the Declaration of Commitment to the SDGs'
+            },
+            keyResults: [
+                {
+                    iconClass: 'xn-multi-document-magnify',
+                    textColor: '#ddd',
+                    text: 'Participatory development documents drafted for all 118 districts in Belarus',
+                },
+                {
+                    iconClass: 'xn-people-dialogue',
+                    textColor: '#ddd',
+                    text: 'Tripartite dialogue between government, civil society and UN is sustained on key human rights issues as part of the UPR follow-up process',
+                },
+                {
+                    iconClass: 'xn-staff-training',
+                    textColor: '#ddd',
+                    text: 'State Border Committee Human Resources Development and Training Strategy developed in line with EU best practices and officially approved',
+                },
+                {
+                    iconClass: 'xn-action-plan',
+                    textColor: '#ddd',
+                    text: 'CRPD signed',
+                }
+            ],
+            backgroundData: {
+                isLargeText: false,
+                isTextExpanded: false,
+                text: 'Taking a different path than many of the ex-Soviet republics, Belarus has stayed closer to its centrally planned heritage with government maintaining control of large sectors of the economy. While questions remain about the sustainability of this form of government, Belarus has also developed one of the highest standards of living among the former republics of the Soviet Union. <br /> <br /> The major event in 2015 was the presidential election in October, which resulted in President Alexander Lukashenko winning his fifth term in office with over 83 percent of the vote.<sup>48</sup> This win continues his run of winning every presidential election since independence in 1991. In a positive step, the election was immediately preceded by the release of six opposition figures on humanitarian grounds. This gesture, along with the relative lack of violence during the election, was enough to convince EU foreign ministers to lift sanctions that had been in place since 2004, ending asset freezes and travel bans against 170 individuals, including Lukashenko himself. <br /> <br /> n another positive development, the Government adopted the ‘National Sustainable Socio-Economic Development Strategy 2030’, which includes a commitment to transparency and openness in public administration. The first phase aims to improve the efficiency and effectiveness of governance, expand the roles and areas of responsibility of local governance and self-governance, as well as modernizing and professionalizing the civil service at central and local levels. These have been identified as the primary targets to improve the quality and accessibility of public services. <br /> <br /> At the same time, the Government has shown a strong commitment to the UPR process and has engaged with the UN and civil society organizations in the country to ensure follow-up on the accepted recommendations. Despite these positive signs and some improvements, the human rights situation in Belarus remains under close scrutiny from international organizations, including OHCHR and OSCE. Belarus also continues to rank poorly in international ratings and reports on civic and political freedoms.'
+            },
+            assistanceData: {
+                isLargeText: false,
+                isTextExpanded: false,
+                text: 'Since 2014, UNDP has been running a large-scale local development programme in all six regions in Belarus, with the purpose of facilitating citizen engagement in planning and development at the local and regional level. In 2015, this project started yielding results with UNDP supporting the drafting of participatory development documents for all 118 districts. These documents identify unique challenges and opportunities for each district, and provide guidelines for engaging public, private and civil society organizations to address them. The next phase of the project will see UNDP providing grants to local organizations and individuals for initiatives to address the identified challenges and opportunities. In preparation for this next stage, UNDP helped train local organizations on the grant application process and project management best practices.. <br /> <br /> To improve public administration performance, following on from the adoption of the ‘National Sustainable Socio Economic Development Strategy 2030’, the Government sought UNDP assistance to deliver more inclusive and responsive public services. As a first step, UNDP coordinated an international conference on the central role of transparent, inclusive and responsive institutions, both in delivering on the SDG agenda, and in ensuring inclusive and accessible quality services are provided to all citizens. The conference resulted in commitments from the authorities at central and regional levels, and all stakeholders to work together towards enhancing the capacity of civil servants and improving the opportunities for citizens to influence the delivery of public services. <br /> <br /> The new SDG agenda was also the main focus of a massive one-week partnership building, communication and advocacy campaign. Led by UNDP in partnership with a number of UN agencies, the main feature was a train caravan, the UN70 Express, that travelled across Belarus in October, bringing on board hundreds of people representing public, private and civil society partners, donors, international organizations, and vulnerable groups. Stopping in all six regional capitals and Minsk to discuss issues around the SDGs and their relevance for Belarus, the campaign drew over 30,000 participants to more than 250 events. In addition, the Governors of the six regions and Minsk signed declarations committing to the new agenda. <table class="belarus_table_img tableCss" border="0" cellpadding="0" cellspacing="0"><tbody><tr class="assistance_img1"><td></td><td class="img_contet"> <p>UN70 Express: Sustainable development, creative economy and a big fair of initiatives</p></td></tr><tr><td class="signature" colspan="2" align="right">Photo by: Ariel Rubin/UNDP Eurasia</td></tr></tbody></table>  <br /> <br /> <p class="graph_small"><img src="../Content/images/photos-and-graphic/graph-belarus-85-1.png" /> <br /> <span class="graphSub">CITIES VISITED BY THE UN70 EXPRESS</span></p> <br /> <br /> In the security sector, UNDP supported the State Border Committee with its conversion from a military body to a law enforcement agency, with reforms focusing on both infrastructure and capacity building. Two buildings of the Border Training Institute went through significant physical improvements, including the reconstruction of a three-storey dormitory and one-storey training facility. The Strategy on Psychological Support Service Development was also approved as a guiding framework for work with vulnerable groups of migrants, and as a general resource for <br /> <br /> State Border Committee personnel. In addition, a State Border Committee Human Resources Development and Training Strategy was developed in line with EU best practices and officially approved by the Committee in April 2016. UNDP played a leading role coordinating key all stakeholders to ensure they are responsive to the needs of vulnerable migrants and victims of human trafficking.<br /> <table class="armenia_table_img tableCss" border="0" cellpadding="0" cellspacing="0"><tbody><tr class="assistance_img1"><td></td><td class="img_contet"> <p>Voting in the June 2015 local elections</p></td></tr><tr><td class="signature" colspan="2" align="right">Photo by: UNDP Armenia</td></tr></tbody></table><br />Although human rights remain a sensitive area in Belarus, UNDP was able to advance the human rights agenda in 2015. Firstly, with UNDP assistance, the dialogue between the Government and civil society was expanded to include a number of key issues, including the death penalty, creation of a NHRI, and the drafting of a National Human Rights Action Plan. Following a sustained campaign by UNDP, Belarus signed the CRPD in September. UNDP also supported the follow up on the 2nd cycle UPR in May and organized a successful visit of Belarusian officials to Washington, DC in December with a series of meetings on human rights and rule of law issues with the US State Department.<br /><br />UNDP has also been expanding the use of innovation and technology to address existing challenges, including citizen based approaches such as social innovation labs. UNDP developed with the National Centre of Legislation and Legal Research an innovative prototype public e-feedback mechanism. The existing system of citizen feedback to public authorities, based on citizen appeals, was reviewed together with the best practices from the country and the region, and used to develop a new online system that is user-friendly for people with disabilities and can be adapted for all government websites.<br /><br />The use of innovation and technology has also resulted in a shift in the way that UNDP and the authorities are working to combat corruption and the informal economy. In an initiative expected to generate ongoing dividends, UNDP facilitated the visit of the Behavioural Insight Team from the UK government to work with the Ministry of Finance and tax officers in Minsk. During this visit, interventions were designed to facilitate informal workers being reintegrated back into the formal economy.'
+            },
+            challengesData: {
+                isLargeText: false,
+                isTextExpanded: false,
+                text: 'Like many countries in the region, Belarus is expected to experience worsening economic conditions. Despite these expected fiscal pressures, UNDP will continue working closely with the Government, civil society organizations and private sector partners to continue on the path to a fairer and more open society.<br /><br /> Planned work includes the rolling out of a long-term comprehensive rule of law and access to justice programme, continuing advocacy for the establishment of a NHRI, and implementation of a National Human Rights Action Plan as part of the UPR follow-up process. In addition, UNDP will proceed with publication of materials from the International Conference ‘Death Penalty: Transcending the Divide’ held in March 2016 and will continue the dialogue on the death penalty with the Parliament.<br /><br /> Efforts are planned to support the rights of people with disabilities. With the ratification of the CRPD in late 2016, UNDP plans to work closely with other UN agencies and national partners on the implementation of needed reforms. This will be complemented by a nationwide two-month advocacy and awareness raising campaign: ‘Inclusive Belarus’. UNDP will also work to boost national gender equality mechanisms and to support an assessment of where inequality continues to have the most significant impacts. <br /><br />UNDP will also continue providing support and assistance to the Government’s planned changes to improve the performance of public administration. In early 2016, UNDP launched a 3-year project to support public administration in building the capacities of civil servants, and making local governance and public service delivery more responsive to citizens. The project will improve the selection, training and performance assessment of civil servants at all levels, strengthen public engagement in planning and implementation processes, and boost the ability of the public and civil society to conduct monitoring of public services and provide feedback. In order to achieve these goals, the project will test a range of initiatives and will pilot two integrated customer service centres. <br /><br /> Finally, UNDP will continue to use innovation to enhance the influence and reach of its efforts. After the positive response to the pilot e-feedback system in 2015, further testing and development of the system will be undertaken as it moves towards a full rollout. UNDP’s anti-corruption work will also continue, with the interventions designed in partnership with the UK Government’s Behavioural Insight Team expected to begin implementation. As a result of this work, a team of tax officers from Moldova that participated in the event is also expected to launch its own initiative.'
+            }
+        },
+        /* #endregion Belarus */
         /* #region FYR Macedonia */
         {
             id: 'MK',
             title: 'FYR Macedonia',
             flagClass: 'c-macedonia',
-            sectionPdfUrl: 'http://www.google.com',
+            sectionPdfUrl: 'https://undpecis.github.io/download/country-profiles-fyr-macedonia.pdf',
             statement: {
                 img: 'fyr-macedonia.jpg',
                 imgThumb: 'fyr-macedonia-thumb.jpg',
@@ -632,7 +632,7 @@
             id: 'GE',
             title: 'Georgia',
             flagClass: 'c-georgia',
-            sectionPdfUrl: 'http://www.google.com',
+            sectionPdfUrl: 'https://undpecis.github.io/download/country-profiles-georgia.pdf',
             statement: {
                 img: 'georgia.jpg',
                 imgThumb: 'georgia-thumb.jpg',
@@ -684,7 +684,7 @@
             id: 'KZ',
             title: 'Kazakhstan',
             flagClass: 'c-kazakhstan',
-            sectionPdfUrl: 'http://www.google.com',
+            sectionPdfUrl: 'https://undpecis.github.io/download/country-profiles-kazakhstan.pdf',
             statement: {
                 img: 'kazakhstan.jpg',
                 imgThumb: 'kazakhstan-thumb.jpg',
@@ -736,7 +736,7 @@
             id: 'XK',
             title: 'Kosovo',
             flagClass: 'c-kosovo',
-            sectionPdfUrl: 'http://www.google.com',
+            sectionPdfUrl: 'https://undpecis.github.io/download/country-profiles-kosovo.pdf',
             statement: {
                 img: 'kosovo.jpg',
                 imgThumb: 'kosovo-thumb.jpg',
@@ -793,7 +793,7 @@
             id: 'KG',
             title: 'Kyrgyz Republic',
             flagClass: 'c-kyrgyz-republic',
-            sectionPdfUrl: 'http://www.google.com',
+            sectionPdfUrl: 'https://undpecis.github.io/download/country-profiles-kyrgyz.pdf',
             statement: {
                 img: 'kyrgiz-republic.jpg',
                 imgThumb: 'kyrgiz-republic-thumb.jpg',
@@ -840,7 +840,7 @@
             id: 'MD',
             title: 'Moldova',
             flagClass: 'c-moldova',
-            sectionPdfUrl: 'http://www.google.com',
+            sectionPdfUrl: 'https://undpecis.github.io/download/country-profiles-moldova.pdf',
             statement: {
                 img: 'moldova.jpg',
                 imgThumb: 'moldova-thumb.jpg',
@@ -892,7 +892,7 @@
             id: 'ME',
             title: 'Montenegro',
             flagClass: 'c-montenegro',
-            sectionPdfUrl: 'http://www.google.com',
+            sectionPdfUrl: 'https://undpecis.github.io/download/country-profiles-montenegro.pdf',
             statement: {
                 img: 'montenegro.jpg',
                 imgThumb: 'montenegro-thumb.jpg',
@@ -939,7 +939,7 @@
             id: 'RS',
             title: 'Serbia',
             flagClass: 'c-serbia',
-            sectionPdfUrl: 'http://www.google.com',
+            sectionPdfUrl: 'https://undpecis.github.io/download/country-profiles-serbia.pdf',
             statement: {
                 img: 'serbia.jpg',
                 imgThumb: 'serbia-thumb.jpg',
@@ -986,7 +986,7 @@
             id: 'TJ',
             title: 'Tajikistan',
             flagClass: 'c-tajikistan',
-            sectionPdfUrl: 'http://www.google.com',
+            sectionPdfUrl: 'https://undpecis.github.io/download/country-profiles-tajikistan.pdf',
             statement: {
                 img: 'tajikistan.jpg',
                 imgThumb: 'tajikistan-thumb.jpg',
@@ -1038,7 +1038,7 @@
             id: 'TR',
             title: 'Turkey',
             flagClass: 'c-turkey',
-            sectionPdfUrl: 'http://www.google.com',
+            sectionPdfUrl: 'https://undpecis.github.io/download/country-profiles-turkey.pdf',
             statement: {
                 img: 'turkey.jpg',
                 imgThumb: 'turkey-thumb.jpg',
@@ -1090,7 +1090,7 @@
             id: 'TM',
             title: 'Turkmenistan',
             flagClass: 'c-turkmenistan',
-            sectionPdfUrl: 'http://www.google.com',
+            sectionPdfUrl: 'https://undpecis.github.io/download/country-profiles-turkmenistan.pdf',
             statement: {
                 img: 'turkmenistan.jpg',
                 imgThumb: 'turkmenistan-thumb.jpg',
@@ -1133,64 +1133,12 @@
             }
         },
         /* #endregion Turkmenistan */
-        /* #region Ukraine */
-        {
-            id: 'UA',
-            title: 'Ukraine',
-            flagClass: 'c-ukraine',
-            sectionPdfUrl: 'http://www.google.com',
-            statement: {
-                img: 'ukraine.jpg',
-                imgThumb: 'ukraine-thumb.jpg',
-                title: 'Statement',
-                bodyText: '“UNDP proved to be a very good and reliable partner not only in terms of community development but also in terms of shelter projects for IDPs. This project is highly necessary and very interesting: people learn from it, they can see that cooperation with UNDP allows us to introduce the European standards of living. Together we managed to provide shelter to children who are going through a difficult period, who lost their family, until we find some durable solution for them. We appreciate these social projects very much.”',
-                signatureText: '–<strong>Ms. Olga Lishyk</strong>, Deputy Head of Luhansk oblast state administration'
-            },
-            keyResults: [
-                {
-                    iconClass: 'xn-men-women',
-                    textColor: '#ddd',
-                    text: 'National Human Rights Strategy was adopted by Presidential decree ',
-                },
-                {
-                    iconClass: ' xn-government',
-                    textColor: '#ddd',
-                    text: 'Open data legislation was approved by the Parliament ',
-                },
-                {
-                    iconClass: ' xn-anti-corruption-shield',
-                    textColor: '#ddd',
-                    text: 'UNDP Anti-Corruption School opened, offering exposure to some of the leading experts on national transparency and integrity ',
-                },
-                {
-                    iconClass: 'xn-multi-document-magnify',
-                    textColor: '#ddd',
-                    text: '50,000 IDPs and their host communities benefited from a UNDP programme to rehabilitate social infrastructure',
-                }
-            ],
-            backgroundData: {
-                isLargeText: false,
-                isTextExpanded: false,
-                text: 'Due to its abundance of fertile farmlands, Ukraine has long been a major exporter of various agricultural products. The country also has a diversified industry that manufactures a range of products from steel and iron products, to jet engines and railway cars. With high levels of education and an extensive social protection system, it has enjoyed relatively high levels of human development in the past. In recent years however, Ukraine has faced a series of challenges that have stalled needed reforms and aggravated many existing problems. Institutions, which often date back to the Soviet era, have become frail and increasingly vulnerable to corruption.<br /><br /> Over the past two years, Ukraine struggled with the twin challenges of post-revolutionary political reform and the defence of its territorial integrity. These challenges arose out of a series of events starting in 2013, when then President Viktor Yanukovych suspended negotiations on an association agreement with the EU. This decision resulted in large protests in Kiev and eventually snowballed into the 2014 Ukrainian revolution, known as Maidan for the square where the protests took place. As a result, President Yanukovych fled the country, and was subsequently removed from his position by the Parliament, leading to early elections. This in turn was followed by the Russian annexation of Crimea and conflict with armed separatists in the eastern Donbas region of Ukraine. <br /><br /> The ongoing conflict in the Donbas region has created a humanitarian crisis, with significant loss of human life and more than 1.5 million people displaced<sub>99</sub> – a situation that, if not resolved, may drive further conflict, worsen the country’s already dire economic situation, and erode confidence in government. The conflict has had a large negative economic impact, including currency devaluation, high inflation, a credit crunch and slowdowns in the economies of neighbouring countries, and estimates that real GDP decreased by 6.8 percent in 2014 and by a further 10 percent in 2015.<sub>100</sub> In addition, the conflict has impinged on the human rights of individuals living in conflict-affected regions, and further exacerbated issues such as inequality, social exclusion, and a lack of trust among communities.  <br /><br />Yet, Ukrainians are showing a strong commitment towards democracy, with the new political leadership pursuing a comprehensive reform agenda, and civil society, including human rights organizations, playing an important role during and after the revolution. In this regard, 2015 was a critical year for Ukraine, not only in terms of efforts towards economic and political stabilization and reform, but also in terms of seeking a peaceful settlement to the armed conflict in the east of the country.'
-            },
-            assistanceData: {
-                isLargeText: false,
-                isTextExpanded: false,
-                text: 'There were a number of positive outcomes for democratic governance in 2015. The post-2014 coalition government has developed Ukraine’s most comprehensive governance reform programme to date, which emphasizes anti-corruption, rule of law and decentralization reforms in line with European standards. Important reform initiatives include new open data legislation, a State Anti-Corruption Programme for 2015-2017, and the launch of the National Agency for Prevention of Corruption. All of these developments were supported by UNDP. <br /><br /> Since 2008, UNDP has been working to empower rural communities to take part in the decisions that affect their lives. Using a community-based approach, UNDP has helped to facilitate joint decision-making and bottom-up planning processes, leading to the development of local partnerships and real improvements in people’s lives. In 2015, the living conditions of more than 600,000 people were improved through 500 micro-projects, including the installation of water pipelines, energy efficient street lighting and windows, and the renovation and reequipping of local kindergartens and rural health clinics. <br /><br /> There were also important achievements for human rights, with the first National Human Rights Strategy and Action Plan being adopted following an inclusive process involving civil society, the Government and a number of development partners. UNDP also funded the development of the National Human Rights Strategy portal <a href="http://hrstrategy.com.ua/" >(http://hrstrategy.com.ua/)</a> by the Ministry of Justice, promoting the engagement of public institutions and individuals in the development of the strategy. The UNDP-supported international conference on the specific topic of the role of NHRIs in conflict and post-conflict situations resulted in the signing of the Kyiv Declaration, which calls for a stronger role for NHRIs in conflict and post-conflict settings. The Kyiv Declaration was adopted and signed by 19 NHRIs. <table class="ukraine_table_img tableCss" border="0" cellpadding="0" cellspacing="0"><tbody><tr class="assistance_img1"><td></td><td class="img_contet"> <p>Guests arriving for the international conference on the role of NHRIs in Kyiv</p></td></tr><tr><td class="signature" colspan="2" align="right">Photo by: Eugene Zelenko/UNDP Ukraine</td></tr></tbody></table> UNDP has developed a comprehensive approach to integrate anti-corruption efforts across its programmes. In addition to sector-based integrity initiatives such as health sector procurement services, UNDP also launched a dedicated support project with the National Agency for Prevention of Corruption to prevent corruption through a range of measures including the creation of conflict-of-interest rules and asset declarations. Complementing this, UNDP helped to restore local governance functions in conflict-affected areas of Donetsk and Luhansk Oblasts, and has worked closely with oblast administrations to identify and minimize corruption risks in recovery and regional economic development efforts. UNDP also continued to improve the knowledge and resources of civil society, enabling them to act as local corruption monitors. In early 2015, the first UNDP Anti-Corruption School kicked off, offering civil society and other organizations exposure to some of the leading experts on national transparency and integrity. As a result, local civil society organizations produced significant results, including the cancellation of US$1.2 million worth of dubious public procurement contracts. <br /><br />In a combined effort to combat corruption and improve health services, at the request of the Ministry of Health, UNDP has been procuring a range of medicines and related medical products for the diagnosis and treatment of tuberculosis, hepatitis, haemophilia and orphan diseases in children, and HIV/AIDS, and has begun to build the capacity needed for a transparent and cost-effective procurement system for the Ministry.  <br /><br />Arguably the biggest challenge facing Ukraine at present is the conflict in the eastern part of the country, resulting in large numbers of IDPs and conflict-affected people who lack access to adequate services. An estimated 50,000 people, including IDPs and their host communities, in 19 communities of the Donbas region benefited from a UNDP programme to rehabilitate social infrastructure, including healthcare facilities. UNDP also worked to assist the affected individuals, financially supporting 30 civil society organizations to provide 3,620 IDPs with psychological assistance and 6,900 with legal aid. Furthermore, a case management system used to keep track of IDPs assistance was introduced, allowing assistance to be extended to around 1,700 people. Complementing this, UNDP is promoting community security and access to justice in conflict-affected areas, working with local communities and security providers on measures that are aimed to enhance local security and social cohesion.<table class="ukraine_table_img tableCss" border="0" cellpadding="0" cellspacing="0"><tbody><tr class="assistance_img2"><td></td><td class="img_contet"> <p>Working out at the Artemivsk Territorial Center of Social Services for elderly and people with disabilities in Donetsk</p></td></tr><tr><td class="signature" colspan="2" align="right">Photo by: UNDP Ukraine</td></tr></tbody></table> In a forward looking programme, UNDP is supporting civic partnerships that document human rights violations in the east and has launched a database for storing the evidence. To date, 120 individual and group cases in 15 localities have been filed. Based on this work, eight monitoring reports have been prepared, five criminal investigations launched and three applications filed with the European Court of Human Rights.'
-            },
-            challengesData: {
-                isLargeText: false,
-                isTextExpanded: false,
-                text: 'After the recent instability, there are some positive signs for Ukraine. Economic growth is expected to stabilize, with the World Bank predicting 1-2 percent growth in 2016.<sub>101</sub> The benefits of positive reforms in recent years will also begin having an impact, with anti-corruption and transparency initiatives expected to result in positive changes.<br /><br />On a less positive note, although a ceasefire agreement in the Donbas region has stemmed most of the violence, violations continue to occur and the situation remains extremely fragile. In addition, the implementation of the Minsk II package of measures to defuse the conflict remains incomplete.<br /><br />Ukraine also faces other substantial challenges. The pace of reform slowed during 2015, with political instability leading to the formation of a new government following the fracture of the earlier broad reform coalition. As a result, many key reform agenda items, such as constitutional changes on decentralization, have been delayed and have led to disillusionment among the wider public. UNDP will continue to push for these reforms to be reprioritized.  <br /><br />UNDP will also continue working to combat corruption. In addition to the continuation of the UNDP Anti-Corruption School, UNDP will look to support the development of anti-corruption strategies and risk assessment methodologies, at both the national and local level. <br /><br />Lastly, restoring peace and addressing the consequences of the conflict also remain priorities for both the Ukrainian authorities and for UNDP. Work to rebuild physical and social infrastructure, and improve social cohesion will continue, with the case management system for IDPs expected to further expand the ability of UNDP and service providers to assist people in need. Recovery activities more generally will increasingly incorporate governance, peacebuilding and gender elements, while options are being explored for a comprehensive mine action project. Work started in 2015 to record and document human rights violations and to improve access to justice and community security will also continue.'
-            }
-        },
-        /* #endregion Ukraine */
         /* #region Uzbekistan */
         {
             id: 'UZ',
             title: 'Uzbekistan',
             flagClass: 'c-uzbekistan',
-            sectionPdfUrl: 'http://www.google.com',
+            sectionPdfUrl: 'https://undpecis.github.io/download/country-profiles-uzbekistan.pdf',
             statement: {
                 img: 'uzbekistan.jpg',
                 imgThumb: 'uzbekistan-thumb.jpg',
@@ -1235,7 +1183,59 @@
                 isTextExpanded: false,
                 text: 'Despite progress in 2015, key governance challenges remain for Uzbekistan. These include the need for further decentralization, increased independence and efficiency of the judiciary, improvements in government transparency and accountability, increased citizen participation in public life, and bridging differences between diverse population groups. Alongside these challenges, new legal frameworks for law enforcement and increased quality of law making are key priorities for Uzbekistan. It also remains unclear what impact the loss of long-term leader Islam Karimov will have on development efforts.<br /><br />UNDP will continue its support for the legal and judicial reforms by supporting policy development and the implementation of reforms. Specifically, UNDP will support efforts to increase the efficiency and responsiveness of the judiciary and its administration, particularly the Supreme Court and Higher Economic Court, with the goal of achieving greater alignment with international standards of accountability, rule of law, and judicial performance.  <br /><br />These efforts form part of a larger plan to support further reforms in public administration. In particular, a functional review of public administration bodies and redesign of business processes will be promoted to optimize and further strengthen the efficiency of government authorities and their service provision, as well as incorporate international best practices.  <br /><br />Uzbekistan will also be supported in meeting national development targets through the provision of technical and policy advice. This advice will focus on the incorporation of the SDGs (particularly Goal 16) and international best practices into those targets, and on identifying and discussing gaps in national priorities.'
             }
-        }
+        },
         /* #endregion Uzbekistan */
+        /* #region Ukraine */
+        {
+            id: 'UA',
+            title: 'Ukraine',
+            flagClass: 'c-ukraine',
+            sectionPdfUrl: 'https://undpecis.github.io/download/country-profiles-ukraine.pdf',
+            statement: {
+                img: 'ukraine.jpg',
+                imgThumb: 'ukraine-thumb.jpg',
+                title: 'Statement',
+                bodyText: '“UNDP proved to be a very good and reliable partner not only in terms of community development but also in terms of shelter projects for IDPs. This project is highly necessary and very interesting: people learn from it, they can see that cooperation with UNDP allows us to introduce the European standards of living. Together we managed to provide shelter to children who are going through a difficult period, who lost their family, until we find some durable solution for them. We appreciate these social projects very much.”',
+                signatureText: '–<strong>Ms. Olga Lishyk</strong>, Deputy Head of Luhansk oblast state administration'
+            },
+            keyResults: [
+                {
+                    iconClass: 'xn-men-women',
+                    textColor: '#ddd',
+                    text: 'National Human Rights Strategy was adopted by Presidential decree ',
+                },
+                {
+                    iconClass: ' xn-government',
+                    textColor: '#ddd',
+                    text: 'Open data legislation was approved by the Parliament ',
+                },
+                {
+                    iconClass: ' xn-anti-corruption-shield',
+                    textColor: '#ddd',
+                    text: 'UNDP Anti-Corruption School opened, offering exposure to some of the leading experts on national transparency and integrity ',
+                },
+                {
+                    iconClass: 'xn-multi-document-magnify',
+                    textColor: '#ddd',
+                    text: '50,000 IDPs and their host communities benefited from a UNDP programme to rehabilitate social infrastructure',
+                }
+            ],
+            backgroundData: {
+                isLargeText: false,
+                isTextExpanded: false,
+                text: 'Due to its abundance of fertile farmlands, Ukraine has long been a major exporter of various agricultural products. The country also has a diversified industry that manufactures a range of products from steel and iron products, to jet engines and railway cars. With high levels of education and an extensive social protection system, it has enjoyed relatively high levels of human development in the past. In recent years however, Ukraine has faced a series of challenges that have stalled needed reforms and aggravated many existing problems. Institutions, which often date back to the Soviet era, have become frail and increasingly vulnerable to corruption.<br /><br /> Over the past two years, Ukraine struggled with the twin challenges of post-revolutionary political reform and the defence of its territorial integrity. These challenges arose out of a series of events starting in 2013, when then President Viktor Yanukovych suspended negotiations on an association agreement with the EU. This decision resulted in large protests in Kiev and eventually snowballed into the 2014 Ukrainian revolution, known as Maidan for the square where the protests took place. As a result, President Yanukovych fled the country, and was subsequently removed from his position by the Parliament, leading to early elections. This in turn was followed by the Russian annexation of Crimea and conflict with armed separatists in the eastern Donbas region of Ukraine. <br /><br /> The ongoing conflict in the Donbas region has created a humanitarian crisis, with significant loss of human life and more than 1.5 million people displaced<sub>99</sub> – a situation that, if not resolved, may drive further conflict, worsen the country’s already dire economic situation, and erode confidence in government. The conflict has had a large negative economic impact, including currency devaluation, high inflation, a credit crunch and slowdowns in the economies of neighbouring countries, and estimates that real GDP decreased by 6.8 percent in 2014 and by a further 10 percent in 2015.<sub>100</sub> In addition, the conflict has impinged on the human rights of individuals living in conflict-affected regions, and further exacerbated issues such as inequality, social exclusion, and a lack of trust among communities.  <br /><br />Yet, Ukrainians are showing a strong commitment towards democracy, with the new political leadership pursuing a comprehensive reform agenda, and civil society, including human rights organizations, playing an important role during and after the revolution. In this regard, 2015 was a critical year for Ukraine, not only in terms of efforts towards economic and political stabilization and reform, but also in terms of seeking a peaceful settlement to the armed conflict in the east of the country.'
+            },
+            assistanceData: {
+                isLargeText: false,
+                isTextExpanded: false,
+                text: 'There were a number of positive outcomes for democratic governance in 2015. The post-2014 coalition government has developed Ukraine’s most comprehensive governance reform programme to date, which emphasizes anti-corruption, rule of law and decentralization reforms in line with European standards. Important reform initiatives include new open data legislation, a State Anti-Corruption Programme for 2015-2017, and the launch of the National Agency for Prevention of Corruption. All of these developments were supported by UNDP. <br /><br /> Since 2008, UNDP has been working to empower rural communities to take part in the decisions that affect their lives. Using a community-based approach, UNDP has helped to facilitate joint decision-making and bottom-up planning processes, leading to the development of local partnerships and real improvements in people’s lives. In 2015, the living conditions of more than 600,000 people were improved through 500 micro-projects, including the installation of water pipelines, energy efficient street lighting and windows, and the renovation and reequipping of local kindergartens and rural health clinics. <br /><br /> There were also important achievements for human rights, with the first National Human Rights Strategy and Action Plan being adopted following an inclusive process involving civil society, the Government and a number of development partners. UNDP also funded the development of the National Human Rights Strategy portal <a href="http://hrstrategy.com.ua/" >(http://hrstrategy.com.ua/)</a> by the Ministry of Justice, promoting the engagement of public institutions and individuals in the development of the strategy. The UNDP-supported international conference on the specific topic of the role of NHRIs in conflict and post-conflict situations resulted in the signing of the Kyiv Declaration, which calls for a stronger role for NHRIs in conflict and post-conflict settings. The Kyiv Declaration was adopted and signed by 19 NHRIs. <table class="ukraine_table_img tableCss" border="0" cellpadding="0" cellspacing="0"><tbody><tr class="assistance_img1"><td></td><td class="img_contet"> <p>Guests arriving for the international conference on the role of NHRIs in Kyiv</p></td></tr><tr><td class="signature" colspan="2" align="right">Photo by: Eugene Zelenko/UNDP Ukraine</td></tr></tbody></table> UNDP has developed a comprehensive approach to integrate anti-corruption efforts across its programmes. In addition to sector-based integrity initiatives such as health sector procurement services, UNDP also launched a dedicated support project with the National Agency for Prevention of Corruption to prevent corruption through a range of measures including the creation of conflict-of-interest rules and asset declarations. Complementing this, UNDP helped to restore local governance functions in conflict-affected areas of Donetsk and Luhansk Oblasts, and has worked closely with oblast administrations to identify and minimize corruption risks in recovery and regional economic development efforts. UNDP also continued to improve the knowledge and resources of civil society, enabling them to act as local corruption monitors. In early 2015, the first UNDP Anti-Corruption School kicked off, offering civil society and other organizations exposure to some of the leading experts on national transparency and integrity. As a result, local civil society organizations produced significant results, including the cancellation of US$1.2 million worth of dubious public procurement contracts. <br /><br />In a combined effort to combat corruption and improve health services, at the request of the Ministry of Health, UNDP has been procuring a range of medicines and related medical products for the diagnosis and treatment of tuberculosis, hepatitis, haemophilia and orphan diseases in children, and HIV/AIDS, and has begun to build the capacity needed for a transparent and cost-effective procurement system for the Ministry.  <br /><br />Arguably the biggest challenge facing Ukraine at present is the conflict in the eastern part of the country, resulting in large numbers of IDPs and conflict-affected people who lack access to adequate services. An estimated 50,000 people, including IDPs and their host communities, in 19 communities of the Donbas region benefited from a UNDP programme to rehabilitate social infrastructure, including healthcare facilities. UNDP also worked to assist the affected individuals, financially supporting 30 civil society organizations to provide 3,620 IDPs with psychological assistance and 6,900 with legal aid. Furthermore, a case management system used to keep track of IDPs assistance was introduced, allowing assistance to be extended to around 1,700 people. Complementing this, UNDP is promoting community security and access to justice in conflict-affected areas, working with local communities and security providers on measures that are aimed to enhance local security and social cohesion.<table class="ukraine_table_img tableCss" border="0" cellpadding="0" cellspacing="0"><tbody><tr class="assistance_img2"><td></td><td class="img_contet"> <p>Working out at the Artemivsk Territorial Center of Social Services for elderly and people with disabilities in Donetsk</p></td></tr><tr><td class="signature" colspan="2" align="right">Photo by: UNDP Ukraine</td></tr></tbody></table> In a forward looking programme, UNDP is supporting civic partnerships that document human rights violations in the east and has launched a database for storing the evidence. To date, 120 individual and group cases in 15 localities have been filed. Based on this work, eight monitoring reports have been prepared, five criminal investigations launched and three applications filed with the European Court of Human Rights.'
+            },
+            challengesData: {
+                isLargeText: false,
+                isTextExpanded: false,
+                text: 'After the recent instability, there are some positive signs for Ukraine. Economic growth is expected to stabilize, with the World Bank predicting 1-2 percent growth in 2016.<sub>101</sub> The benefits of positive reforms in recent years will also begin having an impact, with anti-corruption and transparency initiatives expected to result in positive changes.<br /><br />On a less positive note, although a ceasefire agreement in the Donbas region has stemmed most of the violence, violations continue to occur and the situation remains extremely fragile. In addition, the implementation of the Minsk II package of measures to defuse the conflict remains incomplete.<br /><br />Ukraine also faces other substantial challenges. The pace of reform slowed during 2015, with political instability leading to the formation of a new government following the fracture of the earlier broad reform coalition. As a result, many key reform agenda items, such as constitutional changes on decentralization, have been delayed and have led to disillusionment among the wider public. UNDP will continue to push for these reforms to be reprioritized.  <br /><br />UNDP will also continue working to combat corruption. In addition to the continuation of the UNDP Anti-Corruption School, UNDP will look to support the development of anti-corruption strategies and risk assessment methodologies, at both the national and local level. <br /><br />Lastly, restoring peace and addressing the consequences of the conflict also remain priorities for both the Ukrainian authorities and for UNDP. Work to rebuild physical and social infrastructure, and improve social cohesion will continue, with the case management system for IDPs expected to further expand the ability of UNDP and service providers to assist people in need. Recovery activities more generally will increasingly incorporate governance, peacebuilding and gender elements, while options are being explored for a comprehensive mine action project. Work started in 2015 to record and document human rights violations and to improve access to justice and community security will also continue.'
+            }
+        }
+        /* #endregion Ukraine */
     ]
 }

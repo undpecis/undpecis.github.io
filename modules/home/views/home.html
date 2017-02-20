@@ -16,10 +16,10 @@
                     <div class="c-cell c-w-1perc c-has-icons">
                         <div class="c-table-as-button">
                             <div class="c-cell c-has-cloud">
-                                <button class="c-bttn">
+                                <a class="c-bttn" href="https://undpecis.github.io/download/towards-sdg-16-promoting-just-peaceful-and-inclusive-societies-in-europe.pdf" target="_blank">
                                     <i class="c-ico icon-cloud-download"></i><br />
                                     Download<br /> FULL report
-                                </button>
+                                </a>
                             </div>
                             <div class="c-cell c-has-burger">
                                 <div class="btn-group c-dropdown-btn-group">
@@ -50,7 +50,7 @@
                                         </li>
                                         <li ng-if="ctrlVars.visibleStates.burger_countries == true">
                                             <ul class="c-dropdown-menu-subnav c-countries c-max-h-300">
-                                                <li ng-repeat="countrySubitem in activeCountriesList" class="c-vdash-countries" ng-click="countryClickedFunc('countriesFromBurger', countrySubitem.id)">
+                                                <li ng-repeat="countrySubitem in activeCountriesList" class="c-vdash-countries" ng-click="countryClickedFunc('countriesFromBurger', $index)">
                                                     <a>{{countrySubitem.title}}</a>
                                                 </li>
                                             </ul>
@@ -72,10 +72,10 @@
                     <div class="c-cell c-w-1perc c-has-icons">
                         <div class="c-table-as-button">
                             <div class="c-cell c-has-cloud">
-                                <button class="c-bttn">
+                                <a class="c-bttn" href="https://undpecis.github.io/download/towards-sdg-16-promoting-just-peaceful-and-inclusive-societies-in-europe.pdf" target="_blank">
                                     <i class="c-ico icon-cloud-download"></i><br />
                                     Download<br /> FULL report
-                                </button>
+                                </a>
                             </div>
                             <div class="c-cell c-has-burger">
                                 <div class="btn-group c-dropdown-btn-group">
@@ -106,7 +106,7 @@
                                         </li>
                                         <li ng-if="ctrlVars.visibleStates.burger_countries == true">
                                             <ul class="c-dropdown-menu-subnav c-countries c-max-h-300">
-                                                <li ng-repeat="countrySubitem in activeCountriesList" class="c-vdash-countries" ng-click="countryClickedFunc('countriesFromBurger', countrySubitem.id)">
+                                                <li ng-repeat="countrySubitem in activeCountriesList" class="c-vdash-countries" ng-click="countryClickedFunc('countriesFromBurger', $index)">
                                                     <a>{{countrySubitem.title}}</a>
                                                 </li>
                                             </ul>
@@ -469,12 +469,12 @@
                         </ul>
                         <div class="c-buttons-wrap">
                             <!-- #region Download section -->
-                            <button class="c-bttn c-bttn-combo c-bttn-blue">
+                            <a class="c-bttn c-bttn-combo c-bttn-blue" ng-href="{{ctrlVars.selectedCountry.sectionPdfUrl}}">
                                 <div class="c-circle-icon-box">
                                     <i class="c-ico icon-cloud-download"></i>
                                 </div>
                                 <span>DOWNLOAD SECTION</span>
-                            </button>
+                            </a>
                             <!-- #endregion Download section -->
                         </div>
                     </div>
@@ -934,12 +934,12 @@
                         </a>
                         <!-- #endregion SVG graphic -->
                         <!-- #region Download section -->
-                        <button class="c-bttn c-bttn-combo c-bttn-black c-m-top-40">
+                        <!--<button class="c-bttn c-bttn-combo c-bttn-black c-m-top-40">
                             <div class="c-circle-icon-box">
                                 <i class="c-ico icon-cloud-download"></i>
                             </div>
                             <span>DOWNLOAD Section</span>
-                        </button>
+                        </button>-->
                         <!-- #endregion Download section -->
                     </div>
                     <!-- #endregion Right content -->

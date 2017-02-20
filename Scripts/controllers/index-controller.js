@@ -2,6 +2,24 @@
 //- jquery (for DOM manipulation)
 //- ScrollMagic (for detecting scroll events)
 //- TweenMax (GreenSock GSAP) (for animation)
+var undpWorldMap = null;
+//function externalFunction_selectCountry(index) {
+//    if (index != undefined && index != null) {
+//        console.log('index c00TT: ' + index);
+//        undpWorldMap.dataProvider.areas[index].showAsSelected = true;
+//        undpWorldMap.validateData();
+//    }
+//    //selectedObject
+//    //dataProvider
+//    //dispatchDataUpdated
+//    //objectWasClicked
+//                    undpWorldMap.dataProvider.areas[i].showAsSelected = false;
+//undpWorldMap.validateData();
+//}
+
+//map.dataProvider.zoomLevel = map.zoomLevel();
+//map.dataProvider.zoomLatitude = map.dataProvider.zoomLatitude = map.zoomLatitude();
+//map.dataProvider.zoomLongitude = map.dataProvider.zoomLongitude = map.zoomLongitude();
 
 function externalCompileCaller() {
     console.log('calling... outisde func');
@@ -22,8 +40,8 @@ $(document).ready(function () {
       { "id": "AL", "title": "Albania" },
       { "id": "AM", "title": "Armenia" },
       { "id": "AZ", "title": "Azerbaijan" },
-      { "id": "BY", "title": "Belarus" },
-      { "id": "BA", "title": "Bosnia and Herzegovina" },      
+      { "id": "BA", "title": "Bosnia and Herzegovina" },
+      { "id": "BY", "title": "Belarus" },      
       { "id": "MK", "title": "FYR Macedonia" },
       { "id": "GE", "title": "Georgia" },
       { "id": "KZ", "title": "Kazakhstan" },
@@ -35,11 +53,11 @@ $(document).ready(function () {
       { "id": "TJ", "title": "Tajikistan" },
       { "id": "TR", "title": "Turkey" },
       { "id": "TM", "title": "Turkmenistan" },
-      { "id": "UA", "title": "Ukraine" },
-      { "id": "UZ", "title": "Uzbekistan" }
+      { "id": "UZ", "title": "Uzbekistan" },
+      { "id": "UA", "title": "Ukraine" }
     ];
     /* #region AMCharts Map */
-    var undpWorldMap = AmCharts.makeChart("mapdiv", {
+    undpWorldMap = AmCharts.makeChart("mapdiv", {
         /**
          * this tells amCharts it's a map
          */
@@ -65,24 +83,24 @@ $(document).ready(function () {
             "map": "worldLow",
             //"getAreasFromMap": true,
             "areas": [
-              { "id": "AL", "color": "#f8b58e", "outlineColor": "#f8b58e", "rollOverColor": "#dea17e", "rollOverOutlineColor": "#dea17e", "title": "Albania" },
-              { "id": "AM", "color": "#f8b58e", "outlineColor": "#f8b58e", "rollOverColor": "#dea17e", "rollOverOutlineColor": "#dea17e", "title": "Armenia" },
-              { "id": "AZ", "color": "#f8b58e", "outlineColor": "#f8b58e", "rollOverColor": "#dea17e", "rollOverOutlineColor": "#dea17e", "title": "Azerbaijan" },
-              { "id": "BA", "color": "#f8b58e", "outlineColor": "#f8b58e", "rollOverColor": "#dea17e", "rollOverOutlineColor": "#dea17e", "title": "Bosnia and Herzegovina" },
-              { "id": "BY", "color": "#f8b58e", "outlineColor": "#f8b58e", "rollOverColor": "#dea17e", "rollOverOutlineColor": "#dea17e", "title": "Belarus" },
-              { "id": "MK", "color": "#f8b58e", "outlineColor": "#f8b58e", "rollOverColor": "#dea17e", "rollOverOutlineColor": "#dea17e", "title": "FYR Macedonia" },
-              { "id": "GE", "color": "#f8b58e", "outlineColor": "#f8b58e", "rollOverColor": "#dea17e", "rollOverOutlineColor": "#dea17e", "title": "Georgia" },
-              { "id": "KZ", "color": "#f8b58e", "outlineColor": "#f8b58e", "rollOverColor": "#dea17e", "rollOverOutlineColor": "#dea17e", "title": "Kazakhstan" },
-              { "id": "XK", "color": "#f8b58e", "outlineColor": "#f8b58e", "rollOverColor": "#dea17e", "rollOverOutlineColor": "#dea17e", "title": "Kosovo" },
-              { "id": "KG", "color": "#f8b58e", "outlineColor": "#f8b58e", "rollOverColor": "#dea17e", "rollOverOutlineColor": "#dea17e", "title": "Kyrgyz Republic" },
-              { "id": "MD", "color": "#f8b58e", "outlineColor": "#f8b58e", "rollOverColor": "#dea17e", "rollOverOutlineColor": "#dea17e", "title": "Moldova" },
-              { "id": "ME", "color": "#f8b58e", "outlineColor": "#f8b58e", "rollOverColor": "#dea17e", "rollOverOutlineColor": "#dea17e", "title": "Montenegro" },
-              { "id": "RS", "color": "#f8b58e", "outlineColor": "#f8b58e", "rollOverColor": "#dea17e", "rollOverOutlineColor": "#dea17e", "title": "Serbia" },
-              { "id": "TJ", "color": "#f8b58e", "outlineColor": "#f8b58e", "rollOverColor": "#dea17e", "rollOverOutlineColor": "#dea17e", "title": "Tajikistan" },
-              { "id": "TR", "color": "#f8b58e", "outlineColor": "#f8b58e", "rollOverColor": "#dea17e", "rollOverOutlineColor": "#dea17e", "title": "Turkey" },
-              { "id": "TM", "color": "#f8b58e", "outlineColor": "#f8b58e", "rollOverColor": "#dea17e", "rollOverOutlineColor": "#dea17e", "title": "Turkmenistan" },
-              { "id": "UZ", "color": "#f8b58e", "outlineColor": "#f8b58e", "rollOverColor": "#dea17e", "rollOverOutlineColor": "#dea17e", "title": "Uzbekistan" },
-              { "id": "UA", "color": "#f8b58e", "outlineColor": "#f8b58e", "rollOverColor": "#dea17e", "rollOverOutlineColor": "#dea17e", "title": "Ukraine" }
+              { "id": "AL", "color": "#f8b58e", "outlineColor": "#f8b58e", "rollOverColor": "#dea17e", "rollOverOutlineColor": "#dea17e", "title": "Albania", "showAsSelected": false },
+              { "id": "AM", "color": "#f8b58e", "outlineColor": "#f8b58e", "rollOverColor": "#dea17e", "rollOverOutlineColor": "#dea17e", "title": "Armenia", "showAsSelected": false },
+              { "id": "AZ", "color": "#f8b58e", "outlineColor": "#f8b58e", "rollOverColor": "#dea17e", "rollOverOutlineColor": "#dea17e", "title": "Azerbaijan", "showAsSelected": false },
+              { "id": "BA", "color": "#f8b58e", "outlineColor": "#f8b58e", "rollOverColor": "#dea17e", "rollOverOutlineColor": "#dea17e", "title": "Bosnia and Herzegovina", "showAsSelected": false },
+              { "id": "BY", "color": "#f8b58e", "outlineColor": "#f8b58e", "rollOverColor": "#dea17e", "rollOverOutlineColor": "#dea17e", "title": "Belarus", "showAsSelected": false },
+              { "id": "MK", "color": "#f8b58e", "outlineColor": "#f8b58e", "rollOverColor": "#dea17e", "rollOverOutlineColor": "#dea17e", "title": "FYR Macedonia", "showAsSelected": false },
+              { "id": "GE", "color": "#f8b58e", "outlineColor": "#f8b58e", "rollOverColor": "#dea17e", "rollOverOutlineColor": "#dea17e", "title": "Georgia", "showAsSelected": false },
+              { "id": "KZ", "color": "#f8b58e", "outlineColor": "#f8b58e", "rollOverColor": "#dea17e", "rollOverOutlineColor": "#dea17e", "title": "Kazakhstan", "showAsSelected": false },
+              { "id": "XK", "color": "#f8b58e", "outlineColor": "#f8b58e", "rollOverColor": "#dea17e", "rollOverOutlineColor": "#dea17e", "title": "Kosovo", "showAsSelected": false },
+              { "id": "KG", "color": "#f8b58e", "outlineColor": "#f8b58e", "rollOverColor": "#dea17e", "rollOverOutlineColor": "#dea17e", "title": "Kyrgyz Republic", "showAsSelected": false },
+              { "id": "MD", "color": "#f8b58e", "outlineColor": "#f8b58e", "rollOverColor": "#dea17e", "rollOverOutlineColor": "#dea17e", "title": "Moldova", "showAsSelected": false },
+              { "id": "ME", "color": "#f8b58e", "outlineColor": "#f8b58e", "rollOverColor": "#dea17e", "rollOverOutlineColor": "#dea17e", "title": "Montenegro", "showAsSelected": false },
+              { "id": "RS", "color": "#f8b58e", "outlineColor": "#f8b58e", "rollOverColor": "#dea17e", "rollOverOutlineColor": "#dea17e", "title": "Serbia", "showAsSelected": false },
+              { "id": "TJ", "color": "#f8b58e", "outlineColor": "#f8b58e", "rollOverColor": "#dea17e", "rollOverOutlineColor": "#dea17e", "title": "Tajikistan", "showAsSelected": false },
+              { "id": "TR", "color": "#f8b58e", "outlineColor": "#f8b58e", "rollOverColor": "#dea17e", "rollOverOutlineColor": "#dea17e", "title": "Turkey", "showAsSelected": false },
+              { "id": "TM", "color": "#f8b58e", "outlineColor": "#f8b58e", "rollOverColor": "#dea17e", "rollOverOutlineColor": "#dea17e", "title": "Turkmenistan", "showAsSelected": false },
+              { "id": "UZ", "color": "#f8b58e", "outlineColor": "#f8b58e", "rollOverColor": "#dea17e", "rollOverOutlineColor": "#dea17e", "title": "Uzbekistan", "showAsSelected": false },
+              { "id": "UA", "color": "#f8b58e", "outlineColor": "#f8b58e", "rollOverColor": "#dea17e", "rollOverOutlineColor": "#dea17e", "title": "Ukraine", "showAsSelected": false }
             ]
         },
 
@@ -112,22 +130,10 @@ $(document).ready(function () {
             {
                 "event": "clickMapObject",
                 "method": function (event) {
-                    var countryOfInterest = false;
                     for (var i = 0; i < listOfActiveCountries.length; i++) {
                         if (listOfActiveCountries[i].id == event.mapObject.id) {
-                            countryOfInterest = true;
+                            angular.element(document.getElementById('mainContainerId')).scope().countryClickedFunc('fromMap', i);
                         }
-                    }
-                    if (countryOfInterest == true) {
-                        //'mainContainerId' is id of main html container; we need it to access angular controller and send the id of country that has been clicked; ID of country is defined in this controller in 'listOfActiveCountries' object AND IT SHOULD BE DEFINED ALSO in 'home-controller.js'
-                        angular.element(document.getElementById('mainContainerId')).scope().countryClickedFunc('fromMap', event.mapObject.id);
-                        //var titleObjects = document.getElementsByClassName('c-dynamic-country-title');
-                        //for (var i = 0; i < titleObjects.length; i++) {
-                        //    titleObjects[i].innerHTML = event.mapObject.title;
-                        //}
-                        //$(".c-country-key-txxt-wrap").show();
-                    } else {
-                        return false;
                     }
                     //Resolution depending function
                     if ($(window).width() > 992) {
@@ -314,7 +320,7 @@ $(document).ready(function () {
     function setupRandomSvgGraphics() {
         /* #region Get random numbers */
         var firstRandomIndex = Math.floor(Math.random() * (infographicsGroups.length - 0)) + 0;
-        //var firstRandomIndex = 0;
+        //var firstRandomIndex = 4;
         //setup interval that will keep firing until we get second index different from first index
         var randomInterval_secondGroup = setInterval(getRandomIndex_secondGroup, 10);
         function getRandomIndex_secondGroup() {
@@ -679,6 +685,10 @@ $(document).ready(function () {
                     function countdown_forFinished() {
                         counter_finished++;
                         if (counter_finished == objects_all.length) {
+                            var elementToColor = svgDocument_belarus.getElementById("calendar");
+                            var squareToColor = elementToColor.querySelector('.colored-square');
+                            var animDelay = delayNumber * i;
+                            TweenMax.to(squareToColor, 0.5, { fill: "#0074A7", ease: Back.easeOut.config(1.7), delay: animDelay });
                             animationInProgress_belarus = false;
                         }
                     }
@@ -741,6 +751,14 @@ $(document).ready(function () {
                     function countdown_forFinished() {
                         counter_finished++;
                         if (counter_finished == objects_all.length) {
+                            for (var i = 1; i < 4; i++) {
+                                var animDelay = delayNumber * i;
+                                var elementToColor = svgDocument_bosnia.getElementById("person-" + (i + 3));
+                                var personHead = elementToColor.querySelector('.person-head');
+                                var personBody = elementToColor.querySelector('.person-body');
+                                TweenMax.to(personHead, 0.5, { fill: "#0074A8", ease: Back.easeOut.config(1.7), delay: animDelay });
+                                TweenMax.to(personBody, 0.5, { fill: "#0074A8", ease: Back.easeOut.config(1.7), delay: animDelay });
+                            }
                             animationInProgress_bosnia = false;
                         }
                     }
@@ -864,6 +882,11 @@ $(document).ready(function () {
                     function countdown_forFinished() {
                         counter_finished++;
                         if (counter_finished == objects_all.length) {
+                            var elementToColor_01 = svgDocument_kazakhstan.getElementById("person-left").querySelector('.element-to-color');
+                            var elementToColor_02 = svgDocument_kazakhstan.getElementById("person-right").querySelector('.element-to-color');
+                            var animDelay = delayNumber * i;
+                            TweenMax.to(elementToColor_01, 1, { fill: "#F48466", ease: Back.easeOut.config(1.7), delay: animDelay });
+                            TweenMax.to(elementToColor_02, 1, { fill: "#F48466", ease: Back.easeOut.config(1.7), delay: animDelay });
                             animationInProgress_kazakhstan = false;
                         }
                     }
@@ -924,6 +947,11 @@ $(document).ready(function () {
                     function countdown_forFinished() {
                         counter_finished++;
                         if (counter_finished == objects_all.length) {
+                            for (var i = 1; i < 5; i++){
+                                var elementToColor = svgDocument_kosovo.getElementById("bullet-"+i).querySelector('.element-to-color');
+                                var animDelay = delayNumber * i;
+                                TweenMax.to(elementToColor, 1, { fill: "#F48466", ease: Back.easeOut.config(1.7), delay: animDelay });
+                            }
                             animationInProgress_kosovo = false;
                         }
                     }
@@ -1018,11 +1046,11 @@ $(document).ready(function () {
                     var svgDocument_moldova = graphicObject_moldova.contentDocument;
 
                     var objects_all = [];
-                    objects_all.push(svgDocument_moldova.getElementById("phone"));
-                    objects_all.push(svgDocument_moldova.getElementById("sos"));
-                    for (var i = 0; i < objects_all.length; i++) {
+                    for (var i = 0; i < 16; i++) {
+                        objects_all.push(svgDocument_moldova.getElementById("petal-" + (i + 1)));
                         TweenMax.to(objects_all[i], 0.1, { opacity: 0, scaleX: 0.1, scaleY: 0.1, transformOrigin: "50% 50%", onComplete: countdown_initial });
                     }
+
                     /* #endregion Defining Elements */
                     /* #region INITAL function caller */
                     var counter_initial = 0;
@@ -1047,6 +1075,11 @@ $(document).ready(function () {
                     function countdown_forFinished() {
                         counter_finished++;
                         if (counter_finished == objects_all.length) {
+                            for (var i = 3; i < 14; i++) {
+                                var elementToColor = svgDocument_moldova.getElementById("petal-" + i).querySelector('path');
+                                var animDelay = delayNumber * i;
+                                TweenMax.to(elementToColor, 1, { fill: "#F1F1F2", ease: Back.easeOut.config(1.7), delay: animDelay });
+                            }
                             animationInProgress_moldova = false;
                         }
                     }
@@ -1080,8 +1113,9 @@ $(document).ready(function () {
                     var svgDocument_montenegro = graphicObject_montenegro.contentDocument;
 
                     var objects_all = [];
-                    for (var i = 0; i < 16; i++) {
-                        objects_all.push(svgDocument_montenegro.getElementById("petal-" + (i + 1)));
+                    objects_all.push(svgDocument_montenegro.getElementById("phone"));
+                    objects_all.push(svgDocument_montenegro.getElementById("sos"));
+                    for (var i = 0; i < objects_all.length; i++) {
                         TweenMax.to(objects_all[i], 0.1, { opacity: 0, scaleX: 0.1, scaleY: 0.1, transformOrigin: "50% 50%", onComplete: countdown_initial });
                     }
                     /* #endregion Defining Elements */
