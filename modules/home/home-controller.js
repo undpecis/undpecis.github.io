@@ -11,8 +11,8 @@ angular.module('Home')
               { id: "AL", title: "Albania" },
               { id: "AM", title: "Armenia" },
               { id: "AZ", title: "Azerbaijan" },
-              { id: "BA", title: "Bosnia and Herzegovina" },
               { id: "BY", title: "Belarus" },
+              { id: "BA", title: "Bosnia and Herzegovina" },
               { id: "MK", title: "FYR Macedonia" },
               { id: "GE", title: "Georgia" },
               { id: "KZ", title: "Kazakhstan" },
@@ -24,8 +24,8 @@ angular.module('Home')
               { id: "TJ", title: "Tajikistan" },
               { id: "TR", title: "Turkey" },
               { id: "TM", title: "Turkmenistan" },
-              { id: "UZ", title: "Uzbekistan" },
-                { id: "UA", title: "Ukraine" }
+                { id: "UA", title: "Ukraine" },
+                { id: "UZ", title: "Uzbekistan" }
             ];
             /* #region Variables for application */
             $scope.ctrlVars = {
@@ -137,6 +137,7 @@ angular.module('Home')
             /* #endregion Variables for application */
             /* #===================================================================== Content visibility related code =======# */
             $scope.toggleVisibility = function (callerName, subTarget) {
+                console.log('callerName: ' + callerName + '  subTarget: ' + subTarget);
                 if (callerName == 'burgerMenu_focusAreas') {
                     $scope.ctrlVars.visibleStates.burger_focusAreas = !$scope.ctrlVars.visibleStates.burger_focusAreas;
                     $scope.ctrlVars.visibleStates.burger_countries = false;
@@ -191,7 +192,11 @@ angular.module('Home')
                         }
                     }
                 } else if (callerName == 'footerMenu_focusAres') {
-                    $scope.ctrlVars.visibleStates.footer_focusAreaIndex = subTarget;
+                    if (subTarget != undefined && subTarget != null) {
+                        $scope.ctrlVars.visibleStates.footer_focusAreaIndex = subTarget;
+                    } else {
+                        $scope.ctrlVars.visibleStates.footer_focusAreaIndex = 0;
+                    }
                 } else if (callerName == 'okwContentMoreLess') {
                     if ($scope.ctrlVars.dataBindOKW.isTextExpanded != undefined && $scope.ctrlVars.dataBindOKW.isTextExpanded != null) {
                         $scope.ctrlVars.dataBindOKW.isTextExpanded = !$scope.ctrlVars.dataBindOKW.isTextExpanded;
@@ -206,6 +211,9 @@ angular.module('Home')
                     $scope.ctrlVars.visibleStates.isCountryVisible = !$scope.ctrlVars.visibleStates.isCountryVisible;
                     $scope.ctrlVars.visibleStates.isOpenCountryBACdata_lg = false;
                 } else if (callerName == 'countryLearnMore_lg') {
+                    if ($scope.ctrlVars.visibleStates.isOpenCountryBACdata_lg == false) {
+                        $scope.changeCountryBACData(0);
+                    }
                     $scope.ctrlVars.visibleStates.isOpenCountryBACdata_lg = !$scope.ctrlVars.visibleStates.isOpenCountryBACdata_lg;
                 } else if (callerName == 'bacContentMoreLess') {
                     if ($scope.ctrlVars.dataBindBAC.isTextExpanded != undefined && $scope.ctrlVars.dataBindBAC.isTextExpanded != null) {
@@ -245,6 +253,9 @@ angular.module('Home')
             $(document).on('click', '#cid-footer-navigations-xs .c-clickable-item', function (e) {
                 e.stopPropagation();
             });
+            $(document).on('click', '#cid-okw-sto-prop .c-sto-prop', function (e) {
+                e.stopPropagation();
+            });
             /* #===================================================================== Countries Map related code =======# */
             $scope.countryClickedFunc = function (callerName, countryIndex) {
                 if (callerName == 'countriesFromBurger') {
@@ -254,14 +265,18 @@ angular.module('Home')
                     var countryId = undpWorldMap.dataProvider.areas[countryIndex].id;
                     var newCountryObject = undpWorldMap.getObjectById(countryId);
                     undpWorldMap.clickMapObject(newCountryObject);
+                    //$scope.ctrlVars.selectedCountry = siteData.countries[countryIndex];
+                    //$scope.ctrlVars.visibleStates.isCountryVisible = true;
+                    //$scope.ctrlVars.selectedCountryIndex = countryIndex;
                     $timeout(function () {
                         scrollToAnchor('mapdiv');
                     }, 600);
+                } else {
+                    $scope.ctrlVars.selectedCountry = siteData.countries[countryIndex];
+                    $scope.ctrlVars.visibleStates.isCountryVisible = true;
+                    $scope.ctrlVars.selectedCountryIndex = countryIndex;
+                    $scope.changeCountryBACData(0);
                 };
-                $scope.ctrlVars.selectedCountry = siteData.countries[countryIndex];
-                $scope.ctrlVars.visibleStates.isCountryVisible = true;
-                $scope.ctrlVars.selectedCountryIndex = countryIndex;
-                $scope.changeCountryBACData(0);
             }
             $scope.changeCountryBACData = function (countryBACbttnIndex) {
                 for (var i = 0; i < $scope.ctrlVars.enumBAC.length; i++) {

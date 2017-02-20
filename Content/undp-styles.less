@@ -1352,52 +1352,106 @@ h1, h2, h3, h4, h5, h6, p, a { margin:0; padding:0;}
         /* #endregion RESPONSIVE QUERY */
         /* #region Header stripe */
         .c-header-wrap{
-            //display:block;
-            position:relative;
-            width:100%;
-            background-color:@col-white;
-            .mx-set-as-border-box();
-            padding-top:20px;
-            padding-bottom:20px;
-            z-index:5;
-            > .c-table{
-                height:auto;
-                > .c-cell{
-                    vertical-align:middle;
-                }
-            }
-            .c-has-logo{
-                text-align:center;
+            &.c-show-when-lg{
+                //display:block;
+                position:absolute;
+                width:100%;
+                background-color:@col-white;
                 .mx-set-as-border-box();
-            }
-            .c-header-logo{
-                display:inline-block;
-                width:84px;
-                height:76px;
-            }
-            .c-table-as-button{
-                .c-cell{
-                    .mx-set-as-border-box();
-                    width:50%;
-                    min-width:80px;
-                    border-collapse:collapse;
-                    border-left:1px solid @col-text-black;
-                    border-right:1px solid @col-text-black;
-                    vertical-align:middle;
-                    text-align:center;
-                    padding:0 5px;
-                    &:last-child{
-                        border-left:none;
+                padding-top:20px;
+                padding-bottom:20px;
+                z-index:5;
+                > .c-table{
+                    height:auto;
+                    > .c-cell{
+                        vertical-align:middle;
                     }
                 }
+                .c-has-logo{
+                    text-align:center;
+                    .mx-set-as-border-box();
+                    padding-left:70px;
+                }
+                .c-header-logo{
+                    display:inline-block;
+                    width:84px;
+                    height:76px;
+                }
+                .c-table-as-button{
+                    .c-cell{
+                        .mx-set-as-border-box();
+                        width:50%;
+                        min-width:80px;
+                        border-collapse:collapse;
+                        border-left:1px solid @col-text-black;
+                        border-right:1px solid @col-text-black;
+                        vertical-align:middle;
+                        text-align:center;
+                        padding:0 5px;
+                        &:last-child{
+                            border-left:none;
+                        }
+                    }
+                }
+                .c-has-icons{
+                    .mx-set-as-border-box();
+                    padding:0 30px 0 0;
+                }
+                .c-has-text{
+                    text-align:left;
+                    padding:0 60px;
+                    .mx-set-as-border-box();
+                }
             }
-            .c-has-icons{
-                .mx-set-as-border-box();
-            }
-            .c-has-text{
-                text-align:left;
-                padding:0 60px;
-                .mx-set-as-border-box();
+            &.c-show-when-xs{
+                position:relative;
+                height:@var-header-height-xsm;
+                padding-top:20px;
+                .c-table{
+                    height:auto;
+                    .c-has-logo{
+                        display:table-cell;
+                        width:50%;
+                        position:relative;
+                        vertical-align:top;
+                        text-align:left;
+                        padding-left:30px;
+                    }
+                    .c-has-icons{
+                        display:table-cell;
+                        width:1%;
+                        position:relative;
+                        vertical-align:top;
+                        text-align:right;
+                        padding-top:8px;
+                        padding-right:30px;
+                        .c-table-as-button{
+                            height:auto;
+                            width:auto;
+                            .c-has-cloud, .c-has-burger{
+                                .mx-cell-setup();
+                                width:50%;
+                                text-align:center;
+                                vertical-align:middle;
+                                .c-dropdown-btn-group{
+                                    display:inline-block;
+                                }
+                            }
+                            .c-has-cloud{
+                                padding-right:15px;
+                            }
+                        }
+                    }
+                    .c-has-text{
+                        display:table-cell;
+                        position:relative;
+                        vertical-align:top;
+                        width:100%;
+                        padding:15px 30px 5px;
+                        line-height:1.3;
+                        text-align:left;
+                    }
+                }
             }
             /* #region RESPONSIVE QUERY */
             /* #region Extra small resolutions */
@@ -1411,40 +1465,6 @@ h1, h2, h3, h4, h5, h6, p, a { margin:0; padding:0;}
                     }
                     &.c-show-when-lg{
                         display:none;
-                    }
-                    height:@var-header-height-xsm;
-                    .c-has-logo{
-                        display:inline-block;
-                        width:50%;
-                        float:left;
-                        position:relative;
-                        left:0;
-                    }
-                    .c-has-icons{
-                        display:inline-block;
-                        float:right;
-                        width:50%;
-                        position:relative;
-                        padding:15px 0 0 0;
-                        .c-cell{
-                            padding:0;
-                            border:none;
-                            &.c-has-cloud{
-
-                            }
-                            &.c-has-burger{
-
-                            }
-                        }
-                    }
-                    .c-has-text{
-                        display:block;
-                        width:100%;
-                        position:absolute;
-                        bottom:25px;
-                        height:auto;
-                        padding:0 30px;
-                        line-height:1.2;
                     }
                 }
             }
@@ -1474,12 +1494,6 @@ h1, h2, h3, h4, h5, h6, p, a { margin:0; padding:0;}
                 }
                 &.c-show-when-lg{
                     display:block;
-                }
-                .c-has-logo{
-                    padding-left:70px;
-                }
-                .c-has-icons{
-                    padding:0 30px 0 0;
                 }
                 @media (max-width: (@var-breakpoint-start-xlg - 1) ){
 

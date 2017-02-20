@@ -64,12 +64,12 @@
             </div>
             <div class="c-header-wrap c-show-when-xs">
                 <div class="c-table">
-                    <div class="c-cell c-w-1perc c-has-logo">
+                    <div class="c-cell c-has-logo">
                         <object type="image/svg+xml" data="Content/images/undp-50years-logo.svg" class="c-header-logo">
                             UNDP Logo <!-- fallback image in CSS -->
                         </object>
                     </div>
-                    <div class="c-cell c-w-1perc c-has-icons">
+                    <div class="c-cell c-has-icons">
                         <div class="c-table-as-button">
                             <div class="c-cell c-has-cloud">
                                 <a class="c-bttn" href="https://undpecis.github.io/download/towards-sdg-16-promoting-just-peaceful-and-inclusive-societies-in-europe.pdf" target="_blank">
@@ -860,7 +860,7 @@
 </div>
 <!-- #endregion Focus areas -->
 <!-- #region Expandable content -->
-<div id="cid-anchor-OKW-content" name="cid-anchor-OKW-content" class="c-wide-wrap c-black-background"  ng-if="ctrlVars.visibleStates.isVisibleFocusAreaContent" ng-class="{'c-black-line-top' : ctrlVars.currentFocusAreaIndex ==0, 'c-blue-line-top' : ctrlVars.currentFocusAreaIndex ==1, 'c-red-line-top' : ctrlVars.currentFocusAreaIndex ==2, 'c-peach-line-top' : ctrlVars.currentFocusAreaIndex ==3}">
+<div id="cid-anchor-OKW-content" name="cid-anchor-OKW-content" class="c-wide-wrap c-black-background"  ng-if="ctrlVars.visibleStates.isVisibleFocusAreaContent" ng-class="{'c-black-line-top' : ctrlVars.visibleStates.visibleFocusAreaContentIndex ==0, 'c-blue-line-top' : ctrlVars.visibleStates.visibleFocusAreaContentIndex ==1, 'c-red-line-top' : ctrlVars.visibleStates.visibleFocusAreaContentIndex ==2, 'c-peach-line-top' : ctrlVars.visibleStates.visibleFocusAreaContentIndex ==3}">
     <div class="c-container">
         <div class="c-expandable-content-wrap">
             <!-- #region Title -->
@@ -873,11 +873,11 @@
                 <div class="c-table">
                     <!-- #region Left content / Vertical navigation -->
                     <div class="c-cell c-has-vertical-nav c-col-1-5-lg">
-                        <ul class="c-vertical-list c-expandable-nav c-black-background">
-                            <li ng-click="changeCountryOKWData(0)" ng-class="{'c-active' : ctrlVars.currentOKWindex == 0}">
+                        <ul class="c-vertical-list c-expandable-nav c-black-background" id="cid-okw-sto-prop">
+                            <li ng-click="changeCountryOKWData(0)" ng-class="{'c-active' : ctrlVars.currentOKWindex == 0}" class="c-sto-prop">
                                 <a>Overview</a>
                             </li>
-                            <li ng-click="changeCountryOKWData(1)" ng-class="{'c-active' : ctrlVars.currentOKWindex == 1}">
+                            <li ng-click="changeCountryOKWData(1)" ng-class="{'c-active' : ctrlVars.currentOKWindex == 1}" class="c-sto-prop">
                                 <a>Key trends</a>
                             </li>
                             <li class="c-has-subnavigation" ng-if="ctrlVars.currentOKWindex == 1">
@@ -889,7 +889,7 @@
                                 </ul>
                                 <!-- #endregion Subnavigation -->
                             </li>
-                            <li ng-click="changeCountryOKWData(2)" ng-class="{'c-active' : ctrlVars.currentOKWindex == 2}">
+                            <li ng-click="changeCountryOKWData(2)" ng-class="{'c-active' : ctrlVars.currentOKWindex == 2}" class="c-sto-prop">
                                 <a>What we do</a>
                             </li>
                             <li class="c-has-subnavigation" ng-if="ctrlVars.currentOKWindex == 2">
