@@ -1311,9 +1311,9 @@
         <!-- #endregion Footer for large resolutions -->
         <!-- #region Footer for small resolutions -->
         <div class="c-footer-content-wrap-xs">
-            <ul class="c-vertical-list c-xs-devices c-footer-nav-items">
+            <ul class="c-vertical-list c-xs-devices c-footer-nav-items" id="cid-footer-navigations-xs">
                 <!-- #region UNDP ECIS -->
-                <li ng-click="toggleVisibility('footerNav_xs', 0)">
+                <li ng-click="toggleVisibility('footerNav_xs', 0)" class="c-clickable-item">
                     <a class="c-list-title" ng-class="{'c-active' : ctrlVars.enumFooter[0].isXsSubContentActive == true}">
                         <div class="c-table">
                             <div class="c-cell">UNDP ECIS</div>
@@ -1344,7 +1344,7 @@
                 </li>
                 <!-- #endregion UNDP ECIS -->
                 <!-- #region QUICK LINKS -->
-                <li ng-click="toggleVisibility('footerNav_xs', 1)">
+                <li ng-click="toggleVisibility('footerNav_xs', 1)" class="c-clickable-item">
                     <a class="c-list-title" ng-class="{'c-active' : ctrlVars.enumFooter[1].isXsSubContentActive == true}">
                         <div class="c-table">
                             <div class="c-cell">QUICK LINKS</div>
@@ -1430,7 +1430,7 @@
                 </li>
                 <!-- #endregion QUICK LINKS -->
                 <!-- #region REFERENCES -->
-                <li ng-click="toggleVisibility('footerNav_xs', 2)">
+                <li ng-click="toggleVisibility('footerNav_xs', 2)" class="c-clickable-item">
                     <a class="c-list-title" ng-class="{'c-active' : ctrlVars.enumFooter[2].isXsSubContentActive == true}">
                         <div class="c-table">
                             <div class="c-cell">REFERENCES</div>
@@ -1450,7 +1450,7 @@
                 </li>
                 <!-- #endregion REFERENCES -->
                 <!-- #region CONTACT US -->
-                <li ng-click="toggleVisibility('footerNav_xs', 3)">
+                <li ng-click="toggleVisibility('footerNav_xs', 3)" class="c-clickable-item">
                     <a class="c-list-title" ng-class="{'c-active' : ctrlVars.enumFooter[3].isXsSubContentActive == true}">
                         <div class="c-table">
                             <div class="c-cell">CONTACT US</div>

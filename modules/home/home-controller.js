@@ -172,7 +172,11 @@ angular.module('Home')
                         //set Focus Ares Content to visible
                         $scope.ctrlVars.visibleStates.isVisibleFocusAreaContent = true;
                         //bind Focus Ares Content
-                        $scope.openFocusAreaOKWtext(subTarget, 0);
+                        if (subTarget != undefined && subTarget != null) {
+                            $scope.openFocusAreaOKWtext(subTarget, 0);
+                        } else {
+                            $scope.openFocusAreaOKWtext(0, 0);
+                        }
                     //then click came from Focus Areas 'Learn More' buttons
                     } else {
                         //check if user is toggling FA content visibility by clicking 'Learn More' button
@@ -193,28 +197,14 @@ angular.module('Home')
                         $scope.ctrlVars.dataBindOKW.isTextExpanded = !$scope.ctrlVars.dataBindOKW.isTextExpanded;
                         //if we shrinked text content by clicking 'Show less' then we should scroll back to top
                         if ($scope.ctrlVars.dataBindOKW.isTextExpanded == false) {
-                            if (isLargeResolution == false) {
-                                $timeout(function () {
-                                    scrollToAnchor('cid-anchor-OKW-content');
-                                }, 600);
-                            } else {
-                                $timeout(function () {
-                                    scrollToAnchor('cid-anchor-OKW-content');
-                                }, 600);
-                            }
+                            $timeout(function () {
+                                scrollToAnchor('cid-anchor-OKW-content');
+                            }, 600);
                         }
                     }
                 } else if (callerName == 'countryOnMap') {
                     $scope.ctrlVars.visibleStates.isCountryVisible = !$scope.ctrlVars.visibleStates.isCountryVisible;
                     $scope.ctrlVars.visibleStates.isOpenCountryBACdata_lg = false;
-                    var countryIndex = $scope.ctrlVars.selectedCountryIndex;
-                    undpWorldMap.dataProvider.areas[countryIndex].showAsSelected = false;
-                    //
-                    undpWorldMap.dataProvider.zoomLevel = undpWorldMap.zoomLevel();
-                    undpWorldMap.dataProvider.zoomLatitude = undpWorldMap.zoomLatitude();
-                    undpWorldMap.dataProvider.zoomLongitude = undpWorldMap.zoomLongitude();
-                    ////
-                    undpWorldMap.validateData();
                 } else if (callerName == 'countryLearnMore_lg') {
                     $scope.ctrlVars.visibleStates.isOpenCountryBACdata_lg = !$scope.ctrlVars.visibleStates.isOpenCountryBACdata_lg;
                 } else if (callerName == 'bacContentMoreLess') {
@@ -222,23 +212,17 @@ angular.module('Home')
                         $scope.ctrlVars.dataBindBAC.isTextExpanded = !$scope.ctrlVars.dataBindBAC.isTextExpanded;
                         //if we shrinked text content by clicking 'Show less' then we should scroll back to top
                         if ($scope.ctrlVars.dataBindOKW.isTextExpanded == false) {
-                            if (isLargeResolution == false) {
-                                $timeout(function () {
-                                    scrollToAnchor('cid-bac-content-lg');
-                                }, 600);
-                            } else {
-                                $timeout(function () {
-                                    scrollToAnchor('cid-bac-content-xs');
-                                }, 600);
-                            }
+                            $timeout(function () {
+                                scrollToAnchor('cid-bac-content-xs');
+                            }, 600);
                         }
                     }
                 } else if (callerName == 'forwordContentMoreLess') {
                     $scope.ctrlVars.forewordData.isTextExpanded = !$scope.ctrlVars.forewordData.isTextExpanded;
                     if ($scope.ctrlVars.forewordData.isTextExpanded == false) {
-                        //$timeout(function () {
-                        //    scrollToAnchor('cid-foreword-content');
-                        //}, 600);
+                        $timeout(function () {
+                            scrollToAnchor('cid-foreword-content');
+                        }, 600);
                     }
                 } else if (callerName == 'footerNav_xs') {
                     for (var i = 0; i < $scope.ctrlVars.enumFooter.length; i++) {
@@ -258,35 +242,25 @@ angular.module('Home')
             $(document).on('click', '#cid-burger-dropdown-menu-lg.dropdown-menu', function (e) {
                 e.stopPropagation();
             });
+            $(document).on('click', '#cid-footer-navigations-xs .c-clickable-item', function (e) {
+                e.stopPropagation();
+            });
             /* #===================================================================== Countries Map related code =======# */
             $scope.countryClickedFunc = function (callerName, countryIndex) {
-                for (var i = 0; i < undpWorldMap.dataProvider.areas.length; i++){
-                    if (i == countryIndex) {
-                        console.log('33countryIndex and i: ' + countryIndex + ' ' + i);
-                        undpWorldMap.dataProvider.areas[i].showAsSelected = true;
-                    } else {
-                        undpWorldMap.dataProvider.areas[i].showAsSelected = false;
-                    }
-                }
-                console.log('countryIndex: ' + countryIndex);
-                $scope.ctrlVars.selectedCountry = siteData.countries[countryIndex];
-                $scope.ctrlVars.visibleStates.isCountryVisible = true;
-                $scope.ctrlVars.selectedCountryIndex = countryIndex;
                 if (callerName == 'countriesFromBurger') {
                     if ($('.c-header-burger-dropdown').is(':visible')) {
                         $('[data-toggle="dropdown"]').parent().removeClass('open');
                     };
+                    var countryId = undpWorldMap.dataProvider.areas[countryIndex].id;
+                    var newCountryObject = undpWorldMap.getObjectById(countryId);
+                    undpWorldMap.clickMapObject(newCountryObject);
                     $timeout(function () {
                         scrollToAnchor('mapdiv');
-                    }, 500);
+                    }, 600);
                 };
-                
-                undpWorldMap.dataProvider.zoomLevel = undpWorldMap.zoomLevel();
-                undpWorldMap.dataProvider.zoomLatitude = undpWorldMap.zoomLatitude();
-                undpWorldMap.dataProvider.zoomLongitude = undpWorldMap.zoomLongitude();
-                ////
-                undpWorldMap.validateData();
-                //
+                $scope.ctrlVars.selectedCountry = siteData.countries[countryIndex];
+                $scope.ctrlVars.visibleStates.isCountryVisible = true;
+                $scope.ctrlVars.selectedCountryIndex = countryIndex;
                 $scope.changeCountryBACData(0);
             }
             $scope.changeCountryBACData = function (countryBACbttnIndex) {
@@ -346,17 +320,9 @@ angular.module('Home')
                 $scope.ctrlVars.visibleStates.visibleFocusAreaContentIndex = wantedFocusAreaIndex;
                 $scope.ctrlVars.selectedFocusAreaData = $scope.ctrlVars.focusData[wantedFocusAreaIndex];
                 $scope.changeCountryOKWData(wantedFocusAreaOKWcontentIndex);
-                if (isLargeResolution == false) {
-                    //small devices, mobile phones
-                    $timeout(function () {
-                        scrollToAnchor('cid-anchor-OKW-content');
-                    }, 500);
-                } else {
-                    //large resolutions
-                    $timeout(function () {
-                        scrollToAnchor('cid-anchor-OKW-content');
-                    }, 500);
-                }
+                $timeout(function () {
+                    scrollToAnchor('cid-anchor-OKW-content');
+                }, 600);
             }
             //function that will toggle between Focus Area OKW content
             $scope.changeCountryOKWData = function (buttonIndex) {
@@ -385,7 +351,7 @@ angular.module('Home')
                             //small devices, mobile phones
                             $timeout(function () {
                                 scrollToAnchor('cid-anchor-OKW-content');
-                            }, 500);
+                            }, 600);
                         }
                     } else {
                         $scope.ctrlVars.enumOKW[i].isXsSubnavActive = false;
@@ -484,22 +450,27 @@ angular.module('Home')
                 return $sce.trustAsHtml(html_code);
             }
             // @= Scroll to Anchor div 
+            var scrollInProgress = false;
             function scrollToAnchor(anchorId) {
-                var genericIntervalCounter = 0;
-                var checkForElementInterval = setInterval(getElementToScroll, 100);
-                function getElementToScroll() {
-                    //cancel interval if it is fired to many times
-                    if (genericIntervalCounter > 99) {
-                        clearInterval(checkForElementInterval);
-                    } else {
-                        var htmlElement = angular.element(document.getElementById(anchorId));
-                        if (htmlElement != null && htmlElement != undefined) {
+                if (scrollInProgress == false) {
+                    var genericIntervalCounter = 0;
+                    var checkForElementInterval = setInterval(getElementToScroll, 100);
+                    function getElementToScroll() {
+                        //cancel interval if it is fired to many times
+                        if (genericIntervalCounter > 99) {
                             clearInterval(checkForElementInterval);
-                            //
-                            $location.hash(anchorId);
-                            $anchorScroll();
+                            genericIntervalCounter = 0;
+                        } else {
+                            genericIntervalCounter++;
+                            var htmlElement = angular.element(document.getElementById(anchorId));
+                            if (htmlElement != null && htmlElement != undefined) {
+                                clearInterval(checkForElementInterval);
+                                scrollInProgress = false;
+                                //
+                                $location.hash(anchorId);
+                                $anchorScroll();
+                            }
                         }
-                        genericIntervalCounter++;
                     }
                 }
             };

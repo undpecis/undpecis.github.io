@@ -3,24 +3,7 @@
 //- ScrollMagic (for detecting scroll events)
 //- TweenMax (GreenSock GSAP) (for animation)
 var undpWorldMap = null;
-//function externalFunction_selectCountry(index) {
-//    if (index != undefined && index != null) {
-//        console.log('index c00TT: ' + index);
-//        undpWorldMap.dataProvider.areas[index].showAsSelected = true;
-//        undpWorldMap.validateData();
-//    }
-//    //selectedObject
-//    //dataProvider
-//    //dispatchDataUpdated
-//    //objectWasClicked
-//                    undpWorldMap.dataProvider.areas[i].showAsSelected = false;
-//undpWorldMap.validateData();
-//}
-
-//map.dataProvider.zoomLevel = map.zoomLevel();
-//map.dataProvider.zoomLatitude = map.dataProvider.zoomLatitude = map.zoomLatitude();
-//map.dataProvider.zoomLongitude = map.dataProvider.zoomLongitude = map.zoomLongitude();
-
+//
 function externalCompileCaller() {
     console.log('calling... outisde func');
     $('[data-toggle="popover"]').popover(
@@ -36,26 +19,26 @@ $(document).ready(function () {
     /* #region Swipebox lightbox */
     $('.swipebox').swipebox();
     /* #endregion Swipebox lightbox */
-    var listOfActiveCountries = [
-      { "id": "AL", "title": "Albania" },
-      { "id": "AM", "title": "Armenia" },
-      { "id": "AZ", "title": "Azerbaijan" },
-      { "id": "BA", "title": "Bosnia and Herzegovina" },
-      { "id": "BY", "title": "Belarus" },      
-      { "id": "MK", "title": "FYR Macedonia" },
-      { "id": "GE", "title": "Georgia" },
-      { "id": "KZ", "title": "Kazakhstan" },
-      { "id": "XK", "title": "Kosovo" },
-      { "id": "KG", "title": "Kyrgyz Republic" },
-      { "id": "MD", "title": "Moldova" },
-      { "id": "ME", "title": "Montenegro" },
-      { "id": "RS", "title": "Serbia" },
-      { "id": "TJ", "title": "Tajikistan" },
-      { "id": "TR", "title": "Turkey" },
-      { "id": "TM", "title": "Turkmenistan" },
-      { "id": "UZ", "title": "Uzbekistan" },
-      { "id": "UA", "title": "Ukraine" }
-    ];
+    //var listOfActiveCountries = [
+    //  { "id": "AL", "title": "Albania" },
+    //  { "id": "AM", "title": "Armenia" },
+    //  { "id": "AZ", "title": "Azerbaijan" },
+    //  { "id": "BA", "title": "Bosnia and Herzegovina" },
+    //  { "id": "BY", "title": "Belarus" },      
+    //  { "id": "MK", "title": "FYR Macedonia" },
+    //  { "id": "GE", "title": "Georgia" },
+    //  { "id": "KZ", "title": "Kazakhstan" },
+    //  { "id": "XK", "title": "Kosovo" },
+    //  { "id": "KG", "title": "Kyrgyz Republic" },
+    //  { "id": "MD", "title": "Moldova" },
+    //  { "id": "ME", "title": "Montenegro" },
+    //  { "id": "RS", "title": "Serbia" },
+    //  { "id": "TJ", "title": "Tajikistan" },
+    //  { "id": "TR", "title": "Turkey" },
+    //  { "id": "TM", "title": "Turkmenistan" },
+    //  { "id": "UZ", "title": "Uzbekistan" },
+    //  { "id": "UA", "title": "Ukraine" }
+    //];
     /* #region AMCharts Map */
     undpWorldMap = AmCharts.makeChart("mapdiv", {
         /**
@@ -130,20 +113,20 @@ $(document).ready(function () {
             {
                 "event": "clickMapObject",
                 "method": function (event) {
-                    for (var i = 0; i < listOfActiveCountries.length; i++) {
-                        if (listOfActiveCountries[i].id == event.mapObject.id) {
+                    for (var i = 0; i < undpWorldMap.dataProvider.areas.length; i++) {
+                        if (undpWorldMap.dataProvider.areas[i].id == event.mapObject.id) {
                             angular.element(document.getElementById('mainContainerId')).scope().countryClickedFunc('fromMap', i);
                         }
                     }
                     //Resolution depending function
-                    if ($(window).width() > 992) {
-                        console.log("I'm calling function above 992 = large");
-                        //$('div.c-country-title.c-show-when-lg').show();
-                    }
-                    else {
-                        console.log("I'm calling function below 992 = small");
-                        //$('div.c-country-title.c-show-when-xs').show();
-                    }
+                    //if ($(window).width() > 992) {
+                    //    console.log("I'm calling function above 992 = large");
+                    //    //$('div.c-country-title.c-show-when-lg').show();
+                    //}
+                    //else {
+                    //    console.log("I'm calling function below 992 = small");
+                    //    //$('div.c-country-title.c-show-when-xs').show();
+                    //}
                     //// Ignore any click not on area
                     //if (e.mapObject.objectType !== "MapArea")
                     //    return;
