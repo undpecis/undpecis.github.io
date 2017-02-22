@@ -687,6 +687,7 @@ h1, h2, h3, h4, h5, h6, p, a { margin:0; padding:0;}
                     right:8px;
                     font-size:10px;
                     top:12px;
+                    pointer-events: none;
                 }
             }
         }
@@ -2120,7 +2121,6 @@ h1, h2, h3, h4, h5, h6, p, a { margin:0; padding:0;}
         background-color:@col-focus-stripe-blue;
         color:@col-white;
         text-align:left;
-        cursor:pointer;
         /* #region RESPONSIVE QUERY */
         /* #region Extra small resolutions */
         @media only screen and (min-width : @var-breakpoint-start-zero) {
@@ -2153,6 +2153,18 @@ h1, h2, h3, h4, h5, h6, p, a { margin:0; padding:0;}
             }
             &.c-show-when-lg{
                 display:block;
+                background:rgb(0, 105, 158);
+                background:rgba(0, 105, 158, 0.7);
+                .c-bttn-combo{
+                    &.c-bttn-blue{
+                        background:none;
+                        background-color:none;
+                        &:hover{
+                            background:none;
+                            background-color:none;
+                        }
+                    }
+                }
             }
             padding-right:@var-help-controls-width-lg;
             @media (max-width: (@var-breakpoint-start-xlg - 1) ){
@@ -2582,6 +2594,26 @@ h1, h2, h3, h4, h5, h6, p, a { margin:0; padding:0;}
                                             text-decoration:underline;
                                         }
                                     }
+                                    /* #region Bootstrap Popover */
+                                    .popover{
+                                        border-radius:0;
+                                        color:@col-text-black;
+                                        .popover-title{
+                                            color:@col-text-black;
+                                            background-color:@col-white;
+                                        }
+                                        .popover-content{
+                                            color:@col-text-black;
+                                            background-color:@col-white;
+                                        }
+                                        a{
+                                            color:@col-text-blue;
+                                            &:hover{
+                                                color:darken(@col-text-blue,20);
+                                            }
+                                        }
+                                    }
+                                    /* #endregion Bootstrap Popover */
                                 }
                             }
                         }
@@ -3429,13 +3461,23 @@ h1, h2, h3, h4, h5, h6, p, a { margin:0; padding:0;}
 /* #region Bootstrap Popover */
 .popover{
     border-radius:0;
+    color:@col-text-black;
     .popover-title{
         color:@col-text-black;
         background-color:@col-white;
+        a{
+            color:@col-text-blue
+        }
     }
     .popover-content{
         color:@col-text-black;
         background-color:@col-white;
+        a{
+            color:@col-text-blue
+        }
+    }
+    a{
+        color:@col-text-blue
     }
 }
 /* #endregion Bootstrap Popover */

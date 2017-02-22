@@ -250,6 +250,9 @@ angular.module('Home')
             $(document).on('click', '#cid-burger-dropdown-menu-lg.dropdown-menu', function (e) {
                 e.stopPropagation();
             });
+            $(document).on('click', '#cid-footer-navigations-lg .c-clickable-item', function (e) {
+                e.stopPropagation();
+            });
             $(document).on('click', '#cid-footer-navigations-xs .c-clickable-item', function (e) {
                 e.stopPropagation();
             });

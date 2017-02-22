@@ -223,3 +223,20 @@
 .rule_of_law .what_we4 {
     background-image: url('images/photos-and-graphic/image-66-1.jpg');
 }
+@media (max-width:550px) {
+.table_bcgr {
+    background-size: cover;
+}
+.tableCss {
+    width: 100%;
+    font-size: 12px;
+}
+    .img_contet {
+        width: 93px;
+        height: auto;
+        padding: 15px;
+    }
+    .graph_small img {
+        width: 100%;
+    }
+}

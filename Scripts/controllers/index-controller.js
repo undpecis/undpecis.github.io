@@ -4,13 +4,58 @@
 //- TweenMax (GreenSock GSAP) (for animation)
 var undpWorldMap = null;
 //
+$('.popover').not(this).hide(); //Hi
 function externalCompileCaller() {
-    console.log('calling popover external rebind');
     $('[data-toggle="popover"]').popover(
         {
             html: true,
-            viewport: '.c-bind-txxt-wrapper',
+            viewport: '#cid-binded-bac-text',
             trigger: 'focus',
+            placement: function (context, source) {
+                var position = $(source).position();
+                var content_width = 515;  //Can be found from a JS function for more dynamic output
+                var content_height = 110;  //Can be found from a JS function for more dynamic output
+
+                if (position.left > content_width) {
+                    return "left";
+                }
+
+                if (position.left < content_width) {
+                    return "right";
+                }
+
+                if (position.top < content_height) {
+                    return "bottom";
+                }
+
+                return "top";
+            }
+        }
+    );
+    $('[data-toggle="popover-fa"]').popover(
+        {
+            html: true,
+            viewport: '#cid-binded-okw-text',
+            trigger: 'focus',
+            placement: function (context, source) {
+                var position = $(source).position();
+                var content_width = 515;  //Can be found from a JS function for more dynamic output
+                var content_height = 110;  //Can be found from a JS function for more dynamic output
+
+                if (position.left > content_width) {
+                    return "left";
+                }
+
+                if (position.left < content_width) {
+                    return "right";
+                }
+
+                if (position.top < content_height) {
+                    return "bottom";
+                }
+
+                return "top";
+            }
         }
     );
 }
