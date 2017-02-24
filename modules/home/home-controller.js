@@ -8,22 +8,22 @@ angular.module('Home')
             /* #===================================================================== Application setup =======# */
             // @= We are defining list of active countries (this 'listOfActiveCountries' is also defined inside 'index-controller.js' file)
             $scope.activeCountriesList = [
-              { id: "AL", title: "Albania" },
-              { id: "AM", title: "Armenia" },
-              { id: "AZ", title: "Azerbaijan" },
-              { id: "BY", title: "Belarus" },
-              { id: "BA", title: "Bosnia and Herzegovina" },
-              { id: "MK", title: "FYR Macedonia" },
-              { id: "GE", title: "Georgia" },
-              { id: "KZ", title: "Kazakhstan" },
-              { id: "XK", title: "Kosovo" },
-              { id: "KG", title: "Kyrgyz Republic" },
-              { id: "MD", title: "Moldova" },
-              { id: "ME", title: "Montenegro" },
-              { id: "RS", title: "Serbia" },
-              { id: "TJ", title: "Tajikistan" },
-              { id: "TR", title: "Turkey" },
-              { id: "TM", title: "Turkmenistan" },
+                { id: "AL", title: "Albania" },
+                { id: "AM", title: "Armenia" },
+                { id: "AZ", title: "Azerbaijan" },
+                { id: "BY", title: "Belarus" },
+                { id: "BA", title: "Bosnia and Herzegovina" },
+                { id: "MK", title: "FYR Macedonia" },
+                { id: "GE", title: "Georgia" },
+                { id: "KZ", title: "Kazakhstan" },
+                { id: "XK", title: "Kosovo" },
+                { id: "KG", title: "Kyrgyz Republic" },
+                { id: "MD", title: "Moldova" },
+                { id: "ME", title: "Montenegro" },
+                { id: "RS", title: "Serbia" },
+                { id: "TJ", title: "Tajikistan" },
+                { id: "TR", title: "Turkey" },
+                { id: "TM", title: "Turkmenistan" },
                 { id: "UA", title: "Ukraine" },
                 { id: "UZ", title: "Uzbekistan" }
             ];
@@ -219,10 +219,16 @@ angular.module('Home')
                     if ($scope.ctrlVars.dataBindBAC.isTextExpanded != undefined && $scope.ctrlVars.dataBindBAC.isTextExpanded != null) {
                         $scope.ctrlVars.dataBindBAC.isTextExpanded = !$scope.ctrlVars.dataBindBAC.isTextExpanded;
                         //if we shrinked text content by clicking 'Show less' then we should scroll back to top
-                        if ($scope.ctrlVars.dataBindOKW.isTextExpanded == false) {
-                            $timeout(function () {
-                                scrollToAnchor('cid-bac-content-xs');
-                            }, 600);
+                        if ($scope.ctrlVars.dataBindBAC.isTextExpanded == false) {
+                            if (isLargeResolution == true) {
+                                $timeout(function () {
+                                    scrollToAnchor('cid-bac-content-lg');
+                                }, 600);
+                            } else {
+                                $timeout(function () {
+                                    scrollToAnchor('cid-bac-content-xs');
+                                }, 600);
+                            }
                         }
                     }
                 } else if (callerName == 'forwordContentMoreLess') {
@@ -378,6 +384,7 @@ angular.module('Home')
             }
             //function that will show selected text part from OKW texts
             $scope.changeOKWpartText = function (newPartIndex) {
+                $scope.ctrlVars.dataBindOKW.isTextExpanded = false;
                 for (var i = 0; i < $scope.ctrlVars.dataBindOKW.textParts.length; i++) {
                     if (i == newPartIndex) {
                         $scope.ctrlVars.textPartOKWtoBind = $scope.ctrlVars.dataBindOKW.textParts[i].text;
@@ -417,7 +424,8 @@ angular.module('Home')
                             clearInterval(checkForElementInterval);
                             var textOuterBoxHeight = document.getElementById('cid-expandable-okw-wrapper').offsetHeight;
                             var textInnerBoxHeight = document.getElementById('cid-binded-okw-text').offsetHeight;
-                            if (textInnerBoxHeight > textOuterBoxHeight) {
+                            console.log('textOuterBoxHeight: ' + textOuterBoxHeight + ' textInnerBoxHeight: ' + textInnerBoxHeight);
+                            if (textInnerBoxHeight >= textOuterBoxHeight) {
                                 $scope.ctrlVars.dataBindOKW.isLargeText = true;
                                 $scope.$apply();
                             } else {

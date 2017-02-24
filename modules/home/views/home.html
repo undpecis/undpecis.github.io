@@ -6,7 +6,7 @@
             <div class="c-header-wrap c-show-when-lg">
                 <div class="c-table">
                     <div class="c-cell c-w-1perc c-has-logo">
-                        <object type="image/svg+xml" data="Content/images/undp-50years-logo.svg" class="c-header-logo">
+                        <object type="image/svg+xml" data="Content/images/undp-logo-standard.svg" class="c-header-logo">
                             UNDP Logo <!-- fallback image in CSS -->
                         </object>
                     </div>
@@ -71,7 +71,7 @@
             <div class="c-header-wrap c-show-when-xs">
                 <div class="c-table">
                     <div class="c-cell c-has-logo">
-                        <object type="image/svg+xml" data="Content/images/undp-50years-logo.svg" class="c-header-logo">
+                        <object type="image/svg+xml" data="Content/images/undp-logo-standard.svg" class="c-header-logo">
                             UNDP Logo <!-- fallback image in CSS -->
 
                         </object>
@@ -160,12 +160,57 @@
     </div>
 </div>
 <!-- #endregion Cover block -->
+<!-- #region Regional context -->
+<div id="cid-foreword-content" name="cid-foreword-content" class="c-wide-wrap">
+    <div class="c-container c-p-bottom-40">
+        <!-- #region Title -->
+        <div class="c-section-title">
+            <h2>{{ctrlVars.forewordData.data.title}}</h2>
+        </div>
+        <!-- #endregion Title -->
+        <!-- #region Regional Context content -->
+        <div class="c-regional-text-content-wrap">
+            <div class="c-table">
+                <div class="c-cell c-has-text">
+                    <div ng-class="{'c-max-h-420' : !ctrlVars.forewordData.isTextExpanded}">
+                        <div ng-bind-html="ctrlVars.forewordData.data.text" ng-class="{'c-p-bottom-50' : ctrlVars.forewordData.isTextExpanded}">
+                        </div>
+                    </div>
+                    <div class="c-read-more-feather-button c-white-version" ng-click="toggleVisibility('forwordContentMoreLess')">
+                        <!-- #region Learn more button -->
+                        <button class="c-bttn c-bttn-combo">
+                            <div class="c-circle-icon-box">
+                                <i class="c-ico icon-login" ng-if="!ctrlVars.forewordData.isTextExpanded"></i>
+                                <i class="c-ico icon-close" ng-if="ctrlVars.forewordData.isTextExpanded"></i>
+                            </div>
+                            <span ng-if="!ctrlVars.forewordData.isTextExpanded">SHOW MORE</span>
+                            <span ng-if="ctrlVars.forewordData.isTextExpanded">SHOW LESS</span>
+                        </button>
+                        <!-- #endregion Learn more button -->
+                    </div>
+                </div>
+                <div class="c-cell c-has-image-box">
+                    <!-- #region Image box -->
+                    <div class="c-inserted-image-wrapper c-regional-context-image">
+                        <div class="c-img-crop-box">
+                            <img ng-src="Content/images/{{ctrlVars.forewordData.data.img}}" alt="{{ctrlVars.forewordData.data.title}}">
+                        </div>
+                        <div class="c-photo-credits-content">Publication Towards SDG 16: Promoting Just, Peaceful and Inclusive Societies in Europe and Central Asia</div>
+                    </div>
+                    <!-- #endregion Image box -->
+                </div>
+            </div>
+        </div>
+        <!-- #endregion Regional Context content -->
+    </div>
+</div>
+<!-- #endregion Regional context -->
 <!-- #region Interactive map -->
 <div class="c-wide-wrap c-black-background">
     <div class="c-container">
         <!-- #region Title -->
-        <div class="c-section-title c-displaced">
-            <h2>Interactive map</h2>
+        <div class="c-section-title">
+            <h2 class="c-white-color">Interactive map</h2>
         </div>
         <!-- #endregion Title -->
         <!-- #region Map container -->
@@ -913,8 +958,8 @@
                     <!-- #endregion Left content / Vertical navigation -->
                     <!-- #region Middle text -->
                     <div class="c-cell c-has-text c-col-3-5-lg">
-                        <div id="cid-expandable-okw-wrapper" ng-class="{'c-max-h-470' : !ctrlVars.dataBindOKW.isTextExpanded}">
-                            <div id="cid-binded-okw-text" class="c-bind-txxt-wrapper" ng-bind-html="to_trusted(ctrlVars.textPartOKWtoBind)" ng-class="{'c-p-bottom-50' : ctrlVars.dataBindOKW.isTextExpanded}">
+                        <div id="cid-expandable-okw-wrapper" ng-class="{'c-max-h-470' : !ctrlVars.dataBindOKW.isTextExpanded, 'c-p-bottom-50' : ctrlVars.dataBindOKW.isTextExpanded}">
+                            <div id="cid-binded-okw-text" class="c-bind-txxt-wrapper" ng-bind-html="to_trusted(ctrlVars.textPartOKWtoBind)">
                             </div>
                         </div>
                         <div class="c-read-more-feather-button" ng-click="toggleVisibility('okwContentMoreLess')" ng-if="ctrlVars.dataBindOKW.isLargeText">
@@ -1096,51 +1141,6 @@
     </div>
 </div>
 <!-- #endregion Facts and figures -->
-<!-- #region Regional context -->
-<div id="cid-foreword-content" name="cid-foreword-content" class="c-wide-wrap">
-    <div class="c-container c-p-bottom-40">
-        <!-- #region Title -->
-        <div class="c-section-title">
-            <h2>{{ctrlVars.forewordData.data.title}}</h2>
-        </div>
-        <!-- #endregion Title -->
-        <!-- #region Regional Context content -->
-        <div class="c-regional-text-content-wrap">
-            <div class="c-table">
-                <div class="c-cell c-has-text">
-                    <div ng-class="{'c-max-h-420' : !ctrlVars.forewordData.isTextExpanded}">
-                        <div ng-bind-html="ctrlVars.forewordData.data.text" ng-class="{'c-p-bottom-50' : ctrlVars.forewordData.isTextExpanded}">
-                        </div>
-                    </div>
-                    <div class="c-read-more-feather-button c-white-version" ng-click="toggleVisibility('forwordContentMoreLess')">
-                        <!-- #region Learn more button -->
-                        <button class="c-bttn c-bttn-combo">
-                            <div class="c-circle-icon-box">
-                                <i class="c-ico icon-login" ng-if="!ctrlVars.forewordData.isTextExpanded"></i>
-                                <i class="c-ico icon-close" ng-if="ctrlVars.forewordData.isTextExpanded"></i>
-                            </div>
-                            <span ng-if="!ctrlVars.forewordData.isTextExpanded">SHOW MORE</span>
-                            <span ng-if="ctrlVars.forewordData.isTextExpanded">SHOW LESS</span>
-                        </button>
-                        <!-- #endregion Learn more button -->
-                    </div>
-                </div>
-                <div class="c-cell c-has-image-box">
-                    <!-- #region Image box -->
-                    <div class="c-inserted-image-wrapper c-regional-context-image">
-                        <div class="c-img-crop-box">
-                            <img ng-src="Content/images/{{ctrlVars.forewordData.data.img}}" alt="{{ctrlVars.forewordData.data.title}}">
-                        </div>
-                        <div class="c-photo-credits-content">Publication Towards SDG 16: Promoting Just, Peaceful and Inclusive Societies in Europe and Central Asia</div>
-                    </div>
-                    <!-- #endregion Image box -->
-                </div>
-            </div>
-        </div>
-        <!-- #endregion Regional Context content -->
-    </div>
-</div>
-<!-- #endregion Regional context -->
 <!-- #region Facts and figures -->
 <div id="svg-graph-master-wrap-second" class="c-wide-wrap">
     <div class="c-container">
@@ -1290,7 +1290,7 @@
                     <div class="c-title">DISCLAIMER</div>
                     <!-- #endregion Title -->
                     <!-- #region Content -->
-                    <p>References to Kosovo on this website shall be understood to be in the context of Security Council Resolution 1244 (1999).”</p>
+                    <p>References to Kosovo on this website shall be understood to be in the context of Security Council Resolution 1244 (1999).</p>
                     <!-- #endregion Content -->
                 </div>
                 <!-- #endregion Third column -->
@@ -1451,7 +1451,7 @@
                 <li class="c-has-subcontent c-black-background" ng-if="ctrlVars.enumFooter[2].isXsSubContentActive == true">
                     <div class="c-text-wrapper">
                         <!-- #region Content -->
-                        <p>References to Kosovo on this website shall be understood to be in the context of Security Council Resolution 1244 (1999).”</p>
+                        <p>References to Kosovo on this website shall be understood to be in the context of Security Council Resolution 1244 (1999).</p>
                         <!-- #endregion Content -->
                     </div>
                 </li>
