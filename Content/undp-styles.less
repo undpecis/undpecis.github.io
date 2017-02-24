@@ -1486,6 +1486,9 @@ h1, h2, h3, h4, h5, h6, p, a { margin:0; padding:0;}
             @media only screen and (min-width : @var-breakpoint-start-md) {
                 @media (max-width: (@var-breakpoint-start-lg - 1) ){
                     height:@var-header-height-md;
+                    &.c-show-when-xs{
+                        height:160px;
+                    }
                 }
             }
             /* #endregion Medium resolutions */
@@ -1529,21 +1532,21 @@ h1, h2, h3, h4, h5, h6, p, a { margin:0; padding:0;}
             /* #region Extra small resolutions */
             @media only screen and (min-width : @var-breakpoint-start-zero) {
                 @media (max-width: (@var-breakpoint-start-sm - 1) ){
-                    height:auto;
+                    height:0;
                 }
             }
             /* #endregion Extra small resolutions */
             /* #region Small resolutions */
             @media only screen and (min-width : @var-breakpoint-start-sm) {
                 @media (max-width: (@var-breakpoint-start-md - 1) ){
-                    height:@var-cover-height-sm;
+                    height:0;
                 }
             }
             /* #endregion Small resolutions */
             /* #region Medium resolutions */
             @media only screen and (min-width : @var-breakpoint-start-md) {
                 @media (max-width: (@var-breakpoint-start-lg - 1) ){
-                    height:@var-cover-height-md;
+                    height:0;
                 }
             }
             /* #endregion Medium resolutions */
@@ -1565,6 +1568,7 @@ h1, h2, h3, h4, h5, h6, p, a { margin:0; padding:0;}
                 display:block;
                 width:100%;
                 text-align:right;
+                overflow:auto;
                 z-index:2;
                 .mx-set-as-border-box();
                 /* #region RESPONSIVE QUERY */
@@ -1965,6 +1969,7 @@ h1, h2, h3, h4, h5, h6, p, a { margin:0; padding:0;}
 @var-flag-padding-X-lg:60px;
 .c-map-content-wrap{
     display:block;
+    position:relative;
         /* #region RESPONSIVE QUERY */
         /* #region Extra small resolutions */
         @media only screen and (min-width : @var-breakpoint-start-zero) {
@@ -2801,6 +2806,10 @@ h1, h2, h3, h4, h5, h6, p, a { margin:0; padding:0;}
     }
     /* #endregion Extra Large resolutions */
     /* #endregion RESPONSIVE QUERY */
+}
+.c-bind-txxt-wrapper{
+    overflow-x:hidden;
+    overflow-y:auto;
 }
 /* #endregion EXPANDABLE CONTENT */
 /* #region FOCUS AREAS CONTENT */
