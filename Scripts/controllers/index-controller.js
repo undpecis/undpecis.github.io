@@ -348,7 +348,7 @@ $(document).ready(function () {
     function setupRandomSvgGraphics() {
         /* #region Get random numbers */
         var firstRandomIndex = Math.floor(Math.random() * (infographicsGroups.length - 0)) + 0;
-        //var firstRandomIndex = 4;
+        //var firstRandomIndex = 0;
         //setup interval that will keep firing until we get second index different from first index
         var randomInterval_secondGroup = setInterval(getRandomIndex_secondGroup, 10);
         function getRandomIndex_secondGroup() {
@@ -392,7 +392,7 @@ $(document).ready(function () {
     function insertSvgGraphicsToView() {
         for (var i = 0; i < randomCountriesArray.length; i++) {
             $("#trigger-country-container-" + (i + 1) + "-svg").prop('id', 'cid-infographic-trigger-' + randomCountriesArray[i].shortName);
-            $("#cid-infographic-trigger-" + randomCountriesArray[i].shortName).append('<object type="image/svg+xml" data="Content/images/infographic-' + randomCountriesArray[i].shortName + '.svg" class="c-svg-object" id="cid-infographic-' + randomCountriesArray[i].shortName + '-object">Infographic Legal</object>');
+            $("#cid-infographic-trigger-" + randomCountriesArray[i].shortName).append('<object type="image/svg+xml" data="Content/images/infographic-' + randomCountriesArray[i].shortName + '.svg" class="c-svg-object c-svg-faf" id="cid-infographic-' + randomCountriesArray[i].shortName + '-object">Infographic Legal</object>');
             $("#cid-infographic-trigger-" + randomCountriesArray[i].shortName).css("opacity", startingOpacity);
             /* #region Setting up ScrollMagicScenes */
             // create the scrollmagic scene here.

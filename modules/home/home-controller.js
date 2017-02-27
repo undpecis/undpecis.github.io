@@ -477,29 +477,33 @@ angular.module('Home')
             }
             // @= Scroll to Anchor div 
             var scrollInProgress = false;
+            var genericIntervalCounterScroll = 0;
+            var checkForElementIntervalScroll = null;
             function scrollToAnchor(anchorId) {
                 if (scrollInProgress == false) {
-                    var genericIntervalCounter = 0;
-                    var checkForElementInterval = setInterval(getElementToScroll, 100);
-                    function getElementToScroll() {
-                        //cancel interval if it is fired to many times
-                        if (genericIntervalCounter > 99) {
-                            clearInterval(checkForElementInterval);
-                            genericIntervalCounter = 0;
-                        } else {
-                            genericIntervalCounter++;
-                            var htmlElement = angular.element(document.getElementById(anchorId));
-                            if (htmlElement != null && htmlElement != undefined) {
-                                clearInterval(checkForElementInterval);
-                                scrollInProgress = false;
-                                //
-                                $location.hash(anchorId);
-                                $anchorScroll();
-                            }
-                        }
-                    }
+                    clearInterval(checkForElementIntervalScroll);
+                    checkForElementIntervalScroll = setInterval(getElementToScroll(anchorId), 100);
                 }
             };
+            function getElementToScroll(anchorId) {
+                //cancel interval if it is fired to many times
+                console.log(anchorId + ' - getElementToScroll genericIntervalCounterScroll: ' + genericIntervalCounterScroll);
+                if (genericIntervalCounterScroll > 99) {
+                    clearInterval(checkForElementIntervalScroll);
+                    genericIntervalCounterScroll = 0;
+                } else {
+                    genericIntervalCounterScroll++;
+                    var htmlElement = angular.element(document.getElementById(anchorId));
+                    if (htmlElement != null && htmlElement != undefined) {
+                        clearInterval(checkForElementIntervalScroll);
+                        genericIntervalCounterScroll = 0;
+                        scrollInProgress = false;
+                        //
+                        $location.hash(anchorId);
+                        $anchorScroll();
+                    }
+                }
+            }
             // @= Calls external function that will reinitialize newly binded content update
             $scope.callExternalRebindingOfHtmlContent = function () {
                 //$scope.$apply();

@@ -3436,6 +3436,37 @@ h1, h2, h3, h4, h5, h6, p, a { margin:0; padding:0;}
 }
 .c-svg-object{
     max-width:100%;
+    width:100%;
+    height:auto;
+    display:block;
+    overflow:auto;
+    position:relative;
+    &.c-svg-faf{
+        height:360px;
+    }
+    &.c-svg-pictograms{
+        height:160px;
+    }
+    svg{
+        display:block;
+        min-width:100%;
+        /* #region RESPONSIVE QUERY */
+        /* #region Extra small resolutions */
+        @media only screen and (min-width : @var-breakpoint-start-zero) {
+            @media (max-width: (@var-breakpoint-start-lg - 1) ){
+                width:100% !important;
+                max-width:360px;
+            }
+        }
+        /* #endregion Extra small resolutions */
+        /* #region Large resolutions */
+        @media only screen and (min-width : @var-breakpoint-start-lg ) {
+                width:100% !important;
+                max-width:360px;
+        }
+        /* #endregion Large resolutions */
+        /* #endregion RESPONSIVE QUERY */
+    }
 }
 /* #endregion SVG */
 /* #region Swiperbox Lightbox */
@@ -3494,10 +3525,134 @@ h1, h2, h3, h4, h5, h6, p, a { margin:0; padding:0;}
         color:@col-text-blue
     }
 }
-/* #endregion Bootstrap Popover */
-
 .c-sup-popover{
     a{
         color:@col-text-blue !important;
     }
+}
+/* #endregion Bootstrap Popover */
+
+
+/* #region Example images in text content box */
+@var-allimg-max-width:540px;
+@var-allimg-desc-max-width:144px;
+@c-allimg-desc-background:#d2406c;
+@c-allimg-signature-background:#333;
+.c-allimg-wrap{
+    display:block;
+    position:relative;
+    width:100%;
+    text-align:center;
+    margin:15px 0;
+    .c-img-box{
+        display:block;
+        margin:0 auto;
+        position:relative;
+        max-width:@var-allimg-max-width;
+        width:100%;
+        text-align:left;
+        z-index:0;
+        img{
+            width:100%;
+            height:auto;
+            max-width:@var-allimg-max-width;
+            max-height:400px;
+            position:relative;
+        }
+        .c-img-desc{
+            display:block;
+            position:absolute;
+            top:0;
+            left:0;
+            bottom:0;
+            background-color:@c-allimg-desc-background;
+            color:@col-white;
+            z-index:2;
+            .c-table{
+                .mx-table-setup();
+                .c-cell{
+                    .mx-cell-setup();
+                    vertical-align:bottom;
+                }
+            }
+            /* #region RESPONSIVE QUERY */
+            /* #region Extra small resolutions */
+            @media only screen and (min-width : @var-breakpoint-start-zero) {
+                @media (max-width: (@var-breakpoint-start-lg - 1) ){
+                    max-width:110px;
+                    font-size:12px;
+                    padding:10px;
+                }
+            }
+            /* #endregion Extra small resolutions */
+            /* #region Large resolutions */
+            @media only screen and (min-width : @var-breakpoint-start-lg ) {
+                max-width:@var-allimg-desc-max-width;
+                font-size:14px;
+                padding:20px;
+            }
+            /* #endregion Large resolutions */
+            /* #endregion RESPONSIVE QUERY */
+        }
+    }
+    //description
+    .c-img-sign{
+        display:block;
+        margin:0 auto;
+        position:relative;
+        max-width:@var-allimg-max-width;
+        width:100%;
+        text-align:left;
+        z-index:0;
+        background-color:@c-allimg-signature-background;
+        color:@col-white;        
+        text-align:left;
+        /* #region RESPONSIVE QUERY */
+        /* #region Extra small resolutions */
+        @media only screen and (min-width : @var-breakpoint-start-zero) {
+            @media (max-width: (@var-breakpoint-start-lg - 1) ){
+                font-size:12px;
+                padding:5px 5px;
+            }
+        }
+        /* #endregion Extra small resolutions */
+        /* #region Large resolutions */
+        @media only screen and (min-width : @var-breakpoint-start-lg ) {
+            max-width:@var-allimg-max-width;
+            font-size:14px;
+            padding:5px 15px;
+        }
+        /* #endregion Large resolutions */
+        /* #endregion RESPONSIVE QUERY */
+    }
+    //right aling content
+    &.c-right{
+        .c-img-box{
+            .c-img-desc{
+                left:auto;
+                right:0;
+                bottom:0;
+            }
+        }
+        .c-img-sign{
+            text-align:right;
+        }
+    }
+}
+/* #endregion Example images in text content box */
+
+
+.c-graphSub {
+    color: #ac9d90;
+    font-size: 14px;
+    float: left;
+    margin: 20px 0;
+    width: 100%;
+    text-align: center;
+}
+.c-red-text {
+    color: red;
+}
+.c-blue-text {
+    color: #00699d;
 }
