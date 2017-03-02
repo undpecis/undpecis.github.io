@@ -160,51 +160,6 @@
     </div>
 </div>
 <!-- #endregion Cover block -->
-<!-- #region Regional context -->
-<div id="cid-foreword-content" name="cid-foreword-content" class="c-wide-wrap">
-    <div class="c-container c-p-bottom-40">
-        <!-- #region Title -->
-        <div class="c-section-title">
-            <h2>{{ctrlVars.forewordData.data.title}}</h2>
-        </div>
-        <!-- #endregion Title -->
-        <!-- #region Regional Context content -->
-        <div class="c-regional-text-content-wrap">
-            <div class="c-table">
-                <div class="c-cell c-has-text">
-                    <div ng-class="{'c-max-h-420' : !ctrlVars.forewordData.isTextExpanded}">
-                        <div ng-bind-html="ctrlVars.forewordData.data.text" ng-class="{'c-p-bottom-50' : ctrlVars.forewordData.isTextExpanded}">
-                        </div>
-                    </div>
-                    <div class="c-read-more-feather-button c-white-version" ng-click="toggleVisibility('forwordContentMoreLess')">
-                        <!-- #region Learn more button -->
-                        <button class="c-bttn c-bttn-combo">
-                            <div class="c-circle-icon-box">
-                                <i class="c-ico icon-login" ng-if="!ctrlVars.forewordData.isTextExpanded"></i>
-                                <i class="c-ico icon-close" ng-if="ctrlVars.forewordData.isTextExpanded"></i>
-                            </div>
-                            <span ng-if="!ctrlVars.forewordData.isTextExpanded">SHOW MORE</span>
-                            <span ng-if="ctrlVars.forewordData.isTextExpanded">SHOW LESS</span>
-                        </button>
-                        <!-- #endregion Learn more button -->
-                    </div>
-                </div>
-                <div class="c-cell c-has-image-box">
-                    <!-- #region Image box -->
-                    <div class="c-inserted-image-wrapper c-regional-context-image">
-                        <div class="c-img-crop-box">
-                            <img ng-src="Content/images/{{ctrlVars.forewordData.data.img}}" alt="{{ctrlVars.forewordData.data.title}}">
-                        </div>
-                        <div class="c-photo-credits-content">Publication Towards SDG 16: Promoting Just, Peaceful and Inclusive Societies in Europe and Central Asia</div>
-                    </div>
-                    <!-- #endregion Image box -->
-                </div>
-            </div>
-        </div>
-        <!-- #endregion Regional Context content -->
-    </div>
-</div>
-<!-- #endregion Regional context -->
 <!-- #region Interactive map -->
 <div class="c-wide-wrap c-black-background">
     <div class="c-container">
@@ -332,7 +287,7 @@
                     <!-- #endregion Middle text -->
                     <!-- #region Right content -->
                     <div class="c-cell c-has-right-content c-statement-right-content c-max-h-700 c-col-1-5-lg">
-                        <div ng-if="ctrlVars.dataBindStatement.bodyText != ''">
+                        <div ng-if="ctrlVars.dataBindStatement.imgThumb != ''">
                             <!-- #region Graph -->
                             <a class="c-statement-img-thumb swipebox" ng-href="Content/images/photos-and-graphic/{{ctrlVars.dataBindStatement.img}}" title="{{ctrlVars.dataBindStatement.title}}">
                                 <img ng-src="Content/images/photos-and-graphic/{{ctrlVars.dataBindStatement.imgThumb}}" alt="{{ctrlVars.dataBindStatement.title}}">
@@ -1141,6 +1096,51 @@
     </div>
 </div>
 <!-- #endregion Facts and figures -->
+<!-- #region Regional context -->
+<div id="cid-foreword-content" name="cid-foreword-content" class="c-wide-wrap">
+    <div class="c-container c-p-bottom-40">
+        <!-- #region Title -->
+        <div class="c-section-title">
+            <h2>{{ctrlVars.forewordData.data.title}}</h2>
+        </div>
+        <!-- #endregion Title -->
+        <!-- #region Regional Context content -->
+        <div class="c-regional-text-content-wrap">
+            <div class="c-table">
+                <div class="c-cell c-has-text">
+                    <div ng-class="{'c-max-h-420' : !ctrlVars.forewordData.isTextExpanded}">
+                        <div ng-bind-html="ctrlVars.forewordData.data.text" ng-class="{'c-p-bottom-50' : ctrlVars.forewordData.isTextExpanded}">
+                        </div>
+                    </div>
+                    <div class="c-read-more-feather-button c-white-version" ng-click="toggleVisibility('forwordContentMoreLess')">
+                        <!-- #region Learn more button -->
+                        <button class="c-bttn c-bttn-combo">
+                            <div class="c-circle-icon-box">
+                                <i class="c-ico icon-login" ng-if="!ctrlVars.forewordData.isTextExpanded"></i>
+                                <i class="c-ico icon-close" ng-if="ctrlVars.forewordData.isTextExpanded"></i>
+                            </div>
+                            <span ng-if="!ctrlVars.forewordData.isTextExpanded">SHOW MORE</span>
+                            <span ng-if="ctrlVars.forewordData.isTextExpanded">SHOW LESS</span>
+                        </button>
+                        <!-- #endregion Learn more button -->
+                    </div>
+                </div>
+                <div class="c-cell c-has-image-box">
+                    <!-- #region Image box -->
+                    <div class="c-inserted-image-wrapper c-regional-context-image">
+                        <div class="c-img-crop-box">
+                            <img ng-src="Content/images/{{ctrlVars.forewordData.data.img}}" alt="{{ctrlVars.forewordData.data.title}}">
+                        </div>
+                        <div class="c-photo-credits-content">Publication Towards SDG 16: Promoting Just, Peaceful and Inclusive Societies in Europe and Central Asia</div>
+                    </div>
+                    <!-- #endregion Image box -->
+                </div>
+            </div>
+        </div>
+        <!-- #endregion Regional Context content -->
+    </div>
+</div>
+<!-- #endregion Regional context -->
 <!-- #region Facts and figures -->
 <div id="svg-graph-master-wrap-second" class="c-wide-wrap">
     <div class="c-container">

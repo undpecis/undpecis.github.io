@@ -13,7 +13,7 @@ function externalCompileCaller() {
             trigger: 'focus',
             placement: function (context, source) {
                 var position = $(source).position();
-                var content_width = 515;  //Can be found from a JS function for more dynamic output
+                var content_width = 680;  //Can be found from a JS function for more dynamic output
                 var content_height = 110;  //Can be found from a JS function for more dynamic output
 
                 if (position.left > content_width) {
@@ -39,7 +39,7 @@ function externalCompileCaller() {
             trigger: 'focus',
             placement: function (context, source) {
                 var position = $(source).position();
-                var content_width = 515;  //Can be found from a JS function for more dynamic output
+                var content_width = 680;  //Can be found from a JS function for more dynamic output
                 var content_height = 110;  //Can be found from a JS function for more dynamic output
 
                 if (position.left > content_width) {
