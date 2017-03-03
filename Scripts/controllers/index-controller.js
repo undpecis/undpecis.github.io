@@ -60,6 +60,23 @@ function externalCompileCaller() {
     );
 }
 
+function externalSmoothScroller(anchorId) {
+    console.log('external scroll smooth anchorId: ' + anchorId);
+    var hash = '#' + anchorId;
+    $(hash).animatescroll({ scrollSpeed: 2000, easing: 'easeInOutBack' });
+    //// Store hash
+    //var hash = '#'+ anchorId;
+    //// Using jQuery's animate() method to add smooth page scroll
+    //// The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+    //$('html, body').animate({
+    //    scrollTop: $(hash).offset().top
+    //}, 800, function () {
+
+    //    // Add hash (#) to URL when done scrolling (default click behavior)
+    //    //window.location.hash = hash;
+    //});
+}
+
 $(document).ready(function () {
     /* #region Swipebox lightbox */
     $('.swipebox').swipebox();
