@@ -277,14 +277,14 @@ angular.module('Home')
                     //$scope.ctrlVars.selectedCountry = siteData.countries[countryIndex];
                     //$scope.ctrlVars.visibleStates.isCountryVisible = true;
                     //$scope.ctrlVars.selectedCountryIndex = countryIndex;
-                    $timeout(function () {
-                        scrollToAnchor('mapdiv');
-                    }, 600);
                 } else {
                     $scope.ctrlVars.selectedCountry = siteData.countries[countryIndex];
                     $scope.ctrlVars.visibleStates.isCountryVisible = true;
                     $scope.ctrlVars.selectedCountryIndex = countryIndex;
                     $scope.changeCountryBACData(0);
+                    $timeout(function () {
+                        scrollToAnchor('mapdiv');
+                    }, 600);
                 };
             }
             $scope.changeCountryBACData = function (countryBACbttnIndex) {
@@ -307,7 +307,6 @@ angular.module('Home')
                 $scope.ctrlVars.dataBindStatement = $scope.ctrlVars.selectedCountry.statement;
                 //
                 checkHeightOfTextBAC();
-                $scope.callExternalRebindingOfHtmlContent();
                 /* #endregion Check if text exceeded height */
             }
             /* @= Check if text exceeded height */
@@ -326,9 +325,11 @@ angular.module('Home')
                             var textInnerBoxHeight = document.getElementById('cid-binded-bac-text').offsetHeight;
                             if (textInnerBoxHeight > textOuterBoxHeight) {
                                 $scope.ctrlVars.dataBindBAC.isLargeText = true;
+                                $scope.callExternalRebindingOfHtmlContent();
                                 $scope.$apply();
                             } else {
                                 $scope.ctrlVars.dataBindBAC.isLargeText = false;
+                                $scope.callExternalRebindingOfHtmlContent();
                             }
                         }
                         genericIntervalCounter++;
@@ -344,9 +345,6 @@ angular.module('Home')
                 $scope.ctrlVars.visibleStates.visibleFocusAreaContentIndex = wantedFocusAreaIndex;
                 $scope.ctrlVars.selectedFocusAreaData = $scope.ctrlVars.focusData[wantedFocusAreaIndex];
                 $scope.changeCountryOKWData(wantedFocusAreaOKWcontentIndex);
-                $timeout(function () {
-                    scrollToAnchor('cid-anchor-OKW-content');
-                }, 600);
             }
             //function that will toggle between Focus Area OKW content
             $scope.changeCountryOKWData = function (buttonIndex) {
@@ -371,12 +369,9 @@ angular.module('Home')
                         $scope.ctrlVars.enumOKW[i].isXsSubnavActive = !$scope.ctrlVars.enumOKW[i].isXsSubnavActive;
                         //call function that will show selected text part from OKW texts
                         $scope.changeOKWpartText(0);
-                        if (isLargeResolution == false) {
-                            //small devices, mobile phones
-                            $timeout(function () {
-                                scrollToAnchor('cid-anchor-OKW-content');
-                            }, 600);
-                        }
+                        $timeout(function () {
+                            scrollToAnchor('cid-anchor-OKW-content');
+                        }, 600);
                     } else {
                         $scope.ctrlVars.enumOKW[i].isXsSubnavActive = false;
                     }
