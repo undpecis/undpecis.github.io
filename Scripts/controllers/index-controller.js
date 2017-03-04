@@ -406,7 +406,7 @@ $(document).ready(function () {
             ).on("start", function (e) {
                 startCountryAnimation(e);
                 //enable: true it will always trigger event; enable: false animation will fire only once
-                e.currentTarget.enabled(true);
+                e.currentTarget.enabled(false);
             }
             );
             allScrollMagicScenesArray.push(generic_scrollMagicScene);
