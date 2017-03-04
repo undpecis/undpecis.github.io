@@ -60,23 +60,6 @@ function externalCompileCaller() {
     );
 }
 
-function externalSmoothScroller(anchorId) {
-    console.log('external scroll smooth anchorId: ' + anchorId);
-    var hash = '#' + anchorId;
-    $(hash).animatescroll({ scrollSpeed: 2000, easing: 'easeInOutBack' });
-    //// Store hash
-    //var hash = '#'+ anchorId;
-    //// Using jQuery's animate() method to add smooth page scroll
-    //// The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
-    //$('html, body').animate({
-    //    scrollTop: $(hash).offset().top
-    //}, 800, function () {
-
-    //    // Add hash (#) to URL when done scrolling (default click behavior)
-    //    //window.location.hash = hash;
-    //});
-}
-
 $(document).ready(function () {
     /* #region Swipebox lightbox */
     $('.swipebox').swipebox();
@@ -364,8 +347,8 @@ $(document).ready(function () {
     /* #region Get Random SVG groups */
     function setupRandomSvgGraphics() {
         /* #region Get random numbers */
-        var firstRandomIndex = Math.floor(Math.random() * (infographicsGroups.length - 0)) + 0;
-        //var firstRandomIndex = 0;
+        //var firstRandomIndex = Math.floor(Math.random() * (infographicsGroups.length - 0)) + 0;
+        var firstRandomIndex = 2;
         //setup interval that will keep firing until we get second index different from first index
         var randomInterval_secondGroup = setInterval(getRandomIndex_secondGroup, 10);
         function getRandomIndex_secondGroup() {
@@ -423,7 +406,7 @@ $(document).ready(function () {
             ).on("start", function (e) {
                 startCountryAnimation(e);
                 //enable: true it will always trigger event; enable: false animation will fire only once
-                e.currentTarget.enabled(false);
+                e.currentTarget.enabled(true);
             }
             );
             allScrollMagicScenesArray.push(generic_scrollMagicScene);
@@ -579,6 +562,8 @@ $(document).ready(function () {
                     objects_all.push(svgDocument_armenia.getElementById("person"));
                     objects_all.push(svgDocument_armenia.getElementById("left-number-group"));
                     objects_all.push(svgDocument_armenia.getElementById("right-number-group"));
+                    objects_all.push(svgDocument_armenia.getElementById("arrow-up"));
+                    objects_all.push(svgDocument_armenia.getElementById("arrow-down"));
                     for (var i = 0; i < objects_all.length; i++) {
                         TweenMax.to(objects_all[i], 0.1, { opacity: 0, scaleX: 0.1, scaleY: 0.1, transformOrigin: "50% 50%", onComplete: countdown_initial });
                     }
@@ -895,11 +880,18 @@ $(document).ready(function () {
                     var htmlElement_kazakhstan = document.getElementById("cid-infographic-trigger-kazakhstan");
                     var graphicObject_kazakhstan = document.getElementById("cid-infographic-kazakhstan-object");
                     var svgDocument_kazakhstan = graphicObject_kazakhstan.contentDocument;
-
+                    //
+                    var elementsToColor = [];
+                    var peopleGroup = svgDocument_kazakhstan.getElementById("outer-people");
+                    elementsToColor = peopleGroup.querySelectorAll('path');
+                    for (var i = 0; i < elementsToColor.length; i++) {
+                        TweenMax.to(elementsToColor[i], 0.15, { fill: "#FCD0A6" });
+                    }
+                    //
                     var objects_all = [];
-                    objects_all.push(svgDocument_kazakhstan.getElementById("building"));
-                    objects_all.push(svgDocument_kazakhstan.getElementById("person-left"));
-                    objects_all.push(svgDocument_kazakhstan.getElementById("person-right"));
+                    objects_all.push(svgDocument_kazakhstan.getElementById("inner-circle"));
+                    objects_all.push(svgDocument_kazakhstan.getElementById("outer-people"));
+                    objects_all.push(svgDocument_kazakhstan.getElementById("inner-boxes"));
                     for (var i = 0; i < objects_all.length; i++) {
                         TweenMax.to(objects_all[i], 0.1, { opacity: 0, scaleX: 0.1, scaleY: 0.1, transformOrigin: "50% 50%", onComplete: countdown_initial });
                     }
@@ -927,15 +919,25 @@ $(document).ready(function () {
                     function countdown_forFinished() {
                         counter_finished++;
                         if (counter_finished == objects_all.length) {
-                            var elementToColor_01 = svgDocument_kazakhstan.getElementById("person-left").querySelector('.element-to-color');
-                            var elementToColor_02 = svgDocument_kazakhstan.getElementById("person-right").querySelector('.element-to-color');
-                            var animDelay = delayNumber * i;
-                            TweenMax.to(elementToColor_01, 1, { fill: "#F48466", ease: Back.easeOut.config(1.7), delay: animDelay });
-                            TweenMax.to(elementToColor_02, 1, { fill: "#F48466", ease: Back.easeOut.config(1.7), delay: animDelay });
-                            animationInProgress_kazakhstan = false;
+                            animatePeopleColor();
                         }
                     }
                     /* #endregion ALL ANIMATIONS FINISHED */
+                    /* #region Animate color of People */
+                    function animatePeopleColor() {
+                        for (var i = 0; i < elementsToColor.length; i++) {
+                            var animDelay = delayNumber * i;
+                            TweenMax.to(elementsToColor[i], 0.75, { fill: "#F4777C", ease: Back.easeOut.config(1.7), delay: animDelay, onComplete: countdown_forPeopleFinished });
+                        }
+                    }
+                    var counter_finishedPeople = 0;
+                    function countdown_forPeopleFinished() {
+                        counter_finishedPeople++;
+                        if (counter_finishedPeople == elementsToColor.length) {
+                            animationInProgress_kazakhstan = false;
+                        }
+                    }
+                    /* #region Animate color of People */
                 } else {
                     if (genericIntervalCounter > 99) {
                         clearInterval(checkRenderedStatusInterval);
@@ -963,7 +965,12 @@ $(document).ready(function () {
                     var graphicObject_kosovo = document.getElementById("cid-infographic-kosovo-object");
                     var svgDocument_kosovo = graphicObject_kosovo.contentDocument;
 
+                    var rigleObject = svgDocument_kosovo.getElementById("rifle");
+                    TweenMax.to(rigleObject, 0.15, { fill: "#FDD1A7" });
+                    TweenMax.to(rigleObject, 0.1, { opacity: 0, scaleX: 0.1, scaleY: 0.1, transformOrigin: "50% 50%" });
+                    //
                     var objects_all = [];
+                    //objects_all.push(svgDocument_kosovo.getElementById("rifle"));
                     for (var i = 0; i < 5; i++) {
                         objects_all.push(svgDocument_kosovo.getElementById("bullet-" + (i + 1)));
                         TweenMax.to(objects_all[i], 0.1, { opacity: 0, scaleX: 0.1, scaleY: 0.1, transformOrigin: "50% 50%", onComplete: countdown_initial });
@@ -985,6 +992,7 @@ $(document).ready(function () {
                             var animDelay = delayNumber * i;
                             TweenMax.to(objects_all[i], 0.5, { opacity: 1, scaleX: 1, scaleY: 1, transformOrigin: "50% 50%", ease: Back.easeOut.config(1.7), delay: animDelay, onComplete: countdown_forFinished });
                         }
+                        TweenMax.to(rigleObject, 0.5, { opacity: 1, scaleX: 1, scaleY: 1, transformOrigin: "50% 50%", ease: Back.easeOut.config(1.7) });
                     }
                     /* #endregion MAIN ANIMATIONS */
                     /* #region ALL ANIMATIONS FINISHED */
@@ -992,11 +1000,13 @@ $(document).ready(function () {
                     function countdown_forFinished() {
                         counter_finished++;
                         if (counter_finished == objects_all.length) {
+                            //
                             for (var i = 1; i < 5; i++){
                                 var elementToColor = svgDocument_kosovo.getElementById("bullet-"+i).querySelector('.element-to-color');
                                 var animDelay = delayNumber * i;
                                 TweenMax.to(elementToColor, 1, { fill: "#F48466", ease: Back.easeOut.config(1.7), delay: animDelay });
                             }
+                            TweenMax.to(rigleObject, 1, { fill: "#F48466", ease: Back.easeOut.config(1.7) });
                             animationInProgress_kosovo = false;
                         }
                     }
@@ -1028,6 +1038,13 @@ $(document).ready(function () {
                     var graphicObject_kyrgyz = document.getElementById("cid-infographic-kyrgyz-object");
                     var svgDocument_kyrgyz = graphicObject_kyrgyz.contentDocument;
 
+                    var elementsToColor = [];
+                    var coloringGroup = svgDocument_kyrgyz.getElementById("lybra");
+                    elementsToColor = coloringGroup.querySelectorAll('path');
+                    for (var i = 0; i < elementsToColor.length; i++) {
+                        TweenMax.to(elementsToColor[i], 0.15, { fill: "#FDD1A7" });
+                    }
+                    //FCD0A6
                     var objects_all = [];
                     objects_all.push(svgDocument_kyrgyz.getElementById("lybra"));
                     objects_all.push(svgDocument_kyrgyz.getElementById("hand"));
@@ -1058,14 +1075,21 @@ $(document).ready(function () {
                     function countdown_forFinished() {
                         counter_finished++;
                         if (counter_finished == objects_all.length) {
-                            animationInProgress_kyrgyz = false;
+                            colorElements();
                         }
+                    }
+                    function colorElements() {
+                        for (var i = 0; i < elementsToColor.length; i++) {
+                            var animDelay = delayNumber * i;
+                            //TweenMax.to(elementsToColor[i], 0.15, { fill: "#FDD1A7" });
+                            TweenMax.to(elementsToColor[i], 0.6, { fill: "#F48466", ease: Back.easeOut.config(1.7) });
+                        }
+                        animationInProgress_kyrgyz = false;
                     }
                     /* #endregion ALL ANIMATIONS FINISHED */
                 } else {
                     if (genericIntervalCounter > 99) {
                         clearInterval(checkRenderedStatusInterval);
-                        console.log('Interval fired too many times! SVG animation canceled!');
                     }
                 }
             }
@@ -1219,9 +1243,8 @@ $(document).ready(function () {
                     var svgDocument_serbia = graphicObject_serbia.contentDocument;
 
                     var objects_all = [];
-                    objects_all.push(svgDocument_serbia.getElementById("document-back"));
-                    objects_all.push(svgDocument_serbia.getElementById("document-front"));
-                    objects_all.push(svgDocument_serbia.getElementById("checkmark"));
+                    objects_all.push(svgDocument_serbia.getElementById("roof"));
+                    objects_all.push(svgDocument_serbia.getElementById("base"));
                     for (var i = 0; i < objects_all.length; i++) {
                         TweenMax.to(objects_all[i], 0.1, { opacity: 0, scaleX: 0.1, scaleY: 0.1, transformOrigin: "50% 50%", onComplete: countdown_initial });
                     }
@@ -1466,8 +1489,8 @@ $(document).ready(function () {
                     var svgDocument_turkmenistan = graphicObject_turkmenistan.contentDocument;
 
                     var objects_all = [];
-                    objects_all.push(svgDocument_turkmenistan.getElementById("shield-outer"));
-                    objects_all.push(svgDocument_turkmenistan.getElementById("shield-inner"));
+                    objects_all.push(svgDocument_turkmenistan.getElementById("building"));
+                    objects_all.push(svgDocument_turkmenistan.getElementById("person"));
                     for (var i = 0; i < objects_all.length; i++) {
                         TweenMax.to(objects_all[i], 0.1, { opacity: 0, scaleX: 0.1, scaleY: 0.1, transformOrigin: "50% 50%", onComplete: countdown_initial });
                     }
@@ -1527,8 +1550,8 @@ $(document).ready(function () {
                     var svgDocument_ukraine = graphicObject_ukraine.contentDocument;
 
                     var objects_all = [];
-                    objects_all.push(svgDocument_ukraine.getElementById("building"));
-                    objects_all.push(svgDocument_ukraine.getElementById("person"));
+                    objects_all.push(svgDocument_ukraine.getElementById("shield-outer"));
+                    objects_all.push(svgDocument_ukraine.getElementById("shield-inner"));
                     for (var i = 0; i < objects_all.length; i++) {
                         TweenMax.to(objects_all[i], 0.1, { opacity: 0, scaleX: 0.1, scaleY: 0.1, transformOrigin: "50% 50%", onComplete: countdown_initial });
                     }
