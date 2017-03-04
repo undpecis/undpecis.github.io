@@ -494,8 +494,13 @@ angular.module('Home')
                         genericIntervalCounterScroll = 0;
                         scrollInProgress = false;
                         //
+                        var old = $location.hash();
                         $location.hash(anchorId);
                         $anchorScroll();
+                        $location.hash(old);
+                        //
+                        //var scrollTarget = '#' + anchorId;
+                        //$('html,body').animate({ scrollTop: $(scrollTarget).offset().top }, 800);
                     }
                 }
             }
