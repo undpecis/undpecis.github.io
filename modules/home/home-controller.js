@@ -137,7 +137,7 @@ angular.module('Home')
             /* #endregion Variables for application */
             /* #===================================================================== Content visibility related code =======# */
             $scope.toggleVisibility = function (callerName, subTarget) {
-                console.log('callerName: ' + callerName + '  subTarget: ' + subTarget);
+                //console.log('callerName: ' + callerName + '  subTarget: ' + subTarget);
                 if (callerName == 'burgerMenu_focusAreas') {
                     $scope.ctrlVars.visibleStates.burger_focusAreas = !$scope.ctrlVars.visibleStates.burger_focusAreas;
                     $scope.ctrlVars.visibleStates.burger_countries = false;
@@ -238,6 +238,7 @@ angular.module('Home')
                             scrollToAnchor('cid-foreword-content');
                         }, 600);
                     }
+                    externalDestroyAnimScenes()
                 } else if (callerName == 'footerNav_xs') {
                     for (var i = 0; i < $scope.ctrlVars.enumFooter.length; i++) {
                         //if index matched
@@ -419,7 +420,6 @@ angular.module('Home')
                             clearInterval(checkForElementInterval);
                             var textOuterBoxHeight = document.getElementById('cid-expandable-okw-wrapper').offsetHeight;
                             var textInnerBoxHeight = document.getElementById('cid-binded-okw-text').offsetHeight;
-                            console.log('textOuterBoxHeight: ' + textOuterBoxHeight + ' textInnerBoxHeight: ' + textInnerBoxHeight);
                             if (textInnerBoxHeight >= textOuterBoxHeight) {
                                 $scope.ctrlVars.dataBindOKW.isLargeText = true;
                                 $scope.$apply();
@@ -482,7 +482,6 @@ angular.module('Home')
             };
             function getElementToScroll(anchorId) {
                 //cancel interval if it is fired to many times
-                console.log(anchorId + ' - getElementToScroll genericIntervalCounterScroll: ' + genericIntervalCounterScroll);
                 if (genericIntervalCounterScroll > 99) {
                     clearInterval(checkForElementIntervalScroll);
                     genericIntervalCounterScroll = 0;
@@ -530,6 +529,11 @@ angular.module('Home')
                 } else {
                     isLargeResolution = false;
                 }
+            }
+
+            /* #region adfadf */
+            $scope.callExternalImgAnim = function (elementId) {
+                externalPicAnimation(elementId);
             }
 
             //'undpData' is object with all data for this application defined inside 'allcontentdata.js' file

@@ -60,6 +60,99 @@ function externalCompileCaller() {
     );
 }
 
+var generic_scrollMagicScene_01 = null;
+var generic_scrollMagicScene_02 = null;
+var generic_scrollMagicScene_03 = null;
+function externalPicAnimation(pictureId) {
+    var elementWithIdToAddClass = null;
+    if (pictureId == '#piczoom-trigger-01') {
+        elementWithIdToAddClass = '#cid-img-to-animate-01';
+        generic_scrollMagicScene_01 = new ScrollMagic.Scene(
+            {
+                triggerElement: pictureId, duration: 300,
+                triggerHook: "onCenter",
+            }
+        ).setClassToggle(
+            elementWithIdToAddClass, "c-start-anim" // add class toggle
+        ).addTo(
+            scrollMagicPicZoomController
+        ).on("start", function (e) {
+            //enable: true it will always trigger event; enable: false animation will fire only once
+            e.currentTarget.enabled(false);
+            console.log('fired');
+        }
+        );
+    } else if (pictureId == '#piczoom-trigger-02') {
+        elementWithIdToAddClass = '#cid-img-to-animate-02';
+        generic_scrollMagicScene_02 = new ScrollMagic.Scene(
+            {
+                triggerElement: pictureId, duration: 300,
+                triggerHook: "onCenter",
+            }
+        ).setClassToggle(
+            elementWithIdToAddClass, "c-start-anim" // add class toggle
+        ).addTo(
+            scrollMagicPicZoomController
+        ).on("start", function (e) {
+            //enable: true it will always trigger event; enable: false animation will fire only once
+            e.currentTarget.enabled(false);
+        }
+        );
+    } else if (pictureId == '#piczoom-trigger-03') {
+        elementWithIdToAddClass = '#cid-img-to-animate-03';
+        generic_scrollMagicScene_03 = new ScrollMagic.Scene(
+            {
+                triggerElement: pictureId, duration: 300,
+                triggerHook: "onCenter",
+            }
+        ).setClassToggle(
+            elementWithIdToAddClass, "c-start-anim" // add class toggle
+        ).addTo(
+            scrollMagicPicZoomController
+        ).on("start", function (e) {
+            //enable: true it will always trigger event; enable: false animation will fire only once
+            e.currentTarget.enabled(false);
+            console.log('fired');
+        }
+        );
+    }
+}
+function externalDestroyAnimScenes() {
+    if (generic_scrollMagicScene_02 != null && generic_scrollMagicScene_03 != null) {
+        generic_scrollMagicScene_02 = generic_scrollMagicScene_02.destroy(true);
+        generic_scrollMagicScene_03 = generic_scrollMagicScene_03.destroy(true);
+    }
+}
+
+/* #region Animate Image Zoom on About Our Work section */
+var scrollMagicPicZoomController = new ScrollMagic.Controller();
+var scrollMagicScenesArrayPicZoom = [];
+function setImagesToZoom() {
+    for (var i = 0; i < 3; i++) {
+        // create the scrollmagic scene here.
+        var elementClass = "#piczoom-trigger-00";
+        var generic_scrollMagicScene = new ScrollMagic.Scene(
+            {
+                triggerElement: elementClass, duration: 300,
+                triggerHook: "onCenter",
+            }
+        ).setClassToggle(
+            elementClass, "c-have-animation" // add class toggle
+        ).addTo(
+            scrollMagicPicZoomController
+        ).on("start", function (e) {
+            //enable: true it will always trigger event; enable: false animation will fire only once
+            e.currentTarget.enabled(false);
+            console.log('fired');
+            }
+        );
+        scrollMagicScenesArrayPicZoom.push(generic_scrollMagicScene);
+        /* #endregion Setting up ScrollMagicScenes */
+    }
+}
+/* #endregion Animate Image Zoom on About Our Work section */
+
+
 $(document).ready(function () {
     /* #region Swipebox lightbox */
     $('.swipebox').swipebox();
@@ -119,7 +212,7 @@ $(document).ready(function () {
               { "id": "MK", "color": "#f8b58e", "outlineColor": "#f8b58e", "rollOverColor": "#dea17e", "rollOverOutlineColor": "#dea17e", "title": "FYR Macedonia", "showAsSelected": false },
               { "id": "GE", "color": "#f8b58e", "outlineColor": "#f8b58e", "rollOverColor": "#dea17e", "rollOverOutlineColor": "#dea17e", "title": "Georgia", "showAsSelected": false },
               { "id": "KZ", "color": "#f8b58e", "outlineColor": "#f8b58e", "rollOverColor": "#dea17e", "rollOverOutlineColor": "#dea17e", "title": "Kazakhstan", "showAsSelected": false },
-              { "id": "XK", "color": "#f8b58e", "outlineColor": "#f8b58e", "rollOverColor": "#dea17e", "rollOverOutlineColor": "#dea17e", "title": "Kosovo", "showAsSelected": false },
+              { "id": "XK", "color": "#f8b58e", "outlineColor": "#f8b58e", "rollOverColor": "#dea17e", "rollOverOutlineColor": "#dea17e", "title": "Kosovo<sup>&dagger;</sup>", "showAsSelected": false },
               { "id": "KG", "color": "#f8b58e", "outlineColor": "#f8b58e", "rollOverColor": "#dea17e", "rollOverOutlineColor": "#dea17e", "title": "Kyrgyz Republic", "showAsSelected": false },
               { "id": "MD", "color": "#f8b58e", "outlineColor": "#f8b58e", "rollOverColor": "#dea17e", "rollOverOutlineColor": "#dea17e", "title": "Moldova", "showAsSelected": false },
               { "id": "ME", "color": "#f8b58e", "outlineColor": "#f8b58e", "rollOverColor": "#dea17e", "rollOverOutlineColor": "#dea17e", "title": "Montenegro", "showAsSelected": false },
@@ -1656,7 +1749,6 @@ $(document).ready(function () {
         }
     }
     /* #endregion Country SVG graph animation - Uzbekistan  */
-
 
     //window.callExternalSvgSetup = function (countriesObject) {
     //    randomCountriesArray = countriesObject;
