@@ -145,7 +145,7 @@
                     <!-- #endregion Title -->
                     <!-- #region Description text -->
                     <div class="c-description-over-wrap">
-                        <p class="c-txxt c-14-400">In the Europe and the Commonwealth of Independent States (ECIS) region, UNDP works with local, national and international partners to strengthen inclusive and effective governance and peace, by advocating, advising, enabling discussion, fostering consensus and capacitating institutions. This report provides an overview of UNDP’s governance and peacebuilding work, and serves as a baseline for measuring progress as countries across the region begin working towards the Sustainable Development Goals.</p>
+                        <p class="c-txxt c-14-400">In the Europe and Central Asia region, UNDP works with local, national and international partners to strengthen inclusive and effective governance and peace, by advocating, advising, enabling discussion, fostering consensus and capacitating institutions. This website, which will be updated on an ongoing basis, provides insights into UNDP’s governance and peacebuilding work, and will help to assess and measure progress as countries across the region work towards the Sustainable Development Goals - with a focus on goals 5 and 16.</p>
                     </div>
                     <!-- #endregion Description text -->
                 </div>
@@ -190,7 +190,7 @@
                 <div class="c-country-title">
                     <div class="c-table">
                         <div class="c-cell">
-                            <span class="c-dynamic-country-title">{{ctrlVars.selectedCountry.title}}</span>
+                            <span class="c-dynamic-country-title" ng-bind-html="to_trusted(ctrlVars.selectedCountry.title)"></span>
                         </div>
                         <div class="c-cell c-w-1perc" ng-click="toggleVisibility('countryOnMap')">
                             <button class="c-bttn c-bttn-combo c-bttn-blue">
@@ -456,7 +456,7 @@
                 <div class="c-country-title" ng-if="ctrlVars.visibleStates.isCountryVisible">
                     <div class="c-table">
                         <div class="c-cell">
-                            <span class="c-dynamic-country-title">{{ctrlVars.selectedCountry.title}}</span>
+                            <span class="c-dynamic-country-title" ng-bind-html="to_trusted(ctrlVars.selectedCountry.title)"></span>
                         </div>
                         <div class="c-cell c-w-1perc" ng-click="toggleVisibility('countryOnMap')">
                             <i class="c-ico icon-close"></i>
@@ -1107,7 +1107,7 @@
         <!-- #region Regional Context content -->
         <div class="c-regional-text-content-wrap">
             <div class="c-table">
-                <div class="c-cell c-has-text">
+                <div class="c-cell c-has-text" ng-class="{'c-p-bottom-40-force' : !ctrlVars.forewordData.isTextExpanded}">
                     <div ng-class="{'c-max-h-420' : !ctrlVars.forewordData.isTextExpanded}">
                         <div ng-bind-html="ctrlVars.forewordData.data.text" ng-class="{'c-p-bottom-50' : ctrlVars.forewordData.isTextExpanded}">
                         </div>
@@ -1126,14 +1126,32 @@
                     </div>
                 </div>
                 <div class="c-cell c-has-image-box">
-                    <!-- #region Image box -->
-                    <div class="c-inserted-image-wrapper c-regional-context-image">
-                        <div class="c-img-crop-box">
-                            <img ng-src="Content/images/{{ctrlVars.forewordData.data.img}}" alt="{{ctrlVars.forewordData.data.title}}">
+                    <div ng-class="{'c-max-h-420' : !ctrlVars.forewordData.isTextExpanded}">
+                        <!-- #region Image box -->
+                        <div class="c-about-our-work-image-wrapper" id="piczoom-trigger-01" ng-init="callExternalImgAnim('#piczoom-trigger-01')">
+                            <div class="c-img-crop-box">
+                                <img id="cid-img-to-animate-01" class="c-animate-img" src="Content/images/about-our-work/about-our-work-cover-001.jpg" alt="New olive oil facility brings jobs and hope to Turkish host community">
+                            </div>
+                            <div class="c-photo-credits-content">New olive oil facility brings jobs and hope to Turkish host community</div>
                         </div>
-                        <div class="c-photo-credits-content">Publication Towards SDG 16: Promoting Just, Peaceful and Inclusive Societies in Europe and Central Asia</div>
+                        <!-- #endregion Image box -->
+                        <!-- #region Image box -->
+                        <div class="c-about-our-work-image-wrapper" id="piczoom-trigger-02" ng-init="callExternalImgAnim('#piczoom-trigger-02')" ng-if="ctrlVars.forewordData.isTextExpanded">
+                            <div class="c-img-crop-box">
+                                <img id="cid-img-to-animate-02" class="c-animate-img" src="Content/images/about-our-work/about-our-work-cover-002.jpg" alt="Diving into the Strumica River (data) Basin">
+                            </div>
+                            <div class="c-photo-credits-content">Diving into the Strumica River (data) Basin</div>
+                        </div>
+                        <!-- #endregion Image box -->
+                        <!-- #region Image box -->
+                        <div class="c-about-our-work-image-wrapper" id="piczoom-trigger-03" ng-init="callExternalImgAnim('#piczoom-trigger-03')" ng-if="ctrlVars.forewordData.isTextExpanded">
+                            <div class="c-img-crop-box">
+                                <img id="cid-img-to-animate-03" class="c-animate-img" src="Content/images/about-our-work/about-our-work-cover-003.jpg" alt="Apple farming is the main agriculture activity in Prespa">
+                            </div>
+                            <div class="c-photo-credits-content">Apple farming is the main agriculture activity in Prespa</div>
+                        </div>
+                        <!-- #endregion Image box -->
                     </div>
-                    <!-- #endregion Image box -->
                 </div>
             </div>
         </div>
@@ -1290,7 +1308,7 @@
                     <div class="c-title">DISCLAIMER</div>
                     <!-- #endregion Title -->
                     <!-- #region Content -->
-                    <p>References to Kosovo on this website shall be understood to be in the context of Security Council Resolution 1244 (1999).</p>
+                    <p><sup>&dagger;</sup>References to Kosovo on this website shall be understood to be in the context of Security Council Resolution 1244 (1999).</p>
                     <!-- #endregion Content -->
                 </div>
                 <!-- #endregion Third column -->
@@ -1310,7 +1328,7 @@
             <div class="c-copy-wrap">
                 <div class="c-table">
                     <div class="c-cell c-align-left">
-                        <p>Copyright 2017. All Rights Reserved by UNDP ECIS</p>
+                        <p>Copyright 2017. All Rights Reserved by UNDP in Europe and Central Asia</p>
                     </div>
                 </div>
             </div>
@@ -1451,7 +1469,7 @@
                 <li class="c-has-subcontent c-black-background" ng-if="ctrlVars.enumFooter[2].isXsSubContentActive == true">
                     <div class="c-text-wrapper">
                         <!-- #region Content -->
-                        <p>References to Kosovo on this website shall be understood to be in the context of Security Council Resolution 1244 (1999).</p>
+                        <p><sup>&dagger;</sup>References to Kosovo on this website shall be understood to be in the context of Security Council Resolution 1244 (1999).</p>
                         <!-- #endregion Content -->
                     </div>
                 </li>
@@ -1481,7 +1499,7 @@
             </ul>
             <!-- #region Single item -->
             <div class="c-copy-content">
-                <p>Copyright 2017. All Rights Reserved by UNDP ECIS</p>
+                <p>Copyright 2017. All Rights Reserved by UNDP in Europe and Central Asia</p>
             </div>
             <!-- #endregion Single item -->
         </div>
