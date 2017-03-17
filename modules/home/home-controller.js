@@ -13,7 +13,7 @@ angular.module('Home')
                 { id: "AZ", title: "Azerbaijan" },
                 { id: "BY", title: "Belarus" },
                 { id: "BA", title: "Bosnia and Herzegovina" },
-                { id: "MK", title: "FYR Macedonia" },
+                { id: "MK", title: "The former Yugoslav Republic of Macedonia" },
                 { id: "GE", title: "Georgia" },
                 { id: "KZ", title: "Kazakhstan" },
                 { id: "XK", title: "Kosovo" },

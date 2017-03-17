@@ -78,7 +78,7 @@
   color: #00699e;
 }
 .c-peach-color {
-  color: #fdcea9;
+  color: #bb8255;
 }
 .c-light-coral-color {
   color: #F68786;
@@ -280,7 +280,7 @@ img {
   border-top: 7px solid #ef412c;
 }
 .c-wide-wrap.c-peach-line-top {
-  border-top: 7px solid #fdcea9;
+  border-top: 7px solid #bb8255;
 }
 @media only screen and (min-width: 1px) {
   .c-wide-wrap.c-show-when-xs {
@@ -1099,7 +1099,7 @@ img {
   background-color: #ef412c;
 }
 .c-header-burger-dropdown > li .c-dropdown-menu-subnav.c-focus-areas > li.c-vdash-fareas-4:before {
-  background-color: #fdcea9;
+  background-color: #bb8255;
 }
 .c-header-burger-dropdown > li .c-dropdown-menu-subnav.c-countries > li {
   position: relative;
@@ -2604,10 +2604,10 @@ img {
     color: #ef412c;
   }
   .c-focus-areas-content-wrap .c-table .c-cell.c-peach-border {
-    border-color: #fdcea9;
+    border-color: #bb8255;
   }
   .c-focus-areas-content-wrap .c-table .c-cell.c-peach-border .c-headline {
-    color: #fdcea9;
+    color: #bb8255;
   }
 }
 @media only screen and (min-width: 992px) {
@@ -2663,10 +2663,10 @@ img {
     color: #ef412c;
   }
   .c-focus-areas-content-wrap .c-table .c-cell.c-peach-border {
-    border-color: #fdcea9;
+    border-color: #bb8255;
   }
   .c-focus-areas-content-wrap .c-table .c-cell.c-peach-border .c-headline {
-    color: #fdcea9;
+    color: #bb8255;
   }
 }
 /* #endregion FOCUS AREAS CONTENT */
