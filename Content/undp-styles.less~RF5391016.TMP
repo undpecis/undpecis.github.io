@@ -3551,8 +3551,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00383839', e
     }
 }
 .c-kosovo-footnote-txxt{
-    color:darken(@col-white, 35) !important;
-    padding:0 15px;
+    color:darken(@col-white, 10);
 }
 /* #endregion FOOTER CONTENT */
 
