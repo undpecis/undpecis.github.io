@@ -145,7 +145,7 @@
                     <!-- #endregion Title -->
                     <!-- #region Description text -->
                     <div class="c-description-over-wrap">
-                        <p class="c-txxt c-14-400">In the Europe and Central Asia region, UNDP works with partners to strengthen inclusive and effective governance and sustain peace. This platform provides insights into how our work helps to make progress from 2015 onwards towards the realization of Sustainable Development Goals – with a focus on Goals 5 & 16 – by 2030.</p>
+                        <p class="c-txxt">In the Europe and Central Asia region, UNDP works with partners to strengthen inclusive and effective governance and sustain peace. This platform provides insights into how our work helps to make progress from 2015 onwards towards the realization of Sustainable Development Goals – with a focus on Goals 5 & 16 – by 2030.</p>
                     </div>
                     <!-- #endregion Description text -->
                 </div>
@@ -901,7 +901,7 @@
                             </li>
                             <li class="c-has-subnavigation" ng-if="ctrlVars.currentOKWindex == 2">
                                 <!-- #region Subnavigation -->
-                                <ul class="c-subnavigation-list">
+                                <ul class="c-subnavigation-list c-max-h-310-scrl">
                                     <li ng-repeat="textPartTitle in ctrlVars.dataBindOKW.textParts" ng-click="changeOKWpartText($index)" ng-class="{'c-active' : ctrlVars.textPartOKWindex == $index}">
                                         <a>{{textPartTitle.partName}}</a>
                                     </li>
@@ -917,10 +917,22 @@
                             <div id="cid-binded-okw-text" class="c-bind-txxt-wrapper" ng-bind-html="to_trusted(ctrlVars.textPartOKWtoBind)">
                             </div>
                         </div>
-                        <div class="c-read-more-feather-button" ng-click="toggleVisibility('okwContentMoreLess')" ng-if="ctrlVars.dataBindOKW.isLargeText">
+                        <!-- #region Show Less/More button -->
+                        <div class="c-read-more-feather-button" ng-if="ctrlVars.dataBindOKW.isLargeText">
+                            <button class="c-bttn c-bttn-combo" ng-click="toggleVisibility('okwContentMoreLess')">
+                                <div class="c-circle-icon-box">
+                                    <i class="c-ico icon-arrow-down" ng-if="!ctrlVars.dataBindOKW.isTextExpanded"></i>
+                                    <i class="c-ico icon-arrow-up" ng-if="ctrlVars.dataBindOKW.isTextExpanded"></i>
+                                </div>
+                                <span ng-if="!ctrlVars.dataBindOKW.isTextExpanded">SHOW MORE</span>
+                                <span ng-if="ctrlVars.dataBindOKW.isTextExpanded">SHOW LESS</span>
+                            </button>
+                        </div>
+                        <!-- #endregion Show Less/More button -->
+                        <!--<div class="c-read-more-feather-button" ng-click="toggleVisibility('okwContentMoreLess')" ng-if="ctrlVars.dataBindOKW.isLargeText">
                             <span ng-if="!ctrlVars.dataBindOKW.isTextExpanded">Show more&nbsp;&nbsp;<i class="c-ico icon-arrow-down"></i></span>
                             <span ng-if="ctrlVars.dataBindOKW.isTextExpanded">Show less&nbsp;&nbsp;<i class="c-ico icon-arrow-up"></i></span>
-                        </div>
+                        </div>-->
                     </div>
                     <!-- #endregion Middle text -->
                     <!-- #region Right content -->
@@ -1201,7 +1213,7 @@
 </div>
 <!-- #endregion Facts and figures -->
 <!-- #region Footer -->
-<div class="c-wide-wrap c-black-background">
+<div class="c-wide-wrap c-footer-background">
     <div class="c-container">
         <!-- #region Footer for large resolutions -->
         <div class="c-footer-content-wrap-lg">
@@ -1212,7 +1224,7 @@
                     <div class="c-title">UNDP in Europe <br />and Central Asia</div>
                     <!-- #endregion Title -->
                     <!-- #region Content -->
-                    <p>UNDP works in 22 countries and territories in the region, helping them to improve the standard of living for all citizens - especially those at greater risk of exclusion, such as ethnic minorities, persons with disabilities, internally displaced persons, rural populations, women and young people.</p>
+                    <p style="max-width:280px;">UNDP works in 22 countries and territories in the region, helping them to improve the standard of living for all citizens - especially those at greater risk of exclusion, such as ethnic minorities, persons with disabilities, internally displaced persons, rural populations, women and young people.</p>
                     <!-- #endregion Content -->
                     <!-- #region Social media buttons -->
                     <ul class="c-horizontal-list c-social-medial-links-list">
@@ -1227,92 +1239,34 @@
                 <!-- #region Second column -->
                 <div class="c-cell">
                     <!-- #region Title -->
-                    <div class="c-title">QUICK LINKS</div>
+                    <div>
+                        <div class="c-title">QUICK LINKS</div>
+                    </div>
                     <!-- #endregion Title -->
                     <!-- #region Content -->
-                    <ul class="c-vertical-list c-footer-focus-areas">
-                        <li ng-click="toggleVisibility('footerMenu_focusAres', 0)" ng-class="{'c-active' : ctrlVars.visibleStates.footer_focusAreaIndex == 0}">
-                            <a>{{ctrlVars.focusData[0].title}}</a>
-                        </li>
-                        <li ng-if="ctrlVars.visibleStates.footer_focusAreaIndex == 0">
-                            <ul class="c-vertical-list c-subnav">
-                                <li ng-click="toggleVisibility('focusAreasContent', 0)">
-                                    <a>Overview</a>
-                                </li>
-                                <li ng-click="toggleVisibility('focusAreasContent', 1)">
-                                    <a>Key trends</a>
-                                </li>
-                                <li ng-click="toggleVisibility('focusAreasContent', 2)">
-                                    <a>What we do</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li ng-click="toggleVisibility('footerMenu_focusAres', 1)" ng-class="{'c-active' : ctrlVars.visibleStates.footer_focusAreaIndex == 1}">
-                            <a>{{ctrlVars.focusData[1].title}}</a>
-                        </li>
-                        <li ng-if="ctrlVars.visibleStates.footer_focusAreaIndex == 1">
-                            <ul class="c-vertical-list c-subnav">
-                                <li ng-click="toggleVisibility('focusAreasContent', 0)">
-                                    <a>Overview</a>
-                                </li>
-                                <li ng-click="toggleVisibility('focusAreasContent', 1)">
-                                    <a>Key trends</a>
-                                </li>
-                                <li ng-click="toggleVisibility('focusAreasContent', 2)">
-                                    <a>What we do</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li ng-click="toggleVisibility('footerMenu_focusAres', 2)" ng-class="{'c-active' : ctrlVars.visibleStates.footer_focusAreaIndex == 2}">
-                            <a>{{ctrlVars.focusData[2].title}}</a>
-                        </li>
-                        <li ng-if="ctrlVars.visibleStates.footer_focusAreaIndex == 2">
-                            <ul class="c-vertical-list c-subnav">
-                                <li ng-click="toggleVisibility('focusAreasContent', 0)">
-                                    <a>Overview</a>
-                                </li>
-                                <li ng-click="toggleVisibility('focusAreasContent', 1)">
-                                    <a>Key trends</a>
-                                </li>
-                                <li ng-click="toggleVisibility('focusAreasContent', 2)">
-                                    <a>What we do</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li ng-click="toggleVisibility('footerMenu_focusAres', 3)" ng-class="{'c-active' : ctrlVars.visibleStates.footer_focusAreaIndex == 3}">
-                            <a>{{ctrlVars.focusData[3].title}}</a>
-                        </li>
-                        <li ng-if="ctrlVars.visibleStates.footer_focusAreaIndex == 3">
-                            <ul class="c-vertical-list c-subnav">
-                                <li ng-click="toggleVisibility('focusAreasContent', 0)">
-                                    <a>Overview</a>
-                                </li>
-                                <li ng-click="toggleVisibility('focusAreasContent', 1)">
-                                    <a>Key trends</a>
-                                </li>
-                                <li ng-click="toggleVisibility('focusAreasContent', 2)">
-                                    <a>What we do</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="c-just-link">
-                            <a href="http://www.un.org/sustainabledevelopment/sustainable-development-goals/" target="_blank">Sustainable Development Goals</a>
-                        </li>
-                    </ul>
+                    <div class="c-footer-quick-links-images-wrapper">
+                        <!-- #region First image -->
+                        <div class="c-row">
+                            <a class="c-link-logo c-sus-logo" href="http://www.un.org/sustainabledevelopment/sustainable-development-goals/" target="_blank"></a>
+                        </div>
+                        <!-- #endregion First image -->
+                        <!-- #region Second images -->
+                        <div class="c-row">
+                            <div class="c-table">
+                                <div class="c-cell c-w-50perc c-valign-middle">
+                                    <a class="c-link-logo c-deca-logo" href="http://www.un.org/sustainabledevelopment/sustainable-development-goals/" target="_blank"></a>
+                                </div>
+                                <div class="c-cell c-w-50perc c-valign-middle">
+                                    <a class="c-link-logo c-seesac-logo" href="http://www.un.org/sustainabledevelopment/sustainable-development-goals/" target="_blank"></a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- #endregion Second images -->
+                    </div>
                     <!-- #endregion Content -->
                 </div>
                 <!-- #endregion Second column -->
                 <!-- #region Third column -->
-                <div class="c-cell">
-                    <!-- #region Title -->
-                    <div class="c-title">DISCLAIMER</div>
-                    <!-- #endregion Title -->
-                    <!-- #region Content -->
-                    <p><sup>&dagger;</sup>References to Kosovo on this website shall be understood to be in the context of Security Council Resolution 1244 (1999).</p>
-                    <!-- #endregion Content -->
-                </div>
-                <!-- #endregion Third column -->
-                <!-- #region Fourth column -->
                 <div class="c-cell">
                     <!-- #region Title -->
                     <div class="c-title">CONTACT US</div>
@@ -1323,12 +1277,13 @@
                     <p><span class="c-white-color">Website:&nbsp;</span><a class="c-link-text" href="http://www.eurasia.undp.org/" target="_blank">www.eurasia.undp.org</a></p>
                     <!-- #endregion Content -->
                 </div>
-                <!-- #endregion Fourth column -->
+                <!-- #endregion Third column -->
             </div>
             <div class="c-copy-wrap">
                 <div class="c-table">
-                    <div class="c-cell c-align-left">
-                        <p>Copyright 2017. All Rights Reserved by UNDP in Europe and Central Asia</p>
+                    <div class="c-cell c-align-center">
+                        <p style="padding-bottom:20px;" class="c-kosovo-footnote-txxt c-align-center">All references to Kosovo shall be understood to be in the context of Security Council resolution 1244 (1999).</p>
+                        <p class="c-align-center">Copyright 2017. All Rights Reserved by UNDP in Europe and Central Asia</p>
                     </div>
                 </div>
             </div>
@@ -1349,7 +1304,7 @@
                         </div>
                     </a>
                 </li>
-                <li class="c-has-subcontent c-black-background" ng-if="ctrlVars.enumFooter[0].isXsSubContentActive == true">
+                <li class="c-has-subcontent c-footer-background" ng-if="ctrlVars.enumFooter[0].isXsSubContentActive == true">
                     <div class="c-text-wrapper">
                         <!-- #region Title -->
                         <div class="c-title">UNDP in Europe <br />and Central Asia</div>
@@ -1380,100 +1335,30 @@
                         </div>
                     </a>
                 </li>
-                <li class="c-has-subcontent c-black-background" ng-if="ctrlVars.enumFooter[1].isXsSubContentActive == true">
+                <li class="c-has-subcontent c-footer-background c-p-10" ng-if="ctrlVars.enumFooter[1].isXsSubContentActive == true">
                     <!-- #region Content -->
-                    <ul class="c-vertical-list c-footer-focus-areas">
-                        <li ng-click="toggleVisibility('footerMenu_focusAres', 0)" ng-class="{'c-active' : ctrlVars.visibleStates.footer_focusAreaIndex == 0}">
-                            <a>{{ctrlVars.focusData[0].title}}</a>
-                        </li>
-                        <li ng-if="ctrlVars.visibleStates.footer_focusAreaIndex == 0">
-                            <ul class="c-vertical-list c-subnav">
-                                <li ng-click="toggleVisibility('focusAreasContent', 0)">
-                                    <a>Overview</a>
-                                </li>
-                                <li ng-click="toggleVisibility('focusAreasContent', 1)">
-                                    <a>Key trends</a>
-                                </li>
-                                <li ng-click="toggleVisibility('focusAreasContent', 2)">
-                                    <a>What we do</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li ng-click="toggleVisibility('footerMenu_focusAres', 1)" ng-class="{'c-active' : ctrlVars.visibleStates.footer_focusAreaIndex == 1}">
-                            <a>{{ctrlVars.focusData[1].title}}</a>
-                        </li>
-                        <li ng-if="ctrlVars.visibleStates.footer_focusAreaIndex == 1">
-                            <ul class="c-vertical-list c-subnav">
-                                <li ng-click="toggleVisibility('focusAreasContent', 0)">
-                                    <a>Overview</a>
-                                </li>
-                                <li ng-click="toggleVisibility('focusAreasContent', 1)">
-                                    <a>Key trends</a>
-                                </li>
-                                <li ng-click="toggleVisibility('focusAreasContent', 2)">
-                                    <a>What we do</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li ng-click="toggleVisibility('footerMenu_focusAres', 2)" ng-class="{'c-active' : ctrlVars.visibleStates.footer_focusAreaIndex == 2}">
-                            <a>{{ctrlVars.focusData[2].title}}</a>
-                        </li>
-                        <li ng-if="ctrlVars.visibleStates.footer_focusAreaIndex == 2">
-                            <ul class="c-vertical-list c-subnav">
-                                <li ng-click="toggleVisibility('focusAreasContent', 0)">
-                                    <a>Overview</a>
-                                </li>
-                                <li ng-click="toggleVisibility('focusAreasContent', 1)">
-                                    <a>Key trends</a>
-                                </li>
-                                <li ng-click="toggleVisibility('focusAreasContent', 2)">
-                                    <a>What we do</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li ng-click="toggleVisibility('footerMenu_focusAres', 3)" ng-class="{'c-active' : ctrlVars.visibleStates.footer_focusAreaIndex == 3}">
-                            <a>{{ctrlVars.focusData[3].title}}</a>
-                        </li>
-                        <li ng-if="ctrlVars.visibleStates.footer_focusAreaIndex == 3">
-                            <ul class="c-vertical-list c-subnav">
-                                <li ng-click="toggleVisibility('focusAreasContent', 0)">
-                                    <a>Overview</a>
-                                </li>
-                                <li ng-click="toggleVisibility('focusAreasContent', 1)">
-                                    <a>Key trends</a>
-                                </li>
-                                <li ng-click="toggleVisibility('focusAreasContent', 2)">
-                                    <a>What we do</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="c-just-link">
-                            <a href="http://www.un.org/sustainabledevelopment/sustainable-development-goals/" target="_blank">Sustainable Development Goals</a>
-                        </li>
-                    </ul>
+                    <div class="c-footer-quick-links-images-wrapper">
+                        <!-- #region First image -->
+                        <div class="c-row">
+                            <a class="c-link-logo c-sus-logo" href="http://www.un.org/sustainabledevelopment/sustainable-development-goals/" target="_blank"></a>
+                        </div>
+                        <!-- #endregion First image -->
+                        <!-- #region Second images -->
+                        <div class="c-row">
+                            <div class="c-table">
+                                <div class="c-cell c-w-50perc c-valign-middle">
+                                    <a class="c-link-logo c-deca-logo" href="http://www.un.org/sustainabledevelopment/sustainable-development-goals/" target="_blank"></a>
+                                </div>
+                                <div class="c-cell c-w-50perc c-valign-middle">
+                                    <a class="c-link-logo c-seesac-logo" href="http://www.un.org/sustainabledevelopment/sustainable-development-goals/" target="_blank"></a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- #endregion Second images -->
+                    </div>
                     <!-- #endregion Content -->
                 </li>
                 <!-- #endregion QUICK LINKS -->
-                <!-- #region REFERENCES -->
-                <li ng-click="toggleVisibility('footerNav_xs', 2)" class="c-clickable-item">
-                    <a class="c-list-title" ng-class="{'c-active' : ctrlVars.enumFooter[2].isXsSubContentActive == true}">
-                        <div class="c-table">
-                            <div class="c-cell">REFERENCES</div>
-                            <div class="c-cell c-w-1perc">
-                                <i class="c-ico icon-arrow-down" ng-if="ctrlVars.enumFooter[2].isXsSubContentActive == false"></i>
-                                <i class="c-ico icon-arrow-up" ng-if="ctrlVars.enumFooter[2].isXsSubContentActive == true"></i>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <li class="c-has-subcontent c-black-background" ng-if="ctrlVars.enumFooter[2].isXsSubContentActive == true">
-                    <div class="c-text-wrapper">
-                        <!-- #region Content -->
-                        <p><sup>&dagger;</sup>References to Kosovo on this website shall be understood to be in the context of Security Council Resolution 1244 (1999).</p>
-                        <!-- #endregion Content -->
-                    </div>
-                </li>
-                <!-- #endregion REFERENCES -->
                 <!-- #region CONTACT US -->
                 <li ng-click="toggleVisibility('footerNav_xs', 3)" class="c-clickable-item">
                     <a class="c-list-title" ng-class="{'c-active' : ctrlVars.enumFooter[3].isXsSubContentActive == true}">
@@ -1486,7 +1371,7 @@
                         </div>
                     </a>
                 </li>
-                <li class="c-has-subcontent c-black-background" ng-if="ctrlVars.enumFooter[3].isXsSubContentActive == true">
+                <li class="c-has-subcontent c-footer-background" ng-if="ctrlVars.enumFooter[3].isXsSubContentActive == true">
                     <div class="c-text-wrapper">
                         <!-- #region Content -->
                         <p>Governance and Peacebuilding Cluster<br />UNDP Regional Hub<br />Istanbul, Turkey</p>
@@ -1498,7 +1383,8 @@
                 <!-- #endregion CONTACT US -->
             </ul>
             <!-- #region Single item -->
-            <div class="c-copy-content">
+            <div class="c-copy-content c-align-center">
+                <p class="c-kosovo-footnote-txxt"><sup>1</sup>All references to Kosovo shall be understood to be in the context of Security Council resolution 1244 (1999).</p>
                 <p>Copyright 2017. All Rights Reserved by UNDP in Europe and Central Asia</p>
             </div>
             <!-- #endregion Single item -->
