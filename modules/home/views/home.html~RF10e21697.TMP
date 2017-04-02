@@ -279,23 +279,15 @@
                             <div id="cid-binded-bac-text" class="c-bind-txxt-wrapper"  ng-bind-html="to_trusted(ctrlVars.dataBindBAC.text)" ng-class="{'c-p-bottom-50' : ctrlVars.dataBindBAC.isTextExpanded}">
                             </div>
                         </div>
-                        <div class="c-read-more-feather-button c-blue-version" ng-if="ctrlVars.dataBindBAC.isLargeText">
-                            <button class="c-bttn c-bttn-combo c-bttn-blue" ng-click="toggleVisibility('bacContentMoreLess')">
-                                <div class="c-circle-icon-box">
-                                    <i class="c-ico icon-arrow-down" ng-if="!ctrlVars.dataBindBAC.isTextExpanded"></i>
-                                    <i class="c-ico icon-arrow-up" ng-if="ctrlVars.dataBindBAC.isTextExpanded"></i>
-                                </div>
-                                <span ng-if="!ctrlVars.dataBindBAC.isTextExpanded">SHOW MORE</span>
-                                <span ng-if="ctrlVars.dataBindBAC.isTextExpanded">SHOW LESS</span>
-                            </button>
-                            <!--<span ng-if="!ctrlVars.dataBindBAC.isTextExpanded">Show more&nbsp;&nbsp;<i class="c-ico icon-arrow-down"></i></span>
-                            <span ng-if="ctrlVars.dataBindBAC.isTextExpanded">Show less&nbsp;&nbsp;<i class="c-ico icon-arrow-up"></i></span>-->
+                        <div class="c-read-more-feather-button c-blue-version" ng-click="toggleVisibility('bacContentMoreLess')" ng-if="ctrlVars.dataBindBAC.isLargeText">
+                            <span ng-if="!ctrlVars.dataBindBAC.isTextExpanded">Show more&nbsp;&nbsp;<i class="c-ico icon-arrow-down"></i></span>
+                            <span ng-if="ctrlVars.dataBindBAC.isTextExpanded">Show less&nbsp;&nbsp;<i class="c-ico icon-arrow-up"></i></span>
                         </div>
                     </div>
                     <!-- #endregion Middle text -->
                     <!-- #region Right content -->
-                    <div class="c-cell c-has-right-content c-statement-right-content c-col-1-5-lg">
-                        <div ng-if="ctrlVars.dataBindStatement.imgThumb != ''" class="c-max-h-100perc">
+                    <div class="c-cell c-has-right-content c-statement-right-content c-max-h-700 c-col-1-5-lg">
+                        <div ng-if="ctrlVars.dataBindStatement.imgThumb != ''">
                             <!-- #region Graph -->
                             <!--<a class="c-statement-img-thumb swipebox" ng-href="Content/images/photos-and-graphic/{{ctrlVars.dataBindStatement.img}}" title="{{ctrlVars.dataBindStatement.title}}">
                                 <img ng-src="Content/images/photos-and-graphic/{{ctrlVars.dataBindStatement.imgThumb}}" alt="{{ctrlVars.dataBindStatement.title}}">
@@ -504,7 +496,6 @@
             <!-- #endregion Country flag // SMALL RESOLUTIONS -->
             <!-- #region BAC texts content // SMALL RESOLUTIONS -->
             <div class="c-content-wrap">
-                <!-- #region Navigation content -->
                 <ul class="c-vertical-list c-xs-devices">
                     <!-- #region Background -->
                     <li>
@@ -561,13 +552,6 @@
                     </li>
                     <!-- #endregion Challanges, Lessons.. Text content -->
                 </ul>
-                <!-- #endregion Navigation content -->
-                <!-- #region Statement content -->
-                <div class="c-statement-right-content c-xs-content" ng-if="ctrlVars.dataBindStatement.bodyText != ''">
-                    <p class="c-statement-body-txxt" ng-bind-html="to_trusted(ctrlVars.dataBindStatement.bodyText)"></p>
-                    <p class="c-statement-signature-txxt" ng-bind-html="to_trusted(ctrlVars.dataBindStatement.signatureText)"></p>
-                </div>
-                <!-- #endregion Statement content -->
             </div>
             <!-- #endregion BAC texts content // SMALL RESOLUTIONS -->
         </div>
@@ -713,74 +697,6 @@
     </div>
 </div>
 <!-- #endregion Expandable BAC content // SMALL RESOLUTIONS -->
-<!-- #region Facts & Figures as Slider -->
-<div class="c-wide-wrap" id="svg-graph-master-wrap-slider">
-    <div class="c-container">
-        <!-- #region Title -->
-        <div class="c-section-title">
-            <h2>FACTS AND FIGURES</h2>
-        </div>
-        <!-- #endregion Title -->
-        <!-- #region Infographics wrapper -->
-        <div class="c-infographics-content-wrap">
-            <!-- Slider main container -->
-            <div class="swiper-container">
-                <!-- Additional required wrapper -->
-                <div class="swiper-wrapper">
-                    <!-- Single slide -->
-                    <div class="swiper-slide"><div class="c-content-block c-svg-graph-wrap" id="trigger-country-container-1-svg"></div></div>
-                    <!-- Single slide -->
-                    <div class="swiper-slide"><div class="c-content-block c-svg-graph-wrap" id="trigger-country-container-2-svg"></div></div>
-                    <!-- Single slide -->
-                    <div class="swiper-slide"><div class="c-content-block c-svg-graph-wrap" id="trigger-country-container-3-svg"></div></div>
-                    <!-- Single slide -->
-                    <div class="swiper-slide"><div class="c-content-block c-svg-graph-wrap" id="trigger-country-container-4-svg"></div></div>
-                    <!-- Single slide -->
-                    <div class="swiper-slide"><div class="c-content-block c-svg-graph-wrap" id="trigger-country-container-5-svg"></div></div>
-                    <!-- Single slide -->
-                    <div class="swiper-slide"><div class="c-content-block c-svg-graph-wrap" id="trigger-country-container-6-svg"></div></div>
-                    <!-- Single slide -->
-                    <div class="swiper-slide"><div class="c-content-block c-svg-graph-wrap" id="trigger-country-container-7-svg"></div></div>
-                    <!-- Single slide -->
-                    <div class="swiper-slide"><div class="c-content-block c-svg-graph-wrap" id="trigger-country-container-8-svg"></div></div>
-                    <!-- Single slide -->
-                    <div class="swiper-slide"><div class="c-content-block c-svg-graph-wrap" id="trigger-country-container-9-svg"></div></div>
-                    <!-- Single slide -->
-                    <div class="swiper-slide"><div class="c-content-block c-svg-graph-wrap" id="trigger-country-container-10-svg"></div></div>
-                    <!-- Single slide -->
-                    <div class="swiper-slide"><div class="c-content-block c-svg-graph-wrap" id="trigger-country-container-11-svg"></div></div>
-                    <!-- Single slide -->
-                    <div class="swiper-slide"><div class="c-content-block c-svg-graph-wrap" id="trigger-country-container-12-svg"></div></div>
-                    <!-- Single slide -->
-                    <div class="swiper-slide"><div class="c-content-block c-svg-graph-wrap" id="trigger-country-container-13-svg"></div></div>
-                    <!-- Single slide -->
-                    <div class="swiper-slide"><div class="c-content-block c-svg-graph-wrap" id="trigger-country-container-14-svg"></div></div>
-                    <!-- Single slide -->
-                    <div class="swiper-slide"><div class="c-content-block c-svg-graph-wrap" id="trigger-country-container-15-svg"></div></div>
-                    <!-- Single slide -->
-                    <div class="swiper-slide"><div class="c-content-block c-svg-graph-wrap" id="trigger-country-container-16-svg"></div></div>
-                    <!-- Single slide -->
-                    <div class="swiper-slide"><div class="c-content-block c-svg-graph-wrap" id="trigger-country-container-17-svg"></div></div>
-                    <!-- Single slide -->
-                    <div class="swiper-slide"><div class="c-content-block c-svg-graph-wrap" id="trigger-country-container-18-svg"></div></div>
-                </div>
-                <!-- If we need navigation buttons -->
-                <div class="c-swiper-button-prev">
-                    <div class="c-circle-icon-box">
-                        <i class="c-ico icon-arrow-left"></i>
-                    </div>
-                </div>
-                <div class="c-swiper-button-next">
-                    <div class="c-circle-icon-box">
-                        <i class="c-ico icon-arrow-right"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- #endregion Infographics wrapper -->
-    </div>
-</div>
-<!-- #endregion Facts & Figures as Slider -->
 <!-- #region Focus areas -->
 <div class="c-wide-wrap" id="cid-focus-areas-wrapper" name="cid-focus-areas-wrapper">
     <div class="c-container">
@@ -1194,6 +1110,47 @@
     </div>
 </div>
 <!-- #endregion Expandable content -->
+<!-- #region Facts and figures -->
+<div id="svg-graph-master-wrap-first" class="c-wide-wrap">
+    <div class="c-container">
+        <!-- #region Title -->
+        <div class="c-section-title">
+            <h2>FACTS AND FIGURES</h2>
+        </div>
+        <!-- #endregion Title -->
+        <!-- #region Infographics wrapper -->
+        <div class="c-infographics-content-wrap">
+            <div class="c-table">
+                <!-- #region First infographic -->
+                <div class="c-cell">
+                    <!-- #region SVG graphic -->
+                    <div class="c-content-block c-svg-graph-wrap" id="trigger-country-container-1-svg">
+                    </div>
+                    <!-- #endregion SVG graphic -->
+                </div>
+                <!-- #endregion First infographic -->
+                <!-- #region Second infographic -->
+                <div class="c-cell">
+                    <!-- #region SVG graphic -->
+                    <div class="c-content-block c-svg-graph-wrap" id="trigger-country-container-2-svg">
+                    </div>
+                    <!-- #endregion SVG graphic -->
+                </div>
+                <!-- #endregion Second infographic -->
+                <!-- #region Third infographic -->
+                <div class="c-cell">
+                    <!-- #region SVG graphic -->
+                    <div class="c-content-block c-svg-graph-wrap" id="trigger-country-container-3-svg">
+                    </div>
+                    <!-- #endregion SVG graphic -->
+                </div>
+                <!-- #endregion Third infographic -->
+            </div>
+        </div>
+        <!-- #endregion Infographics wrapper -->
+    </div>
+</div>
+<!-- #endregion Facts and figures -->
 <!-- #region Regional context -->
 <div id="cid-foreword-content" name="cid-foreword-content" class="c-wide-wrap">
     <div class="c-container c-p-bottom-40">
@@ -1257,6 +1214,47 @@
     </div>
 </div>
 <!-- #endregion Regional context -->
+<!-- #region Facts and figures -->
+<div id="svg-graph-master-wrap-second" class="c-wide-wrap">
+    <div class="c-container">
+        <!-- #region Title -->
+        <div class="c-section-title">
+            <h2>FACTS AND FIGURES</h2>
+        </div>
+        <!-- #endregion Title -->
+        <!-- #region Infographics wrapper -->
+        <div class="c-infographics-content-wrap">
+            <div class="c-table">
+                <!-- #region First infographic -->
+                <div class="c-cell">
+                    <!-- #region SVG graphic -->
+                    <div class="c-content-block c-svg-graph-wrap" id="trigger-country-container-4-svg">
+                    </div>
+                    <!-- #endregion SVG graphic -->
+                </div>
+                <!-- #endregion First infographic -->
+                <!-- #region Second infographic -->
+                <div class="c-cell">
+                    <!-- #region SVG graphic -->
+                    <div class="c-content-block c-svg-graph-wrap" id="trigger-country-container-5-svg">
+                    </div>
+                    <!-- #endregion SVG graphic -->
+                </div>
+                <!-- #endregion Second infographic -->
+                <!-- #region Third infographic -->
+                <div class="c-cell">
+                    <!-- #region SVG graphic -->
+                    <div class="c-content-block c-svg-graph-wrap" id="trigger-country-container-6-svg">
+                    </div>
+                    <!-- #endregion SVG graphic -->
+                </div>
+                <!-- #endregion Third infographic -->
+            </div>
+        </div>
+        <!-- #endregion Infographics wrapper -->
+    </div>
+</div>
+<!-- #endregion Facts and figures -->
 <!-- #region Footer -->
 <div class="c-wide-wrap c-footer-background">
     <div class="c-container">

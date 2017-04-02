@@ -159,4 +159,10 @@
 .xn-peace-justice:before {
   content: "\e92c";
 }
+.xn-quote-up:before {
+  content: "\e92d";
+}
+.xn-quote-down:before {
+  content: "\e92e";
+}
 

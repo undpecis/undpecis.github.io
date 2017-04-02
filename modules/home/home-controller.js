@@ -82,6 +82,11 @@ angular.module('Home')
                 //keeps data of OKW text part
                 textPartOKWtoBind: null,
                 textPartOKWindex: null,
+                //OKW antrfile
+                textPardOKWhasAntrfile: false,
+                okwAntrfileTextTitle: null,
+                okwAntrfileTextContent: null,
+                okwAntrfileSingature: null,
                 //mobile
                 mobile_OKWdropdownTitle: null,
                 mobile_OKWdropdownOpen: false,
@@ -289,6 +294,7 @@ angular.module('Home')
                 };
             }
             $scope.changeCountryBACData = function (countryBACbttnIndex) {
+                $scope.ctrlVars.dataBindBAC.isTextExpanded = false;
                 for (var i = 0; i < $scope.ctrlVars.enumBAC.length; i++) {
                     if (i == countryBACbttnIndex) {
                         $scope.ctrlVars.currentBACindex = countryBACbttnIndex;
@@ -386,6 +392,18 @@ angular.module('Home')
                         $scope.ctrlVars.textPartOKWtoBind = $scope.ctrlVars.dataBindOKW.textParts[i].text;
                         $scope.ctrlVars.textPartOKWindex = i;
                         $scope.ctrlVars.mobile_OKWdropdownTitle = $scope.ctrlVars.dataBindOKW.textParts[i].partName;
+                        /* #region Check if OKW text part has Antrfile box */
+                        var partHasAntrfileBox = $scope.ctrlVars.dataBindOKW.textParts[i].antrfile;
+                        if (partHasAntrfileBox != undefined) {
+                            $scope.ctrlVars.textPardOKWhasAntrfile = true;
+                            $scope.ctrlVars.okwAntrfileTextTitle = $scope.ctrlVars.dataBindOKW.textParts[i].antrfile.title;
+                            $scope.ctrlVars.okwAntrfileTextContent = $scope.ctrlVars.dataBindOKW.textParts[i].antrfile.text;
+                        } else {
+                            $scope.ctrlVars.textPardOKWhasAntrfile = false;
+                            $scope.ctrlVars.okwAntrfileTextTitle = null;
+                            $scope.ctrlVars.okwAntrfileTextContent = null;
+                        }
+                        /* #endregion Check if OKW text part has Antrfile box */
                         /* #region Check if text exceeded height */
                         checkHeightOfTextOKW();
                         $scope.callExternalRebindingOfHtmlContent();
@@ -401,6 +419,18 @@ angular.module('Home')
                         $scope.ctrlVars.mobile_OKWdropdownTitle = $scope.ctrlVars.dataBindOKW.textParts[i].partName;
                         $scope.ctrlVars.mobile_OKWdropdownOpen = !$scope.ctrlVars.mobile_OKWdropdownOpen;
                         $scope.ctrlVars.textPartOKWtoBind = $scope.ctrlVars.dataBindOKW.textParts[i].text;
+                        /* #region Check if OKW text part has Antrfile box */
+                        var partHasAntrfileBox = $scope.ctrlVars.dataBindOKW.textParts[i].antrfile;
+                        if (partHasAntrfileBox != undefined) {
+                            $scope.ctrlVars.textPardOKWhasAntrfile = true;
+                            $scope.ctrlVars.okwAntrfileTextTitle = $scope.ctrlVars.dataBindOKW.textParts[i].antrfile.title;
+                            $scope.ctrlVars.okwAntrfileTextContent = $scope.ctrlVars.dataBindOKW.textParts[i].antrfile.text;
+                        } else {
+                            $scope.ctrlVars.textPardOKWhasAntrfile = false;
+                            $scope.ctrlVars.okwAntrfileTextTitle = null;
+                            $scope.ctrlVars.okwAntrfileTextContent = null;
+                        }
+                        /* #endregion Check if OKW text part has Antrfile box */
                         //$scope.ctrlVars.currentOKWindex = i;
                         break;
                     }
