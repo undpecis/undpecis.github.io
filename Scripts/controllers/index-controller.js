@@ -2,6 +2,7 @@
 //- jquery (for DOM manipulation)
 //- ScrollMagic (for detecting scroll events)
 //- TweenMax (GreenSock GSAP) (for animation)
+//- SwiperSlider (idangero) (for SVG Facts&Figures)
 var undpWorldMap = null;
 //
 $('.popover').not(this).hide(); //Hi
@@ -152,31 +153,14 @@ function setImagesToZoom() {
 }
 /* #endregion Animate Image Zoom on About Our Work section */
 
+/* #region Swiper Slider variables */
+var mySwiper = null;
+/* #endregion Swiper Slider variables */
 
 $(document).ready(function () {
     /* #region Swipebox lightbox */
     $('.swipebox').swipebox();
     /* #endregion Swipebox lightbox */
-    //var listOfActiveCountries = [
-    //  { "id": "AL", "title": "Albania" },
-    //  { "id": "AM", "title": "Armenia" },
-    //  { "id": "AZ", "title": "Azerbaijan" },
-    //  { "id": "BA", "title": "Bosnia and Herzegovina" },
-    //  { "id": "BY", "title": "Belarus" },      
-    //  { "id": "MK", "title": "FYR Macedonia" },
-    //  { "id": "GE", "title": "Georgia" },
-    //  { "id": "KZ", "title": "Kazakhstan" },
-    //  { "id": "XK", "title": "Kosovo" },
-    //  { "id": "KG", "title": "Kyrgyz Republic" },
-    //  { "id": "MD", "title": "Moldova" },
-    //  { "id": "ME", "title": "Montenegro" },
-    //  { "id": "RS", "title": "Serbia" },
-    //  { "id": "TJ", "title": "Tajikistan" },
-    //  { "id": "TR", "title": "Turkey" },
-    //  { "id": "TM", "title": "Turkmenistan" },
-    //  { "id": "UZ", "title": "Uzbekistan" },
-    //  { "id": "UA", "title": "Ukraine" }
-    //];
     /* #region AMCharts Map */
     undpWorldMap = AmCharts.makeChart("mapdiv", {
         /**
@@ -295,16 +279,6 @@ $(document).ready(function () {
         ]
     });
     //
-    //undpWorldMap.addListener("click", function (e) {
-    //    console.log('console clog clicke here is true::  ' + e.mapObject.objectType);
-    //});
-    //function preSelectCountries(list) {
-    //    for (var i = 0; i < list.length; i++) {
-    //        var area = map.getObjectById(list[i]);
-    //        area.showAsSelected = true;
-    //        map.returnInitialColor(area);
-    //    }
-    //}
     /* #endregion AMCharts Map */
     //-------------------------------------------------------//
     /* #region Setting up Array that will contain 6 radnom SVG elements */
@@ -314,17 +288,23 @@ $(document).ready(function () {
                 {
                     shortName: 'albania',
                     fullName: 'Albania',
-                    functionName: 'svgAnimate_albania'
+                    functionName: 'svgAnimate_albania',
+                    backgroundColor: '#F6F6F6',
+                    titleColor: '#818285'
                 },
                 {
                     shortName: 'armenia',
                     fullName: 'Armenia',
-                    functionName: 'svgAnimate_armenia'
+                    functionName: 'svgAnimate_armenia',
+                    backgroundColor: '#F6F6F6',
+                    titleColor: '#818285'
                 },
                 {
                     shortName: 'azerbaijan',
                     fullName: 'Azerbaijan',
-                    functionName: 'svgAnimate_azerbaijan'
+                    functionName: 'svgAnimate_azerbaijan',
+                    backgroundColor: '#F6F6F6',
+                    titleColor: '#818285'
                 }
             ],
             backgroundColor: '#F6F6F6',
@@ -335,17 +315,23 @@ $(document).ready(function () {
                 {
                     shortName: 'belarus',
                     fullName: 'Belarus',
-                    functionName: 'svgAnimate_belarus'
+                    functionName: 'svgAnimate_belarus',
+                    backgroundColor: '#eceded',
+                    titleColor: '#1073a8'
                 },
                 {
                     shortName: 'bosnia',
                     fullName: 'Bosnia',
-                    functionName: 'svgAnimate_bosnia'
+                    functionName: 'svgAnimate_bosnia',
+                    backgroundColor: '#eceded',
+                    titleColor: '#1073a8'
                 },
                 {
                     shortName: 'georgia',
                     fullName: 'Georgia',
-                    functionName: 'svgAnimate_georgia'
+                    functionName: 'svgAnimate_georgia',
+                    backgroundColor: '#eceded',
+                    titleColor: '#1073a8'
                 }
             ],
             backgroundColor: '#eceded',
@@ -356,17 +342,23 @@ $(document).ready(function () {
                 {
                     shortName: 'kazakhstan',
                     fullName: 'Kazakhstan',
-                    functionName: 'svgAnimate_kazakhstan'
+                    functionName: 'svgAnimate_kazakhstan',
+                    backgroundColor: '#fef1e1',
+                    titleColor: '#f48466'
                 },
                 {
                     shortName: 'kosovo',
                     fullName: 'Kosovo',
-                    functionName: 'svgAnimate_kosovo'
+                    functionName: 'svgAnimate_kosovo',
+                    backgroundColor: '#fef1e1',
+                    titleColor: '#f48466'
                 },
                 {
                     shortName: 'kyrgyz',
                     fullName: 'Kyrgyz',
-                    functionName: 'svgAnimate_kyrgyz'
+                    functionName: 'svgAnimate_kyrgyz',
+                    backgroundColor: '#fef1e1',
+                    titleColor: '#f48466'
                 }
             ],
             backgroundColor: '#fef1e1',
@@ -377,17 +369,23 @@ $(document).ready(function () {
                 {
                     shortName: 'moldova',
                     fullName: 'Moldova',
-                    functionName: 'svgAnimate_moldova'
+                    functionName: 'svgAnimate_moldova',
+                    backgroundColor: '#fabea7',
+                    titleColor: '#ef4331'
                 },
                 {
                     shortName: 'montenegro',
                     fullName: 'Montenegro',
-                    functionName: 'svgAnimate_montenegro'
+                    functionName: 'svgAnimate_montenegro',
+                    backgroundColor: '#fabea7',
+                    titleColor: '#ef4331'
                 },
                 {
                     shortName: 'serbia',
                     fullName: 'Serbia',
-                    functionName: 'svgAnimate_serbia'
+                    functionName: 'svgAnimate_serbia',
+                    backgroundColor: '#fabea7',
+                    titleColor: '#ef4331'
                 }
             ],
             backgroundColor: '#fabea7',
@@ -398,17 +396,23 @@ $(document).ready(function () {
                 {
                     shortName: 'tajikistan',
                     fullName: 'Tajikistan',
-                    functionName: 'svgAnimate_tajikistan'
+                    functionName: 'svgAnimate_tajikistan',
+                    backgroundColor: '#B7C7DF',
+                    titleColor: '#1073a8'
                 },
                 {
                     shortName: 'macedonia',
                     fullName: 'Macedonia',
-                    functionName: 'svgAnimate_macedonia'
+                    functionName: 'svgAnimate_macedonia',
+                    backgroundColor: '#B7C7DF',
+                    titleColor: '#1073a8'
                 },
                 {
                     shortName: 'turkey',
                     fullName: 'Turkey',
-                    functionName: 'svgAnimate_turkey'
+                    functionName: 'svgAnimate_turkey',
+                    backgroundColor: '#B7C7DF',
+                    titleColor: '#1073a8'
                 }
             ],
             backgroundColor: '#B7C7DF',
@@ -419,138 +423,159 @@ $(document).ready(function () {
                 {
                     shortName: 'turkmenistan',
                     fullName: 'Turkmenistan',
-                    functionName: 'svgAnimate_turkmenistan'
+                    functionName: 'svgAnimate_turkmenistan',
+                    backgroundColor: '#383839',
+                    titleColor: '#a7a9ac'
                 },
                 {
                     shortName: 'ukraine',
                     fullName: 'Ukraine',
-                    functionName: 'svgAnimate_ukraine'
+                    functionName: 'svgAnimate_ukraine',
+                    backgroundColor: '#383839',
+                    titleColor: '#a7a9ac'
                 },
                 {
                     shortName: 'uzbekistan',
                     fullName: 'Uzbekistan',
-                    functionName: 'svgAnimate_uzbekistan'
+                    functionName: 'svgAnimate_uzbekistan',
+                    backgroundColor: '#383839',
+                    titleColor: '#a7a9ac'
                 }
             ],
             backgroundColor: '#383839',
             titleColor: '#a7a9ac'
         }
     ];
-    var randomCountriesArray = [];
-    /* #region Get Random SVG groups */
-    function setupRandomSvgGraphics() {
-        /* #region Get random numbers */
-        var firstRandomIndex = Math.floor(Math.random() * (infographicsGroups.length - 0)) + 0;
-        //var firstRandomIndex = 2;
-        //setup interval that will keep firing until we get second index different from first index
-        var randomInterval_secondGroup = setInterval(getRandomIndex_secondGroup, 10);
-        function getRandomIndex_secondGroup() {
-            //get second index
-            var secondRandomIndex = Math.floor(Math.random() * (infographicsGroups.length - 0)) + 0;
-            if (secondRandomIndex != firstRandomIndex) {
-                //clears interval
-                clearInterval(randomInterval_secondGroup);
-                //set html container background to match svg graph color
-                //set background color of div containing svg graphics
-                for (var i = 0; i < infographicsGroups.length; i++) {
-                    if (firstRandomIndex == i) {
-                        $("#svg-graph-master-wrap-first").css("background-color", infographicsGroups[i].backgroundColor);
-                        $("#svg-graph-master-wrap-first .c-section-title").css("color", infographicsGroups[i].titleColor);
-                    }
-                    if (secondRandomIndex == i) {
-                        $("#svg-graph-master-wrap-second").css("background-color", infographicsGroups[i].backgroundColor);
-                        $("#svg-graph-master-wrap-second .c-section-title").css("color", infographicsGroups[i].titleColor);
-                    }
-                }
-                //fill list of random countries with first group
-                for (var i = 0; i < infographicsGroups[firstRandomIndex].countries.length; i++) {
-                    randomCountriesArray.push(infographicsGroups[firstRandomIndex].countries[i]);
-                }
-                //fill list of random countries with second group
-                for (var j = 0; j < infographicsGroups[secondRandomIndex].countries.length; j++) {
-                    randomCountriesArray.push(infographicsGroups[secondRandomIndex].countries[j]);
-                }
-                //calls function for inserting html with jquery
-                insertSvgGraphicsToView();
+    /* #region NEW SLIDES SVG CODE */
+    /* #region Swiper Slider initialize */
+    //initialize swiper when document ready  
+    mySwiper = new Swiper('.swiper-container', {
+        slidesPerView: 3,
+        slidesPerGroup: 3,
+        spaceBetween: 50,
+        nextButton: '.c-swiper-button-next',
+        prevButton: '.c-swiper-button-prev',
+        breakpoints: {
+            1024: {
+                slidesPerView: 3,
+                slidesPerGroup: 3,
+                spaceBetween: 40
+            },
+            768: {
+                slidesPerView: 2,
+                slidesPerGroup: 2,
+                spaceBetween: 30
+            },
+            640: {
+                slidesPerView: 1,
+                slidesPerGroup: 1,
+                spaceBetween: 20
+            },
+            320: {
+                slidesPerView: 1,
+                slidesPerGroup: 1,
+                spaceBetween: 10
+            }
+        },
+        //events
+        onSlideChangeEnd: function () {
+            firstLeftVisibleSvgIndex = mySwiper.activeIndex;
+            $("#svg-graph-master-wrap-slider").css("background-color", allSvgGraphsArray[firstLeftVisibleSvgIndex].backgroundColor);
+            $("#svg-graph-master-wrap-slider .c-section-title").css("color", allSvgGraphsArray[firstLeftVisibleSvgIndex].titleColor);
+        }
+    })
+    /* #endregion Swiper Slider initialize */
+    var firstLeftVisibleSvgIndex = 0;
+    var allSvgGraphsArray = [];
+    var startingOpacityForSvg = 0.3;
+    var scrollMagicInitControllerForSvg = new ScrollMagic.Controller();
+    var allScrollMagicScenesArrayForSvg = [];
+    function setupAllSvgSlides() {
+        for (var i = 0; i < infographicsGroups.length; i++) {
+            for (var j = 0; j < infographicsGroups[i].countries.length; j++) {
+                allSvgGraphsArray.push(infographicsGroups[i].countries[j]);
             }
         }
-        /* #endregion Get random numbers */
-    }
-    setupRandomSvgGraphics();
-    /* #endregion Get Random SVG groups */
-    /* #region Inserts SVG's to HTML */
-    var startingOpacity = 0.3;
-    var scrollMagicInitController = new ScrollMagic.Controller();
-    var allScrollMagicScenesArray = [];
-    function insertSvgGraphicsToView() {
-        for (var i = 0; i < randomCountriesArray.length; i++) {
-            $("#trigger-country-container-" + (i + 1) + "-svg").prop('id', 'cid-infographic-trigger-' + randomCountriesArray[i].shortName);
-            $("#cid-infographic-trigger-" + randomCountriesArray[i].shortName).append('<object type="image/svg+xml" data="Content/images/infographic-' + randomCountriesArray[i].shortName + '.svg" class="c-svg-object c-svg-faf" id="cid-infographic-' + randomCountriesArray[i].shortName + '-object">Infographic Legal</object>');
-            $("#cid-infographic-trigger-" + randomCountriesArray[i].shortName).css("opacity", startingOpacity);
+        $("#svg-graph-master-wrap-slider").css("background-color", allSvgGraphsArray[firstLeftVisibleSvgIndex].backgroundColor);
+        $("#svg-graph-master-wrap-slider .c-section-title").css("color", allSvgGraphsArray[firstLeftVisibleSvgIndex].titleColor);
+        //
+        console.log('allSvgGraphsArray length: ' + allSvgGraphsArray.length);
+        //insert svg graphs into Swiper Slider (.swiper-wrapper)
+        for (var k = 0; k < allSvgGraphsArray.length; k++) {
+            //change id of div
+            $("#trigger-country-container-" + (k + 1) + "-svg").prop('id', 'cid-infographic-trigger-' + allSvgGraphsArray[k].shortName);
+            //add <object> tag
+            $("#cid-infographic-trigger-" + allSvgGraphsArray[k].shortName).append('<object type="image/svg+xml" data="Content/images/infographic-' + allSvgGraphsArray[k].shortName + '.svg" class="c-svg-object c-svg-faf" id="cid-infographic-' + allSvgGraphsArray[k].shortName + '-object">Infographic Legal</object>');
+            //add opacity value
+            $("#cid-infographic-trigger-" + allSvgGraphsArray[k].shortName).css("opacity", startingOpacityForSvg);
             /* #region Setting up ScrollMagicScenes */
             // create the scrollmagic scene here.
             var generic_scrollMagicScene = new ScrollMagic.Scene(
                 {
-                    triggerElement: "#cid-infographic-trigger-" + randomCountriesArray[i].shortName, duration: 100,
+                    triggerElement: "#cid-infographic-trigger-" + allSvgGraphsArray[k].shortName, duration: 100,
                     triggerHook: "onCenter",
                 }
             ).addTo(
-                scrollMagicInitController
+                scrollMagicInitControllerForSvg
             ).on("start", function (e) {
-                startCountryAnimation(e);
+                if (e.currentTarget.countryIndex >= firstLeftVisibleSvgIndex && e.currentTarget.countryIndex <= (firstLeftVisibleSvgIndex + 2)) {
+                    startCountryAnimation(e);
+                }
                 //enable: true it will always trigger event; enable: false animation will fire only once
-                e.currentTarget.enabled(false);
+                e.currentTarget.enabled(true);
             }
             );
-            allScrollMagicScenesArray.push(generic_scrollMagicScene);
-            allScrollMagicScenesArray[i].countryIndex = i;
-            allScrollMagicScenesArray[i].countryShortName = randomCountriesArray[i].shortName;
+            allScrollMagicScenesArrayForSvg.push(generic_scrollMagicScene);
+            allScrollMagicScenesArrayForSvg[k].countryIndex = k;
+            allScrollMagicScenesArrayForSvg[k].countryShortName = allSvgGraphsArray[k].shortName;
             /* #endregion Setting up ScrollMagicScenes */
         }
     }
-    /* #endregion Inserts SVG's to HTML */
+    setupAllSvgSlides();
+    /* #endregion NEW SLIDES SVG CODE */
     /* #region We are calling animation for country */
     function startCountryAnimation(event) {
         var eventCountryIndex = event.currentTarget.countryIndex;        
         //console.log('keyss: ' + Object.keys(event.currentTarget));
-        for (var i = 0; i < randomCountriesArray.length; i++) {
+        for (var i = 0; i < allSvgGraphsArray.length; i++) {
             if (eventCountryIndex == i) {
-                if (randomCountriesArray[i].shortName == 'albania') { svgAnimate_albania();
-                } else if (randomCountriesArray[i].shortName == 'albania') {
+                if (allSvgGraphsArray[i].shortName == 'albania') {
                     svgAnimate_albania();
-                } else if (randomCountriesArray[i].shortName == 'armenia') {
+                } else if (allSvgGraphsArray[i].shortName == 'albania') {
+                    svgAnimate_albania();
+                } else if (allSvgGraphsArray[i].shortName == 'armenia') {
                     svgAnimate_armenia();
-                } else if (randomCountriesArray[i].shortName == 'azerbaijan') {
+                } else if (allSvgGraphsArray[i].shortName == 'azerbaijan') {
                     svgAnimate_azerbaijan();
-                } else if (randomCountriesArray[i].shortName == 'belarus') {
+                } else if (allSvgGraphsArray[i].shortName == 'belarus') {
                     svgAnimate_belarus();
-                } else if (randomCountriesArray[i].shortName == 'bosnia') {
+                } else if (allSvgGraphsArray[i].shortName == 'bosnia') {
                     svgAnimate_bosnia();
-                } else if (randomCountriesArray[i].shortName == 'georgia') {
+                } else if (allSvgGraphsArray[i].shortName == 'georgia') {
                     svgAnimate_georgia();
-                } else if (randomCountriesArray[i].shortName == 'kazakhstan') {
+                } else if (allSvgGraphsArray[i].shortName == 'kazakhstan') {
                     svgAnimate_kazakhstan();
-                } else if (randomCountriesArray[i].shortName == 'kosovo') {
+                } else if (allSvgGraphsArray[i].shortName == 'kosovo') {
                     svgAnimate_kosovo();
-                } else if (randomCountriesArray[i].shortName == 'kyrgyz') {
+                } else if (allSvgGraphsArray[i].shortName == 'kyrgyz') {
                     svgAnimate_kyrgyz();
-                } else if (randomCountriesArray[i].shortName == 'moldova') {
+                } else if (allSvgGraphsArray[i].shortName == 'moldova') {
                     svgAnimate_moldova();
-                } else if (randomCountriesArray[i].shortName == 'montenegro') {
+                } else if (allSvgGraphsArray[i].shortName == 'montenegro') {
                     svgAnimate_montenegro();
-                } else if (randomCountriesArray[i].shortName == 'serbia') {
+                } else if (allSvgGraphsArray[i].shortName == 'serbia') {
                     svgAnimate_serbia();
-                } else if (randomCountriesArray[i].shortName == 'tajikistan') {
+                } else if (allSvgGraphsArray[i].shortName == 'tajikistan') {
                     svgAnimate_tajikistan();
-                } else if (randomCountriesArray[i].shortName == 'macedonia') {
+                } else if (allSvgGraphsArray[i].shortName == 'macedonia') {
                     svgAnimate_macedonia();
-                } else if (randomCountriesArray[i].shortName == 'turkey') {
+                } else if (allSvgGraphsArray[i].shortName == 'turkey') {
                     svgAnimate_turkey();
-                } else if (randomCountriesArray[i].shortName == 'turkmenistan') {
+                } else if (allSvgGraphsArray[i].shortName == 'turkmenistan') {
                     svgAnimate_turkmenistan();
-                } else if (randomCountriesArray[i].shortName == 'ukraine') {
+                } else if (allSvgGraphsArray[i].shortName == 'ukraine') {
                     svgAnimate_ukraine();
-                } else if (randomCountriesArray[i].shortName == 'uzbekistan') {
+                } else if (allSvgGraphsArray[i].shortName == 'uzbekistan') {
                     svgAnimate_uzbekistan();
                 }
             }
@@ -1750,99 +1775,5 @@ $(document).ready(function () {
     }
     /* #endregion Country SVG graph animation - Uzbekistan  */
 
-    //window.callExternalSvgSetup = function (countriesObject) {
-    //    randomCountriesArray = countriesObject;
-    //    for (var i = 0; i < randomCountriesArray.length; i++) {
-    //        var countryDivId = 'cid-infographic-' + randomCountriesArray[i].shortName + '-trigger';
-    //        genericCountrySvg_setup(countryDivId);
-    //    }
-    //}
-    /* #endregion Setting up Array that will contain 6 radnom SVG elements */
-    /* #region Setting up ScrollMagicScenes */
-    //setScrollMagicScene = function (trigElemId) {
-    //    console.log('settingScrollMagicScene');
-    //    var generic_scrollMagicScene = new ScrollMagic.Scene(
-    //        {
-    //            triggerElement: trigElemId, duration: 100,
-    //            triggerHook: "onCenter",
-    //        }
-    //    ).addTo(
-    //        scrollMagicInitController
-    //    ).on("start", function (e) {
-    //        console.log('generic animate++');
-    //        genericCountrySvg_animate(trigElemId);
-    //    }
-    //    )
-    //}
-    /* #endregion Setting up ScrollMagicScenes */
-    /* #region Generic Animation for all SVG's */
-    //var startingOpacity = 0.2;
-    //function genericCountrySvg_setup(countryId) {
-    //    /* #region Define HTML element */
-    //    //contains <object> element with desired id that holds svg object
-    //    var countryHtmlObjectWithId;
-    //    var countrySvgElement;
-    //    var isCountryHtmlElementRenderedInterval = setInterval(testRenderedStatus, 50);
-    //    function testRenderedStatus() {
-    //        //get element by defined id = countryId
-    //        countryHtmlObjectWithId = $("#" + countryId)[0];
-    //        if (countryHtmlObjectWithId != undefined) {
-    //            // stop the interval
-    //            clearInterval(isCountryHtmlElementRenderedInterval);
-    //            // gets svg element inside defined id = countryId
-    //            countrySvgElement = $('#' + countryId + ' svg');
-    //            $("#" + countryId).css("opacity", startingOpacity);
-    //        } else {
-    //            console.log('element ' + countryId + ' note yet rendered!');
-    //        }
-    //    }
-    //    /* #endregion Define HTML element */
-    //}
     /* #endregion Generic Animation for all SVG's */
-
-
 });
-
-
-
-
-
-
-//GSAP
-// Get the Object by ID
-//var graphicDots = document.getElementById("cid-infographic-dots");
-//// Get the SVG document inside the Object tag
-//var graphicDotsSVGdocument = graphicDots.contentDocument;
-//// Get one of the SVG items by ID; 
-//var svgItems = $(graphicDotsSVGdocument).find('.cvg-should-be-blue');
-////state of animation
-//var graphicDotsFired = false;
-//function animateDots() {
-//    console.log("Hit start point of scene. + " + svgItems.length);
-//    if (graphicDotsFired == false) {
-//        graphicDotsFired = true;
-//        var delayNumber = 0.03;
-//        for (var i = 0; i < svgItems.length; i++) {
-//            var newDelayValue = delayNumber * i;
-//            TweenMax.to(svgItems[i], 0.05, { fill: "#05679a", ease: Power2.easeInOut, delay: newDelayValue });
-//            TweenMax.to(svgItems[i], 0.05, { scaleX: 1.8, scaleY: 1.8, ease: Back.easeOut.config(1.7), transformOrigin: "50% 50%", onComplete: returnScaleCircle, onCompleteParams: [i], delay: newDelayValue });
-//            function returnScaleCircle(completedi) {
-//                TweenMax.to(svgItems[completedi], 0.05, { scaleX: 1, scaleY: 1, ease: Back.easeOut.config(1.7), transformOrigin: "50% 50%" });
-//            }
-//        }
-//    }
-//}
-
-
-//triggerElement: "#cid-infographic-dots"
-//*****
-//function animateDots() {
-//    console.log("Hit start point of scene.");
-//    // Get the Object by ID
-//    var graphicDots = document.getElementById("cid-infographic-dots");
-//    // Get the SVG document inside the Object tag
-//    var graphicDotsSVGdocument = graphicDots.contentDocument;
-//    // Get one of the SVG items by ID;    
-//    var svgItems = $(graphicDotsSVGdocument).find('.cvg-should-be-blue');
-//    TweenMax.to(svgItems, 7, { fill: "#05679a", ease: Power2.easeInOut});
-//}
