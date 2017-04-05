@@ -1002,7 +1002,7 @@
                             </div>
                         </div>
                         <!-- #region Show Less/More button -->
-                        <div class="c-read-more-feather-button" ng-show="ctrlVars.dataBindOKW.isLargeText" ng-hide="ctrlVars.textPardOKWhasAntrfile && ctrlVars.dataBindOKW.isTextExpanded">
+                        <div class="c-read-more-feather-button" ng-show="ctrlVars.dataBindOKW.isLargeText" ng-hide="ctrlVars.textPardOKWhasAntrfile && ctrlVars.dataBindOKW.isTextExpanded || !ctrlVars.dataBindOKW.isLargeText">
                             <button class="c-bttn c-bttn-combo" ng-click="toggleVisibility('okwContentMoreLess')">
                                 <div class="c-circle-icon-box">
                                     <i class="c-ico icon-arrow-down" ng-if="!ctrlVars.dataBindOKW.isTextExpanded"></i>
@@ -1067,8 +1067,17 @@
                             </div>
                             <!-- #endregion Show Less/More button -->
                         </div>
-                        <div class="c-cell c-col-1-5-lg">
+                        <!-- #region Right content -->
+                        <div class="c-cell c-statement-right-content">
+                            <div ng-if="ctrlVars.okwAntrfileStatementBodyText != ''" class="c-max-h-100perc">
+                                <!-- #region Statement text -->
+                                <!--<h5 class="c-statement-title" ng-bind-html="ctrlVars.dataBindStatement.title">Statement</h5>-->
+                                <p class="c-statement-body-txxt" ng-bind-html="to_trusted(ctrlVars.okwAntrfileStatementBodyText)"></p>
+                                <p class="c-statement-signature-txxt" ng-bind-html="to_trusted(ctrlVars.okwAntrfileStatementSignatureText)"></p>
+                                <!-- #endregion Statement text -->
+                            </div>
                         </div>
+                        <!-- #endregion Right content -->
                     </div>
                 </div>
                 <!-- #endregion Antrfile boxes -->

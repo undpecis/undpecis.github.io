@@ -2466,6 +2466,7 @@ strong {
   position: relative;
 }
 .c-statement-right-content .c-max-h-100perc {
+  position: absolute;
   display: block;
   top: 0;
   left: 0;

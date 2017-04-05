@@ -86,7 +86,8 @@ angular.module('Home')
                 textPardOKWhasAntrfile: false,
                 okwAntrfileTextTitle: null,
                 okwAntrfileTextContent: null,
-                okwAntrfileSingature: null,
+                okwAntrfileStatementBodyText: null,
+                okwAntrfileStatementSignatureText: null,
                 //mobile
                 mobile_OKWdropdownTitle: null,
                 mobile_OKWdropdownOpen: false,
@@ -398,10 +399,16 @@ angular.module('Home')
                             $scope.ctrlVars.textPardOKWhasAntrfile = true;
                             $scope.ctrlVars.okwAntrfileTextTitle = $scope.ctrlVars.dataBindOKW.textParts[i].antrfile.title;
                             $scope.ctrlVars.okwAntrfileTextContent = $scope.ctrlVars.dataBindOKW.textParts[i].antrfile.text;
+                            //statement (right column)
+                            $scope.ctrlVars.okwAntrfileStatementBodyText = $scope.ctrlVars.dataBindOKW.textParts[i].antrfile.statementText;
+                            $scope.ctrlVars.okwAntrfileStatementSignatureText = $scope.ctrlVars.dataBindOKW.textParts[i].antrfile.statementSignature;
                         } else {
                             $scope.ctrlVars.textPardOKWhasAntrfile = false;
                             $scope.ctrlVars.okwAntrfileTextTitle = null;
                             $scope.ctrlVars.okwAntrfileTextContent = null;
+                            //statement (right column)
+                            $scope.ctrlVars.okwAntrfileStatementBodyText = null;
+                            $scope.ctrlVars.okwAntrfileStatementSignatureText = null;
                         }
                         /* #endregion Check if OKW text part has Antrfile box */
                         /* #region Check if text exceeded height */
@@ -438,6 +445,7 @@ angular.module('Home')
             }
             // function that checks if height of binded text is larger than our container in which we want it to display that text
             function checkHeightOfTextOKW() {
+                console.log('checkHeightOfTextOKW');
                 var genericIntervalCounter = 0;
                 var checkForElementInterval = setInterval(getTextBoxElement, 100);
                 function getTextBoxElement() {
@@ -452,9 +460,11 @@ angular.module('Home')
                             var textInnerBoxHeight = document.getElementById('cid-binded-okw-text').offsetHeight;
                             if (textInnerBoxHeight >= textOuterBoxHeight) {
                                 $scope.ctrlVars.dataBindOKW.isLargeText = true;
+                                console.log('checkHeightOfTextOKW is ' + $scope.ctrlVars.dataBindOKW.isLargeText);
                                 $scope.$apply();
                             } else {
                                 $scope.ctrlVars.dataBindOKW.isLargeText = false;
+                                console.log('checkHeightOfTextOKW is ' + $scope.ctrlVars.dataBindOKW.isLargeText);
                             }
                         }
                         genericIntervalCounter++;
