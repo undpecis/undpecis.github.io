@@ -157,7 +157,57 @@ function setImagesToZoom() {
 var mySwiper = null;
 /* #endregion Swiper Slider variables */
 
+/* #region Setup Browser resize event */
+var browserCurrentWidth = $(window).width();
+$(window).on('resize', function () {
+    //someFun();  //call your function.
+    browserCurrentWidth = $(window).width();
+    console.log('browserCurrentWidth: ' + browserCurrentWidth);
+});
+/* #endregion Setup Browser resize event */
+
 $(document).ready(function () {
+    /* #region Setup Sticky Navigation hiding on scroll */
+    // Hide Header on on scroll down
+    var didScroll;
+    var lastScrollTop = 0;
+    var delta = 5;
+    var navbarHeight = $('#cid-header-nav').outerHeight();
+
+    $(window).scroll(function (event) {
+        didScroll = true;
+    });
+
+    setInterval(function () {
+        if (didScroll) {
+            hasScrolled();
+            didScroll = false;
+        }
+    }, 250);
+
+    function hasScrolled() {
+        var st = $(this).scrollTop();
+
+        // Make sure they scroll more than delta
+        if (Math.abs(lastScrollTop - st) <= delta)
+            return;
+
+        // If they scrolled down and are past the navbar, add class .nav-up.
+        // This is necessary so you never see what is "behind" the navbar.
+        if (st > lastScrollTop && st > navbarHeight) {
+            // Scroll Down
+            $('#cid-header-nav').removeClass('nav-down').addClass('nav-up');
+        } else {
+            // Scroll Up
+            if (st + $(window).height() < $(document).height()) {
+                $('#cid-header-nav').removeClass('nav-up').addClass('nav-down');
+            }
+        }
+
+        lastScrollTop = st;
+    }
+    /* #endregion Setup Sticky Navigation hiding on scroll */
+
     /* #region Swipebox lightbox */
     $('.swipebox').swipebox();
     /* #endregion Swipebox lightbox */
@@ -196,7 +246,7 @@ $(document).ready(function () {
               { "id": "MK", "color": "#f8b58e", "outlineColor": "#f8b58e", "rollOverColor": "#dea17e", "rollOverOutlineColor": "#dea17e", "title": "The former Yugoslav Republic of Macedonia", "showAsSelected": false },
               { "id": "GE", "color": "#f8b58e", "outlineColor": "#f8b58e", "rollOverColor": "#dea17e", "rollOverOutlineColor": "#dea17e", "title": "Georgia", "showAsSelected": false },
               { "id": "KZ", "color": "#f8b58e", "outlineColor": "#f8b58e", "rollOverColor": "#dea17e", "rollOverOutlineColor": "#dea17e", "title": "Kazakhstan", "showAsSelected": false },
-              { "id": "XK", "color": "#f8b58e", "outlineColor": "#f8b58e", "rollOverColor": "#dea17e", "rollOverOutlineColor": "#dea17e", "title": "Kosovo<sup>&dagger;</sup>", "showAsSelected": false },
+              { "id": "XK", "color": "#f8b58e", "outlineColor": "#f8b58e", "rollOverColor": "#dea17e", "rollOverOutlineColor": "#dea17e", "title": "Kosovo<sup>1</sup>", "showAsSelected": false },
               { "id": "KG", "color": "#f8b58e", "outlineColor": "#f8b58e", "rollOverColor": "#dea17e", "rollOverOutlineColor": "#dea17e", "title": "Kyrgyz Republic", "showAsSelected": false },
               { "id": "MD", "color": "#f8b58e", "outlineColor": "#f8b58e", "rollOverColor": "#dea17e", "rollOverOutlineColor": "#dea17e", "title": "Moldova", "showAsSelected": false },
               { "id": "ME", "color": "#f8b58e", "outlineColor": "#f8b58e", "rollOverColor": "#dea17e", "rollOverOutlineColor": "#dea17e", "title": "Montenegro", "showAsSelected": false },
@@ -455,6 +505,7 @@ $(document).ready(function () {
         spaceBetween: 50,
         nextButton: '.c-swiper-button-next',
         prevButton: '.c-swiper-button-prev',
+        watchSlidesVisibility: true,
         breakpoints: {
             1024: {
                 slidesPerView: 3,
@@ -482,8 +533,77 @@ $(document).ready(function () {
             firstLeftVisibleSvgIndex = mySwiper.activeIndex;
             $("#svg-graph-master-wrap-slider").css("background-color", allSvgGraphsArray[firstLeftVisibleSvgIndex].backgroundColor);
             $("#svg-graph-master-wrap-slider .c-section-title").css("color", allSvgGraphsArray[firstLeftVisibleSvgIndex].titleColor);
+            //animate only svg graphs that are currently visible on browser
+            if (browserCurrentWidth > 1 && browserCurrentWidth < 768) {
+                setTimeout(
+                    startCountryAnimationFromSlider(firstLeftVisibleSvgIndex),
+                500);
+            } else if (browserCurrentWidth >= 768 && browserCurrentWidth < 1024) {
+                setTimeout(
+                    startCountryAnimationFromSlider(firstLeftVisibleSvgIndex),
+                500);
+                setTimeout(
+                    startCountryAnimationFromSlider(firstLeftVisibleSvgIndex + 1 ),
+                600);
+            } else if (browserCurrentWidth >= 1024) {
+                setTimeout(
+                    startCountryAnimationFromSlider(firstLeftVisibleSvgIndex),
+                500);
+                setTimeout(
+                    startCountryAnimationFromSlider(firstLeftVisibleSvgIndex + 1),
+                600);
+                setTimeout(
+                    startCountryAnimationFromSlider(firstLeftVisibleSvgIndex + 2),
+                700);
+            }
         }
     })
+    /* #region Call SVG animation based on currently visible slide index */
+    function startCountryAnimationFromSlider(eventCountryIndex) {
+        for (var i = 0; i < allSvgGraphsArray.length; i++) {
+            if (eventCountryIndex == i) {
+                if (allSvgGraphsArray[i].shortName == 'albania') {
+                    svgAnimate_albania();
+                } else if (allSvgGraphsArray[i].shortName == 'armenia') {
+                    svgAnimate_armenia();
+                } else if (allSvgGraphsArray[i].shortName == 'azerbaijan') {
+                    svgAnimate_azerbaijan();
+                } else if (allSvgGraphsArray[i].shortName == 'belarus') {
+                    svgAnimate_belarus();
+                } else if (allSvgGraphsArray[i].shortName == 'bosnia') {
+                    svgAnimate_bosnia();
+                } else if (allSvgGraphsArray[i].shortName == 'georgia') {
+                    svgAnimate_georgia();
+                } else if (allSvgGraphsArray[i].shortName == 'kazakhstan') {
+                    svgAnimate_kazakhstan();
+                } else if (allSvgGraphsArray[i].shortName == 'kosovo') {
+                    svgAnimate_kosovo();
+                } else if (allSvgGraphsArray[i].shortName == 'kyrgyz') {
+                    svgAnimate_kyrgyz();
+                } else if (allSvgGraphsArray[i].shortName == 'moldova') {
+                    svgAnimate_moldova();
+                } else if (allSvgGraphsArray[i].shortName == 'montenegro') {
+                    svgAnimate_montenegro();
+                } else if (allSvgGraphsArray[i].shortName == 'serbia') {
+                    svgAnimate_serbia();
+                } else if (allSvgGraphsArray[i].shortName == 'tajikistan') {
+                    svgAnimate_tajikistan();
+                } else if (allSvgGraphsArray[i].shortName == 'macedonia') {
+                    svgAnimate_macedonia();
+                } else if (allSvgGraphsArray[i].shortName == 'turkey') {
+                    svgAnimate_turkey();
+                } else if (allSvgGraphsArray[i].shortName == 'turkmenistan') {
+                    svgAnimate_turkmenistan();
+                } else if (allSvgGraphsArray[i].shortName == 'ukraine') {
+                    svgAnimate_ukraine();
+                } else if (allSvgGraphsArray[i].shortName == 'uzbekistan') {
+                    svgAnimate_uzbekistan();
+                }
+            }
+        }
+    }
+    /* #endregion Call SVG animation based on currently visible slide index */
+
     /* #endregion Swiper Slider initialize */
     var firstLeftVisibleSvgIndex = 0;
     var allSvgGraphsArray = [];
@@ -510,24 +630,28 @@ $(document).ready(function () {
             $("#cid-infographic-trigger-" + allSvgGraphsArray[k].shortName).css("opacity", startingOpacityForSvg);
             /* #region Setting up ScrollMagicScenes */
             // create the scrollmagic scene here.
-            var generic_scrollMagicScene = new ScrollMagic.Scene(
-                {
+            // 'k < 3' is used because we don't want to place scroll trigger for all svg graphics, but only for first 3
+            // if we want to setup scroll animation trigger for all svg's we would remove 'if' statement
+            if (k < 3){
+                var generic_scrollMagicScene = new ScrollMagic.Scene(
+                    {
                     triggerElement: "#cid-infographic-trigger-" + allSvgGraphsArray[k].shortName, duration: 100,
                     triggerHook: "onCenter",
                 }
-            ).addTo(
-                scrollMagicInitControllerForSvg
-            ).on("start", function (e) {
-                if (e.currentTarget.countryIndex >= firstLeftVisibleSvgIndex && e.currentTarget.countryIndex <= (firstLeftVisibleSvgIndex + 2)) {
-                    startCountryAnimation(e);
+                ).addTo(
+                    scrollMagicInitControllerForSvg
+                ).on("start", function (e) {
+                    if (e.currentTarget.countryIndex >= firstLeftVisibleSvgIndex && e.currentTarget.countryIndex <= (firstLeftVisibleSvgIndex + 2)) {
+                        startCountryAnimation(e);
                 }
-                //enable: true it will always trigger event; enable: false animation will fire only once
-                e.currentTarget.enabled(true);
+                    //enable: true it will always trigger event; enable: false animation will fire only once
+                    e.currentTarget.enabled(false);
+                }
+                );
+                allScrollMagicScenesArrayForSvg.push(generic_scrollMagicScene);
+                allScrollMagicScenesArrayForSvg[k].countryIndex = k;
+                allScrollMagicScenesArrayForSvg[k].countryShortName = allSvgGraphsArray[k].shortName;
             }
-            );
-            allScrollMagicScenesArrayForSvg.push(generic_scrollMagicScene);
-            allScrollMagicScenesArrayForSvg[k].countryIndex = k;
-            allScrollMagicScenesArrayForSvg[k].countryShortName = allSvgGraphsArray[k].shortName;
             /* #endregion Setting up ScrollMagicScenes */
         }
     }
@@ -540,8 +664,6 @@ $(document).ready(function () {
         for (var i = 0; i < allSvgGraphsArray.length; i++) {
             if (eventCountryIndex == i) {
                 if (allSvgGraphsArray[i].shortName == 'albania') {
-                    svgAnimate_albania();
-                } else if (allSvgGraphsArray[i].shortName == 'albania') {
                     svgAnimate_albania();
                 } else if (allSvgGraphsArray[i].shortName == 'armenia') {
                     svgAnimate_armenia();
