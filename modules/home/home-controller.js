@@ -16,7 +16,7 @@ angular.module('Home')
                 { id: "MK", title: "The former Yugoslav Republic of Macedonia" },
                 { id: "GE", title: "Georgia" },
                 { id: "KZ", title: "Kazakhstan" },
-                { id: "XK", title: "Kosovo" },
+                { id: "XK", title: "Kosovo<sup>1</sup>" },
                 { id: "KG", title: "Kyrgyz Republic" },
                 { id: "MD", title: "Moldova" },
                 { id: "ME", title: "Montenegro" },
@@ -86,8 +86,14 @@ angular.module('Home')
                 textPardOKWhasAntrfile: false,
                 okwAntrfileTextTitle: null,
                 okwAntrfileTextContent: null,
+                //statement box below okw content
                 okwAntrfileStatementBodyText: null,
                 okwAntrfileStatementSignatureText: null,
+                //statement below pictograms (gender equality, peace and justice)
+                okwStatementBodyTextTwo: null,
+                okwStatementSignatureTextTwo: null,
+                okwStatementExpanded: false,
+                okwStatementHaveContent: false,
                 //mobile
                 mobile_OKWdropdownTitle: null,
                 mobile_OKWdropdownOpen: false,
@@ -254,6 +260,13 @@ angular.module('Home')
                             $scope.ctrlVars.enumFooter[i].isXsSubContentActive = false;
                         }
                     }
+                } else if (callerName == 'okwStatementPictograms') {
+                    $scope.ctrlVars.okwStatementExpanded = !$scope.ctrlVars.okwStatementExpanded;
+                    if ($scope.ctrlVars.okwStatementExpanded == false) {
+                        $timeout(function () {
+                            scrollToAnchor('cid-anchor-OKW-content');
+                        }, 300);
+                    }
                 }
             }
             // @= If user clicks over burger menu we will stop click propagation to prevent dropdown closing
@@ -411,6 +424,17 @@ angular.module('Home')
                             $scope.ctrlVars.okwAntrfileStatementSignatureText = null;
                         }
                         /* #endregion Check if OKW text part has Antrfile box */
+                        /* #region Check if OKW text part has Statement box below pictograms (gender equality, peace justice..) */
+                        if ($scope.ctrlVars.dataBindOKW.textParts[i].pictogramsStatement) {
+                            $scope.ctrlVars.okwStatementBodyTextTwo = $scope.ctrlVars.dataBindOKW.textParts[i].pictogramsStatement.statementText;
+                            $scope.ctrlVars.okwStatementSignatureTextTwo = $scope.ctrlVars.dataBindOKW.textParts[i].pictogramsStatement.statementSignature;
+                            $scope.ctrlVars.okwStatementHaveContent = true;
+                        } else {
+                            $scope.ctrlVars.okwStatementHaveContent = false;
+                            $scope.ctrlVars.okwStatementBodyTextTwo = null;
+                            $scope.ctrlVars.okwStatementSignatureTextTwo = null;
+                        }
+                        /* #endregion Check if OKW text part has Statement box below pictograms (gender equality, peace justice..) */
                         /* #region Check if text exceeded height */
                         checkHeightOfTextOKW();
                         $scope.callExternalRebindingOfHtmlContent();
@@ -533,16 +557,20 @@ angular.module('Home')
                         genericIntervalCounterScroll = 0;
                         scrollInProgress = false;
                         //
-                        var old = $location.hash();
-                        $location.hash(anchorId);
-                        $anchorScroll();
-                        $location.hash(old);
+                        //var old = $location.hash();
+                        //$location.hash(anchorId);
+                        //$anchorScroll();
+                        //$location.hash(old);
                         //
-                        //var scrollTarget = '#' + anchorId;
-                        //$('html,body').animate({ scrollTop: $(scrollTarget).offset().top }, 800);
+                        $scope.scrollToAnchorFunc(anchorId);
                     }
                 }
             }
+            $scope.scrollToAnchorFunc = function (anchorId) {
+                var scrollTarget = '#' + anchorId;
+                $('html,body').animate({ scrollTop: $(scrollTarget).offset().top }, 800);
+            }
+
             // @= Calls external function that will reinitialize newly binded content update
             $scope.callExternalRebindingOfHtmlContent = function () {
                 //$scope.$apply();

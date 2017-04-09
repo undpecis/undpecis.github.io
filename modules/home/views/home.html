@@ -1,151 +1,97 @@
-﻿<!-- #region Cover block -->
+﻿<!-- #region Header wrapper -->
+<div class="c-header-navigation-wrap" id="cid-header-nav">
+    <div class="c-container">
+        <div class="c-table">
+            <div class="c-cell c-w-1perc c-has-towards">
+                <h1><b>TOWARDS SDG 16</b></h1>
+            </div>
+            <div class="c-cell c-has-navigation">
+                <!-- #region LInks navigation // visible on lg -->
+                <ul class="c-horizontal-list c-top-nav-menu">
+                    <li ng-click="scrollToAnchorFunc('cid-our-presence')"><a>OUR PRESENCE</a></li>
+                    <li ng-click="scrollToAnchorFunc('svg-graph-master-wrap-slider')"><a>FACTS AND FIGURES</a></li>
+                    <li ng-click="scrollToAnchorFunc('cid-focus-areas-wrapper')"><a>FOCUS AREAS</a></li>
+                    <li ng-click="scrollToAnchorFunc('cid-foreword-content')"><a>OUR WORK</a></li>
+                </ul>
+                <!-- #endregion LInks navigation // visible on lg -->
+                <!-- #region Burger navigation // visible on xs -->
+                <div class="btn-group c-dropdown-btn-group">
+                    <button type="button" class="c-bttn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true">
+                        <i class="c-ico icon-menu"></i>
+                    </button>
+                    <ul id="cid-burger-dropdown-menu-lg" class="dropdown-menu dropdown-menu-right c-header-burger-dropdown">
+                        <li ng-click="toggleVisibility('burgerMenu_focusAreas')">
+                            <a>
+                                <div class="cls-table">
+                                    <div class="cls-cell">
+                                        FOCUS AREAS
+                                    </div>
+                                    <div class="cls-cell cls-w-1perc">
+                                        <i ng-if="ctrlVars.visibleStates.burger_focusAreas == true" class="c-ico icon-arrow-up"></i>
+                                        <i ng-if="ctrlVars.visibleStates.burger_focusAreas == false" class="c-ico icon-arrow-down"></i>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li ng-if="ctrlVars.visibleStates.burger_focusAreas == true">
+                            <ul class="c-dropdown-menu-subnav c-focus-areas c-max-h-300">
+                                <li ng-repeat="areaSubitem in ctrlVars.focusData" ng-class="'c-vdash-fareas-' + areaSubitem.id" ng-click="toggleVisibility('focusAreasContent', $index)">
+                                    <a>{{areaSubitem.title}}</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li ng-click="toggleVisibility('burgerMenu_countries')">
+                            <a>
+                                COUNTRY PROFILES
+                                <i ng-if="ctrlVars.visibleStates.burger_countries == true" class="c-ico icon-arrow-up"></i>
+                                <i ng-if="ctrlVars.visibleStates.burger_countries == false" class="c-ico icon-arrow-down"></i>
+                            </a>
+                        </li>
+                        <li ng-if="ctrlVars.visibleStates.burger_countries == true">
+                            <ul class="c-dropdown-menu-subnav c-countries c-max-h-300">
+                                <li ng-repeat="countrySubitem in activeCountriesList" class="c-vdash-countries" ng-click="countryClickedFunc('countriesFromBurger', $index)">
+                                    <a ng-bind-html="to_trusted(countrySubitem.title)"></a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <!-- #endregion Burger navigation // visible on xs -->
+            </div>
+            <div class="c-cell c-has-report-link">
+                <a class="c-bttn" href="https://undpecis.github.io/download/towards-sdg-16-promoting-just-peaceful-and-inclusive-societies-in-europe.pdf" target="_blank">
+                    <i class="c-ico icon-cloud-download"></i><br />
+                    Download<br /> FULL report
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- #endregion Header wrapper -->
+<!-- #region Cover block -->
 <div class="c-wide-wrap">
     <div class="c-stripes-wide-wrap">
         <div class="c-container c-custom-click">
-            <!-- #region Header wrapper -->
-            <div class="c-header-wrap c-show-when-lg">
-                <div class="c-table">
-                    <div class="c-cell c-w-1perc c-has-logo">
-                        <object type="image/svg+xml" data="Content/images/undp-logo-standard.svg" class="c-header-logo">
-                            UNDP Logo <!-- fallback image in CSS -->
-                        </object>
-                    </div>
-                    <div class="c-cell c-has-text">
-                        <h3 class="c-16-400"><b class="c-16-700">TOWARDS SDG 16:</b> Promoting Just, Peaceful and <br class="c-ctrl-break" />Inclusive Societies in Europe and Central Asia</h3>
-                    </div>
-                    <div class="c-cell c-w-1perc c-has-icons">
-                        <div class="c-table-as-button">
-                            <div class="c-cell c-has-cloud">
-                                <a class="c-bttn" href="https://undpecis.github.io/download/towards-sdg-16-promoting-just-peaceful-and-inclusive-societies-in-europe.pdf" target="_blank">
-                                    <i class="c-ico icon-cloud-download"></i><br />
-                                    Download<br /> FULL report
-                                </a>
-                            </div>
-                            <div class="c-cell c-has-burger">
-                                <div class="btn-group c-dropdown-btn-group">
-                                    <button type="button" class="c-bttn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true">
-                                        <i class="c-ico icon-menu"></i>
-                                    </button>
-                                    <ul id="cid-burger-dropdown-menu-lg" class="dropdown-menu dropdown-menu-right c-header-burger-dropdown">
-                                        <li ng-click="toggleVisibility('burgerMenu_focusAreas')">
-                                            <a>
-                                                <div class="cls-table">
-                                                    <div class="cls-cell">
-                                                        FOCUS AREAS
-                                                    </div>
-                                                    <div class="cls-cell cls-w-1perc">
-                                                        <i ng-if="ctrlVars.visibleStates.burger_focusAreas == true" class="c-ico icon-arrow-up"></i>
-                                                        <i ng-if="ctrlVars.visibleStates.burger_focusAreas == false" class="c-ico icon-arrow-down"></i>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li ng-if="ctrlVars.visibleStates.burger_focusAreas == true">
-                                            <ul class="c-dropdown-menu-subnav c-focus-areas c-max-h-300">
-                                                <li ng-repeat="areaSubitem in ctrlVars.focusData" ng-class="'c-vdash-fareas-' + areaSubitem.id" ng-click="toggleVisibility('focusAreasContent', $index)">
-                                                    <a>{{areaSubitem.title}}</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li ng-click="toggleVisibility('burgerMenu_countries')">
-                                            <a>
-                                                COUNTRY PROFILES
-                                                <i ng-if="ctrlVars.visibleStates.burger_countries == true" class="c-ico icon-arrow-up"></i>
-                                                <i ng-if="ctrlVars.visibleStates.burger_countries == false" class="c-ico icon-arrow-down"></i>
-                                            </a>
-                                        </li>
-                                        <li ng-if="ctrlVars.visibleStates.burger_countries == true">
-                                            <ul class="c-dropdown-menu-subnav c-countries c-max-h-300">
-                                                <li ng-repeat="countrySubitem in activeCountriesList" class="c-vdash-countries" ng-click="countryClickedFunc('countriesFromBurger', $index)">
-                                                    <a>{{countrySubitem.title}}</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="c-header-wrap c-show-when-xs">
-                <div class="c-table">
-                    <div class="c-cell c-has-logo">
-                        <object type="image/svg+xml" data="Content/images/undp-logo-standard.svg" class="c-header-logo">
-                            UNDP Logo <!-- fallback image in CSS -->
-
-                        </object>
-                    </div>
-                    <div class="c-cell c-has-icons">
-                        <div class="c-table-as-button">
-                            <div class="c-cell c-has-cloud">
-                                <a class="c-bttn" href="https://undpecis.github.io/download/towards-sdg-16-promoting-just-peaceful-and-inclusive-societies-in-europe.pdf" target="_blank">
-                                    <i class="c-ico icon-cloud-download"></i><br />
-                                    Download<br /> FULL report
-                                </a>
-                            </div>
-                            <div class="c-cell c-has-burger">
-                                <div class="btn-group c-dropdown-btn-group">
-                                    <button type="button" class="c-bttn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true">
-                                        <i class="c-ico icon-menu"></i>
-                                    </button>
-                                    <ul id="cid-burger-dropdown-menu-xs" class="dropdown-menu dropdown-menu-right c-header-burger-dropdown">
-                                        <li ng-click="toggleVisibility('burgerMenu_focusAreas')">
-                                            <a>
-                                                FOCUS AREAS
-                                                <i ng-if="ctrlVars.visibleStates.burger_focusAreas == true" class="c-ico icon-arrow-up"></i>
-                                                <i ng-if="ctrlVars.visibleStates.burger_focusAreas == false" class="c-ico icon-arrow-down"></i>
-                                            </a>
-                                        </li>
-                                        <li ng-if="ctrlVars.visibleStates.burger_focusAreas == true">
-                                            <ul class="c-dropdown-menu-subnav c-focus-areas c-max-h-300">
-                                                <li ng-repeat="areaSubitem in ctrlVars.focusData" ng-class="'c-vdash-fareas-' + areaSubitem.id" ng-click="toggleVisibility('focusAreasContent', $index)">
-                                                    <a>{{areaSubitem.title}}</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li ng-click="toggleVisibility('burgerMenu_countries')">
-                                            <a>
-                                                COUNTRY PROFILES
-                                                <i ng-if="ctrlVars.visibleStates.burger_countries == true" class="c-ico icon-arrow-up"></i>
-                                                <i ng-if="ctrlVars.visibleStates.burger_countries == false" class="c-ico icon-arrow-down"></i>
-                                            </a>
-                                        </li>
-                                        <li ng-if="ctrlVars.visibleStates.burger_countries == true">
-                                            <ul class="c-dropdown-menu-subnav c-countries c-max-h-300">
-                                                <li ng-repeat="countrySubitem in activeCountriesList" class="c-vdash-countries" ng-click="countryClickedFunc('countriesFromBurger', $index)">
-                                                    <a>{{countrySubitem.title}}</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="c-table">
-                    <div class="c-cell c-has-text">
-                        <h3 class="c-16-400"><b class="c-16-700">TOWARDS SDG 16:</b> Promoting Just, Peaceful and <br class="c-ctrl-break" />Inclusive Societies in Europe and Central Asia</h3>
-                    </div>
-                </div>
-            </div>
-            <!-- #endregion Header wrapper -->
             <!-- #region Main Cover -->
             <div class="c-main-cover-background">
                 <!-- #region Text over content -->
                 <div class="c-text-over-wrap">
+                    <!-- #region UNDP logo -->
+                    <div class="c-content-block c-undp-logo-wrap">
+                        <object type="image/svg+xml" data="Content/images/undp-logo-standard.svg" class="c-svg-object">UNDP logo</object>
+                    </div>
+                    <!-- #endregion UNDP logo -->
                     <!-- #region Title -->
-                <!--    <div class="c-title-over-wrap">
+                    <div class="c-title-over-wrap">
                         <div class="c-text-content">
                             <h1 class="c-32-400">TOWARDS SDG 16:</h1>
                             <h2 class="c-18-400">Promoting Just, Peaceful and Inclusive Societies in Europe and Central Asia</h2>
                         </div>
-                    </div>     -->
+                    </div>     
                     <!-- #endregion Title -->
                     <!-- #region Description text -->
                     <div class="c-description-over-wrap">
-                        <p class="c-txxt">In the Europe and Central Asia region, UNDP works with partners to strengthen inclusive and effective governance and sustain peace. This platform provides insights into how our work helps to make progress from 2015 onwards towards the realization of Sustainable Development Goals – with a focus on Goals 5 & 16 – by 2030.</p>
+                        <p class="c-txxt">In the Europe and Central Asia region, UNDP works with partners to strengthen inclusive and effective governance and sustain peace. This platform provides insights into how our work helps to make progress from 2015 onwards towards the realization of Sustainable Development Goals – with a focus on SDGs 5 & 16 – by 2030.</p>
                     </div>
                     <!-- #endregion Description text -->
                 </div>
@@ -161,7 +107,7 @@
 </div>
 <!-- #endregion Cover block -->
 <!-- #region Interactive map -->
-<div class="c-wide-wrap c-black-background">
+<div class="c-wide-wrap c-black-background" id="cid-our-presence">
     <div class="c-container">
         <!-- #region Title -->
         <div class="c-section-title">
@@ -782,7 +728,7 @@
 </div>
 <!-- #endregion Facts & Figures as Slider -->
 <!-- #region Focus areas -->
-<div class="c-wide-wrap" id="cid-focus-areas-wrapper" name="cid-focus-areas-wrapper">
+<div class="c-wide-wrap" id="cid-focus-areas-wrapper">
     <div class="c-container">
         <!-- #region Title -->
         <div class="c-section-title">
@@ -997,22 +943,22 @@
                     <!-- #endregion Left content / Vertical navigation -->
                     <!-- #region Middle text -->
                     <div class="c-cell c-has-text c-col-3-5-lg">
-                        <div id="cid-expandable-okw-wrapper" ng-class="{'c-max-h-470' : !ctrlVars.dataBindOKW.isTextExpanded, 'c-p-bottom-50' : ctrlVars.dataBindOKW.isTextExpanded}">
+                        <div id="cid-expandable-okw-wrapper" ng-class="{'c-max-h-470' : !ctrlVars.dataBindOKW.isTextExpanded && ctrlVars.okwStatementHaveContent == false, 'c-max-h-815' : !ctrlVars.dataBindOKW.isTextExpanded && ctrlVars.okwStatementHaveContent == true, 'c-p-bottom-50' : ctrlVars.dataBindOKW.isTextExpanded}">
                             <div id="cid-binded-okw-text" class="c-bind-txxt-wrapper" ng-bind-html="to_trusted(ctrlVars.textPartOKWtoBind)">
                             </div>
+                            <!-- #region Show Less/More button -->
+                            <div class="c-read-more-feather-button c-bottom-0" ng-show="ctrlVars.dataBindOKW.isLargeText" ng-hide="ctrlVars.textPardOKWhasAntrfile && ctrlVars.dataBindOKW.isTextExpanded || !ctrlVars.dataBindOKW.isLargeText">
+                                <button class="c-bttn c-bttn-combo" ng-click="toggleVisibility('okwContentMoreLess')">
+                                    <div class="c-circle-icon-box">
+                                        <i class="c-ico icon-arrow-down" ng-if="!ctrlVars.dataBindOKW.isTextExpanded"></i>
+                                        <i class="c-ico icon-arrow-up" ng-if="ctrlVars.dataBindOKW.isTextExpanded"></i>
+                                    </div>
+                                    <span ng-if="!ctrlVars.dataBindOKW.isTextExpanded">SHOW MORE</span>
+                                    <span ng-if="ctrlVars.dataBindOKW.isTextExpanded">SHOW LESS</span>
+                                </button>
+                            </div>
+                            <!-- #endregion Show Less/More button -->
                         </div>
-                        <!-- #region Show Less/More button -->
-                        <div class="c-read-more-feather-button" ng-show="ctrlVars.dataBindOKW.isLargeText" ng-hide="ctrlVars.textPardOKWhasAntrfile && ctrlVars.dataBindOKW.isTextExpanded || !ctrlVars.dataBindOKW.isLargeText">
-                            <button class="c-bttn c-bttn-combo" ng-click="toggleVisibility('okwContentMoreLess')">
-                                <div class="c-circle-icon-box">
-                                    <i class="c-ico icon-arrow-down" ng-if="!ctrlVars.dataBindOKW.isTextExpanded"></i>
-                                    <i class="c-ico icon-arrow-up" ng-if="ctrlVars.dataBindOKW.isTextExpanded"></i>
-                                </div>
-                                <span ng-if="!ctrlVars.dataBindOKW.isTextExpanded">SHOW MORE</span>
-                                <span ng-if="ctrlVars.dataBindOKW.isTextExpanded">SHOW LESS</span>
-                            </button>
-                        </div>
-                        <!-- #endregion Show Less/More button -->
                         <!--<div class="c-read-more-feather-button" ng-click="toggleVisibility('okwContentMoreLess')" ng-if="ctrlVars.dataBindOKW.isLargeText">
                             <span ng-if="!ctrlVars.dataBindOKW.isTextExpanded">Show more&nbsp;&nbsp;<i class="c-ico icon-arrow-down"></i></span>
                             <span ng-if="ctrlVars.dataBindOKW.isTextExpanded">Show less&nbsp;&nbsp;<i class="c-ico icon-arrow-up"></i></span>
@@ -1024,14 +970,32 @@
                         <p>Our work helps to meet targets under:</p>
                         <!-- #region SVG graphic -->
                         <div class="c-sdg-pictograms-wrap">
-                            <a class="c-sdg-pictograms-box c-gender" ng-click="openGenderPeaceModal('gender')">
+                            <a class="c-sdg-pictograms-box c-lg c-gender" ng-click="openGenderPeaceModal('gender')">
                             </a>
                         </div>
                         <!-- #endregion SVG graphic -->
                         <!-- #region SVG graphic -->
                         <div class="c-sdg-pictograms-wrap">
-                            <a class="c-sdg-pictograms-box c-peace-justice" ng-click="openGenderPeaceModal('peace')">
+                            <a class="c-sdg-pictograms-box c-lg c-peace-justice" ng-click="openGenderPeaceModal('peace')">
                             </a>
+                        </div>
+                        <div class="c-pictograms-statement-wrapper" ng-if="ctrlVars.okwStatementHaveContent == true">
+                            <div ng-class="{'c-max-240' : ctrlVars.okwStatementExpanded == false}">
+                                <p class="c-statement-body-txxt" ng-bind-html="to_trusted(ctrlVars.okwStatementBodyTextTwo)"></p>
+                                <p class="c-statement-signature-txxt" ng-bind-html="to_trusted(ctrlVars.okwStatementSignatureTextTwo)"></p>
+                            </div>
+                            <!-- #region Show Less/More button -->
+                            <div class="c-read-more-feather-button" ng-class="{'c-relative' : ctrlVars.okwStatementExpanded}">
+                                <button class="c-bttn c-bttn-combo" ng-click="toggleVisibility('okwStatementPictograms')">
+                                    <div class="c-circle-icon-box">
+                                        <i class="c-ico icon-arrow-down" ng-if="!ctrlVars.okwStatementExpanded"></i>
+                                        <i class="c-ico icon-arrow-up" ng-if="ctrlVars.okwStatementExpanded"></i>
+                                    </div>
+                                    <span ng-if="!ctrlVars.okwStatementExpanded">SHOW MORE</span>
+                                    <span ng-if="ctrlVars.okwStatementExpanded">SHOW LESS</span>
+                                </button>
+                            </div>
+                            <!-- #endregion Show Less/More button -->
                         </div>
                         <!-- #endregion SVG graphic -->
                         <!-- #region Download section -->
