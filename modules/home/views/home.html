@@ -20,40 +20,10 @@
                         <i class="c-ico icon-menu"></i>
                     </button>
                     <ul id="cid-burger-dropdown-menu-lg" class="dropdown-menu dropdown-menu-right c-header-burger-dropdown">
-                        <li ng-click="toggleVisibility('burgerMenu_focusAreas')">
-                            <a>
-                                <div class="cls-table">
-                                    <div class="cls-cell">
-                                        FOCUS AREAS
-                                    </div>
-                                    <div class="cls-cell cls-w-1perc">
-                                        <i ng-if="ctrlVars.visibleStates.burger_focusAreas == true" class="c-ico icon-arrow-up"></i>
-                                        <i ng-if="ctrlVars.visibleStates.burger_focusAreas == false" class="c-ico icon-arrow-down"></i>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li ng-if="ctrlVars.visibleStates.burger_focusAreas == true">
-                            <ul class="c-dropdown-menu-subnav c-focus-areas c-max-h-300">
-                                <li ng-repeat="areaSubitem in ctrlVars.focusData" ng-class="'c-vdash-fareas-' + areaSubitem.id" ng-click="toggleVisibility('focusAreasContent', $index)">
-                                    <a>{{areaSubitem.title}}</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li ng-click="toggleVisibility('burgerMenu_countries')">
-                            <a>
-                                COUNTRY PROFILES
-                                <i ng-if="ctrlVars.visibleStates.burger_countries == true" class="c-ico icon-arrow-up"></i>
-                                <i ng-if="ctrlVars.visibleStates.burger_countries == false" class="c-ico icon-arrow-down"></i>
-                            </a>
-                        </li>
-                        <li ng-if="ctrlVars.visibleStates.burger_countries == true">
-                            <ul class="c-dropdown-menu-subnav c-countries c-max-h-300">
-                                <li ng-repeat="countrySubitem in activeCountriesList" class="c-vdash-countries" ng-click="countryClickedFunc('countriesFromBurger', $index)">
-                                    <a ng-bind-html="to_trusted(countrySubitem.title)"></a>
-                                </li>
-                            </ul>
-                        </li>
+                        <li ng-click="scrollToAnchorFunc('cid-our-presence')"><a>OUR PRESENCE</a></li>
+                        <li ng-click="scrollToAnchorFunc('svg-graph-master-wrap-slider')"><a>FACTS AND FIGURES</a></li>
+                        <li ng-click="scrollToAnchorFunc('cid-focus-areas-wrapper')"><a>FOCUS AREAS</a></li>
+                        <li ng-click="scrollToAnchorFunc('cid-foreword-content')"><a>OUR WORK</a></li>
                     </ul>
                 </div>
                 <!-- #endregion Burger navigation // visible on xs -->
@@ -87,7 +57,7 @@
                             <h1 class="c-32-400">TOWARDS SDG 16:</h1>
                             <h2 class="c-18-400">Promoting Just, Peaceful and Inclusive Societies in Europe and Central Asia</h2>
                         </div>
-                    </div>     
+                    </div>
                     <!-- #endregion Title -->
                     <!-- #region Description text -->
                     <div class="c-description-over-wrap">
@@ -222,7 +192,7 @@
                     <!-- #region Middle text -->
                     <div class="c-cell c-has-text c-col-3-5-lg">
                         <div id="cid-expandable-bac-wrapper" ng-class="{'c-max-h-700' : !ctrlVars.dataBindBAC.isTextExpanded}">
-                            <div id="cid-binded-bac-text" class="c-bind-txxt-wrapper"  ng-bind-html="to_trusted(ctrlVars.dataBindBAC.text)" ng-class="{'c-p-bottom-50' : ctrlVars.dataBindBAC.isTextExpanded}">
+                            <div id="cid-binded-bac-text" class="c-bind-txxt-wrapper c-custom-binded-text" ng-bind-html="to_trusted(ctrlVars.dataBindBAC.text)" ng-class="{'c-p-bottom-50' : ctrlVars.dataBindBAC.isTextExpanded}">
                             </div>
                         </div>
                         <div class="c-read-more-feather-button c-blue-version" ng-if="ctrlVars.dataBindBAC.isLargeText">
@@ -249,8 +219,8 @@
                             <!-- #endregion Graph -->
                             <!-- #region Statement text -->
                             <!--<h5 class="c-statement-title" ng-bind-html="ctrlVars.dataBindStatement.title">Statement</h5>-->
-                            <p class="c-statement-body-txxt" ng-bind-html="to_trusted(ctrlVars.dataBindStatement.bodyText)"></p>
-                            <p class="c-statement-signature-txxt" ng-bind-html="to_trusted(ctrlVars.dataBindStatement.signatureText)"></p>
+                            <p class="c-statement-body-txxt c-custom-binded-text" ng-bind-html="to_trusted(ctrlVars.dataBindStatement.bodyText)"></p>
+                            <p class="c-statement-signature-txxt c-custom-binded-text" ng-bind-html="to_trusted(ctrlVars.dataBindStatement.signatureText)"></p>
                             <!-- #endregion Statement text -->
                         </div>
                     </div>
@@ -402,7 +372,7 @@
 </div>
 <!-- #endregion Expandable BAC content // LARGE RESOLUTIONS -->
 <!-- #region Expandable BAC content // SMALL RESOLUTIONS -->
-<div id="cid-bac-content-xs" name="id-bac-content-xs"  class="c-wide-wrap c-show-when-xs" ng-if="ctrlVars.visibleStates.isCountryVisible">
+<div id="cid-bac-content-xs" name="id-bac-content-xs" class="c-wide-wrap c-show-when-xs" ng-if="ctrlVars.visibleStates.isCountryVisible">
     <div class="c-container">
         <div class="c-expandable-content-wrap c-blue-background">
             <!-- #region Country title -->
@@ -510,8 +480,8 @@
                 <!-- #endregion Navigation content -->
                 <!-- #region Statement content -->
                 <div class="c-statement-right-content c-xs-content" ng-if="ctrlVars.dataBindStatement.bodyText != ''">
-                    <p class="c-statement-body-txxt" ng-bind-html="to_trusted(ctrlVars.dataBindStatement.bodyText)"></p>
-                    <p class="c-statement-signature-txxt" ng-bind-html="to_trusted(ctrlVars.dataBindStatement.signatureText)"></p>
+                    <p class="c-statement-body-txxt c-custom-binded-text" ng-bind-html="to_trusted(ctrlVars.dataBindStatement.bodyText)"></p>
+                    <p class="c-statement-signature-txxt c-custom-binded-text" ng-bind-html="to_trusted(ctrlVars.dataBindStatement.signatureText)"></p>
                 </div>
                 <!-- #endregion Statement content -->
             </div>
@@ -897,7 +867,7 @@
 </div>
 <!-- #endregion Focus areas -->
 <!-- #region Expandable content -->
-<div id="cid-anchor-OKW-content" name="cid-anchor-OKW-content" class="c-wide-wrap c-black-background"  ng-if="ctrlVars.visibleStates.isVisibleFocusAreaContent" ng-class="{'c-black-line-top' : ctrlVars.visibleStates.visibleFocusAreaContentIndex ==0, 'c-blue-line-top' : ctrlVars.visibleStates.visibleFocusAreaContentIndex ==1, 'c-red-line-top' : ctrlVars.visibleStates.visibleFocusAreaContentIndex ==2, 'c-peach-line-top' : ctrlVars.visibleStates.visibleFocusAreaContentIndex ==3}">
+<div id="cid-anchor-OKW-content" name="cid-anchor-OKW-content" class="c-wide-wrap c-black-background" ng-if="ctrlVars.visibleStates.isVisibleFocusAreaContent" ng-class="{'c-black-line-top' : ctrlVars.visibleStates.visibleFocusAreaContentIndex ==0, 'c-blue-line-top' : ctrlVars.visibleStates.visibleFocusAreaContentIndex ==1, 'c-red-line-top' : ctrlVars.visibleStates.visibleFocusAreaContentIndex ==2, 'c-peach-line-top' : ctrlVars.visibleStates.visibleFocusAreaContentIndex ==3}">
     <div class="c-container">
         <div class="c-expandable-content-wrap">
             <!-- #region Title -->
@@ -944,7 +914,7 @@
                     <!-- #region Middle text -->
                     <div class="c-cell c-has-text c-col-3-5-lg">
                         <div id="cid-expandable-okw-wrapper" ng-class="{'c-max-h-470' : !ctrlVars.dataBindOKW.isTextExpanded && ctrlVars.okwStatementHaveContent == false, 'c-max-h-815' : !ctrlVars.dataBindOKW.isTextExpanded && ctrlVars.okwStatementHaveContent == true, 'c-p-bottom-50' : ctrlVars.dataBindOKW.isTextExpanded}">
-                            <div id="cid-binded-okw-text" class="c-bind-txxt-wrapper" ng-bind-html="to_trusted(ctrlVars.textPartOKWtoBind)">
+                            <div id="cid-binded-okw-text" class="c-bind-txxt-wrapper c-custom-binded-text" ng-bind-html="to_trusted(ctrlVars.textPartOKWtoBind)">
                             </div>
                             <!-- #region Show Less/More button -->
                             <div class="c-read-more-feather-button c-bottom-0" ng-show="ctrlVars.dataBindOKW.isLargeText" ng-hide="ctrlVars.textPardOKWhasAntrfile && ctrlVars.dataBindOKW.isTextExpanded || !ctrlVars.dataBindOKW.isLargeText">
@@ -981,8 +951,8 @@
                         </div>
                         <div class="c-pictograms-statement-wrapper" ng-if="ctrlVars.okwStatementHaveContent == true">
                             <div ng-class="{'c-max-240' : ctrlVars.okwStatementExpanded == false}">
-                                <p class="c-statement-body-txxt" ng-bind-html="to_trusted(ctrlVars.okwStatementBodyTextTwo)"></p>
-                                <p class="c-statement-signature-txxt" ng-bind-html="to_trusted(ctrlVars.okwStatementSignatureTextTwo)"></p>
+                                <p class="c-statement-body-txxt c-custom-binded-text" ng-bind-html="to_trusted(ctrlVars.okwStatementBodyTextTwo)"></p>
+                                <p class="c-statement-signature-txxt c-custom-binded-text" ng-bind-html="to_trusted(ctrlVars.okwStatementSignatureTextTwo)"></p>
                             </div>
                             <!-- #region Show Less/More button -->
                             <div class="c-read-more-feather-button" ng-class="{'c-relative' : ctrlVars.okwStatementExpanded}">
@@ -1018,7 +988,7 @@
                         <div class="c-cell c-col-3-5-lg">
                             <div>
                                 <h3 ng-bind-html="to_trusted(ctrlVars.okwAntrfileTextTitle)"></h3>
-                                <div ng-bind-html="to_trusted(ctrlVars.okwAntrfileTextContent)" class="c-p-top-30"></div>
+                                <div ng-bind-html="to_trusted(ctrlVars.okwAntrfileTextContent)" class="c-p-top-30 c-custom-binded-text"></div>
                             </div>
                             <!-- #region Show Less/More button -->
                             <div class="c-read-more-feather-button c-antrfile-box" ng-if="ctrlVars.dataBindOKW.isTextExpanded">
@@ -1036,8 +1006,8 @@
                             <div ng-if="ctrlVars.okwAntrfileStatementBodyText != ''" class="c-max-h-100perc">
                                 <!-- #region Statement text -->
                                 <!--<h5 class="c-statement-title" ng-bind-html="ctrlVars.dataBindStatement.title">Statement</h5>-->
-                                <p class="c-statement-body-txxt" ng-bind-html="to_trusted(ctrlVars.okwAntrfileStatementBodyText)"></p>
-                                <p class="c-statement-signature-txxt" ng-bind-html="to_trusted(ctrlVars.okwAntrfileStatementSignatureText)"></p>
+                                <p class="c-statement-body-txxt c-custom-binded-text" ng-bind-html="to_trusted(ctrlVars.okwAntrfileStatementBodyText)"></p>
+                                <p class="c-statement-signature-txxt c-custom-binded-text" ng-bind-html="to_trusted(ctrlVars.okwAntrfileStatementSignatureText)"></p>
                                 <!-- #endregion Statement text -->
                             </div>
                         </div>
@@ -1069,7 +1039,7 @@
                         <!-- #region Antrfile content -->
                         <div class="c-antrfile-box-wrapper-xs" ng-if="ctrlVars.textPardOKWhasAntrfile">
                             <h4 ng-bind-html="to_trusted(ctrlVars.okwAntrfileTextTitle)"></h4>
-                            <div ng-bind-html="to_trusted(ctrlVars.okwAntrfileTextContent)" class="c-p-top-30"></div>
+                            <div ng-bind-html="to_trusted(ctrlVars.okwAntrfileTextContent)" class="c-p-top-30 c-custom-binded-text"></div>
                         </div>
                         <!-- #endregion Antrfile content -->
                     </li>
@@ -1112,7 +1082,7 @@
                         <!-- #region Antrfile content -->
                         <div class="c-antrfile-box-wrapper-xs" ng-if="ctrlVars.textPardOKWhasAntrfile">
                             <h4 ng-bind-html="to_trusted(ctrlVars.okwAntrfileTextTitle)"></h4>
-                            <div ng-bind-html="to_trusted(ctrlVars.okwAntrfileTextContent)" class="c-p-top-30"></div>
+                            <div ng-bind-html="to_trusted(ctrlVars.okwAntrfileTextContent)" class="c-p-top-30 c-custom-binded-text"></div>
                         </div>
                         <!-- #endregion Antrfile content -->
                     </li>
@@ -1155,7 +1125,7 @@
                         <!-- #region Antrfile content -->
                         <div class="c-antrfile-box-wrapper-xs" ng-if="ctrlVars.textPardOKWhasAntrfile">
                             <h4 ng-bind-html="to_trusted(ctrlVars.okwAntrfileTextTitle)"></h4>
-                            <div ng-bind-html="to_trusted(ctrlVars.okwAntrfileTextContent)" class="c-p-top-30"></div>
+                            <div ng-bind-html="to_trusted(ctrlVars.okwAntrfileTextContent)" class="c-p-top-30 c-custom-binded-text"></div>
                         </div>
                         <!-- #endregion Antrfile content -->
                     </li>
@@ -1179,11 +1149,11 @@
         <div class="c-regional-text-content-wrap">
             <div class="c-table">
                 <div class="c-cell c-has-text" ng-class="{'c-p-bottom-40-force' : !ctrlVars.forewordData.isTextExpanded}">
-                    <div ng-class="{'c-max-h-440' : !ctrlVars.forewordData.isTextExpanded}">
+                    <div ng-class="{'c-keep-max-h-content' : !ctrlVars.forewordData.isTextExpanded}">
                         <div ng-bind-html="ctrlVars.forewordData.data.text" ng-class="{'c-p-bottom-50' : ctrlVars.forewordData.isTextExpanded}">
                         </div>
                     </div>
-                    <div class="c-read-more-feather-button c-white-version" ng-click="toggleVisibility('forwordContentMoreLess')">
+                    <div class="c-read-more-feather-button c-white-version" ng-click="toggleVisibility('forwordContentMoreLess')" ng-class="{'c-bottom-0' : ctrlVars.forewordData.isTextExpanded}">
                         <!-- #region Learn more button -->
                         <button class="c-bttn c-bttn-combo">
                             <div class="c-circle-icon-box">
@@ -1194,34 +1164,6 @@
                             <span ng-if="ctrlVars.forewordData.isTextExpanded">SHOW LESS</span>
                         </button>
                         <!-- #endregion Learn more button -->
-                    </div>
-                </div>
-                <div class="c-cell c-has-image-box">
-                    <div ng-class="{'c-max-h-440' : !ctrlVars.forewordData.isTextExpanded}">
-                        <!-- #region Image box -->
-                        <div class="c-about-our-work-image-wrapper" id="piczoom-trigger-01" ng-init="callExternalImgAnim('#piczoom-trigger-01')">
-                            <div class="c-img-crop-box">
-                                <img id="cid-img-to-animate-01" class="c-animate-img" src="Content/images/about-our-work/about-our-work-cover-001.jpg" alt="The ‘Let’s Vote’ campaign promoting more informed voting within Roma communities in Moldova">
-                            </div>
-                            <div class="c-photo-credits-content">The ‘Let’s Vote’ campaign promoting more informed voting within Roma communities in Moldova</div>
-                        </div>
-                        <!-- #endregion Image box -->
-                        <!-- #region Image box -->
-                        <div class="c-about-our-work-image-wrapper" id="piczoom-trigger-02" ng-init="callExternalImgAnim('#piczoom-trigger-02')" ng-if="ctrlVars.forewordData.isTextExpanded">
-                            <div class="c-img-crop-box">
-                                <img id="cid-img-to-animate-02" class="c-animate-img" src="Content/images/about-our-work/about-our-work-cover-002.jpg" alt="The reconstruction and concreting of a crossborder water channel near Samarkandyk village benefits both Tajik and Kyrgyz communities in the area">
-                            </div>
-                            <div class="c-photo-credits-content">The reconstruction and concreting of a crossborder water channel near Samarkandyk village benefits both Tajik and Kyrgyz communities in the area</div>
-                        </div>
-                        <!-- #endregion Image box -->
-                        <!-- #region Image box -->
-               <!--         <div class="c-about-our-work-image-wrapper" id="piczoom-trigger-03" ng-init="callExternalImgAnim('#piczoom-trigger-03')" ng-if="ctrlVars.forewordData.isTextExpanded">
-                            <div class="c-img-crop-box">
-                                <img id="cid-img-to-animate-03" class="c-animate-img" src="Content/images/about-our-work/about-our-work-cover-003.jpg" alt="Tajik Border Guards at the Tajik-Afghan Border">
-                            </div>
-                            <div class="c-photo-credits-content">Tajik Border Guards at the Tajik-Afghan Border</div>
-                        </div> -->
-                        <!-- #endregion Image box -->
                     </div>
                 </div>
             </div>
