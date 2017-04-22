@@ -270,12 +270,12 @@ angular.module('Home')
                 }
             }
             // @= If user clicks over burger menu we will stop click propagation to prevent dropdown closing
-            $(document).on('click', '#cid-burger-dropdown-menu-xs.dropdown-menu', function (e) {
-                e.stopPropagation();
-            });
-            $(document).on('click', '#cid-burger-dropdown-menu-lg.dropdown-menu', function (e) {
-                e.stopPropagation();
-            });
+            //$(document).on('click', '#cid-burger-dropdown-menu-xs.dropdown-menu', function (e) {
+            //    e.stopPropagation();
+            //});
+            //$(document).on('click', '#cid-burger-dropdown-menu-lg.dropdown-menu', function (e) {
+            //    e.stopPropagation();
+            //});
             $(document).on('click', '#cid-footer-navigations-lg .c-clickable-item', function (e) {
                 e.stopPropagation();
             });
