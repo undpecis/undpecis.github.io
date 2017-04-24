@@ -1,0 +1,121 @@
+﻿<div class="c-included-content-wrap">
+    <!-- #region Title -->
+    <div class="c-title">
+        <h3>{{ctrlVars.selectedFocusAreaData.title}}</h3>
+    </div>
+    <!-- #endregion Title -->
+    <!-- #region Content // SMALL RESOLUTIONS -->
+    <ul class="c-vertical-list c-okw-xs-devices-list">
+        <!-- #region Overview -->
+        <li>
+            <a class="c-list-title" ng-click="changeCountryOKWData(0)" ng-class="{'c-active' : ctrlVars.currentOKWindex == 0}">
+                <div class="c-table">
+                    <div class="c-cell c-has-title">Overview</div>
+                    <div class="c-cell c-has-arrow">
+                        <i class="c-ico icon-arrow-down" ng-if="ctrlVars.enumOKW[0].isXsSubnavActive == false"></i>
+                        <i class="c-ico icon-arrow-up" ng-if="ctrlVars.enumOKW[0].isXsSubnavActive == true"></i>
+                    </div>
+                </div>
+            </a>
+        </li>
+        <!-- #endregion Overview -->
+        <!-- #region Overview Text content -->
+        <li class="c-has-subcontent c-black-background" ng-if="ctrlVars.enumOKW[0].isXsSubnavActive == true">
+            <div class="c-text-wrapper" ng-bind-html="ctrlVars.textPartOKWtoBind"></div>
+            <!-- #region Antrfile content -->
+            <div class="c-antrfile-box-wrapper-xs" ng-if="ctrlVars.textPardOKWhasAntrfile">
+                <h4 ng-bind-html="to_trusted(ctrlVars.okwAntrfileTextTitle)"></h4>
+                <div ng-bind-html="to_trusted(ctrlVars.okwAntrfileTextContent)" class="c-p-top-30 c-custom-binded-text"></div>
+            </div>
+            <!-- #endregion Antrfile content -->
+        </li>
+        <!-- #endregion Overview Text content -->
+        <!-- #region Key Trends -->
+        <li>
+            <a class="c-list-title" ng-click="changeCountryOKWData(1)" ng-class="{'c-active' : ctrlVars.currentOKWindex == 1}">
+                <div class="c-table">
+                    <div class="c-cell c-has-title">Key trends</div>
+                    <div class="c-cell c-has-arrow">
+                        <i class="c-ico icon-arrow-down" ng-if="ctrlVars.enumOKW[1].isXsSubnavActive == false"></i>
+                        <i class="c-ico icon-arrow-up" ng-if="ctrlVars.enumOKW[1].isXsSubnavActive == true"></i>
+                    </div>
+                </div>
+            </a>
+            <!-- #region Subnavigation dropdown -->
+            <div class="c-has-dropdown-subnav c-black-background" ng-if="ctrlVars.enumOKW[1].isXsSubnavActive == true">
+                <div class="btn-group c-dropdown-btn-group">
+                    <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true">
+                        <div class="c-has-text">
+                            {{ctrlVars.mobile_OKWdropdownTitle}}
+                        </div>
+                        <div class="c-has-icon">
+                            <i class="c-ico icon-list"></i>
+                        </div>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li ng-repeat="dropdownItem in ctrlVars.dataBindOKW.textParts" ng-click="selectOKWdropdownItem($index)">
+                            <a>{{dropdownItem.partName}}</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- #endregion Subnavigation dropdown -->
+        </li>
+        <!-- #endregion Key Trends -->
+        <!-- #region Key Trends Text content -->
+        <li class="c-has-subcontent c-black-background" ng-if="ctrlVars.enumOKW[1].isXsSubnavActive == true">
+            <div class="c-text-wrapper" ng-bind-html="ctrlVars.textPartOKWtoBind"></div>
+            <!-- #region Antrfile content -->
+            <div class="c-antrfile-box-wrapper-xs" ng-if="ctrlVars.textPardOKWhasAntrfile">
+                <h4 ng-bind-html="to_trusted(ctrlVars.okwAntrfileTextTitle)"></h4>
+                <div ng-bind-html="to_trusted(ctrlVars.okwAntrfileTextContent)" class="c-p-top-30 c-custom-binded-text"></div>
+            </div>
+            <!-- #endregion Antrfile content -->
+        </li>
+        <!-- #endregion Key Trends Text content -->
+        <!-- #region What we do -->
+        <li>
+            <a class="c-list-title" ng-click="changeCountryOKWData(2)" ng-class="{'c-active' : ctrlVars.currentOKWindex == 2}">
+                <div class="c-table">
+                    <div class="c-cell c-has-title">What we do</div>
+                    <div class="c-cell c-has-arrow">
+                        <i class="c-ico icon-arrow-down" ng-if="ctrlVars.enumOKW[2].isXsSubnavActive == false"></i>
+                        <i class="c-ico icon-arrow-up" ng-if="ctrlVars.enumOKW[2].isXsSubnavActive == true"></i>
+                    </div>
+                </div>
+            </a>
+            <!-- #region Subnavigation dropdown -->
+            <div class="c-has-dropdown-subnav c-black-background" ng-if="ctrlVars.enumOKW[2].isXsSubnavActive == true">
+                <div class="btn-group c-dropdown-btn-group">
+                    <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true">
+                        <div class="c-has-text">
+                            {{ctrlVars.mobile_OKWdropdownTitle}}
+                        </div>
+                        <div class="c-has-icon">
+                            <i class="c-ico icon-list"></i>
+                        </div>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li ng-repeat="dropdownItem in ctrlVars.dataBindOKW.textParts" ng-click="selectOKWdropdownItem($index)">
+                            <a>{{dropdownItem.partName}}</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- #endregion Subnavigation dropdown -->
+        </li>
+        <!-- #endregion What we do -->
+        <!-- #region What we do Text content -->
+        <li class="c-has-subcontent c-black-background" ng-if="ctrlVars.enumOKW[2].isXsSubnavActive == true">
+            <div class="c-text-wrapper" ng-bind-html="ctrlVars.textPartOKWtoBind"></div>
+            <!-- #region Antrfile content -->
+            <div class="c-antrfile-box-wrapper-xs" ng-if="ctrlVars.textPardOKWhasAntrfile">
+                <h4 ng-bind-html="to_trusted(ctrlVars.okwAntrfileTextTitle)"></h4>
+                <div ng-bind-html="to_trusted(ctrlVars.okwAntrfileTextContent)" class="c-p-top-30 c-custom-binded-text"></div>
+            </div>
+            <!-- #endregion Antrfile content -->
+        </li>
+        <!-- #endregion What we do Text content -->
+    </ul>
+    <!-- #endregion Content // SMALL RESOLUTIONS -->
+</div>

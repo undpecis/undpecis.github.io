@@ -120,11 +120,8 @@
                 <div class="c-key-results-content-flag">
                     <div class="c-table">
                         <!-- #region Text -->
-                        <div class="c-cell c-has-text">
-                            <p class="c-21-400">Key Results:</p>
-                            <ul>
-                                <li ng-repeat="keyItem in ctrlVars.selectedCountry.keyResults"><span class="c-list-item">{{keyItem.text}}</span></li>
-                            </ul>
+                        <div class="c-cell c-w-1perc">
+                            <p class="c-21-400 c-title-text">Key Results:</p>
                             <div class="c-buttons-wrap">
                                 <!-- #region Learn more button -->
                                 <button class="c-bttn c-bttn-combo c-bttn-blue" ng-click="toggleVisibility('countryLearnMore_lg')" ng-if="!ctrlVars.visibleStates.isOpenCountryBACdata_lg">
@@ -154,8 +151,27 @@
                         </div>
                         <!-- #endregion Text -->
                         <!-- #region Flag -->
-                        <div class="c-cell c-has-flag">
-                            <div class="c-flag-sprite {{ctrlVars.selectedCountry.flagClass}}" ng-if="ctrlVars.selectedCountry.id != 'XK'"></div>
+                        <div class="c-cell c-has-key-items">
+                            <!-- #region Key results content -->
+                            <div class="c-key-results-content-wrap">
+                                <div class="c-body">
+                                    <!-- #region Icon & text -->
+                                    <div class="c-shell-repeater" ng-repeat="keyItem in ctrlVars.selectedCountry.keyResults" ng-class="{'c-has-5-items' : ctrlVars.selectedCountry.keyResults.length > 4, 'c-has-7-items' : ctrlVars.selectedCountry.keyResults.length > 6 }">
+                                        <div class="c-icon-text-content">
+                                            <div class="c-table">
+                                                <div class="c-cell c-w-1perc">
+                                                    <i class="xn {{keyItem.iconClass}}" aria-hidden="true"></i>
+                                                </div>
+                                                <div class="c-cell c-has-text">
+                                                    <p>{{keyItem.text}}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- #endregion Icon & text -->
+                                </div>
+                            </div>
+                            <!-- #endregion Key results content -->                            
                         </div>
                         <!-- #endregion Flag -->
                     </div>
@@ -171,12 +187,11 @@
 <!-- #region Expandable BAC content // LARGE RESOLUTIONS -->
 <div id="cid-bac-content-lg" name="cid-bac-content-lg" class="c-wide-wrap c-show-when-lg" ng-if="ctrlVars.visibleStates.isOpenCountryBACdata_lg && ctrlVars.visibleStates.isCountryVisible">
     <div class="c-container">
+        <!-- #region Country Profile Wide Image Background // LARGE RESOLUTIONS -->
+        <div class="c-country-profile-wide-image-background {{ctrlVars.selectedCountry.flagClass}}"></div>
+        <!-- #endregion Country Profile Wide Image Background // LARGE RESOLUTIONS -->
         <!-- #region BAC texts content // LARGE RESOLUTIONS -->
         <div class="c-expandable-content-wrap c-blue-background">
-            <!-- #region Title -->
-            <!--<div class="c-title">
-                <h3>Inclusive political processes</h3>
-            </div>-->
             <!-- #endregion Title -->
             <div class="c-content-wrap c-show-when-lg">
                 <div class="c-table">
@@ -212,13 +227,7 @@
                     <!-- #region Right content -->
                     <div class="c-cell c-has-right-content c-statement-right-content c-col-1-5-lg">
                         <div ng-if="ctrlVars.dataBindStatement.imgThumb != ''" class="c-max-h-100perc">
-                            <!-- #region Graph -->
-                            <!--<a class="c-statement-img-thumb swipebox" ng-href="Content/images/photos-and-graphic/{{ctrlVars.dataBindStatement.img}}" title="{{ctrlVars.dataBindStatement.title}}">
-                                <img ng-src="Content/images/photos-and-graphic/{{ctrlVars.dataBindStatement.imgThumb}}" alt="{{ctrlVars.dataBindStatement.title}}">
-                            </a>-->
-                            <!-- #endregion Graph -->
                             <!-- #region Statement text -->
-                            <!--<h5 class="c-statement-title" ng-bind-html="ctrlVars.dataBindStatement.title">Statement</h5>-->
                             <p class="c-statement-body-txxt c-custom-binded-text" ng-bind-html="to_trusted(ctrlVars.dataBindStatement.bodyText)"></p>
                             <p class="c-statement-signature-txxt c-custom-binded-text" ng-bind-html="to_trusted(ctrlVars.dataBindStatement.signatureText)"></p>
                             <!-- #endregion Statement text -->
@@ -229,145 +238,6 @@
             </div>
         </div>
         <!-- #endregion BAC texts content // LARGE RESOLUTIONS -->
-        <!-- #region Key results content -->
-        <div class="c-key-results-content-wrap">
-            <div class="c-table">
-                <!-- #region Left content / Vertical navigation -->
-                <div class="c-cell c-col-1-5-lg">
-                    <h4 class="c-24-400">Key Results</h4>
-                </div>
-                <!-- #endregion Left content / Vertical navigation -->
-                <!-- #region Right content -->
-                <div class="c-cell c-col-4-5-lg">
-                    <div class="c-cross-cells-wrap">
-                        <div class="c-table">
-                            <!-- #region First row -->
-                            <div class="c-row">
-                                <!-- #region Left cell content -->
-                                <div class="c-cell" ng-if="ctrlVars.selectedCountry.keyResults[0].text != ''">
-                                    <!-- #region Icon & text -->
-                                    <div class="c-icon-text-content">
-                                        <div class="c-table">
-                                            <div class="c-cell c-w-1perc">
-                                                <i class="xn {{ctrlVars.selectedCountry.keyResults[0].iconClass}}" aria-hidden="true"></i>
-                                                <!-- #region SVG graphic -->
-                                                <!--<div class="c-content-block c-svg-graph-wrap">
-                                                    <object type="image/svg+xml" data="Content/images/key-icon-legal.svg" class="c-svg-object">
-                                                        Legal
-                                                    </object>
-                                                </div>-->
-                                                <!-- #endregion SVG graphic -->
-                                            </div>
-                                            <div class="c-cell">
-                                                <p>{{ctrlVars.selectedCountry.keyResults[0].text}}</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- #endregion Icon & text -->
-                                </div>
-                                <!-- #endregion Left cell content -->
-                                <!-- #region Right cell content -->
-                                <div class="c-cell" ng-if="ctrlVars.selectedCountry.keyResults[1].text != ''">
-                                    <!-- #region Icon & text -->
-                                    <div class="c-icon-text-content">
-                                        <div class="c-table">
-                                            <div class="c-cell c-w-1perc">
-                                                <i class="xn {{ctrlVars.selectedCountry.keyResults[1].iconClass}}" aria-hidden="true"></i>
-                                                <!-- #region SVG graphic -->
-                                                <!--<div class="c-content-block c-svg-graph-wrap">
-                                                    <object type="image/svg+xml" data="Content/images/key-icon-family.svg" class="c-svg-object">
-                                                        Family
-                                                    </object>
-                                                </div>-->
-                                                <!-- #endregion SVG graphic -->
-                                            </div>
-                                            <div class="c-cell">
-                                                <p>{{ctrlVars.selectedCountry.keyResults[1].text}}</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- #endregion Icon & text -->
-                                </div>
-                                <!-- #endregion Right cell content -->
-                            </div>
-                            <!-- #endregion First row -->
-                            <!-- #region Second row -->
-                            <div class="c-row">
-                                <!-- #region Left cell content -->
-                                <div class="c-cell" ng-if="ctrlVars.selectedCountry.keyResults[2].text != ''">
-                                    <!-- #region Icon & text -->
-                                    <div class="c-icon-text-content">
-                                        <div class="c-table">
-                                            <div class="c-cell c-w-1perc">
-                                                <i class="xn {{ctrlVars.selectedCountry.keyResults[2].iconClass}}" aria-hidden="true"></i>
-                                                <!-- #region SVG graphic -->
-                                                <!--<div class="c-content-block c-svg-graph-wrap">
-                                                    <object type="image/svg+xml" data="Content/images/key-icon-legal.svg" class="c-svg-object">
-                                                        Legal
-                                                    </object>
-                                                </div>-->
-                                                <!-- #endregion SVG graphic -->
-                                            </div>
-                                            <div class="c-cell">
-                                                <p>{{ctrlVars.selectedCountry.keyResults[2].text}}</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- #endregion Icon & text -->
-                                </div>
-                                <!-- #endregion Left cell content -->
-                                <!-- #region Right cell content -->
-                                <div class="c-cell" ng-if="ctrlVars.selectedCountry.keyResults[3].text != ''">
-                                    <!-- #region Icon & text -->
-                                    <div class="c-icon-text-content">
-                                        <div class="c-table">
-                                            <div class="c-cell c-w-1perc">
-                                                <i class="xn {{ctrlVars.selectedCountry.keyResults[3].iconClass}}" aria-hidden="true"></i>
-                                                <!-- #region SVG graphic -->
-                                                <!--<div class="c-content-block c-svg-graph-wrap">
-                                                    <object type="image/svg+xml" data="Content/images/key-icon-light-bubble.svg" class="c-svg-object">
-                                                        Legal
-                                                    </object>
-                                                </div>-->
-                                                <!-- #endregion SVG graphic -->
-                                            </div>
-                                            <div class="c-cell">
-                                                <p>{{ctrlVars.selectedCountry.keyResults[3].text}}</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- #endregion Icon & text -->
-                                </div>
-                                <!-- #endregion Right cell content -->
-                            </div>
-                            <!-- #endregion Second row -->
-                            <!-- #region Third row -->
-                            <div class="c-row" ng-if="ctrlVars.selectedCountry.keyResults.length > 4">
-                                <!-- #region Left cell content -->
-                                <div class="c-cell" ng-if="ctrlVars.selectedCountry.keyResults[4].text != ''">
-                                    <!-- #region Icon & text -->
-                                    <div class="c-icon-text-content">
-                                        <div class="c-table">
-                                            <div class="c-cell c-w-1perc">
-                                                <i class="xn {{ctrlVars.selectedCountry.keyResults[4].iconClass}}" aria-hidden="true"></i>
-                                            </div>
-                                            <div class="c-cell">
-                                                <p>{{ctrlVars.selectedCountry.keyResults[4].text}}</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- #endregion Icon & text -->
-                                </div>
-                                <!-- #endregion Left cell content -->
-                            </div>
-                            <!-- #endregion Third row -->
-                        </div>
-                    </div>
-                </div>
-                <!-- #endregion Right content -->
-            </div>
-        </div>
-        <!-- #endregion Key results content -->
     </div>
 </div>
 <!-- #endregion Expandable BAC content // LARGE RESOLUTIONS -->
@@ -392,12 +262,34 @@
             <!-- #region Country flag // SMALL RESOLUTIONS -->
             <div class="c-key-results-content-flag" ng-if="ctrlVars.visibleStates.isCountryVisible">
                 <div class="c-table">
-                    <!-- #region Text -->
-                    <div class="c-cell c-has-text">
-                        <p class="c-21-400">Key Results:</p>
-                        <ul>
-                            <li ng-repeat="keyItem in ctrlVars.selectedCountry.keyResults"><span class="c-list-item">{{keyItem.text}}</span></li>
-                        </ul>
+                    <!-- #region Flag -->
+                    <div class="c-cell">
+                        <!-- #region Key results content -->
+                        <div class="c-key-results-content-wrap">
+                            <div class="c-header">
+                                <h4 class="c-24-400">Key Results</h4>
+                            </div>
+                            <div class="c-body">
+                                <!-- #region Icon & text -->
+                                <div class="c-shell-repeater" ng-repeat="keyItem in ctrlVars.selectedCountry.keyResults" ng-class="{'c-has-5-items' : ctrlVars.selectedCountry.keyResults.length > 4, 'c-has-7-items' : ctrlVars.selectedCountry.keyResults.length > 6 }">
+                                    <div class="c-icon-text-content">
+                                        <div class="c-table">
+                                            <div class="c-cell c-w-1perc">
+                                                <i class="xn {{keyItem.iconClass}}" aria-hidden="true"></i>
+                                            </div>
+                                            <div class="c-cell c-has-text">
+                                                <p>{{keyItem.text}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- #endregion Icon & text -->
+                            </div>
+                        </div>
+                        <!-- #endregion Key results content -->
+                    </div>
+                    <!-- #endregion Flag -->
+                    <div class="c-cell">
                         <div class="c-buttons-wrap">
                             <!-- #region Download section -->
                             <a class="c-bttn c-bttn-combo c-bttn-blue" ng-href="{{ctrlVars.selectedCountry.sectionPdfUrl}}">
@@ -409,15 +301,12 @@
                             <!-- #endregion Download section -->
                         </div>
                     </div>
-                    <!-- #endregion Text -->
-                    <!-- #region Flag -->
-                    <div class="c-cell c-has-flag">
-                        <div class="c-flag-sprite {{ctrlVars.selectedCountry.flagClass}}" ng-if="ctrlVars.selectedCountry.id != 'XK'"></div>
-                    </div>
-                    <!-- #endregion Flag -->
                 </div>
             </div>
             <!-- #endregion Country flag // SMALL RESOLUTIONS -->
+            <!-- #region Country Profile Wide Image Background // SMALL RESOLUTIONS -->
+            <div class="c-country-profile-wide-image-background {{ctrlVars.selectedCountry.flagClass}}"></div>
+            <!-- #endregion Country Profile Wide Image Background // SMALL RESOLUTIONS -->
             <!-- #region BAC texts content // SMALL RESOLUTIONS -->
             <div class="c-content-wrap">
                 <!-- #region Navigation content -->
@@ -487,145 +376,6 @@
             </div>
             <!-- #endregion BAC texts content // SMALL RESOLUTIONS -->
         </div>
-        <!-- #region Key results content -->
-        <div class="c-key-results-content-wrap">
-            <div class="c-table">
-                <!-- #region Left content / Vertical navigation -->
-                <div class="c-cell c-col-1-5-lg">
-                    <h4 class="c-24-400">Key Results</h4>
-                </div>
-                <!-- #endregion Left content / Vertical navigation -->
-                <!-- #region Right content -->
-                <div class="c-cell c-col-4-5-lg">
-                    <div class="c-cross-cells-wrap">
-                        <div class="c-table">
-                            <!-- #region First row -->
-                            <div class="c-row">
-                                <!-- #region Left cell content -->
-                                <div class="c-cell" ng-if="ctrlVars.selectedCountry.keyResults[0].text != ''">
-                                    <!-- #region Icon & text -->
-                                    <div class="c-icon-text-content">
-                                        <div class="c-table">
-                                            <div class="c-cell c-w-1perc">
-                                                <i class="xn {{ctrlVars.selectedCountry.keyResults[0].iconClass}}" aria-hidden="true"></i>
-                                                <!-- #region SVG graphic -->
-                                                <!--<div class="c-content-block c-svg-graph-wrap">
-                                                    <object type="image/svg+xml" data="Content/images/key-icon-legal.svg" class="c-svg-object">
-                                                        Legal
-                                                    </object>
-                                                </div>-->
-                                                <!-- #endregion SVG graphic -->
-                                            </div>
-                                            <div class="c-cell">
-                                                <p>{{ctrlVars.selectedCountry.keyResults[0].text}}</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- #endregion Icon & text -->
-                                </div>
-                                <!-- #endregion Left cell content -->
-                                <!-- #region Right cell content -->
-                                <div class="c-cell" ng-if="ctrlVars.selectedCountry.keyResults[1].text != ''">
-                                    <!-- #region Icon & text -->
-                                    <div class="c-icon-text-content">
-                                        <div class="c-table">
-                                            <div class="c-cell c-w-1perc">
-                                                <i class="xn {{ctrlVars.selectedCountry.keyResults[1].iconClass}}" aria-hidden="true"></i>
-                                                <!-- #region SVG graphic -->
-                                                <!--<div class="c-content-block c-svg-graph-wrap">
-                                                    <object type="image/svg+xml" data="Content/images/key-icon-family.svg" class="c-svg-object">
-                                                        Family
-                                                    </object>
-                                                </div>-->
-                                                <!-- #endregion SVG graphic -->
-                                            </div>
-                                            <div class="c-cell">
-                                                <p>{{ctrlVars.selectedCountry.keyResults[1].text}}</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- #endregion Icon & text -->
-                                </div>
-                                <!-- #endregion Right cell content -->
-                            </div>
-                            <!-- #endregion First row -->
-                            <!-- #region Second row -->
-                            <div class="c-row" ng-if="ctrlVars.selectedCountry.keyResults[2].text != ''">
-                                <!-- #region Left cell content -->
-                                <div class="c-cell" ng-if="ctrlVars.selectedCountry.keyResults[2].text != ''">
-                                    <!-- #region Icon & text -->
-                                    <div class="c-icon-text-content">
-                                        <div class="c-table">
-                                            <div class="c-cell c-w-1perc">
-                                                <i class="xn {{ctrlVars.selectedCountry.keyResults[2].iconClass}}" aria-hidden="true"></i>
-                                                <!-- #region SVG graphic -->
-                                                <!--<div class="c-content-block c-svg-graph-wrap">
-                                                    <object type="image/svg+xml" data="Content/images/key-icon-legal.svg" class="c-svg-object">
-                                                        Legal
-                                                    </object>
-                                                </div>-->
-                                                <!-- #endregion SVG graphic -->
-                                            </div>
-                                            <div class="c-cell">
-                                                <p>{{ctrlVars.selectedCountry.keyResults[2].text}}</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- #endregion Icon & text -->
-                                </div>
-                                <!-- #endregion Left cell content -->
-                                <!-- #region Right cell content -->
-                                <div class="c-cell" ng-if="ctrlVars.selectedCountry.keyResults[3].text != ''">
-                                    <!-- #region Icon & text -->
-                                    <div class="c-icon-text-content">
-                                        <div class="c-table">
-                                            <div class="c-cell c-w-1perc">
-                                                <i class="xn {{ctrlVars.selectedCountry.keyResults[3].iconClass}}" aria-hidden="true"></i>
-                                                <!-- #region SVG graphic -->
-                                                <!--<div class="c-content-block c-svg-graph-wrap">
-                                                    <object type="image/svg+xml" data="Content/images/key-icon-light-bubble.svg" class="c-svg-object">
-                                                        Legal
-                                                    </object>
-                                                </div>-->
-                                                <!-- #endregion SVG graphic -->
-                                            </div>
-                                            <div class="c-cell">
-                                                <p>{{ctrlVars.selectedCountry.keyResults[3].text}}</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- #endregion Icon & text -->
-                                </div>
-                                <!-- #endregion Right cell content -->
-                            </div>
-                            <!-- #endregion Second row -->
-                            <!-- #region Third row -->
-                            <div class="c-row" ng-if="ctrlVars.selectedCountry.keyResults.length > 4">
-                                <!-- #region Left cell content -->
-                                <div class="c-cell" ng-if="ctrlVars.selectedCountry.keyResults[4].text != ''">
-                                    <!-- #region Icon & text -->
-                                    <div class="c-icon-text-content">
-                                        <div class="c-table">
-                                            <div class="c-cell c-w-1perc">
-                                                <i class="xn {{ctrlVars.selectedCountry.keyResults[4].iconClass}}" aria-hidden="true"></i>
-                                            </div>
-                                            <div class="c-cell">
-                                                <p>{{ctrlVars.selectedCountry.keyResults[4].text}}</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- #endregion Icon & text -->
-                                </div>
-                                <!-- #endregion Left cell content -->
-                            </div>
-                            <!-- #endregion Third row -->
-                        </div>
-                    </div>
-                </div>
-                <!-- #endregion Right content -->
-            </div>
-        </div>
-        <!-- #endregion Key results content -->
     </div>
 </div>
 <!-- #endregion Expandable BAC content // SMALL RESOLUTIONS -->
@@ -735,7 +485,7 @@
                         </button>
                         <!-- #endregion Close more button -->
                         <!-- #region Download section -->
-                        <a class="c-bttn c-bttn-combo" ng-href="{{ctrlVars.focusData[0].sectionPdfUrl}}" target="_blank">
+                        <a class="c-bttn c-bttn-combo" ng-href="{{ctrlVars.focusData[0].sectionPdfUrl}}">
                             <div class="c-circle-icon-box">
                                 <i class="c-ico icon-cloud-download"></i>
                             </div>
@@ -744,6 +494,9 @@
                         <!-- #endregion Download section -->
                     </div>
                     <!-- #endregion Buttons -->
+                    <!-- #region Include OKW content for small devices -->
+                    <div class="c-focus-areas-okw-content-xs-include-wrap" id="cid-included-okw-00" ng-include="'modules/home/views/include/focus-areas-okw-content-xs-devices.html'" ng-if="ctrlVars.visibleStates.visibleFocusAreaContentIndex == 0" ng-class="{'c-black-line-top' : ctrlVars.visibleStates.visibleFocusAreaContentIndex == 0}"></div>
+                    <!-- #endregion Include OKW content for small devices -->
                 </div>
                 <!-- #endregion First content -->
                 <!-- #region Second content -->
@@ -773,7 +526,7 @@
                         </button>
                         <!-- #endregion Close more button -->
                         <!-- #region Download section -->
-                        <a class="c-bttn c-bttn-combo" ng-href="{{ctrlVars.focusData[1].sectionPdfUrl}}" target="_blank">
+                        <a class="c-bttn c-bttn-combo" ng-href="{{ctrlVars.focusData[1].sectionPdfUrl}}">
                             <div class="c-circle-icon-box">
                                 <i class="c-ico icon-cloud-download"></i>
                             </div>
@@ -782,6 +535,9 @@
                         <!-- #endregion Download section -->
                     </div>
                     <!-- #endregion Buttons -->
+                    <!-- #region Include OKW content for small devices -->
+                    <div class="c-focus-areas-okw-content-xs-include-wrap" id="cid-included-okw-01" ng-include="'modules/home/views/include/focus-areas-okw-content-xs-devices.html'" ng-if="ctrlVars.visibleStates.visibleFocusAreaContentIndex == 1" ng-class="{'c-blue-line-top' : ctrlVars.visibleStates.visibleFocusAreaContentIndex == 1}"></div>
+                    <!-- #endregion Include OKW content for small devices -->
                 </div>
                 <!-- #endregion Second content -->
                 <!-- #region Third content -->
@@ -811,7 +567,7 @@
                         </button>
                         <!-- #endregion Close more button -->
                         <!-- #region Download section -->
-                        <a class="c-bttn c-bttn-combo" ng-href="{{ctrlVars.focusData[2].sectionPdfUrl}}" target="_blank">
+                        <a class="c-bttn c-bttn-combo" ng-href="{{ctrlVars.focusData[2].sectionPdfUrl}}">
                             <div class="c-circle-icon-box">
                                 <i class="c-ico icon-cloud-download"></i>
                             </div>
@@ -820,6 +576,9 @@
                         <!-- #endregion Download section -->
                     </div>
                     <!-- #endregion Buttons -->
+                    <!-- #region Include OKW content for small devices -->
+                    <div class="c-focus-areas-okw-content-xs-include-wrap" id="cid-included-okw-02" ng-include="'modules/home/views/include/focus-areas-okw-content-xs-devices.html'" ng-if="ctrlVars.visibleStates.visibleFocusAreaContentIndex == 2" ng-class="{'c-red-line-top' : ctrlVars.visibleStates.visibleFocusAreaContentIndex == 2}"></div>
+                    <!-- #endregion Include OKW content for small devices -->
                 </div>
                 <!-- #endregion Third content -->
                 <!-- #region Fourth content -->
@@ -849,7 +608,7 @@
                         </button>
                         <!-- #endregion Close more button -->
                         <!-- #region Download section -->
-                        <a class="c-bttn c-bttn-combo" ng-href="{{ctrlVars.focusData[3].sectionPdfUrl}}" target="_blank">
+                        <a class="c-bttn c-bttn-combo" ng-href="{{ctrlVars.focusData[3].sectionPdfUrl}}">
                             <div class="c-circle-icon-box">
                                 <i class="c-ico icon-cloud-download"></i>
                             </div>
@@ -858,6 +617,9 @@
                         <!-- #endregion Download section -->
                     </div>
                     <!-- #endregion Buttons -->
+                    <!-- #region Include OKW content for small devices -->
+                    <div class="c-focus-areas-okw-content-xs-include-wrap" id="cid-included-okw-03" ng-include="'modules/home/views/include/focus-areas-okw-content-xs-devices.html'" ng-if="ctrlVars.visibleStates.visibleFocusAreaContentIndex == 3" ng-class="{'c-peach-line-top' : ctrlVars.visibleStates.visibleFocusAreaContentIndex == 3}"></div>
+                    <!-- #endregion Include OKW content for small devices -->
                 </div>
                 <!-- #end   region Fourth content -->
             </div>
@@ -867,11 +629,11 @@
 </div>
 <!-- #endregion Focus areas -->
 <!-- #region Expandable content -->
-<div id="cid-anchor-OKW-content" name="cid-anchor-OKW-content" class="c-wide-wrap c-black-background" ng-if="ctrlVars.visibleStates.isVisibleFocusAreaContent" ng-class="{'c-black-line-top' : ctrlVars.visibleStates.visibleFocusAreaContentIndex ==0, 'c-blue-line-top' : ctrlVars.visibleStates.visibleFocusAreaContentIndex ==1, 'c-red-line-top' : ctrlVars.visibleStates.visibleFocusAreaContentIndex ==2, 'c-peach-line-top' : ctrlVars.visibleStates.visibleFocusAreaContentIndex ==3}">
+<div id="cid-anchor-OKW-content" name="cid-anchor-OKW-content" class="c-wide-wrap c-black-background c-show-when-lg" ng-if="ctrlVars.visibleStates.isVisibleFocusAreaContent" ng-class="{'c-black-line-top' : ctrlVars.visibleStates.visibleFocusAreaContentIndex ==0, 'c-blue-line-top' : ctrlVars.visibleStates.visibleFocusAreaContentIndex ==1, 'c-red-line-top' : ctrlVars.visibleStates.visibleFocusAreaContentIndex ==2, 'c-peach-line-top' : ctrlVars.visibleStates.visibleFocusAreaContentIndex ==3}">
     <div class="c-container">
         <div class="c-expandable-content-wrap">
             <!-- #region Title -->
-            <div class="c-title">
+            <div class="c-title ">
                 <h3>{{ctrlVars.selectedFocusAreaData.title}}</h3>
             </div>
             <!-- #endregion Title -->
@@ -1017,122 +779,6 @@
                 <!-- #endregion Antrfile boxes -->
             </div>
             <!-- #endregion Content // LARGE RESOLUTIONS -->
-            <!-- #region Content // SMALL RESOLUTIONS -->
-            <div class="c-content-wrap c-show-when-xs">
-                <ul class="c-vertical-list c-xs-devices">
-                    <!-- #region Overview -->
-                    <li>
-                        <a class="c-list-title" ng-click="changeCountryOKWData(0)" ng-class="{'c-active' : ctrlVars.currentOKWindex == 0}">
-                            <div class="c-table">
-                                <div class="c-cell">Overview</div>
-                                <div class="c-cell c-w-1perc">
-                                    <i class="c-ico icon-arrow-down" ng-if="ctrlVars.enumOKW[0].isXsSubnavActive == false"></i>
-                                    <i class="c-ico icon-arrow-up" ng-if="ctrlVars.enumOKW[0].isXsSubnavActive == true"></i>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                    <!-- #endregion Overview -->
-                    <!-- #region Overview Text content -->
-                    <li class="c-has-subcontent c-black-background" ng-if="ctrlVars.enumOKW[0].isXsSubnavActive == true">
-                        <div class="c-text-wrapper" ng-bind-html="ctrlVars.textPartOKWtoBind"></div>
-                        <!-- #region Antrfile content -->
-                        <div class="c-antrfile-box-wrapper-xs" ng-if="ctrlVars.textPardOKWhasAntrfile">
-                            <h4 ng-bind-html="to_trusted(ctrlVars.okwAntrfileTextTitle)"></h4>
-                            <div ng-bind-html="to_trusted(ctrlVars.okwAntrfileTextContent)" class="c-p-top-30 c-custom-binded-text"></div>
-                        </div>
-                        <!-- #endregion Antrfile content -->
-                    </li>
-                    <!-- #endregion Overview Text content -->
-                    <!-- #region Key Trends -->
-                    <li>
-                        <a class="c-list-title" ng-click="changeCountryOKWData(1)" ng-class="{'c-active' : ctrlVars.currentOKWindex == 1}">
-                            <div class="c-table">
-                                <div class="c-cell">Key trends</div>
-                                <div class="c-cell c-w-1perc">
-                                    <i class="c-ico icon-arrow-down" ng-if="ctrlVars.enumOKW[1].isXsSubnavActive == false"></i>
-                                    <i class="c-ico icon-arrow-up" ng-if="ctrlVars.enumOKW[1].isXsSubnavActive == true"></i>
-                                </div>
-                            </div>
-                        </a>
-                        <!-- #region Subnavigation dropdown -->
-                        <div class="c-has-dropdown-subnav c-black-background" ng-if="ctrlVars.enumOKW[1].isXsSubnavActive == true">
-                            <div class="btn-group c-dropdown-btn-group">
-                                <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true">
-                                    <div class="c-has-text">
-                                        {{ctrlVars.mobile_OKWdropdownTitle}}
-                                    </div>
-                                    <div class="c-has-icon">
-                                        <i class="c-ico icon-list"></i>
-                                    </div>
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li ng-repeat="dropdownItem in ctrlVars.dataBindOKW.textParts" ng-click="selectOKWdropdownItem($index)">
-                                        <a>{{dropdownItem.partName}}</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <!-- #endregion Subnavigation dropdown -->
-                    </li>
-                    <!-- #endregion Key Trends -->
-                    <!-- #region Key Trends Text content -->
-                    <li class="c-has-subcontent c-black-background" ng-if="ctrlVars.enumOKW[1].isXsSubnavActive == true">
-                        <div class="c-text-wrapper" ng-bind-html="ctrlVars.textPartOKWtoBind"></div>
-                        <!-- #region Antrfile content -->
-                        <div class="c-antrfile-box-wrapper-xs" ng-if="ctrlVars.textPardOKWhasAntrfile">
-                            <h4 ng-bind-html="to_trusted(ctrlVars.okwAntrfileTextTitle)"></h4>
-                            <div ng-bind-html="to_trusted(ctrlVars.okwAntrfileTextContent)" class="c-p-top-30 c-custom-binded-text"></div>
-                        </div>
-                        <!-- #endregion Antrfile content -->
-                    </li>
-                    <!-- #endregion Key Trends Text content -->
-                    <!-- #region What we do -->
-                    <li>
-                        <a class="c-list-title" ng-click="changeCountryOKWData(2)" ng-class="{'c-active' : ctrlVars.currentOKWindex == 2}">
-                            <div class="c-table">
-                                <div class="c-cell">What we do</div>
-                                <div class="c-cell c-w-1perc">
-                                    <i class="c-ico icon-arrow-down" ng-if="ctrlVars.enumOKW[2].isXsSubnavActive == false"></i>
-                                    <i class="c-ico icon-arrow-up" ng-if="ctrlVars.enumOKW[2].isXsSubnavActive == true"></i>
-                                </div>
-                            </div>
-                        </a>
-                        <!-- #region Subnavigation dropdown -->
-                        <div class="c-has-dropdown-subnav c-black-background" ng-if="ctrlVars.enumOKW[2].isXsSubnavActive == true">
-                            <div class="btn-group c-dropdown-btn-group">
-                                <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true">
-                                    <div class="c-has-text">
-                                        {{ctrlVars.mobile_OKWdropdownTitle}}
-                                    </div>
-                                    <div class="c-has-icon">
-                                        <i class="c-ico icon-list"></i>
-                                    </div>
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li ng-repeat="dropdownItem in ctrlVars.dataBindOKW.textParts" ng-click="selectOKWdropdownItem($index)">
-                                        <a>{{dropdownItem.partName}}</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <!-- #endregion Subnavigation dropdown -->
-                    </li>
-                    <!-- #endregion What we do -->
-                    <!-- #region What we do Text content -->
-                    <li class="c-has-subcontent c-black-background" ng-if="ctrlVars.enumOKW[2].isXsSubnavActive == true">
-                        <div class="c-text-wrapper" ng-bind-html="ctrlVars.textPartOKWtoBind"></div>
-                        <!-- #region Antrfile content -->
-                        <div class="c-antrfile-box-wrapper-xs" ng-if="ctrlVars.textPardOKWhasAntrfile">
-                            <h4 ng-bind-html="to_trusted(ctrlVars.okwAntrfileTextTitle)"></h4>
-                            <div ng-bind-html="to_trusted(ctrlVars.okwAntrfileTextContent)" class="c-p-top-30 c-custom-binded-text"></div>
-                        </div>
-                        <!-- #endregion Antrfile content -->
-                    </li>
-                    <!-- #endregion What we do Text content -->
-                </ul>
-            </div>
-            <!-- #endregion Content // SMALL RESOLUTIONS -->
         </div>
     </div>
 </div>
