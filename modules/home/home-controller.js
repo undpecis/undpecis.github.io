@@ -391,7 +391,19 @@ angular.module('Home')
                         //call function that will show selected text part from OKW texts
                         $scope.changeOKWpartText(0);
                         $timeout(function () {
-                            scrollToAnchor('cid-anchor-OKW-content');
+                            if (screenWidth >= breakpointStart_lg) {
+                                scrollToAnchor('cid-anchor-OKW-content');
+                            } else {
+                                if ($scope.ctrlVars.visibleStates.visibleFocusAreaContentIndex == 0){
+                                    scrollToAnchor('cid-included-okw-00');
+                                } else if ($scope.ctrlVars.visibleStates.visibleFocusAreaContentIndex == 1) {
+                                    scrollToAnchor('cid-included-okw-01');
+                                } else if ($scope.ctrlVars.visibleStates.visibleFocusAreaContentIndex == 2) {
+                                    scrollToAnchor('cid-included-okw-02');
+                                } else if ($scope.ctrlVars.visibleStates.visibleFocusAreaContentIndex == 3) {
+                                    scrollToAnchor('cid-included-okw-03');
+                                }
+                            }
                         }, 600);
                     } else {
                         $scope.ctrlVars.enumOKW[i].isXsSubnavActive = false;
