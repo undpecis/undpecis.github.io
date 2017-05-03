@@ -164,40 +164,10 @@
 html, body{
     width:100%;
     //height:100%;
-    overflow-x:hidden;
+    //overflow-x:hidden;
     .fmx-open-sans-light();
     color:@col-text-black;
     line-height:1;
-}
-body{
-    /* #region RESPONSIVE QUERY */
-    /* #region Extra small resolutions */
-    @media only screen and (min-width : @var-breakpoint-start-zero) {
-        @media (max-width: (@var-breakpoint-start-sm - 1) ){
-            padding-top:@var-topnav-height-xsm;
-        }
-    }
-    /* #endregion Extra small resolutions */
-    /* #region Small resolutions */
-    @media only screen and (min-width : @var-breakpoint-start-sm) {
-        @media (max-width: (@var-breakpoint-start-md - 1) ){
-            padding-top:@var-topnav-height-sm;
-        }
-    }
-    /* #endregion Small resolutions */
-    /* #region Medium resolutions */
-    @media only screen and (min-width : @var-breakpoint-start-md) {
-        @media (max-width: (@var-breakpoint-start-lg - 1) ){
-            padding-top:@var-topnav-height-md;
-        }
-    }
-    /* #endregion Medium resolutions */
-    /* #region Large resolutions */
-    @media only screen and (min-width : @var-breakpoint-start-lg) {
-        padding-top:@var-topnav-height-lg;
-    }
-    /* #endregion Large resolutions */
-    /* #endregion RESPONSIVE QUERY */
 }
 object {
     pointer-events:none;
@@ -296,65 +266,106 @@ b, strong{
 .c-m-bottom-30{margin-bottom:30px !important;}
 /* #endregion Margins */
 /* #region Display */
-.c-wide-wrap{
-    text-align:center;
-    display:block;
-    width:100%;
-    line-height:0;
-    &.c-black-line-top{
-        border-top:7px solid @col-stripe-black;
+.c-wide-wrap {
+    text-align: center;
+    display: block;
+    width: 100%;
+    line-height: 0;
+    box-sizing:content-box;
+    overflow:hidden;
+    &.c-black-line-top {
+        border-top: 7px solid @col-stripe-black;
     }
-    &.c-blue-line-top{
-        border-top:7px solid @col-focus-stripe-blue;
+
+    &.c-blue-line-top {
+        border-top: 7px solid @col-focus-stripe-blue;
     }
-    &.c-red-line-top{
-        border-top:7px solid @col-focus-stripe-red;
+
+    &.c-red-line-top {
+        border-top: 7px solid @col-focus-stripe-red;
     }
-    &.c-peach-line-top{
-        border-top:7px solid @col-focus-stripe-peach;
+
+    &.c-peach-line-top {
+        border-top: 7px solid @col-focus-stripe-peach;
     }
     /* #region RESPONSIVE QUERY */
     /* #region Extra small resolutions */
     @media only screen and (min-width : @var-breakpoint-start-zero) {
-        &.c-show-when-xs{
-            display:block;
+        &.c-show-when-xs {
+            display: block;
         }
-        &.c-show-when-lg{
-            display:none;
+
+        &.c-show-when-lg {
+            display: none;
         }
     }
     /* #endregion Extra small resolutions */
     /* #region Small resolutions */
     @media only screen and (min-width : @var-breakpoint-start-sm) {
-        @media (max-width: (@var-breakpoint-start-md - 1) ){
+        @media (max-width: (@var-breakpoint-start-md - 1) ) {
         }
     }
     /* #endregion Small resolutions */
     /* #region Medium resolutions */
     @media only screen and (min-width : @var-breakpoint-start-md) {
-        @media (max-width: (@var-breakpoint-start-lg - 1) ){
+        @media (max-width: (@var-breakpoint-start-lg - 1) ) {
         }
     }
     /* #endregion Medium resolutions */
     /* #region Large resolutions */
     @media only screen and (min-width : @var-breakpoint-start-lg) {
-        padding-left:10px;
-        padding-right:10px;
-        &.c-show-when-xs{
-            display:none;
+        /*padding-left: 10px;
+        padding-right: 10px;*/
+
+        &.c-show-when-xs {
+            display: none;
         }
-        &.c-show-when-lg{
-            display:block;
+
+        &.c-show-when-lg {
+            display: block;
         }
     }
     /* #endregion Large resolutions */
     /* #region Extra Large resolutions */
     @media only screen and (min-width : @var-breakpoint-start-xlg) {
-        padding-left:0;
-        padding-right:0;
+        /*padding-left: 0;
+        padding-right: 0;*/
     }
     /* #endregion Extra Large resolutions */
     /* #endregion RESPONSIVE QUERY */
+    /* #region Containing cover stripes */
+    &.c-has-cover-stripes {
+        overflow:hidden !important;
+        /* #region RESPONSIVE QUERY */
+        /* #region Extra small resolutions */
+        @media only screen and (min-width : @var-breakpoint-start-zero) {
+            @media (max-width: (@var-breakpoint-start-sm - 1) ) {
+                padding-top: @var-topnav-height-xsm;
+            }
+        }
+        /* #endregion Extra small resolutions */
+        /* #region Small resolutions */
+        @media only screen and (min-width : @var-breakpoint-start-sm) {
+            @media (max-width: (@var-breakpoint-start-md - 1) ) {
+                padding-top: @var-topnav-height-sm;
+            }
+        }
+        /* #endregion Small resolutions */
+        /* #region Medium resolutions */
+        @media only screen and (min-width : @var-breakpoint-start-md) {
+            @media (max-width: (@var-breakpoint-start-lg - 1) ) {
+                padding-top: @var-topnav-height-md;
+            }
+        }
+        /* #endregion Medium resolutions */
+        /* #region Large resolutions */
+        @media only screen and (min-width : @var-breakpoint-start-lg) {
+            padding-top: @var-topnav-height-lg;
+        }
+        /* #endregion Large resolutions */
+        /* #endregion RESPONSIVE QUERY */
+    }
+    /* #endregion Containing cover stripes */
 }
 .c-container{
     max-width:1270px;
@@ -1129,11 +1140,21 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00383839', e
                     .c-table{
                         .c-cell{
                             text-align:center;
+                            display:table-cell;
+                            &.c-has-title{
+                                width:100%;
+                            }
+                            &.c-has-arrow{
+                                width:1%;
+                            }
                         }
                     }
                     //active
                     &.c-active{
                         color:@col-graphics-burnt-sienna;
+                    }
+                    &.c-no-padding{
+                        padding:15px 0;
                     }
                 }
                 //
@@ -1285,6 +1306,72 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00383839', e
                             }
                         }
                     }
+                }
+            }
+        }
+    }
+    //
+    &.c-okw-xs-devices-list{
+        background:@col-stripe-black;
+        background-color:@col-stripe-black;
+        color:@col-white;
+        width:100%;
+        > li{
+            > a{
+                &.c-list-title{
+                    display:block;
+                    width:100%;
+                    padding:0;
+                    color:@col-white;
+                    border-top:1px solid darken(@col-white, 30);
+                    .c-table{
+                        .mx-table-setup();
+                        position:relative;
+                        .c-cell{
+                            .mx-cell-setup();
+                            vertical-align:middle;
+                            text-align:center;
+                            border:none;
+                            color:@col-white;
+                            &.c-has-title{
+                                width:100%;
+                                padding:20px 5px;
+                            }
+                            &.c-has-arrow{
+                                display:block;
+                                position:absolute;
+                                padding:10px 20px;
+                                min-width:55px;
+                                width:auto;
+                                top:0;
+                                bottom:0;
+                                right:0;
+                                .c-ico{
+                                    position:absolute;
+                                    top:50%;
+                                    left:50%;
+                                    .mx-transform-translate(-50%, -50%);
+                                }
+                            }
+                        }
+                    }
+                    /*//active
+                    &.c-active{
+                        border-bottom:1px solid darken(@col-white, 30);
+                    }*/
+                }
+            }
+            &:last-child{
+                > a{
+                    &.c-list-title{
+                        border-bottom:1px solid darken(@col-white, 30);
+                    }
+                }
+            }
+            &.c-has-subcontent{
+                padding:10px 15px;
+                .c-text-wrapper{
+                    overflow:auto;
                 }
             }
         }
@@ -1721,10 +1808,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00383839', e
                         padding-bottom:70px;
                         color:@col-white;
                         .c-32-400{
-                            font-size:40px;
+                            font-size:36px;
                         }
                         .c-18-400{
-                            font-size:23px;
+                            font-size:20px;
                         }
                     }
                     /* #endregion Large resolutions */
@@ -1803,11 +1890,13 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00383839', e
     transition: top 0.2s ease-in-out;
     top:0;
     width:100%;
-    background-color:@col-white;
+    background-color:none;
+    background:none;
     .mx-set-as-border-box();
     z-index:99999;
     text-align:center;
     > .c-container{
+        background-color:@col-white;
         margin: 0 auto;
         height:@var-topnav-height-xsm;
         > .c-table{
@@ -1906,7 +1995,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00383839', e
             > .c-table{
                 > .c-cell{
                     &.c-has-towards{
-                        padding:0 20px 0 0;
+                        padding:0 20px 0 10px;
                         h1{
                             font-size:36px;
                         }
@@ -2470,17 +2559,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00383839', e
     display:block;
     width:100%;
     position:relative;
-    padding-top:@var-key-results-padding-Y-lg;
     /* #region RESPONSIVE QUERY */
     /* #region Extra small resolutions */
     @media only screen and (min-width : @var-breakpoint-start-zero) {
         @media (max-width: (@var-breakpoint-start-lg - 1) ){
-            /*&.c-show-when-xs{
-                display:block;
-            }
-            &.c-show-when-lg{
-                display:none;
-            }*/
+            padding-bottom:30px;
             > .c-table{
                 display:block;
                 width:100%;
@@ -2490,22 +2573,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00383839', e
                     padding:0 20px;
                     .mx-set-as-border-box();
                     &.c-has-text{
-                        > ul{
-                            padding-left:10px;
-                            line-height:1;
-                            font-size:7px;
-                            li{
-                                .c-list-item{
-                                    display:block;
-                                    padding-left:15px;
-                                    padding-top:2px;
-                                    font-size:14px;
-                                    line-height:1.3;
-                                    position:relative;
-                                    top:3px;
-                                }
-                            }
-                        }
                         .c-buttons-wrap{
                             display:block;
                             width:100%;
@@ -2523,12 +2590,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00383839', e
         }
     }
     /* #endregion Extra small resolutions */
-    /* #region Small resolutions */
-    @media only screen and (min-width : @var-breakpoint-start-sm) {
-        @media (max-width: (@var-breakpoint-start-md - 1) ){
-        }
-    }
-    /* #endregion Small resolutions */
     /* #region Medium resolutions */
     @media only screen and (min-width : @var-breakpoint-start-md) {
         @media (max-width: (@var-breakpoint-start-lg - 1) ){
@@ -2537,16 +2598,23 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00383839', e
     /* #endregion Medium resolutions */
     /* #region Large resolutions */
     @media only screen and (min-width : @var-breakpoint-start-lg) {
-        /*&.c-show-when-xs{
-            display:none;
-        }
-        &.c-show-when-lg{
-            display:block;
-        }*/
+        padding-top:10px;
         > .c-table{
             .mx-table-setup();
             > .c-cell{
                 .mx-cell-setup();
+                &.c-w-1perc{
+                    width:1%;
+                    text-align:left;
+                    vertical-align:bottom;
+                    position:relative;
+                    min-width:230px;
+                    .c-title-text{
+                        position:absolute;
+                        top:10px;
+                        left:0;
+                    }
+                }
                 &.c-has-text{
                     > ul{
                         padding-left:10px;
@@ -2575,16 +2643,14 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00383839', e
                     width:1%;
                     padding:0 @var-flag-padding-X-lg;
                 }
+                &.c-has-key-items{
+                    width:100%;
+                    padding-left:40px;
+                }
             }
-        }
-        @media (max-width: (@var-breakpoint-start-xlg - 1) ){
         }
     }
     /* #endregion Large resolutions */
-    /* #region Extra Large resolutions */
-    @media only screen and (min-width : @var-breakpoint-start-xlg) {
-    }
-    /* #endregion Extra Large resolutions */
     /* #endregion RESPONSIVE QUERY */
 }
 /* #endregion Key results text */
@@ -2826,6 +2892,63 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00383839', e
     /* #endregion Extra Large resolutions */
     /* #endregion RESPONSIVE QUERY */
 }
+.c-focus-areas-okw-content-xs-include-wrap{
+    &.c-black-line-top{
+        border-top:7px solid @col-stripe-black;
+    }
+    &.c-blue-line-top{
+        border-top:7px solid @col-focus-stripe-blue;
+    }
+    &.c-red-line-top{
+        border-top:7px solid @col-focus-stripe-red;
+    }
+    &.c-peach-line-top{
+        border-top:7px solid @col-focus-stripe-peach;
+    }
+    /* #region Extra small resolutions */
+    @media only screen and (min-width : @var-breakpoint-start-zero) {
+        @media (max-width: (@var-breakpoint-start-lg - 1) ){
+            display:block;
+            margin:20px -20px 0;
+            .c-included-content-wrap{
+                background:@col-stripe-black;
+                background-color:@col-stripe-black;
+                color:@col-white;
+                .c-title{
+                    font-size:34px;
+                    text-align:center;
+                    padding:25px 15px;
+                }
+                .c-vertical-list{
+                    &.c-okw-xs-devices-list{
+                        > li{
+                            > a{
+
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    /* #endregion Extra small resolutions */
+    /* #region Large resolutions */
+    @media only screen and (min-width : @var-breakpoint-start-lg) {
+        display:none !important;
+    }
+    /* #endregion Large resolutions */
+    /* #endregion RESPONSIVE QUERY */
+}
+.c-custom-binded-text{
+    a{
+        display:inline;
+        color:lighten(@col-text-blue, 15) !important;
+        cursor:pointer;
+        &:hover{
+            color:lighten(@col-text-blue, 25) !important;
+        }
+    }
+}
 .c-statement-right-content{
     position:relative;
     .c-max-h-100perc{
@@ -2863,178 +2986,224 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00383839', e
     .mx-set-as-border-box();
     width:100%;
     position:relative;
-    color:@col-focus-stripe-blue;
-    background-color:#cce1ec;
-    /* #region RESPONSIVE QUERY */
-    /* #region Extra small resolutions */
-    @media only screen and (min-width : @var-breakpoint-start-zero) {
-        @media (max-width: (@var-breakpoint-start-lg - 1) ){
-            padding:20px;
-            .c-table{
+    color:@col-white;
+    > .c-header{
+        display:block;
+        width:100%;
+        padding:35px 0 5px;
+        text-align:left;
+    }
+    > .c-body{
+        display:block;
+        width:100%;
+        padding:5px 0 0;
+        .c-shell-repeater{
+            display:block;
+            width:100%;
+            .c-icon-text-content{
                 display:block;
                 width:100%;
-                .c-cell{
-                    display:block;
-                    width:100%;
-                    vertical-align:middle;
-                    text-align:center;
-                    &:first-child{
-                        padding-bottom:30px;
-                    }
-                }
-            }
-            .c-cross-cells-wrap{
-                > .c-table{
-                    display:block;
-                    width:100%;
-                    > .c-row{
-                        display:block;
-                        width:100%;
-                        > .c-cell{
-                            display:block;
+                min-height:75px;
+                padding:35px 0;
+                border-bottom:1px solid #7695be;
+                .c-table{
+                    .mx-table-setup();
+                    .c-cell{
+                        .mx-cell-setup();
+                        vertical-align:middle;
+                        &.c-w-1perc{
                             .mx-set-as-border-box();
-                            width:100%;
-                            line-height:1.4;
-                            vertical-align:middle;
+                            width:1%;
                             text-align:center;
-                            padding:20px 20px;
-                            border-bottom:1px solid #a6cadd;
-                            .c-icon-text-content{
-                                display:block;
-                                max-width:100%;
-                                .c-table{
-                                    display:block;
-                                    .c-cell{
-                                        color:@col-stripe-black;
-                                        display:block;
-                                        &.c-w-1perc{
-                                            display:block;
-                                            .mx-set-as-border-box();
-                                            padding:0 0 20px;
-                                            color:@col-focus-stripe-blue;
-                                            width:100%;
-                                            text-align:center;
-                                            .fa, .xn{
-                                                font-size:60px;
-                                            }
-                                        }
-                                        .c-svg-graph-wrap{
-                                            width:80px;
-                                            height:auto;
-                                        }
-                                    }
-                                }
+                            min-width:80px;
+                            .fa, .xn{
+                                font-size:60px;
                             }
                         }
-                        &:last-child{
-                            > .c-cell{
-                                border-bottom:none;
-                            }
+                        &.c-has-text{
+                            padding-left:10px;
+                            line-height:1.4;
                         }
                     }
                 }
             }
+            &:last-child{
+                .c-icon-text-content{
+                    border-bottom:none;
+                }
+            }
         }
     }
-    /* #endregion Extra small resolutions */
-    /* #region Small resolutions */
-    @media only screen and (min-width : @var-breakpoint-start-sm) {
-        @media (max-width: (@var-breakpoint-start-md - 1) ){
-        }
-    }
-    /* #endregion Small resolutions */
-    /* #region Medium resolutions */
-    @media only screen and (min-width : @var-breakpoint-start-md) {
-        @media (max-width: (@var-breakpoint-start-lg - 1) ){
-        }
-    }
-    /* #endregion Medium resolutions */
+    //background-color:#cce1ec;
+    /* #region RESPONSIVE QUERY */
     /* #region Large resolutions */
     @media only screen and (min-width : @var-breakpoint-start-lg) {
-        padding:@var-key-results-padding-Y-lg @var-key-results-padding-X-lg;
-        .c-table{
-            .mx-table-setup();
-            .c-cell{
-                .mx-cell-setup();
-                vertical-align:middle;
-                text-align:left;
-            }
-        }
-        .c-cross-cells-wrap{
-            > .c-table{
-                > .c-row{
-                    display:table-row;
+        > .c-body{
+            display:block;
+            width:100%;
+            padding:0 15px 0 0;
+            line-height:0;
+            .c-shell-repeater{
+                display:inline-block;
+                width:50%;
+                vertical-align:top;
+                //padding:0 10px;
+                .c-icon-text-content{
+                    display:block;
                     width:100%;
-                    > .c-cell{
-                        line-height:1.4;
-                        width:50%;
-                        vertical-align:middle;
-                        text-align:center;
-                        padding:20px 40px;
-                        border-right:1px solid #a6cadd;
-                        border-bottom:1px solid #a6cadd;
-                        &:last-child{
-                            border-right:none;
-                        }
-                        .c-icon-text-content{
-                            display:inline-block;
-                            max-width:370px;
-                            .c-table{
-                                .c-cell{
-                                    color:@col-stripe-black;
-                                    &.c-w-1perc{
-                                        padding-right:20px;
-                                        color:@col-focus-stripe-blue;
-                                        width:1%;
-                                        .fa, .xn{
-                                            font-size:60px;
-                                        }
-                                    }
-                                    .c-svg-graph-wrap{
-                                        width:80px;
-                                        height:auto;
-                                    }
+                    min-height:110px;
+                    height:110px;
+                    padding:15px 5px;
+                    border-bottom:1px solid #7695be;
+                    .c-table{
+                        .mx-table-setup();
+                        .c-cell{
+                            .mx-cell-setup();
+                            vertical-align:middle;
+                            &.c-w-1perc{
+                                .mx-set-as-border-box();
+                                width:1%;
+                                text-align:center;
+                                min-width:80px;
+                                .fa, .xn{
+                                    font-size:60px;
                                 }
+                            }
+                            &.c-has-text{
+                                padding-left:10px;
+                                line-height:1.4;
                             }
                         }
                     }
-                    &:last-child{
-                        .c-cell{
-                            border-bottom:none;
+                }
+                &:nth-child(3), &:nth-child(4){
+                    .c-icon-text-content{
+                        border-bottom:none;
+                    }
+                }
+                &:nth-child(odd){
+                    .c-icon-text-content{
+                        border-right:1px solid #7695be;
+                    }
+                }
+                &.c-has-5-items{
+                    &:nth-child(3), &:nth-child(4){
+                        .c-icon-text-content{
+                            border-bottom:1px solid #7695be;
                         }
                     }
                 }
             }
-        }
-        @media (max-width: (@var-breakpoint-start-xlg - 1) ){
         }
     }
     /* #endregion Large resolutions */
-    /* #region Extra Large resolutions */
-    @media only screen and (min-width : @var-breakpoint-start-xlg) {
-    }
-    /* #endregion Extra Large resolutions */
     /* #endregion RESPONSIVE QUERY */
+}
+.c-country-profile-wide-image-background{
+    display:block;
+    width:100%;
+    height:130px;
+    margin:0;
+    background: url(../Content/images/country-profile-wide-images/country-profile-photo-wide-albania.jpg) no-repeat left center; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+/* #region RESPONSIVE QUERY */
+            /* #region Extra small resolutions */
+            @media only screen and (min-width : @var-breakpoint-start-zero) {
+                @media (max-width: (@var-breakpoint-start-sm - 1) ){
+                    height:130px;
+                }
+            }
+            /* #endregion Extra small resolutions */
+            /* #region Extra small resolutions */
+            @media only screen and (min-width : @var-breakpoint-start-sm) {
+                @media (max-width: (@var-breakpoint-start-lg - 1) ){
+                    height:200px;
+                }
+            }
+            /* #endregion Extra small resolutions */
+            /* #region Large resolutions */
+            @media only screen and (min-width : @var-breakpoint-start-lg ) {
+                height:295px;
+            }
+            /* #endregion Large resolutions */
+            /* #endregion RESPONSIVE QUERY */
+    &.c-albania{
+        background-image: url(../Content/images/country-profile-wide-images/country-profile-photo-wide-albania.jpg);
+    }
+    &.c-armenia{
+        background-image: url(../Content/images/country-profile-wide-images/country-profile-photo-wide-armenia.jpg);
+    }
+    &.c-azerbaijan{
+        background-image: url(../Content/images/country-profile-wide-images/country-profile-photo-wide-azerbaijan.jpg);
+    }
+    &.c-belarus{
+        background-image: url(../Content/images/country-profile-wide-images/country-profile-photo-wide-belarus.jpg);
+    }
+    &.c-bosnia-and-herzegovina{
+        background-image: url(../Content/images/country-profile-wide-images/country-profile-photo-wide-bih.jpg);
+    }
+    &.c-macedonia{
+        background-image: url(../Content/images/country-profile-wide-images/country-profile-photo-wide-macedonia.jpg);
+    }
+    &.c-georgia{
+        background-image: url(../Content/images/country-profile-wide-images/country-profile-photo-wide-georgia.jpg);
+    }
+    &.c-kazakhstan{
+        background-image: url(../Content/images/country-profile-wide-images/country-profile-photo-wide-kazakhstan.jpg);
+    }
+    &.c-kosovo{
+        background-image: url(../Content/images/country-profile-wide-images/country-profile-photo-wide-kosovo.jpg);
+    }
+    &.c-kyrgyz-republic{
+        background-image: url(../Content/images/country-profile-wide-images/country-profile-photo-wide-kyrgyz.jpg);
+    }
+    &.c-moldova{
+        background-image: url(../Content/images/country-profile-wide-images/country-profile-photo-wide-moldova.jpg);
+    }
+    &.c-montenegro{
+        background-image: url(../Content/images/country-profile-wide-images/country-profile-photo-wide-montenegro.jpg);
+    }
+    &.c-serbia{
+        background-image: url(../Content/images/country-profile-wide-images/country-profile-photo-wide-serbia.jpg);
+    }
+    &.c-tajikistan{
+        background-image: url(../Content/images/country-profile-wide-images/country-profile-photo-wide-tajikistan.jpg);
+    }
+    &.c-turkey{
+        background-image: url(../Content/images/country-profile-wide-images/country-profile-photo-wide-turkey.jpg);
+    }
+    &.c-turkmenistan{
+        background-image: url(../Content/images/country-profile-wide-images/country-profile-photo-wide-turkmenistan.jpg);
+    }
+    &.c-ukraine{
+        background-image: url(../Content/images/country-profile-wide-images/country-profile-photo-wide-ukraine.jpg);
+    }
+    &.c-uzbekistan{
+        background-image: url(../Content/images/country-profile-wide-images/country-profile-photo-wide-uzbekistan.jpg);
+    }
 }
 .c-bind-txxt-wrapper{
     overflow-x:hidden;
     overflow-y:auto;
 }
 .c-statement-body-txxt{
-    font-size:20px;
-    line-height:1.4;
+    font-size:18px;
+    line-height:1.3;
     font-style:italic;
 }
 .c-statement-signature-txxt{
-    font-size:20px;
-    line-height:1.4;
+    font-size:14px;
+    line-height:1.3;
 }
 .c-pictograms-statement-wrapper{
     padding-top:20px;
     display:block;
     position:relative;
     width:100%;
-    .c-statement-body-txxt{
+    /*.c-statement-body-txxt{
         font-size:18px;
         line-height:1.3;
         font-style:italic;
@@ -3042,7 +3211,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00383839', e
     .c-statement-signature-txxt{
         font-size:18px;
         line-height:1.3;
-    }
+    }*/
 }
 /* #endregion EXPANDABLE CONTENT */
 /* #region FOCUS AREAS CONTENT */
@@ -3055,10 +3224,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00383839', e
     /* #region Extra small resolutions */
     @media only screen and (min-width : @var-breakpoint-start-zero) {
         @media (max-width: (@var-breakpoint-start-lg - 1) ){
-            .c-table{
+            > .c-table{
                 display:block;
                 text-align:left;
-                .c-cell{
+                > .c-cell{
                     display:block;
                     .mx-set-as-border-box();
                     position:relative;
@@ -3124,10 +3293,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00383839', e
     /* #endregion Medium resolutions */
     /* #region Large resolutions */
     @media only screen and (min-width : @var-breakpoint-start-lg) {
-        .c-table{
+        > .c-table{
             .mx-table-setup();
             text-align:left;
-            .c-cell{
+            > .c-cell{
                 .mx-cell-setup();
                 width:25%;
                 position:relative;
@@ -3435,6 +3604,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00383839', e
     .c-table{
         .c-cell{
             position:relative;
+            padding:0 20px;
             &.c-has-text{
                 line-height:1.5;
                 font-size:14px;
@@ -3442,15 +3612,12 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00383839', e
                     height:60px !important;
                 }
             }
-            &.c-has-image-box{
-                text-align:center;
-            }
         }
     }
     /* #region RESPONSIVE QUERY */
     /* #region Extra small resolutions */
     @media only screen and (min-width : @var-breakpoint-start-zero) {
-        @media (max-width: (@var-breakpoint-start-lg - 1) ){
+        @media (max-width: (@var-breakpoint-start-sm - 1) ){
             .c-table{
                 display:block;
                 width:100%;
@@ -3476,18 +3643,36 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00383839', e
                     }
                 }
             }
+            .c-keep-max-h-content{
+                display:block;
+                position:relative;
+                max-height:680px !important;
+                overflow:hidden;
+            }
         }
     }
     /* #endregion Extra small resolutions */
     /* #region Small resolutions */
     @media only screen and (min-width : @var-breakpoint-start-sm) {
         @media (max-width: (@var-breakpoint-start-md - 1) ){
+            .c-keep-max-h-content{
+                display:block;
+                position:relative;
+                max-height:570px !important;
+                overflow:hidden;
+            }
         }
     }
     /* #endregion Small resolutions */
     /* #region Medium resolutions */
     @media only screen and (min-width : @var-breakpoint-start-md) {
         @media (max-width: (@var-breakpoint-start-lg - 1) ){
+            .c-keep-max-h-content{
+                display:block;
+                position:relative;
+                max-height:410px !important;
+                overflow:hidden;
+            }
         }
     }
     /* #endregion Medium resolutions */
@@ -3499,7 +3684,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00383839', e
             .mx-table-setup();
             .c-cell{
                 .mx-cell-setup();
-                width:50%;
+                width:100%;
                 vertical-align:top;
                 text-align:left;
                 padding:0;
@@ -3511,38 +3696,16 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00383839', e
                         margin-top:20px;
                     }
                 }
-                .c-image-box-wrap{
-                    display:block;
-                    position:relative;
-                    .c-image-content{
-                        display:block;
-                        position:relative;
-                        width:100%;
-                        height:@var-regional-image-height-lg;
-                        background: url(../Content/images/undp-kosovo-regional-context.jpg) no-repeat top center;
-                        -webkit-background-size: cover;
-                        -moz-background-size: cover;
-                        -o-background-size: cover;
-                        background-size: cover;
-                    }
-                    .c-title-content{
-                        font-size:24px;
-                        p{
-                            max-width:50%;
-                            line-height:1.1;
-                        }
-                    }
-                }
             }
         }
-        @media (max-width: (@var-breakpoint-start-xlg - 1) ){
+        .c-keep-max-h-content{
+            display:block;
+            position:relative;
+            max-height:370px !important;
+            overflow:hidden;
         }
     }
     /* #endregion Large resolutions */
-    /* #region Extra Large resolutions */
-    @media only screen and (min-width : @var-breakpoint-start-xlg) {
-    }
-    /* #endregion Extra Large resolutions */
     /* #endregion RESPONSIVE QUERY */
 }
 .c-inserted-image-wrapper{
@@ -4062,6 +4225,78 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00383839', e
             /* #endregion Large resolutions */
             /* #endregion RESPONSIVE QUERY */
         }
+        //in case for Our Work image
+        &.c-our-work-img-01{
+            width:100%;
+            margin:0;
+            max-width:100%;
+              background: url(../Content/images/about-our-work/about-our-work-back-1180-001.jpg) no-repeat center center; 
+              -webkit-background-size: cover;
+              -moz-background-size: cover;
+              -o-background-size: cover;
+              background-size: cover;
+            /* #region RESPONSIVE QUERY */
+            /* #region Extra small resolutions */
+            @media only screen and (min-width : @var-breakpoint-start-zero) {
+                @media (max-width: (@var-breakpoint-start-sm - 1) ){
+                    height:220px;
+                    margin-bottom:70px;
+                    .c-img-desc{
+                        font-size:1.1em;
+                        line-height:1.2em;
+                        width:100%;
+                        max-width:100%;
+                        height:auto;
+                        display:block;
+                        position:absolute;
+                        bottom:-25%;
+                        top:auto;
+                        .c-table{
+                            .c-cell{
+                                padding:5px;
+                            }
+                        }
+                    }
+                }
+            }
+            /* #endregion Extra small resolutions */
+            /* #region Extra small resolutions */
+            @media only screen and (min-width : @var-breakpoint-start-sm) {
+                @media (max-width: (@var-breakpoint-start-lg - 1) ){
+                    height:350px;
+                    .c-img-desc{
+                        font-size:1.4em;
+                        line-height:1.2em;
+                        width:25%;
+                        max-width:25%;
+                        .c-table{
+                            .c-cell{
+                                padding:8px;
+                            }
+                        }
+                    }
+
+                }
+            }
+            /* #endregion Extra small resolutions */
+            /* #region Large resolutions */
+            @media only screen and (min-width : @var-breakpoint-start-lg ) {
+                height:500px;
+                .c-img-desc{
+                    font-size:1.4em;
+                    line-height:1.2em;
+                    width:16.6666%;
+                    max-width:16.6666%;
+                    .c-table{
+                        .c-cell{
+                            padding:15px;
+                        }
+                    }
+                }
+            }
+            /* #endregion Large resolutions */
+            /* #endregion RESPONSIVE QUERY */
+        }
     }
     //text will wrap around image
     &.c-wrap-left{
@@ -4121,6 +4356,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00383839', e
             text-align:right;
         }
     }
+}
+.c-inclusive-growth-logo-1180{
+    width:100%;
+    height:auto;
+    margin:25px 0;
 }
 /* #endregion Example images in text content box */
 

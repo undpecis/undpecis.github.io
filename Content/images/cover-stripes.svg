@@ -3,13 +3,11 @@
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="2033px" height="987px" viewBox="0 0 2033 987" enable-background="new 0 0 2033 987" xml:space="preserve">
-<polygon opacity="0.85" fill="#00699E" points="2032.548,987 1674.59,629.042 1543.775,759.857 1770.918,987 "/>
-<g>
-	<polygon opacity="0.85" fill="#EF412C" points="1205.04,837 1521.855,520.166 1391.04,389.361 943.41,837 	"/>
-	<polygon opacity="0.85" fill="#243338" points="1466.669,837 1577.025,837 1521.847,781.819 	"/>
-	<polygon opacity="0.85" fill="#FDCEAA" points="0.452,0 837.454,837 1099.083,837 262.079,0 	"/>
-	<polygon opacity="0.85" fill="#00699E" points="1466.669,837 1758.029,545.622 1627.214,414.816 1205.039,837 	"/>
-	<polygon opacity="0.85" fill="#EF412C" points="1653,651.484 1652.586,650.999 1521.811,781.818 1577.025,837 1653,837 	"/>
-	<polygon opacity="0.85" fill="#243338" points="943.41,837 1144.26,636.132 1013.444,505.327 681.78,837 	"/>
-</g>
+<polygon opacity="0.85" fill="#00699E" points="2032.548,987 1674.59,629.042 1543.774,759.858 1770.918,987 "/>
+<polygon opacity="0.85" fill="#EF412C" points="1292.17,488.233 943.41,837 1205.04,837 1422.982,619.045 "/>
+<polygon opacity="0.85" fill="#243338" points="1466.669,837 1577.024,837 1521.847,781.819 "/>
+<polygon opacity="0.85" fill="#FDCEAA" points="0.452,0 837.454,837 1099.083,837 262.079,0 "/>
+<polygon opacity="0.85" fill="#00699E" points="1466.669,837 1758.028,545.622 1627.214,414.817 1205.039,837 "/>
+<polygon opacity="0.85" fill="#EF412C" points="1653,651.485 1652.586,650.999 1521.811,781.819 1577.024,837 1653,837 "/>
+<polygon opacity="0.85" fill="#243338" points="943.41,837 1147.26,633.133 1016.444,502.327 681.78,837 "/>
 </svg>
