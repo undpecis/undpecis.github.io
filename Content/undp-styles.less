@@ -164,40 +164,10 @@
 html, body{
     width:100%;
     //height:100%;
-    overflow-x:hidden;
+    //overflow-x:hidden;
     .fmx-open-sans-light();
     color:@col-text-black;
     line-height:1;
-}
-body{
-    /* #region RESPONSIVE QUERY */
-    /* #region Extra small resolutions */
-    @media only screen and (min-width : @var-breakpoint-start-zero) {
-        @media (max-width: (@var-breakpoint-start-sm - 1) ){
-            padding-top:@var-topnav-height-xsm;
-        }
-    }
-    /* #endregion Extra small resolutions */
-    /* #region Small resolutions */
-    @media only screen and (min-width : @var-breakpoint-start-sm) {
-        @media (max-width: (@var-breakpoint-start-md - 1) ){
-            padding-top:@var-topnav-height-sm;
-        }
-    }
-    /* #endregion Small resolutions */
-    /* #region Medium resolutions */
-    @media only screen and (min-width : @var-breakpoint-start-md) {
-        @media (max-width: (@var-breakpoint-start-lg - 1) ){
-            padding-top:@var-topnav-height-md;
-        }
-    }
-    /* #endregion Medium resolutions */
-    /* #region Large resolutions */
-    @media only screen and (min-width : @var-breakpoint-start-lg) {
-        padding-top:@var-topnav-height-lg;
-    }
-    /* #endregion Large resolutions */
-    /* #endregion RESPONSIVE QUERY */
 }
 object {
     pointer-events:none;
@@ -296,65 +266,106 @@ b, strong{
 .c-m-bottom-30{margin-bottom:30px !important;}
 /* #endregion Margins */
 /* #region Display */
-.c-wide-wrap{
-    text-align:center;
-    display:block;
-    width:100%;
-    line-height:0;
-    &.c-black-line-top{
-        border-top:7px solid @col-stripe-black;
+.c-wide-wrap {
+    text-align: center;
+    display: block;
+    width: 100%;
+    line-height: 0;
+    box-sizing:content-box;
+    overflow:hidden;
+    &.c-black-line-top {
+        border-top: 7px solid @col-stripe-black;
     }
-    &.c-blue-line-top{
-        border-top:7px solid @col-focus-stripe-blue;
+
+    &.c-blue-line-top {
+        border-top: 7px solid @col-focus-stripe-blue;
     }
-    &.c-red-line-top{
-        border-top:7px solid @col-focus-stripe-red;
+
+    &.c-red-line-top {
+        border-top: 7px solid @col-focus-stripe-red;
     }
-    &.c-peach-line-top{
-        border-top:7px solid @col-focus-stripe-peach;
+
+    &.c-peach-line-top {
+        border-top: 7px solid @col-focus-stripe-peach;
     }
     /* #region RESPONSIVE QUERY */
     /* #region Extra small resolutions */
     @media only screen and (min-width : @var-breakpoint-start-zero) {
-        &.c-show-when-xs{
-            display:block;
+        &.c-show-when-xs {
+            display: block;
         }
-        &.c-show-when-lg{
-            display:none;
+
+        &.c-show-when-lg {
+            display: none;
         }
     }
     /* #endregion Extra small resolutions */
     /* #region Small resolutions */
     @media only screen and (min-width : @var-breakpoint-start-sm) {
-        @media (max-width: (@var-breakpoint-start-md - 1) ){
+        @media (max-width: (@var-breakpoint-start-md - 1) ) {
         }
     }
     /* #endregion Small resolutions */
     /* #region Medium resolutions */
     @media only screen and (min-width : @var-breakpoint-start-md) {
-        @media (max-width: (@var-breakpoint-start-lg - 1) ){
+        @media (max-width: (@var-breakpoint-start-lg - 1) ) {
         }
     }
     /* #endregion Medium resolutions */
     /* #region Large resolutions */
     @media only screen and (min-width : @var-breakpoint-start-lg) {
-        padding-left:10px;
-        padding-right:10px;
-        &.c-show-when-xs{
-            display:none;
+        /*padding-left: 10px;
+        padding-right: 10px;*/
+
+        &.c-show-when-xs {
+            display: none;
         }
-        &.c-show-when-lg{
-            display:block;
+
+        &.c-show-when-lg {
+            display: block;
         }
     }
     /* #endregion Large resolutions */
     /* #region Extra Large resolutions */
     @media only screen and (min-width : @var-breakpoint-start-xlg) {
-        padding-left:0;
-        padding-right:0;
+        /*padding-left: 0;
+        padding-right: 0;*/
     }
     /* #endregion Extra Large resolutions */
     /* #endregion RESPONSIVE QUERY */
+    /* #region Containing cover stripes */
+    &.c-has-cover-stripes {
+        overflow:hidden !important;
+        /* #region RESPONSIVE QUERY */
+        /* #region Extra small resolutions */
+        @media only screen and (min-width : @var-breakpoint-start-zero) {
+            @media (max-width: (@var-breakpoint-start-sm - 1) ) {
+                padding-top: @var-topnav-height-xsm;
+            }
+        }
+        /* #endregion Extra small resolutions */
+        /* #region Small resolutions */
+        @media only screen and (min-width : @var-breakpoint-start-sm) {
+            @media (max-width: (@var-breakpoint-start-md - 1) ) {
+                padding-top: @var-topnav-height-sm;
+            }
+        }
+        /* #endregion Small resolutions */
+        /* #region Medium resolutions */
+        @media only screen and (min-width : @var-breakpoint-start-md) {
+            @media (max-width: (@var-breakpoint-start-lg - 1) ) {
+                padding-top: @var-topnav-height-md;
+            }
+        }
+        /* #endregion Medium resolutions */
+        /* #region Large resolutions */
+        @media only screen and (min-width : @var-breakpoint-start-lg) {
+            padding-top: @var-topnav-height-lg;
+        }
+        /* #endregion Large resolutions */
+        /* #endregion RESPONSIVE QUERY */
+    }
+    /* #endregion Containing cover stripes */
 }
 .c-container{
     max-width:1270px;
@@ -1797,10 +1808,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00383839', e
                         padding-bottom:70px;
                         color:@col-white;
                         .c-32-400{
-                            font-size:40px;
+                            font-size:36px;
                         }
                         .c-18-400{
-                            font-size:23px;
+                            font-size:20px;
                         }
                     }
                     /* #endregion Large resolutions */
