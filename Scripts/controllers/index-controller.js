@@ -59,6 +59,35 @@ function externalCompileCaller() {
             }
         }
     );
+    $('[data-toggle="popover-fa-left"]').popover(
+        {
+            html: true,
+            viewport: '#cid-binded-bac-text',
+            trigger: 'click',
+            placement: function (context, source) {
+                var position = $(source).position();
+                var content_width = 680;  //Can be found from a JS function for more dynamic output
+                var content_height = 110;  //Can be found from a JS function for more dynamic output
+
+                return "left";
+            }
+        }
+    );
+    $('[data-toggle="popover-fa-left-wide"]').popover(
+        {
+            html: true,
+            viewport: '#cid-binded-bac-text',
+            trigger: 'click',
+            template: '<div class="popover c-wide-popup"><div class="arrow"></div><h3 class="popover-title"></h3><div class="popover-content"></div></div>',
+            placement: function (context, source) {
+                var position = $(source).position();
+                var content_width = 680;  //Can be found from a JS function for more dynamic output
+                var content_height = 110;  //Can be found from a JS function for more dynamic output
+
+                return "left";
+            }
+        }
+    );
 }
 
 var generic_scrollMagicScene_01 = null;
@@ -169,43 +198,43 @@ $(window).on('resize', function () {
 $(document).ready(function () {
     /* #region Setup Sticky Navigation hiding on scroll */
     // Hide Header on on scroll down
-    var didScroll;
-    var lastScrollTop = 0;
-    var delta = 5;
-    var navbarHeight = $('#cid-header-nav').outerHeight();
+    //var didScroll;
+    //var lastScrollTop = 0;
+    //var delta = 5;
+    //var navbarHeight = $('#cid-header-nav').outerHeight();
 
-    $(window).scroll(function (event) {
-        didScroll = true;
-    });
+    //$(window).scroll(function (event) {
+    //    didScroll = true;
+    //});
 
-    setInterval(function () {
-        if (didScroll) {
-            hasScrolled();
-            didScroll = false;
-        }
-    }, 250);
+    //setInterval(function () {
+    //    if (didScroll) {
+    //        hasScrolled();
+    //        didScroll = false;
+    //    }
+    //}, 250);
 
-    function hasScrolled() {
-        var st = $(this).scrollTop();
+    //function hasScrolled() {
+    //    var st = $(this).scrollTop();
 
-        // Make sure they scroll more than delta
-        if (Math.abs(lastScrollTop - st) <= delta)
-            return;
+    //    // Make sure they scroll more than delta
+    //    if (Math.abs(lastScrollTop - st) <= delta)
+    //        return;
 
-        // If they scrolled down and are past the navbar, add class .nav-up.
-        // This is necessary so you never see what is "behind" the navbar.
-        if (st > lastScrollTop && st > navbarHeight) {
-            // Scroll Down
-            $('#cid-header-nav').removeClass('nav-down').addClass('nav-up');
-        } else {
-            // Scroll Up
-            if (st + $(window).height() < $(document).height()) {
-                $('#cid-header-nav').removeClass('nav-up').addClass('nav-down');
-            }
-        }
+    //    // If they scrolled down and are past the navbar, add class .nav-up.
+    //    // This is necessary so you never see what is "behind" the navbar.
+    //    if (st > lastScrollTop && st > navbarHeight) {
+    //        // Scroll Down
+    //        $('#cid-header-nav').removeClass('nav-down').addClass('nav-up');
+    //    } else {
+    //        // Scroll Up
+    //        if (st + $(window).height() < $(document).height()) {
+    //            $('#cid-header-nav').removeClass('nav-up').addClass('nav-down');
+    //        }
+    //    }
 
-        lastScrollTop = st;
-    }
+    //    lastScrollTop = st;
+    //}
     /* #endregion Setup Sticky Navigation hiding on scroll */
 
     /* #region Swipebox lightbox */

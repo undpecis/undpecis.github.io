@@ -54,8 +54,8 @@
                     <!-- #region Title -->
                     <div class="c-title-over-wrap">
                         <div class="c-text-content">
-                            <h1 class="c-32-400">TOWARDS SDG 16:</h1>
-                            <h2 class="c-18-400">Promoting Just, Peaceful and Inclusive Societies in Europe and Central Asia</h2>
+                            <!--<h1 class="c-32-400">TOWARDS SDG 16:</h1>-->
+                            <h2 class="c-34-400">Promoting Just, Peaceful and Inclusive Societies in Europe and Central Asia</h2>
                         </div>
                     </div>
                     <!-- #endregion Title -->
@@ -121,7 +121,7 @@
                     <div class="c-table">
                         <!-- #region Text -->
                         <div class="c-cell c-w-1perc">
-                            <p class="c-21-400 c-title-text">Key Results:</p>
+                            <p class="c-24-400 c-title-text">Key Results:</p>
                             <div class="c-buttons-wrap">
                                 <!-- #region Learn more button -->
                                 <button class="c-bttn c-bttn-combo c-bttn-blue" ng-click="toggleVisibility('countryLearnMore_lg')" ng-if="!ctrlVars.visibleStates.isOpenCountryBACdata_lg">
@@ -698,26 +698,27 @@
                     </div>
                     <!-- #endregion Middle text -->
                     <!-- #region Right content -->
-                    <div class="c-cell c-has-right-content c-col-1-5-lg">
-                        <p>Our work helps to meet targets under:</p>
+                    <div class="c-cell c-has-right-content c-col-1-5-lg">                        
                         <!-- #region SVG graphic -->
-                        <div class="c-sdg-pictograms-wrap">
-                            <a class="c-sdg-pictograms-box c-lg c-gender" ng-click="openGenderPeaceModal('gender')">
-                            </a>
+                        <div ng-if="ctrlVars.currentOKWindex == 0">
+                            <p>Our work helps to meet targets under:</p>
+                            <div class="c-sdg-pictograms-wrap">
+                                <a class="c-sdg-pictograms-box c-lg c-gender" ng-click="openGenderPeaceModal('gender')">
+                                </a>
+                            </div>
+                            <div class="c-sdg-pictograms-wrap" ng-if="ctrlVars.currentOKWindex == 0">
+                                <a class="c-sdg-pictograms-box c-lg c-peace-justice" ng-click="openGenderPeaceModal('peace')">
+                                </a>
+                            </div>
                         </div>
                         <!-- #endregion SVG graphic -->
-                        <!-- #region SVG graphic -->
-                        <div class="c-sdg-pictograms-wrap">
-                            <a class="c-sdg-pictograms-box c-lg c-peace-justice" ng-click="openGenderPeaceModal('peace')">
-                            </a>
-                        </div>
                         <div class="c-pictograms-statement-wrapper" ng-if="ctrlVars.okwStatementHaveContent == true">
-                            <div ng-class="{'c-max-240' : ctrlVars.okwStatementExpanded == false}">
+                            <div class="c-right-content-statement-scroller">
                                 <p class="c-statement-body-txxt c-custom-binded-text" ng-bind-html="to_trusted(ctrlVars.okwStatementBodyTextTwo)"></p>
                                 <p class="c-statement-signature-txxt c-custom-binded-text" ng-bind-html="to_trusted(ctrlVars.okwStatementSignatureTextTwo)"></p>
                             </div>
                             <!-- #region Show Less/More button -->
-                            <div class="c-read-more-feather-button" ng-class="{'c-relative' : ctrlVars.okwStatementExpanded}">
+                            <!--<div class="c-read-more-feather-button" ng-class="{'c-relative' : ctrlVars.okwStatementExpanded}">
                                 <button class="c-bttn c-bttn-combo" ng-click="toggleVisibility('okwStatementPictograms')">
                                     <div class="c-circle-icon-box">
                                         <i class="c-ico icon-arrow-down" ng-if="!ctrlVars.okwStatementExpanded"></i>
@@ -726,18 +727,9 @@
                                     <span ng-if="!ctrlVars.okwStatementExpanded">SHOW MORE</span>
                                     <span ng-if="ctrlVars.okwStatementExpanded">SHOW LESS</span>
                                 </button>
-                            </div>
+                            </div>-->
                             <!-- #endregion Show Less/More button -->
                         </div>
-                        <!-- #endregion SVG graphic -->
-                        <!-- #region Download section -->
-                        <!--<button class="c-bttn c-bttn-combo c-bttn-black c-m-top-40">
-                            <div class="c-circle-icon-box">
-                                <i class="c-ico icon-cloud-download"></i>
-                            </div>
-                            <span>DOWNLOAD Section</span>
-                        </button>-->
-                        <!-- #endregion Download section -->
                     </div>
                     <!-- #endregion Right content -->
                 </div>
@@ -806,8 +798,8 @@
                                 <i class="c-ico icon-login" ng-if="!ctrlVars.forewordData.isTextExpanded"></i>
                                 <i class="c-ico icon-close" ng-if="ctrlVars.forewordData.isTextExpanded"></i>
                             </div>
-                            <span ng-if="!ctrlVars.forewordData.isTextExpanded">SHOW MORE</span>
-                            <span ng-if="ctrlVars.forewordData.isTextExpanded">SHOW LESS</span>
+                            <span ng-if="!ctrlVars.forewordData.isTextExpanded">LEARN MORE</span>
+                            <span ng-if="ctrlVars.forewordData.isTextExpanded">CLOSE OUR WORK</span>
                         </button>
                         <!-- #endregion Learn more button -->
                     </div>
