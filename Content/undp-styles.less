@@ -96,6 +96,7 @@
 /* #region COLORS */
 @col-white:#fff;
 @col-stripe-white-smoke:#F6F6F6;
+@col-stripe-white-smoke-darker: #ECECEC;
 @col-stripe-zircon:#eceded;
 @col-stripe-forget-me-not:#fef1e1;
 @col-stripe-melon:#fabea7;
@@ -163,14 +164,17 @@
     background-color:@col-stripe-black;
 }
 .c-footer-background{background-color:@col-footer-black;}
+.c-download-full-report-background {
+    background-color: @col-stripe-white-smoke-darker;
+}
 /* #endregion COLORS */
-html, body{
-    width:100%;
+html, body {
+    width: 100%;
     //height:100%;
     //overflow-x:hidden;
     .fmx-open-sans-light();
-    color:@col-text-black;
-    line-height:1;
+    color: @col-text-black;
+    line-height: 1;
 }
 object {
     pointer-events:none;
@@ -1924,11 +1928,12 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00383839', e
                     padding:0 20px;
                     h1{
                         white-space:nowrap;
-                        font-size:14px;
+                        font-size:20px;
                     }
                 }
                 &.c-has-navigation{
                     text-align:right;
+                    padding-right:20px;
                     .c-horizontal-list{
                         display:none;
                     }
@@ -2018,7 +2023,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00383839', e
                         }
                     }
                     &.c-has-navigation{
-                        text-align:center;
+                        text-align:right;
                         .c-horizontal-list{
                             display:inline-block;
                             @media (max-width: 1080px ){
@@ -3843,87 +3848,171 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00383839', e
 
 }
 /* #endregion REGIONAL CONTEXT CONTENT */
-/* #region FOOTER CONTENT */
-.c-footer-content-wrap-lg{
-    color:@col-text-footer-brown;
-    text-align:left;
-    padding:50px 0 35px;
-    font-size:12px;
-    line-height:2;
-    .c-title{
-        display:inline-block;
-        width:auto;
-        text-align:left;
-        position:relative;
-        border-bottom:1px solid @col-text-footer-brown;
-        padding-bottom:10px;
-        margin-bottom:30px;
-        .fmx-open-sans-regular();
-        font-size:16px;
-        color:@col-white;
-        text-transform:uppercase;
-    }
-    a{
-        color:@col-white;
-    }
-    p{
-        margin-bottom:1em;
+/* #region Download Full Report Content */
+@var-download-full-reporth-height-xs:150px;
+@var-download-full-reporth-height-sm: 190px;
+@var-download-full-reporth-height-md: 250px;
+@var-download-full-reporth-height-lg: 375px;
+.c-download-full-report-box {
+    display: block;
+    position: relative;
+    width: 100%;
+    background: url(../Content/images/download-full-report-background.jpg) no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    //
+    .c-bttn {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        .mx-transform-translate(-50%, -50%);
     }
     /* #region RESPONSIVE QUERY */
     /* #region Extra small resolutions */
     @media only screen and (min-width : @var-breakpoint-start-zero) {
-        @media (max-width: (@var-breakpoint-start-lg - 1) ){
-            display:none;
+        @media (max-width: (@var-breakpoint-start-sm - 1) ) {
+            height: @var-download-full-reporth-height-xs;
+
+            .c-bttn {
+                left: 65%;
+            }
         }
     }
     /* #endregion Extra small resolutions */
     /* #region Small resolutions */
     @media only screen and (min-width : @var-breakpoint-start-sm) {
-        @media (max-width: (@var-breakpoint-start-md - 1) ){
+        @media (max-width: (@var-breakpoint-start-md - 1) ) {
+            height: @var-download-full-reporth-height-sm;
+
+            .c-bttn {
+                left: 65%;
+            }
         }
     }
     /* #endregion Small resolutions */
     /* #region Medium resolutions */
     @media only screen and (min-width : @var-breakpoint-start-md) {
-        @media (max-width: (@var-breakpoint-start-lg - 1) ){
+        @media (max-width: (@var-breakpoint-start-lg - 1) ) {
+            height: @var-download-full-reporth-height-md;
+
+            .c-bttn {
+                left: 65%;
+            }
         }
     }
     /* #endregion Medium resolutions */
     /* #region Large resolutions */
     @media only screen and (min-width : @var-breakpoint-start-lg) {
-        display:block;
-        > .c-table{
-            .mx-table-setup();
-            > .c-cell{
-                .mx-cell-setup();
-                width:33.3333%;
-                padding:0 25px;
+        height: @var-download-full-reporth-height-lg;
+        //button
+        .c-bttn {
+            font-size: 20px;
+            left: 70%;
+
+            .c-ico {
+                font-size: 60px;
             }
         }
-        .c-copy-wrap{
+    }
+    /* #endregion Large resolutions */
+    /* #endregion RESPONSIVE QUERY */
+}
+/* #endregion Download Full Report Content */
+/* #region FOOTER CONTENT */
+.c-footer-content-wrap-lg {
+    color: @col-text-footer-brown;
+    text-align: left;
+    padding: 50px 0 35px;
+    font-size: 12px;
+    line-height: 2;
+
+    .c-title {
+        display: inline-block;
+        width: auto;
+        text-align: left;
+        position: relative;
+        border-bottom: 1px solid @col-text-footer-brown;
+        padding-bottom: 10px;
+        margin-bottom: 30px;
+        .fmx-open-sans-regular();
+        font-size: 16px;
+        color: @col-white;
+        text-transform: uppercase;
+    }
+
+    a {
+        color: @col-white;
+    }
+
+    p {
+        margin-bottom: 1em;
+    }
+    /* #region RESPONSIVE QUERY */
+    /* #region Extra small resolutions */
+    @media only screen and (min-width : @var-breakpoint-start-zero) {
+        @media (max-width: (@var-breakpoint-start-lg - 1) ) {
+            display: none;
+        }
+    }
+    /* #endregion Extra small resolutions */
+    /* #region Small resolutions */
+    @media only screen and (min-width : @var-breakpoint-start-sm) {
+        @media (max-width: (@var-breakpoint-start-md - 1) ) {
+        }
+    }
+    /* #endregion Small resolutions */
+    /* #region Medium resolutions */
+    @media only screen and (min-width : @var-breakpoint-start-md) {
+        @media (max-width: (@var-breakpoint-start-lg - 1) ) {
+        }
+    }
+    /* #endregion Medium resolutions */
+    /* #region Large resolutions */
+    @media only screen and (min-width : @var-breakpoint-start-lg) {
+        display: block;
+
+        > .c-table {
             .mx-table-setup();
-            padding:100px 25px 0;
-            p{
-                margin:0;
-                padding:0;
+
+            > .c-cell {
+                .mx-cell-setup();
+                width: 33.3333%;
+                padding: 0 25px;
             }
-            a{
-                color:@col-text-footer-brown;
+        }
+
+        .c-copy-wrap {
+            .mx-table-setup();
+            padding: 100px 25px 0;
+
+            p {
+                margin: 0;
+                padding: 0;
             }
-            .c-table{
+
+            a {
+                color: @col-text-footer-brown;
+            }
+
+            .c-table {
                 .mx-table-setup();
-                .c-cell{
+
+                .c-cell {
                     .mx-cell-setup();
-                    width:50%;
-                    text-align:left;
-                    vertical-align:middle;
-                    &:last-child{
-                        text-align:right;
+                    width: 50%;
+                    text-align: left;
+                    vertical-align: middle;
+
+                    &:last-child {
+                        text-align: right;
                     }
                 }
             }
         }
-        @media (max-width: (@var-breakpoint-start-xlg - 1) ){
+
+        @media (max-width: (@var-breakpoint-start-xlg - 1) ) {
         }
     }
     /* #endregion Large resolutions */
