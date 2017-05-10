@@ -526,9 +526,62 @@ $(document).ready(function () {
         }
     ];
     /* #region NEW SLIDES SVG CODE */
+    var firstLeftVisibleSvgIndex = 0;
+    var allSvgGraphsArray = [];
+    var startingOpacityForSvg = 0.3;
+    var scrollMagicInitControllerForSvg = new ScrollMagic.Controller();
+    var allScrollMagicScenesArrayForSvg = [];
+    function setupAllSvgSlides() {
+        for (var i = 0; i < infographicsGroups.length; i++) {
+            for (var j = 0; j < infographicsGroups[i].countries.length; j++) {
+                allSvgGraphsArray.push(infographicsGroups[i].countries[j]);
+            }
+        }
+        $("#svg-graph-master-wrap-slider").css("background-color", allSvgGraphsArray[firstLeftVisibleSvgIndex].backgroundColor);
+        $("#svg-graph-master-wrap-slider .c-section-title").css("color", allSvgGraphsArray[firstLeftVisibleSvgIndex].titleColor);
+        //
+        console.log('allSvgGraphsArray length: ' + allSvgGraphsArray.length);
+        //insert svg graphs into Swiper Slider (.swiper-wrapper)
+        for (var k = 0; k < allSvgGraphsArray.length; k++) {
+            //change id of div
+            //$("#trigger-country-container-" + (k + 1) + "-svg").prop('id', 'cid-infographic-trigger-' + allSvgGraphsArray[k].shortName);
+            //add <object> tag
+            //$("#cid-infographic-trigger-" + allSvgGraphsArray[k].shortName).append('<object type="image/svg+xml" data="Content/images/infographic-' + allSvgGraphsArray[k].shortName + '.svg" class="c-svg-object c-svg-faf" id="cid-infographic-' + allSvgGraphsArray[k].shortName + '-object">Infographic Legal</object>');
+            //add opacity value
+            $("#cid-infographic-trigger-" + allSvgGraphsArray[k].shortName).css("opacity", startingOpacityForSvg);
+            /* #region Setting up ScrollMagicScenes */
+            // create the scrollmagic scene here.
+            // 'k < 3' is used because we don't want to place scroll trigger for all svg graphics, but only for first 3
+            // if we want to setup scroll animation trigger for all svg's we would remove 'if' statement
+            if (k < 3){
+                var generic_scrollMagicScene = new ScrollMagic.Scene(
+                    {
+                    triggerElement: "#cid-infographic-trigger-" + allSvgGraphsArray[k].shortName, duration: 100,
+                    triggerHook: "onCenter",
+                }
+                ).addTo(
+                    scrollMagicInitControllerForSvg
+                ).on("start", function (e) {
+                    if (e.currentTarget.countryIndex >= firstLeftVisibleSvgIndex && e.currentTarget.countryIndex <= (firstLeftVisibleSvgIndex + 2)) {
+                        startCountryAnimation(e);
+                }
+                    //enable: true it will always trigger event; enable: false animation will fire only once
+                    e.currentTarget.enabled(false);
+                }
+                );
+                allScrollMagicScenesArrayForSvg.push(generic_scrollMagicScene);
+                allScrollMagicScenesArrayForSvg[k].countryIndex = k;
+                allScrollMagicScenesArrayForSvg[k].countryShortName = allSvgGraphsArray[k].shortName;
+            }
+            /* #endregion Setting up ScrollMagicScenes */
+        }
+    }
+    setupAllSvgSlides();
+    /* #endregion NEW SLIDES SVG CODE */
     /* #region Swiper Slider initialize */
     //initialize swiper when document ready  
     mySwiper = new Swiper('.swiper-container', {
+        loop: true,
         slidesPerView: 3,
         slidesPerGroup: 3,
         spaceBetween: 50,
@@ -558,32 +611,32 @@ $(document).ready(function () {
             }
         },
         //events
-        onSlideChangeEnd: function () {
-            firstLeftVisibleSvgIndex = mySwiper.activeIndex;
+        onSlideChangeEnd: function (swiper) {
+            firstLeftVisibleSvgIndex = swiper.realIndex;
             $("#svg-graph-master-wrap-slider").css("background-color", allSvgGraphsArray[firstLeftVisibleSvgIndex].backgroundColor);
             $("#svg-graph-master-wrap-slider .c-section-title").css("color", allSvgGraphsArray[firstLeftVisibleSvgIndex].titleColor);
             //animate only svg graphs that are currently visible on browser
             if (browserCurrentWidth > 1 && browserCurrentWidth < 768) {
                 setTimeout(
                     startCountryAnimationFromSlider(firstLeftVisibleSvgIndex),
-                500);
+                    500);
             } else if (browserCurrentWidth >= 768 && browserCurrentWidth < 1024) {
                 setTimeout(
                     startCountryAnimationFromSlider(firstLeftVisibleSvgIndex),
-                500);
+                    500);
                 setTimeout(
-                    startCountryAnimationFromSlider(firstLeftVisibleSvgIndex + 1 ),
-                600);
+                    startCountryAnimationFromSlider(firstLeftVisibleSvgIndex + 1),
+                    600);
             } else if (browserCurrentWidth >= 1024) {
                 setTimeout(
                     startCountryAnimationFromSlider(firstLeftVisibleSvgIndex),
-                500);
+                    500);
                 setTimeout(
                     startCountryAnimationFromSlider(firstLeftVisibleSvgIndex + 1),
-                600);
+                    600);
                 setTimeout(
                     startCountryAnimationFromSlider(firstLeftVisibleSvgIndex + 2),
-                700);
+                    700);
             }
         }
     })
@@ -634,58 +687,6 @@ $(document).ready(function () {
     /* #endregion Call SVG animation based on currently visible slide index */
 
     /* #endregion Swiper Slider initialize */
-    var firstLeftVisibleSvgIndex = 0;
-    var allSvgGraphsArray = [];
-    var startingOpacityForSvg = 0.3;
-    var scrollMagicInitControllerForSvg = new ScrollMagic.Controller();
-    var allScrollMagicScenesArrayForSvg = [];
-    function setupAllSvgSlides() {
-        for (var i = 0; i < infographicsGroups.length; i++) {
-            for (var j = 0; j < infographicsGroups[i].countries.length; j++) {
-                allSvgGraphsArray.push(infographicsGroups[i].countries[j]);
-            }
-        }
-        $("#svg-graph-master-wrap-slider").css("background-color", allSvgGraphsArray[firstLeftVisibleSvgIndex].backgroundColor);
-        $("#svg-graph-master-wrap-slider .c-section-title").css("color", allSvgGraphsArray[firstLeftVisibleSvgIndex].titleColor);
-        //
-        console.log('allSvgGraphsArray length: ' + allSvgGraphsArray.length);
-        //insert svg graphs into Swiper Slider (.swiper-wrapper)
-        for (var k = 0; k < allSvgGraphsArray.length; k++) {
-            //change id of div
-            $("#trigger-country-container-" + (k + 1) + "-svg").prop('id', 'cid-infographic-trigger-' + allSvgGraphsArray[k].shortName);
-            //add <object> tag
-            $("#cid-infographic-trigger-" + allSvgGraphsArray[k].shortName).append('<object type="image/svg+xml" data="Content/images/infographic-' + allSvgGraphsArray[k].shortName + '.svg" class="c-svg-object c-svg-faf" id="cid-infographic-' + allSvgGraphsArray[k].shortName + '-object">Infographic Legal</object>');
-            //add opacity value
-            $("#cid-infographic-trigger-" + allSvgGraphsArray[k].shortName).css("opacity", startingOpacityForSvg);
-            /* #region Setting up ScrollMagicScenes */
-            // create the scrollmagic scene here.
-            // 'k < 3' is used because we don't want to place scroll trigger for all svg graphics, but only for first 3
-            // if we want to setup scroll animation trigger for all svg's we would remove 'if' statement
-            if (k < 3){
-                var generic_scrollMagicScene = new ScrollMagic.Scene(
-                    {
-                    triggerElement: "#cid-infographic-trigger-" + allSvgGraphsArray[k].shortName, duration: 100,
-                    triggerHook: "onCenter",
-                }
-                ).addTo(
-                    scrollMagicInitControllerForSvg
-                ).on("start", function (e) {
-                    if (e.currentTarget.countryIndex >= firstLeftVisibleSvgIndex && e.currentTarget.countryIndex <= (firstLeftVisibleSvgIndex + 2)) {
-                        startCountryAnimation(e);
-                }
-                    //enable: true it will always trigger event; enable: false animation will fire only once
-                    e.currentTarget.enabled(false);
-                }
-                );
-                allScrollMagicScenesArrayForSvg.push(generic_scrollMagicScene);
-                allScrollMagicScenesArrayForSvg[k].countryIndex = k;
-                allScrollMagicScenesArrayForSvg[k].countryShortName = allSvgGraphsArray[k].shortName;
-            }
-            /* #endregion Setting up ScrollMagicScenes */
-        }
-    }
-    setupAllSvgSlides();
-    /* #endregion NEW SLIDES SVG CODE */
     /* #region We are calling animation for country */
     function startCountryAnimation(event) {
         var eventCountryIndex = event.currentTarget.countryIndex;        
