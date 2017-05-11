@@ -320,6 +320,9 @@ strong {
 .c-m-bottom-30 {
   margin-bottom: 30px !important;
 }
+.c-m-clear {
+  margin: 0 !important;
+}
 /* #endregion Margins */
 /* #region Display */
 .c-wide-wrap {
