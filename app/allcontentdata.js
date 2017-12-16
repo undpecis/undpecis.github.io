@@ -91,8 +91,7 @@
             title: 'Responsive and Accountable Institutions',
             shortName: 'responsiveData',
             shortIntroText: 'Central to ensuring that development is both effective and sustainable for citizens, UNDP works with partners to improve transparency and improve the capabilities of governmental bodies and institutions at all levels.',
-            section
-            Url: 'https://undpecis.github.io/download/02-responsive-and-accountable-institutions.pdf',
+            sectionPdfUrl: 'https://undpecis.github.io/download/02-responsive-and-accountable-institutions.pdf',
             pictogramModals: {
                 gender: {
                     title: '<p class="c-red-text"><strong>GOAL 5 – ACHIEVE GENDER EQUALITY AND EMPOWER ALL WOMEN AND GIRLS</strong></p>',
