@@ -12,7 +12,7 @@
             title: 'Conflict Prevention and Peacebuilding',
             shortName: 'conflictData',
             shortIntroText: 'With a legacy of conflict throughout Europe and Central Asia, UNDP works to promote social cohesion, and empower nations and communities to become more inclusive and resilient to external and internal shocks.',
-            sectionPdfUrl: 'https://undpecis.github.io/download/01-conflict-prevention-and-peacebuilding.pdf',
+            sectionPdfUrl: '#',
             pictogramModals: {
                 gender: {
                     title: ' <p class="c-red-text"><strong>GOAL 5 – ACHIEVE GENDER EQUALITY AND EMPOWER ALL WOMEN AND GIRLS</strong></p>',
@@ -91,7 +91,8 @@
             title: 'Responsive and Accountable Institutions',
             shortName: 'responsiveData',
             shortIntroText: 'Central to ensuring that development is both effective and sustainable for citizens, UNDP works with partners to improve transparency and improve the capabilities of governmental bodies and institutions at all levels.',
-            sectionPdfUrl: 'https://undpecis.github.io/download/02-responsive-and-accountable-institutions.pdf',
+            section
+            Url: 'https://undpecis.github.io/download/02-responsive-and-accountable-institutions.pdf',
             pictogramModals: {
                 gender: {
                     title: '<p class="c-red-text"><strong>GOAL 5 – ACHIEVE GENDER EQUALITY AND EMPOWER ALL WOMEN AND GIRLS</strong></p>',
@@ -405,7 +406,7 @@
             id: 'AM',
             title: 'Armenia',
             flagClass: 'c-armenia',
-            sectionPdfUrl: 'https://undpecis.github.io/download/country-profiles-armenia.pdf',
+            sectionPdfUrl: '#',
             statement: {
                 img: 'armenia.jpg',
                 imgThumb: 'armenia-thumb.jpg'
@@ -455,7 +456,7 @@
             id: 'AZ',
             title: 'Azerbaijan',
             flagClass: 'c-azerbaijan',
-            sectionPdfUrl: 'https://undpecis.github.io/download/country-profiles-azerbaijan.pdf',
+            sectionPdfUrl: '#',
             statement: {
                 img: 'azerbaijan.jpg',
                 imgThumb: 'azerbaijan-thumb.jpg',
